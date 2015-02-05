@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="23px" height="23px" viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>Stroke 182 + Stroke 183 + Stroke 184</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Stroke-182-+-Stroke-183-+-Stroke-184" sketch:type="MSLayerGroup" transform="translate(1.000000, 1.000000)" stroke="#231F1F" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13,11 L13.086,11.086 C13.867,11.8665 15.133,11.8665 15.914,11.086 L19.8785,7.121 C21.0455,5.9545 21.0455,4.0455 19.8785,2.879 L18.1215,1.121 C16.9545,-0.0455 15.0455,-0.0455 13.8785,1.121 L9.914,5.086 C9.133,5.8665 9.133,7.1335 9.914,7.914 L10,8" id="Stroke-182" sketch:type="MSShapeGroup"></path>
+            <path d="M8,10 L7.914,9.914 C7.133,9.1335 5.867,9.1335 5.086,9.914 L1.1215,13.879 C-0.0455,15.0455 -0.0455,16.9545 1.1215,18.121 L2.8785,19.879 C4.0455,21.0455 5.9545,21.0455 7.1215,19.879 L11.086,15.914 C11.867,15.1335 11.867,13.8665 11.086,13.086 L11,13" id="Stroke-183" sketch:type="MSShapeGroup"></path>
+            <path d="M6.61085,14.38915 L14.38935,6.61065" id="Stroke-184" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

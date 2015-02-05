@@ -1,0 +1,17 @@
+h1 {
+	@extend .BrandonText-Medium;
+	line-height: 34px;
+}
+
+p {
+	line-height: 27px;
+}
+
+a {
+	@extend .BrandonText-Medium;
+	color: #333;
+	text-decoration: none;
+	&:hover {
+		color:#000;
+	}
+}

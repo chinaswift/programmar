@@ -1,0 +1,9 @@
+{
+  "name": "Programmar",
+  "dependencies": {
+    "bootstrap-sass-official": "~3.3.3",
+    "angular": "~1.3.11",
+    "jquery": "~2.1.3",
+    "bootbox": "~4.3.0"
+  }
+}

@@ -1,0 +1,15 @@
+@import "config/variables";
+@import "bootstrap";
+
+@import "config/mixins";
+@import "config/fonts";
+@import "config/globals";
+
+@import "partials/navbar";
+@import "partials/type";
+@import "partials/buttons";
+@import "partials/wysiwyg";
+@import "partials/animate";
+
+@import "pages/homepage";
+@import "pages/editor";

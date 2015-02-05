@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="47px" height="18px" viewBox="0 0 47 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>Stroke 7176 + Stroke 7177 + Stroke 7178 + Stroke 7179 + Stroke 7180 + +</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Homepage" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Artboard-4" sketch:type="MSArtboardGroup" transform="translate(-580.000000, -269.000000)">
+            <g id="Stroke-7176-+-Stroke-7177-+-Stroke-7178-+-Stroke-7179-+-Stroke-7180-+-+" sketch:type="MSLayerGroup" transform="translate(581.000000, 270.000000)">
+                <g id="Stroke-7176-+-Stroke-7177" stroke="#231F1F" stroke-linecap="round" sketch:type="MSShapeGroup" stroke-linejoin="round">
+                    <path d="M15.6826364,12.9545455 C15.6826364,14.4545455 14.4553636,15.6818182 12.9553636,15.6818182 L2.72809091,15.6818182 C1.22809091,15.6818182 0.000818181818,14.4545455 0.000818181818,12.9545455 L0.000818181818,2.72727273 C0.000818181818,1.22727273 1.22809091,0 2.72809091,0 L12.9553636,0 C14.4553636,0 15.6826364,1.22727273 15.6826364,2.72727273 L15.6826364,12.9545455 L15.6826364,12.9545455 Z" id="Stroke-7176"></path>
+                    <path d="M9.54545455,12.9545455 L9.54545455,8.18181818 L12.6143182,8.18181818 L7.84159091,2.72727273 L3.06886364,8.18181818 L6.13636364,8.18181818 L6.13636364,12.9545455 L9.54545455,12.9545455 L9.54545455,12.9545455 Z" id="Stroke-7177"></path>
+                </g>
+                <g id="Stroke-7178-+-Stroke-7179-+-Stroke-7180" transform="translate(29.318182, 0.000000)" stroke="#231F1F" stroke-linecap="round" sketch:type="MSShapeGroup" stroke-linejoin="round">
+                    <path d="M15.6825,12.9545455 C15.6825,14.4545455 14.4552273,15.6818182 12.9552273,15.6818182 L2.72795455,15.6818182 C1.22795455,15.6818182 0.000681818182,14.4545455 0.000681818182,12.9545455 L0.000681818182,2.72727273 C0.000681818182,1.22727273 1.22795455,0 2.72795455,0 L12.9552273,0 C14.4552273,0 15.6825,1.22727273 15.6825,2.72727273 L15.6825,12.9545455 L15.6825,12.9545455 Z" id="Stroke-7178"></path>
+                    <path d="M4.09090909,8.18181818 L11.5909091,8.18181818 L11.5909091,5.45454545" id="Stroke-7179"></path>
+                    <path d="M6.13704545,6.13636364 L4.09159091,8.18181818 L6.13704545,10.2272727" id="Stroke-7180"></path>
+                </g>
+                <text id="+" sketch:type="MSTextLayer" font-family="Brandon Text" font-size="10" font-weight="normal" fill="#3B3E43">
+                    <tspan x="19.0909091" y="11.6818182">+</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

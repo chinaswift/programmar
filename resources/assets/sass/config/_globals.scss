@@ -1,0 +1,39 @@
+html, body, input, select, textarea {
+	margin: 0px;
+	font-weight: normal;
+	width: 100%;
+	min-height: 100%;
+	@include font-smoothing();
+}
+
+.clearfix:before, .clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.f-left {
+	float: left;
+	display: block;
+}
+
+.f-right {
+	float: right;
+	display: block;
+}
+
+.inline-block {
+	display: -moz-inline-stack;
+	display: inline-block;
+	vertical-align: middle;
+	zoom: 1;
+	*display: inline;
+	font-size: 0;
+}

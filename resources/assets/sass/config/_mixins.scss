@@ -1,0 +1,53 @@
+/*
+	Mixins
+	Contains all the mixins across the site.
+*/
+
+@mixin font-smoothing($value: antialiased) {
+  @if $value == antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+@mixin calc-width($value: 0px) {
+	width: calc(100% - #{$value});
+	width: -webkit-calc(100% - #{$value});
+	width: -moz-calc(100% - #{$value});
+}
+
+@mixin background-img($src: '', $size: cover, $repeat: no-repeat, $position: center) {
+	background-image: url(#{$src});
+	background-repeat: $repeat;
+	background-position: $position;
+	background-size: $size;
+}
+
+@mixin center-ele($value: margin) {
+  @if $value == margin {
+    margin: 0px auto;
+  }
+  @elseif $value == absolute-x {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  @elseif $value == absolute-y {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  @elseif $value == absolute {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @elseif $value == text {
+    text-align: center;
+  }
+}
