@@ -2,8 +2,11 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
+use App\Article;
+use App\User;
+use Storage;
+use Auth;
 
 class ArticleController extends Controller {
 
@@ -23,6 +26,18 @@ class ArticleController extends Controller {
 	 */
 	public function write() {
 		return view('article/write');
+	}
+
+	/**
+	 * Function which shows the write controller
+	 * @return void
+	 */
+	public function collect($slug) {
+		$data = Article::where('slug', '=', $slug)->firstOrFail();
+		$user = User::where('id', '=', $data->{'user_id'})->firstOrFail();
+		$data->{'content'} = Storage::get(Auth::user()->id . '/' . $slug . '.programmar-article');
+		$data->{'userName'} = $user->{'name'};
+		return $data;
 	}
 
 	/**

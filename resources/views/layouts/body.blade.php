@@ -49,6 +49,7 @@
 		<script src="/app/_core/controller.js"></script>
 		<script src="/app/_core/directive.js"></script>
 		<script src="/app/_core/filter.js"></script>
+		<script src="/app/_core/services/article_api.js"></script>
 	@endif
 
 	@foreach(['config', 'controller', 'directive', 'filter', 'service'] as $fileName)
