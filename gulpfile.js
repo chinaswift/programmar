@@ -11,6 +11,8 @@ var elixir = require('laravel-elixir');
  |
  */
 
+
+
 elixir(function(mix) {
     mix.sass('app.scss')
         .publish(
@@ -28,6 +30,10 @@ elixir(function(mix) {
         .publish(
             'angular/angular.min.js',
             'public/js/vendor/angular.min.js'
+        )
+        .publish(
+            'angular/angular.min.js.map',
+            'public/js/vendor/angular.min.js.map'
         )
         .publish(
             'bootstrap-sass-official/assets/fonts',

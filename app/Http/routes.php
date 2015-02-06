@@ -3,7 +3,7 @@
 //Main application
 Route::get('/', 'HomeController@index');
 Route::get('followers', 'UserController@followers');
-Route::get('write', 'UserController@write');
+Route::get('write', 'ArticleController@write');
 
 
 //Static Pages
