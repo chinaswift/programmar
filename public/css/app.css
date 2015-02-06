@@ -7711,7 +7711,9 @@ a {
   #write .title {
     font-size: 24px;
     color: #3B3F43;
-    margin-top: 20px; }
+    margin-top: 20px;
+    outline: none;
+    border: none; }
   #write .content {
     font-size: 17px;
     line-height: 30px;
