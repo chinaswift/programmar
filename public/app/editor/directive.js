@@ -18,9 +18,8 @@
 					element.html(ngModel.$viewValue || "");
 				};
 
-				element.bind("blur keyup change", function() {
+				element.bind("keyup change", function() {
 					scope.$apply(read);
-					scope.saveDocument();
 				});
 			}
 		};

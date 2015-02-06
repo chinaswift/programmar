@@ -1,7 +1,7 @@
 {
-	"name": "laravel/laravel",
-	"description": "The Laravel Framework.",
-	"keywords": ["framework", "laravel"],
+	"name": "Programmar",
+	"description": "Programmar is a simple place to write articles all about development.",
+	"keywords": ["development", "articles", "programming", "web", "code", "grammar", "programmar"],
 	"license": "MIT",
 	"type": "project",
 	"require": {

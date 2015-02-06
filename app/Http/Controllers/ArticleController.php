@@ -26,6 +26,14 @@ class ArticleController extends Controller {
 	}
 
 	/**
+	 * Function which shows the write controller
+	 * @return void
+	 */
+	public function edit($slug) {
+		return view('article/write', ['edit' => true, 'slug' => $slug]);
+	}
+
+	/**
 	 * Followers
 	 * This is how you can view your followers posts.
 	 * @return void
