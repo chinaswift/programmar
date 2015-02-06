@@ -32,13 +32,13 @@
 	}
 
 	h1 {
-		@extend .BrandonText-Bold;
+		@extend .Text-Bold;
 		font-size: 24px;
 		color: $gray-darker;
 	}
 
 	h2 {
-		@extend .BrandonText-Medium;
+		@extend .Text-Medium;
 		font-size: 18px;
 		color: $gray;
 	}

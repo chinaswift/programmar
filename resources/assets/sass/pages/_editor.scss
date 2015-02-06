@@ -69,7 +69,7 @@
 			}
 
 			&.tag-input {
-				@extend .BrandonText-Regular;
+				@extend .Text-Regular;
 				text-indent: 2px;
 				color: lighten($gray-darker, 25%);
 				line-height: 25px;
@@ -82,7 +82,7 @@
 	}
 
 	.title {
-		@extend .BrandonText-Bold;
+		@extend .Text-Bold;
 		font-size: 24px;
 		color: $gray-darker;
 		margin-top: 20px;
@@ -91,7 +91,7 @@
 	}
 
 	.content {
-		@extend .BrandonText-Regular;
+		@extend .Text-Regular;
 		font-size: 17px;
 		line-height: 30px;
 		color: $gray;
@@ -103,7 +103,7 @@
 		}
 
 		h1, h2, h3 {
-			@extend .BrandonText-Bold;
+			@extend .Text-Bold;
 		}
 
 		h2 {
