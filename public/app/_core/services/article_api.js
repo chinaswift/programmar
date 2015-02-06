@@ -6,8 +6,11 @@
 
     com.programmar.core.factory('ArticleApi', ['$resource','$location', function ($resource, $location) {
 
+        var articleCode = $location.absUrl();
+        articleCode = articleCode.substr(articleCode.lastIndexOf('/') + 1);
+
         var paramDefaults = {
-            articleId : '1423230291'
+            articleId : articleCode
         };
 
         var actions = {

@@ -35,6 +35,8 @@
                     'name': angular.copy(name),
                     'user': angular.copy(user)
                 };
+
+                $scope.loading = false;
             });
 
 
@@ -47,13 +49,14 @@
 
             //Apply initialised variables
             setTimeout(function() {
-                $scope.loading = false;
                 $scope.$apply();
             }, 300);
 
             //Auto saving
-            setTimeout(function() {
-                $scope.saveDocument();
+            setInterval(function() {
+                if(!$scope.loading) {
+                    $scope.saveDocument();
+                }
             }, 1000);
 
 
