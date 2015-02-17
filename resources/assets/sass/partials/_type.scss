@@ -8,10 +8,10 @@ p {
 }
 
 a {
-	@extend .Text-Medium;
 	color: #333;
-	text-decoration: none;
+	text-decoration: none !important;
+
 	&:hover {
-		color:#000;
+		color: #000;
 	}
 }

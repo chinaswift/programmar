@@ -1,4 +1,12 @@
 .btn {
-	@extend .Text-Medium;
-	border-radius: 99em;
+	@extend .Mono-Bold;
+	border-radius: 3px;
+	font-size: 15px;
+	padding: 16px 20px;
+
+	.octicon {
+		@extend .inline-block;
+		padding-right: 20px;
+		font-size: 22px;
+	}
 }

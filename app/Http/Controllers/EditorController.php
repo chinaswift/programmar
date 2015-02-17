@@ -56,7 +56,7 @@ class EditorController extends Controller {
 			$article->save();
 
 			//Send response back
-			return response()->json(['type' => 'success', 'message' => 'Saved.', 'name' => $name], 200);
+			return response()->json(['type' => 'success', 'message' => 'Saved', 'name' => $name], 200);
 
 		}else{
 			return response()->json(['type' => 'error', 'message' => 'You need to be logged in to save.'], 400);

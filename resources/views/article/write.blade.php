@@ -6,21 +6,15 @@
 	$pageId = 'write';
 	$pageAngular = 'editor';
 	$pageController = 'EditorCtrl';
+	$headerInclude = false;
 ?>
 @extends('layouts/body')
 @section('content')
-	<span ng-hide="!lastSaveTime">Last saved: <% lastSaveTime %></span><br>
-	<span ng-hide="!saving">Saving...</span><br>
-	<span ng-hide="!callbackMsg"><% callbackMsg %></span><br>
-
-	total words: <span ng-bind="countOf(article.content)"></span><br>
-
-	article name: <% article.name %>
-
-	<div class="container" ng-cloak ng-hide="loading">
+	@include('article/includes/header')
+	<div class="container-fluid" ng-cloak ng-hide="loading">
 		<input type="text" class="title" ng-model="article.title" ng-blur="saveDocument()" placeholder="Title...">
 		<input type="hidden" ng-model="article.name">
-		<div class="content" contenteditable="true" ng-model="article.content" placeholder="Start writing..."></div>
+		<div class="content wrtie-area" contenteditable="true" ng-model="article.content" ng-keydown="checkCharacter();" placeholder="Start writing your article..."></div>
 		<textarea class="hidden" ng-model="article.content"></textarea>
 	</div>
 @endsection

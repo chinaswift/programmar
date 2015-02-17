@@ -1,8 +1,4 @@
 <?php
-	if(!isset($headerClass)) {
-		$headerClass = '';
-	}
-
 	if(!isset($headerInclude)) {
 		$headerInclude = true;
 	}
@@ -23,6 +19,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="{{ $pageDesc }}">
 	<title>{{ $pageName }}</title>
+	<script src="//use.typekit.net/xrt0ihn.js"></script>
+	<script>try{Typekit.load();}catch(e){}</script>
 	<link href="/css/app.css" rel="stylesheet">
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,6 +39,8 @@
 	<script src="/js/vendor/bootstrap.min.js"></script>
 	<script src="/js/vendor/bootbox.js"></script>
 
+	@yield('scripts')
+
 	@if($pageAngular)
 		<script src="/js/vendor/angular.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.5/angular-resource.js"></script>
@@ -50,12 +50,10 @@
 		<script src="/app/_core/directive.js"></script>
 		<script src="/app/_core/filter.js"></script>
 		<script src="/app/_core/services/article_api.js"></script>
+
+		@foreach(['config', 'controller', 'directive', 'filter', 'service'] as $fileName)
+			<script src="/app/{{ $pageAngular }}/{{ $fileName }}.js"></script>
+		@endforeach
 	@endif
-
-	@foreach(['config', 'controller', 'directive', 'filter', 'service'] as $fileName)
-		<script src="/app/{{ $pageAngular }}/{{ $fileName }}.js"></script>
-	@endforeach
-
-	@yield('scripts')
 </body>
 </html>

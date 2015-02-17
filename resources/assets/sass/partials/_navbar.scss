@@ -1,176 +1,92 @@
 .navbar.navbar-default {
-	margin-top: $navbar-margin;
+	margin: $navbar-margin 0px 150px 0px;
 	border: none;
-	padding-left: 40px;
-	padding-right: 40px;
 
 	.navbar-brand {
+		@extend .Mono-Medium;
 		@extend .inline-block;
-		width: 51px;
-		height: 24px;
-		text-indent: -9999em;
-		@include background-img("/img/logo-dark.svg", 51px 24px);
+		color: $gray-light;
+		font-size: 15px;
+		letter-spacing: -0.1px;
+
+		.dropdown-menu {
+			margin-left: $navbar-margin;
+		}
 	}
 
 	.navbar-toggle {
-		margin-right: 20px;
 		padding: 9px 6px;
 	}
 
-	.dropdown-menu {
-		top: 138%;
-		background-color: $gray-darker;
-		border-radius: $border-radius-base;
-		box-shadow: none;
-		border: none;
-		padding: 13px 0px 11px 0px;
-
-		li a {
-			color: $gray;
-			margin-bottom: 4px;
-
-			&:hover {
-				color: $gray-lighter;
-				background-color: transparent;
-				border: none;
-			}
-
-			&:active {
-				background-color: transparent;
-				color: $gray;
-			}
+	li {
+		margin-right: 46px;
+		&:last-child {
+			margin-right: 0px;
 		}
 	}
 
-	.navbar-default .navbar-nav > .open > .profile-image {
-		background-color: $gray-lighter;
-	}
-
-	@media (max-width: $screen-sm-min) {
-		.navbar-collapse {
-			width: calc(100% + 111px);
-			width: -webkit-calc(100% + 111px);
-			width: -moz-calc(100% + 111px);
-			margin-left: -55px;
-			margin-top: 18px;
-			box-shadow: inset 0px 0px 6px 0px $gray-lighter;
-
-			.navbar-nav {
-				margin-top: 10px;
-			}
-
-			.navbar-right {
-				border-top: 1px solid $gray-lighter;
-			}
-
-			.dropdown-menu {
-				background-color: transparent;
-				border-radius: 0px;
-
-				li a:hover {
-					color: $gray-darker;
-				}
-			}
-
-			.write-btn {
-				display: block;
-			}
-
-			.profile-image {
-				width: auto;
-				height: auto;
-				margin: 0px;
-				border-radius: 0px;
-				text-indent: 1px;
-				background-image: none !important;
-				background-color: transparent;
-
-				&:hover {
-					&:before {
-						border-radius: 0px;
-						background-color: rgba(#000, 0.05);
-					}
-				}
-			}
-		}
-	}
-
-	.profile-image {
-		position: relative;
-		width: 30px;
-		height: 30px;
-		margin-right: 20px;
-		border-radius: $user-image-radius;
-		text-indent: -9999em;
-		background-size: cover;
-		background-color: $gray-lighter;
-
-		&:after {
-			content: '';
-			display: block;
-			position: absolute;
-			right: -20px;
-			top: 14px;
-			width: 9px;
-			height: 5px;
-			@include background-img('/img/partials/drop-arrow.svg', 9px 5px);
-		}
+	li a {
+		@extend .Mono-Medium;
+		color: $gray-light;
+		padding: 0px;
+		margin-bottom: 4px;
 
 		&:hover {
-			&:before {
-				content: '';
-				position: absolute;
-				left: 0px;
-				top: 0px;
-				width: 100%;
-				height: 100%;
-				z-index: 2;
-				border-radius: $user-image-radius;
-				background-color: rgba(#000, 0.1);
-			}
-		}
-	}
-
-	//Light styles
-	&.light {
-		.navbar-brand {
-			@include background-img("/img/logo-light.svg", 51px 24px);
+			color: $gray-dark;
+			background-color: transparent;
+			border: none;
 		}
 
-		.nav li a {
-			color: $gray;
+		&:active {
+			background-color: transparent;
+			color: $gray-dark;
+		}
+
+		&.brand-primary {
+			color: $brand-primary;
 			&:hover {
-				color: $gray-lighter;
+				color: darken($brand-primary, 10%);
 			}
 		}
 
-		.navbar-toggle {
-			border-color: $gray;
-
-			.icon-bar {
-				background-color: $gray;
-			}
-
-			&:hover, &[aria-expanded="true"] {
-				border-color: $gray-lighter;
-				background: $gray-lighter;
-				.icon-bar {
-					background-color: $gray-darker;
-				}
-			}
+		&.split {
+			margin-left: 60px;
 		}
-
-		@media (max-width: $screen-sm-min) {
-			.navbar-collapse {
-				background-color: $gray-darker;
-				box-shadow: inset 0px 0px 6px 0px darken($gray-darker, 10%);
-			}
-
-			.navbar-right {
-				border-top: 1px solid darken($gray-darker, 3%);
-			}
-		}
-
 	}
 
+	.dropdown-menu {
+		top: 69%;
+		background-color: transparent;
+		border-radius: 0px;
+		box-shadow: none;
+		border: none;
+		padding: 0px;
+		left: 0px;
+		min-width: 0px;
+		padding-top: 20px;
+
+		li a {
+			margin-bottom: 10px;
+		}
+	}
+
+	.navbar-collapse {
+		padding: 0px;
+
+		&[aria-expanded=true] {
+			.navbar-nav {
+				margin: 0 0 0 0;
+				background: red;
+				padding: 50px 100px;
+			}
+		}
+	}
+
+	li.dropdown.on-hover:hover > ul.dropdown-menu {
+	    display: block;
+	}
+
+	ul.dropdown-menu:hover {
+		display: block;
+	}
 }

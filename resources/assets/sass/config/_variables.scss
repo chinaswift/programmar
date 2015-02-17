@@ -1,5 +1,5 @@
 //Fonts
-$font-family-sans-serif: "Text-Regular", "BrandonText Regular", Arial, sans-serif;
+$font-family-sans-serif: "source-code-pro", "Source Code Pro", Arial, sans-serif;
 
 $font-size-base: 15px;
 $font-size-h1: 24px;
@@ -11,13 +11,15 @@ $container-large-desktop: (700px + $grid-gutter-width);
 $container-tablet: (600px + $grid-gutter-width);
 
 //Colors
-$gray-lighter: #F6F6F7;
-$gray-light: #868B8D;
+$gray-lighter: #E7E9EC;
+$gray-light: #AAAAAC;
 $gray: #868B8D;
-//$gray-dark: ;
-$gray-darker: #3B3F43;
+$gray-dark: #606063;
+$gray-darker: #373A40;
 
-$brand-primary: #60C5E4;
+$brand-primary: #29B873;
+
+$input-color-placeholder: #C7C7C8;
 
 //Partials
 $user-image-radius: 50%;
@@ -29,5 +31,5 @@ $jumbotron-bg: $gray-darker;
 $navbar-height: 30px;
 $navbar-default-bg: transparent;
 $navbar-default-border: transparent;
-$navbar-margin: 40px;
-$navbar-padding-horizontal: 40px;
+$navbar-margin: 75px;
+$navbar-padding-horizontal: 75px;

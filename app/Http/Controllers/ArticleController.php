@@ -33,11 +33,13 @@ class ArticleController extends Controller {
 	 * @return void
 	 */
 	public function collect($slug) {
-		$data = Article::where('slug', '=', $slug)->firstOrFail();
-		$user = User::where('id', '=', $data->{'user_id'})->firstOrFail();
-		$data->{'content'} = Storage::get(Auth::user()->id . '/' . $slug . '.programmar-article');
-		$data->{'userName'} = $user->{'name'};
-		return $data;
+		if($slug != 'write') {
+			$data = Article::where('slug', '=', $slug)->firstOrFail();
+			$user = User::where('id', '=', $data->{'user_id'})->firstOrFail();
+			$data->{'content'} = Storage::get(Auth::user()->id . '/' . $slug . '.programmar-article');
+			$data->{'userName'} = $user->{'name'};
+			return $data;
+		}
 	}
 
 	/**

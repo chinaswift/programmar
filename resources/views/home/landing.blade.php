@@ -4,21 +4,17 @@
 				Follow your favourite subjects or people and create a custom digest of the best and most
 				popular development articles.';
 	$pageId = 'home';
-	$headerClass = 'light';
-	$headerInclude = false;
 ?>
 @extends('layouts/body')
 @section('content')
-	<div class="jumbotron">
-		@include('common/header')
-		<h1>Write, read and discover everything development.</h1>
-		<p>Follow your favourite writers, subscribe to your most loved language. Programmar supplies you with the latest: news, tip or lesson for development.</p>
-		<div class="btn-container">
-			<a href="/auth/login" class="btn btn-primary">Sign in</a>
-		</div>
+	<div class="container-fluid">
+		<div class="type-section"></div>
+
+		<a href="#" class="btn btn-primary"><span class="octicon octicon-mark-github"></span>Access with Github</a>
 	</div>
+@endsection
 
-
-
-
+@section('scripts')
+	<script src="/js/vendor/typed.js"></script>
+	<script src="/js/partials/landing.js"></script>
 @endsection

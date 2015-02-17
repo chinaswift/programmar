@@ -1,37 +1,36 @@
-<nav class="navbar navbar-default {{ $headerClass }}">
+<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-right">
 					<span class="sr-only">Toggle Navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/">Progammar</a>
+
+				<li class="dropdown on-hover navbar-brand">
+					<a href="/" class="dropdown-toggle" data-toggle="dropdown">Progamm^r</a>
+					@if(\Auth::check())
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="/write">Recent</a></li>
+							<li><a href="/auth/logout">Following</a></li>
+						</ul>
+					@endif
+				</li>
 			</div>
 
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<div class="collapse navbar-collapse navbar-right">
 				<ul class="nav navbar-nav">
 					@if(\Auth::check())
-						<li><a href="/">Digest</a></li>
-						<li><a href="/followers">Followers</a></li>
-					@endif
-					<li><a href="/discover">Discover</a></li>
-				</ul>
-
-				<ul class="nav navbar-nav navbar-right">
-					@if (Auth::guest())
-						<li><a href="/auth/login">Login</a></li>
-						<li><a href="/auth/register">Sign up</a></li>
-					@else
-						<li class="dropdown">
-							<a href="#" style="background-image:url(/img/tmp/profile.jpg);" class="dropdown-toggle profile-image" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }}</a>
+						<li class="dropdown on-hover">
+							<a href="/" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="/write">Write</a></li>
-								<li><a href="/auth/logout">Profile</a></li>
+								<li><a href="/write">Settings</a></li>
 								<li><a href="/auth/logout">Logout</a></li>
 							</ul>
 						</li>
+						<li><a href="/">Search</a></li>
+						<li><a href="/write">Write</a></li>
 					@endif
 				</ul>
 			</div>

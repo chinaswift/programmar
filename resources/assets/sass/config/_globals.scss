@@ -37,3 +37,15 @@ html, body, input, select, textarea {
 	*display: inline;
 	font-size: 0;
 }
+
+.container-fluid {
+	padding: 0px;
+	margin: 0px $navbar-padding-horizontal;
+	width: calc(100% - (#{$navbar-padding-horizontal} * 2));
+	box-sizing: border-box;
+
+	@media(max-width: $screen-xs-max) {
+		width: calc(100% - (40px * 2));
+		margin: 0px 40px;
+	}
+}

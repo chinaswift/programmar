@@ -36,6 +36,10 @@ elixir(function(mix) {
             'public/js/vendor/angular.min.js.map'
         )
         .publish(
+            'typed.js/js/typed.js',
+            'public/js/vendor/typed.js'
+        )
+        .publish(
             'bootstrap-sass-official/assets/fonts',
             'public/fonts'
         )
