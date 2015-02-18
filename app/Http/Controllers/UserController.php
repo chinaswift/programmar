@@ -86,6 +86,11 @@ class UserController extends Controller {
 		return view('home/user', ['articles' => $articles]);
 	}
 
+	public function drafts() {
+		$articles = Article::where('user_id', '=', Auth::user()->id)->where('published', '=', '0')->take(15)->get();
+		return view('home/user', ['articles' => $articles]);
+	}
+
 	/**
 	 * Profile
 	 * This is how you can see your profile

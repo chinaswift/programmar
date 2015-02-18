@@ -14,6 +14,7 @@
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="/">Recent</a></li>
 							<li><a href="/followers">Followers</a></li>
+							<li><a href="/drafts">Drafts</a></li>
 						</ul>
 					@endif
 				</li>
