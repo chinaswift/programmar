@@ -9,11 +9,11 @@
 				</button>
 
 				<li class="dropdown on-hover navbar-brand">
-					<a href="/" class="dropdown-toggle" data-toggle="dropdown">Progamm^r</a>
+					<a href="/" data-target="/" class="dropdown-toggle" data-toggle="dropdown">Progamm^r</a>
 					@if(\Auth::check())
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="/write">Recent</a></li>
-							<li><a href="/auth/logout">Following</a></li>
+							<li><a href="/">Recent</a></li>
+							<li><a href="/followers">Followers</a></li>
 						</ul>
 					@endif
 				</li>
@@ -23,15 +23,15 @@
 				<ul class="nav navbar-nav">
 					@if(\Auth::check())
 						<li class="dropdown on-hover">
-							<a href="/" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
+							<a href="/dev/{{ Auth::user()->username }}" data-target="/dev/{{ Auth::user()->username }}" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="/write">Settings</a></li>
 								<li><a href="/auth/logout">Logout</a></li>
 							</ul>
 						</li>
-						<li><a href="/">Search</a></li>
+						{{ '' /*<li><a href="/">Search</a></li>*/ }}
 						<li><a href="/write">Write</a></li>
 					@endif
+					{!! $additionalButtons !!}
 				</ul>
 			</div>
 		</div>

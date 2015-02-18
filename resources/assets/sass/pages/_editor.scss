@@ -1,4 +1,4 @@
-#write {
+#article {
 	[contenteditable=true]:empty:before{
 	  content: attr(placeholder);
 	  display: block;
@@ -35,6 +35,11 @@
     		color: #fff;
     		padding: 0px 25px 0px 56px;
     		margin: 0px;
+
+    		li {
+    			margin: 0px !important;
+    			padding: 0px !important;
+    		}
     	}
 
     	li::before {
@@ -63,11 +68,20 @@
 		border-bottom: 1px solid $gray-lighter;
 	}
 
+	.info {
+		margin-top: 20px;
+		color: $gray-light;
+
+		span {
+			margin-right: 35px;
+		}
+	}
+
 	.content {
 		@extend .Text-Regular;
 		font-size: 20px;
 		line-height: 34px;
-		color: $gray;
+		color: $gray-darker;
 		margin-top: 80px;
 
 		img {

@@ -4,6 +4,7 @@
 
     var app = angular.module(editorGlobals.app.name);
     var apiEditorInteractBackendUri = '/api/internal/v1/editor/save';
+    var apiPublishInteractBackendUri = '/api/internal/v1/editor/publish';
 
     app.controller(editorGlobals.controller.name, [
         '$scope',
@@ -42,6 +43,7 @@
 
             //Default variables
             $scope.saving = false;
+            $scope.publishing = false;
             $scope.loading = true;
             $scope.callbackMsg = 'Not Saved';
             $scope.areaSelector = '.write-area';
@@ -117,7 +119,35 @@
                         }
                     }
                 });
-            }
+            };
+
+            $scope.publishArticle = function() {
+                var title = $scope.article.title,
+                    content = $scope.article.content,
+                    name = $scope.article.name,
+                    currentTime = new Date();
+
+                if(title != '' || content != '') {
+                    $scope.publishing = true;
+                    $scope.saving = true;
+                    $scope.callbackMsg = 'Publishing...';
+                    $scope.lastSaveTime = currentTime;
+
+                    $http.post(apiPublishInteractBackendUri, {'title': title, 'content': content, 'name': name}).
+                    success(function(data, status, headers, config) {
+                        $scope.callbackMsg = data.message;
+                        $scope.article.name = data.name;
+
+                        window.location.href = "/article/" + name;
+
+                    }).
+                    error(function(data, status, headers, config) {
+                        $scope.saving = false;
+                         $scope.publishing = false;
+                        $scope.callbackMsg = data.message;
+                    });
+                }
+            };
 
             //Function for saving the document
             $scope.saveDocument = function() {

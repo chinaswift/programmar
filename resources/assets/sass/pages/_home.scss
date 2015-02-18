@@ -1,0 +1,32 @@
+#home {
+
+	.item {
+		@extend .clearfix;
+		padding-bottom: 25px;
+		margin-bottom: 50px;
+		border-bottom: 1px solid $gray-lighter;
+
+		.base {
+			@extend .clearfix;
+		}
+
+		.title {
+			@extend .Text-Bold;
+			font-size: 32px;
+			color: $gray-darker;
+			float: left;
+		}
+
+		.info {
+			@extend .Mono-Regular;
+			float: right;
+			color: $gray-light;
+
+			span {
+				margin-right: 35px;
+			}
+		}
+	}
+
+
+}

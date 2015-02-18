@@ -1,0 +1,60 @@
+#profile {
+	.user {
+		@extend .Text-Bold;
+		font-size: 42px;
+		color: $gray-darker;
+		margin-top: 0px;
+		outline: none;
+		border: none;
+		padding-bottom: 25px;
+		border-bottom: 1px solid $gray-lighter;
+
+		.btn {
+			float: right;
+		}
+	}
+
+	.article-listing {
+		margin-top: 100px;
+	}
+
+	.info {
+		margin-top: 20px;
+
+		a {
+			margin-right: 35px;
+			color: $gray-light;
+			&:hover {
+				color: darken($gray-light, 10%);
+			}
+		}
+	}
+
+	.item {
+		@extend .clearfix;
+		padding-bottom: 25px;
+		margin-bottom: 50px;
+		border-bottom: 1px solid $gray-lighter;
+
+		.base {
+			@extend .clearfix;
+		}
+
+		.title {
+			@extend .Text-Bold;
+			font-size: 32px;
+			color: $gray-darker;
+			float: left;
+		}
+
+		.info {
+			@extend .Mono-Regular;
+			float: right;
+			color: $gray-light;
+
+			span {
+				margin-right: 35px;
+			}
+		}
+	}
+}

@@ -10,6 +10,10 @@
 	if(!isset($pageAngular)) {
 		$pageAngular = false;
 	}
+
+	if(!isset($additionalButtons)) {
+		$additionalButtons = '';
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en" @if($pageAngular) ng-app="com.programmar" @endif>
@@ -51,7 +55,7 @@
 		<script src="/app/_core/filter.js"></script>
 		<script src="/app/_core/services/article_api.js"></script>
 
-		@foreach(['config', 'controller', 'directive', 'filter', 'service'] as $fileName)
+		@foreach(['service', 'config', 'controller', 'directive', 'filter'] as $fileName)
 			<script src="/app/{{ $pageAngular }}/{{ $fileName }}.js"></script>
 		@endforeach
 	@endif

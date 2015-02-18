@@ -36,7 +36,7 @@ class ArticleController extends Controller {
 		if($slug != 'write') {
 			$data = Article::where('slug', '=', $slug)->firstOrFail();
 			$user = User::where('id', '=', $data->{'user_id'})->firstOrFail();
-			$data->{'content'} = Storage::get(Auth::user()->id . '/' . $slug . '.programmar-article');
+			$data->{'content'} = Storage::get($data->{'user_id'} . '/' . $slug . '.programmar-article');
 			$data->{'userName'} = $user->{'name'};
 			return $data;
 		}
@@ -47,7 +47,30 @@ class ArticleController extends Controller {
 	 * @return void
 	 */
 	public function edit($slug) {
-		return view('article/write', ['edit' => true, 'slug' => $slug]);
+		$data = Article::where('slug', '=', $slug)->firstOrFail();
+		if($data->user_id === Auth::user()->id) {
+			return view('article/write', ['edit' => true, 'slug' => $slug]);
+		}else{
+			return redirect("/article/" . $slug);
+		}
+	}
+
+
+	/**
+	 * Function which shows the write controller
+	 * @return void
+	 */
+	public function view($slug) {
+		$data = Article::where('slug', '=', $slug)->firstOrFail();
+		if($data->published != '0') {
+			return view('article/view', ['data' => $data, 'slug' => $slug]);
+		}else{
+			if($data->user_id === Auth::user()->id) {
+				return redirect('/edit/' . $slug);
+			}else{
+				return redirect('/');
+			}
+		}
 	}
 
 	/**
