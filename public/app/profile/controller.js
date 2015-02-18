@@ -25,7 +25,7 @@
             };
 
             $scope.unfollowUser = function(username) {
-                githubService.unfollow(username, token).success(function(data, status) {
+                githubService.unfollow(username).success(function(data, status) {
                     console.log('success');
                     $scope.following = false;
                 }).error(function(data, status) {
