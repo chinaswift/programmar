@@ -27,6 +27,9 @@
 
 						<li><a href="#" class="brand-primary" ng-click="publishArticle();" ng-hide="publishing">Publish</a></li>
 						<li><a href="void(0);" class="brand-primary" ng-show="publishing">Publishing...</a></li>
+
+						<li><a href="#" class="brand-danger" ng-click="deleteArticle();">Delete</a></li>
+
 						<li><a href="/" class="split">Cancel</a></li>
 					@endif
 				</ul>

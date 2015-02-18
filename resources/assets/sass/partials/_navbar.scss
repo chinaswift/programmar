@@ -49,6 +49,13 @@
 			}
 		}
 
+		&.brand-danger {
+			color: $brand-danger;
+			&:hover {
+				color: darken($brand-danger, 10%);
+			}
+		}
+
 		&.split {
 			margin-left: 60px;
 		}

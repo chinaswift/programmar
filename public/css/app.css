@@ -5662,6 +5662,10 @@ html, body, input, select, textarea {
       color: #29B873; }
       .navbar.navbar-default li a.brand-primary:hover {
         color: #208e59; }
+    .navbar.navbar-default li a.brand-danger {
+      color: #d9534f; }
+      .navbar.navbar-default li a.brand-danger:hover {
+        color: #c9302c; }
     .navbar.navbar-default li a.split {
       margin-left: 60px; }
   .navbar.navbar-default .dropdown-menu {

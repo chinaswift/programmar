@@ -5,6 +5,7 @@
     var app = angular.module(editorGlobals.app.name);
     var apiEditorInteractBackendUri = '/api/internal/v1/editor/save';
     var apiPublishInteractBackendUri = '/api/internal/v1/editor/publish';
+    var apiDeleteInteractBackendUri = '/api/internal/v1/editor/delete';
 
     app.controller(editorGlobals.controller.name, [
         '$scope',
@@ -59,7 +60,7 @@
 
             //Auto saving
             setInterval(function() {
-                if(!$scope.loading) {
+                if(!$scope.loading && !$scope.saving) {
                     $scope.saveDocument();
                 }
             }, saveDelay);
@@ -67,6 +68,25 @@
             ////Change font function
             $scope.commonFontOption = function(option) {
                 document.execCommand(option, false, null);
+            };
+
+            $scope.deleteArticle = function() {
+                var name = $scope.article.name;
+                $scope.publishing = false;
+                $scope.callbackMsg = 'Deleting...';
+                $scope.saving = true;
+
+                $http.post(apiDeleteInteractBackendUri, {'name': name}).
+                success(function(data, status, headers, config) {
+                    $scope.callbackMsg = data.message;
+                    $scope.article.name = data.name;
+                    window.location.href = "/";
+                }).
+                error(function(data, status, headers, config) {
+                    $scope.saving = false;
+                    $scope.publishing = false;
+                    $scope.callbackMsg = data.message;
+                });
             };
 
             $scope.checkCharacter = function(e) {

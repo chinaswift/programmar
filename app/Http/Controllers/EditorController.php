@@ -65,6 +65,32 @@ class EditorController extends Controller {
 
 	}
 
+	public function delete(Request $request)
+	{
+		$name = $request->input('name');
+
+		if(Auth::check()) {
+			//make file name
+			$file = $name . '.programmar-article';
+			$directory = Auth::user()->id;
+			$location = $directory . '/' . $file;
+
+			if(Storage::exists($location)) {
+				Storage::delete($location);
+			}
+
+			$article = Article::where('slug', '=', $name)->firstOrFail();
+			$article->delete();
+
+			//Send response back
+			return response()->json(['type' => 'success', 'message' => 'Deleted', 'name' => $name], 200);
+
+		}else{
+			return response()->json(['type' => 'error', 'message' => 'You need to be logged in to save.'], 400);
+		}
+
+	}
+
 
 	public function publish(Request $request)
 	{

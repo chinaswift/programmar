@@ -12,6 +12,7 @@ Route::get('article/{slug}', 'ArticleController@view')->where('slug', '[0-9]+');
 //Api Routing
 Route::post('/api/internal/v1/editor/save', 'EditorController@save');
 Route::post('/api/internal/v1/editor/publish', 'EditorController@publish');
+Route::post('/api/internal/v1/editor/delete', 'EditorController@delete');
 Route::get('/api/angular/article/{slug}', 'ArticleController@collect');
 
 Route::get('/api/angular/github/follow/{username}', 'UserController@followUser');
