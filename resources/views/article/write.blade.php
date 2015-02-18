@@ -11,10 +11,14 @@
 @extends('layouts/body')
 @section('content')
 	@include('article/includes/header')
-	<div class="container-fluid" ng-cloak ng-hide="loading">
-		<input type="text" class="title" ng-model="article.title" ng-blur="saveDocument()" placeholder="Title...">
-		<input type="hidden" ng-model="article.name">
-		<div class="content wrtie-area" contenteditable="true" ng-model="article.content" ng-keydown="checkCharacter();" placeholder="Start writing your article..."></div>
-		<textarea class="hidden" ng-model="article.content"></textarea>
+	<div class="container-fluid" ng-hide="loading">
+		<input type="text" class="title" ng-model="article.title" ng-cloak  ng-blur="saveDocument()" ng-change="canSaveChange();" placeholder="Title...">
+		<input type="hidden" ng-model="article.name" ng-cloak>
+		<wysiwyg ng-model="article.content" ng-keydown="checkCharacter();" ng-change="canSaveChange();" ng-cloak enable-bootstrap-title="true" textarea-menu="<% article.customMenu %>"></wysiwyg>
 	</div>
+@endsection
+
+@section('scripts')
+	<script src="/js/vendor/bootstrap-colorpicker.js"></script>
+	<script src="/js/vendor/angular-wysiwyg.js"></script>
 @endsection

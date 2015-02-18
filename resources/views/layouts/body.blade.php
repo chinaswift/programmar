@@ -43,12 +43,14 @@
 	<script src="/js/vendor/bootstrap.min.js"></script>
 	<script src="/js/vendor/bootbox.js"></script>
 
-	@yield('scripts')
-
 	@if($pageAngular)
 		<script src="/js/vendor/angular.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.5/angular-resource.js"></script>
+	@endif
 
+	@yield('scripts')
+
+	@if($pageAngular)
 		<script src="/app/_core/config.js"></script>
 		<script src="/app/_core/controller.js"></script>
 		<script src="/app/_core/directive.js"></script>

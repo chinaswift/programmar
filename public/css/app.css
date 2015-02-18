@@ -5614,7 +5614,7 @@ html, body, input, select, textarea {
   float: right;
   display: block; }
 
-.inline-block, .navbar.navbar-default .navbar-brand, .btn .octicon, .write-area .code-block {
+.inline-block, .navbar.navbar-default .navbar-brand, .btn .octicon, .write-area .code-block, #article .code-block li::before {
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: middle;
@@ -8306,11 +8306,13 @@ a {
   counter-reset: ol-counter;
   margin: 20px 0px 20px 25px;
   padding: 15px 0px;
+  position: relative;
   font-size: 15px;
   line-height: 25px; }
   #article .code-block li {
     color: #fff;
     padding: 0px 25px 0px 56px;
+    min-height: 25px;
     margin: 0px; }
     #article .code-block li li {
       margin: 0px !important;
@@ -8320,7 +8322,10 @@ a {
     counter-increment: ol-counter;
     color: #868B8D;
     margin-left: -30px;
-    margin-right: 25px; }
+    margin-right: 25px;
+    position: relative;
+    width: 20px;
+    font-size: 15px; }
   #article .code-block .tab {
     font-size: 15px; }
 #article .title {

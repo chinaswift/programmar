@@ -16,7 +16,8 @@ editorGlobals.controller = {
 
     angular.module(editorGlobals.app.name,
         [
-            'com.programmar.core'
+            'com.programmar.core',
+            'wysiwyg.module'
         ]
     );
 

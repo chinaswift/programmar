@@ -40,6 +40,10 @@ elixir(function(mix) {
             'public/js/vendor/typed.js'
         )
         .publish(
+            'angular-wysiwyg/angular-wysiwyg.js',
+            'public/js/vendor/angular-wysiwyg.js'
+        )
+        .publish(
             'bootstrap-sass-official/assets/fonts',
             'public/fonts'
         )
