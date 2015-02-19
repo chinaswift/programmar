@@ -8449,6 +8449,7 @@ footer.main-footer {
   font-size: 15px;
   line-height: 28px;
   color: #373A40;
+  word-wrap: break-word;
   height: 100%;
   margin: 50px 0px 0px 0px; }
   #article .content img {
@@ -8458,8 +8459,8 @@ footer.main-footer {
     font-size: 16px; }
 
 #home .item {
-  padding-bottom: 15px;
-  margin-bottom: 50px;
+  padding-bottom: 25px;
+  margin-bottom: 20px;
   border-bottom: 1px solid #E7E9EC; }
   #home .item:last-child {
     border-bottom: none; }
@@ -8496,7 +8497,7 @@ footer.main-footer {
   #profile .user .btn {
     float: right; }
 #profile .article-listing {
-  margin-top: 44px; }
+  margin-top: 25px; }
   #profile .article-listing .item:last-child {
     border-bottom: none !important; }
 #profile .info-base {
@@ -8511,8 +8512,8 @@ footer.main-footer {
   #profile .info-base a:hover {
     color: #909093; }
 #profile .item {
-  padding-bottom: 15px;
-  margin-bottom: 50px;
+  padding-bottom: 25px;
+  margin-bottom: 25px;
   border-bottom: 1px solid #E7E9EC; }
   #profile .item .title {
     font-size: 15px;

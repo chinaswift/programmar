@@ -2,8 +2,8 @@
 
 	.item {
 		@extend .clearfix;
-		padding-bottom: 15px;
-		margin-bottom: 50px;
+		padding-bottom: 25px;
+		margin-bottom: 20px;
 		border-bottom: 1px solid $gray-lighter;
 
 		&:last-child {
