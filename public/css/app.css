@@ -8417,6 +8417,7 @@ footer.main-footer {
   padding: 15px;
   margin: 25px 0px 25px 25px;
   position: relative;
+  min-height: 55px;
   font-size: 14px;
   color: #777;
   border: none;
@@ -8427,7 +8428,8 @@ footer.main-footer {
   display: block;
   padding: 0px 20px;
   margin: 25px 0px;
-  font-size: 15px; }
+  font-size: 15px;
+  min-height: 28px; }
 #article .title {
   font-size: 15px;
   color: #373A40;

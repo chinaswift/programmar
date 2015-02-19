@@ -156,26 +156,6 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
                         scope.isOrderedList = scope.cmdState('insertorderedlist');
                         scope.isUnorderedList = scope.cmdState('insertunorderedlist');
 
-                        scope.fonts.forEach(function(v, k) { //works but kinda crappy.
-                            if (scope.cmdValue('fontname').indexOf(v) > -1) {
-                                scope.font = v;
-                                return false;
-                            }
-                        });
-
-                        scope.fontSizes.forEach(function(v, k) {
-                            if (scope.cmdValue('fontsize') === v.value) {
-                                scope.fontSize = v;
-                                return false;
-                            }
-                        })
-
-                        scope.hiliteColor = getHiliteColor();
-                        element.find('button.wysiwyg-hiliteColor').css("background-color", scope.hiliteColor);
-
-                        scope.fontColor = scope.cmdValue('forecolor');
-                        element.find('button.wysiwyg-fontcolor').css("color", scope.fontColor);
-
                         scope.isLink = itemIs('A');
                     }, 10);
                 });
@@ -323,10 +303,10 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
                     return '<button title="Right Justify" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'justifyright\')" ng-class="{ active: isRightJustified}"><i class="fa fa-align-right"></i></button>';
                     break;
                 case 'code':
-                    return '<a href="#" title="Code" tabindex="-1" ng-click="format(\'formatblock\', \'pre\')"  ng-class="{ active: isPre}">Code</a>';
+                    return '<a href="#" title="Code" tabindex="-1" ng-click="format(\'insertHTML\', \'<pre></pre><br>\')"  ng-class="{ active: isPre}">Code</a>';
                     break;
                 case 'quote':
-                    return '<a href="#" title="Quote" tabindex="-1" ng-click="format(\'formatblock\', \'blockquote\')"  ng-class="{ active: isBlockquote}">Quote</a>';
+                    return '<a href="#" title="Quote" tabindex="-1" ng-click="format(\'insertHTML\', \'<blockquote></blockquote><br>\')"  ng-class="{ active: isBlockquote}">Quote</a>';
                     break;
                 case 'paragragh':
                     return '<button title="Paragragh" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'insertParagraph\')"  ng-class="{ active: isParagraph}">P</button>';
