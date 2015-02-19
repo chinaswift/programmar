@@ -12,8 +12,9 @@
         '$http',
         '$location',
         '$window',
+        '$compile',
         'ArticleApi',
-        function ($scope, $http, $location, $window, ArticleApi) {
+        function ($scope, $http, $location, $window, $compile, ArticleApi) {
 
             //Default variables
             $scope.article = {};
@@ -24,11 +25,10 @@
             $scope.areaSelector = '.write-area';
             $scope.lastSaveTime = false;
             $scope.canSave = false;
-            $scope.saveDelay = 5 * 1000;
+            $scope.saveDelay = 10 * 1000;
 
             $scope.article.customMenu = [
-                ['bold', 'italic', 'heading'],
-                ['code', 'quote', 'link'],
+                ['bold', 'italic', 'heading','code', 'quote', 'link'],
             ];
 
             ArticleApi.query().$promise.then(function(articleData) {
@@ -67,27 +67,7 @@
             $scope.canSaveChange = function() {
                 if(!$scope.canSave) {
                     $scope.canSave = true;
-                    console.log('can now save');
                 }
-            };
-
-            $scope.deleteArticle = function() {
-                var name = $scope.article.name;
-                $scope.publishing = false;
-                $scope.callbackMsg = 'Deleting...';
-                $scope.saving = true;
-
-                $http.post(apiDeleteInteractBackendUri, {'name': name}).
-                success(function(data, status, headers, config) {
-                    $scope.callbackMsg = data.message;
-                    $scope.article.name = data.name;
-                    window.location.href = "/";
-                }).
-                error(function(data, status, headers, config) {
-                    $scope.saving = false;
-                    $scope.publishing = false;
-                    $scope.callbackMsg = data.message;
-                });
             };
 
             $scope.checkCharacter = function(e) {
@@ -108,7 +88,25 @@
                 sel.contents().unwrap();
             };
 
+            $scope.deleteArticle = function() {
+                var name = $scope.article.name;
+                $(".deleteLink").text('Deleting...');
+
+                $http.post(apiDeleteInteractBackendUri, {'name': name}).
+                success(function(data, status, headers, config) {
+                    $(".deleteLink").text(data.message);
+                    $scope.article.name = data.name;
+                    window.location.href = "/";
+                }).
+                error(function(data, status, headers, config) {
+                    $scope.saving = false;
+                    $scope.publishing = false;
+                    $(".deleteLink").text(data.message);
+                });
+            };
+
             $scope.publishArticle = function() {
+                console.log('test');
                 var title = $scope.article.title,
                     content = $scope.article.content,
                     name = $scope.article.name,
@@ -117,21 +115,20 @@
                 if(title != '' && content != '') {
                     $scope.publishing = true;
                     $scope.saving = true;
-                    $scope.callbackMsg = 'Publishing...';
+                    $(".publishLink").text('Publishing...');
                     $scope.lastSaveTime = currentTime;
 
                     $http.post(apiPublishInteractBackendUri, {'title': title, 'content': content, 'name': name}).
                     success(function(data, status, headers, config) {
                         $scope.callbackMsg = data.message;
+                        $(".publishLink").text(data.message);
                         $scope.article.name = data.name;
-
                         window.location.href = "/article/" + name;
-
                     }).
                     error(function(data, status, headers, config) {
                         $scope.saving = false;
-                         $scope.publishing = false;
-                        $scope.callbackMsg = data.message;
+                        $scope.publishing = false;
+                        $(".publishLink").text(data.message);
                     });
                 }else{
                     alert('Please insert a title and content before publishing.');
@@ -148,23 +145,20 @@
                 if($scope.canSave === true && !$scope.loading && !$scope.saving) {
                     //make sure the title or content has been edited
                     if(title != '' || content != '') {
-                        //If first edit, or its been longer than the delayed time.
-                        if(!$scope.lastSaveTime || (currentTime - $scope.lastSaveTime) > $scope.saveDelay) {
-                            $scope.saving = true;
-                            $scope.callbackMsg = 'Saving...';
-                            $scope.lastSaveTime = currentTime;
+                        $scope.saving = true;
+                        $(".saveLink").text('Saving...');
+                        $scope.lastSaveTime = currentTime;
 
-                            $http.post(apiEditorInteractBackendUri, {'title': title, 'content': content, 'name': name}).
-                            success(function(data, status, headers, config) {
-                                $scope.saving = false;
-                                $scope.callbackMsg = data.message;
-                                $scope.article.name = data.name;
-                            }).
-                            error(function(data, status, headers, config) {
-                                $scope.saving = false;
-                                $scope.callbackMsg = data.message;
-                            });
-                        }
+                        $http.post(apiEditorInteractBackendUri, {'title': title, 'content': content, 'name': name}).
+                        success(function(data, status, headers, config) {
+                            $scope.saving = false;
+                            $(".saveLink").text(data.message);
+                            $scope.article.name = data.name;
+                        }).
+                        error(function(data, status, headers, config) {
+                            $scope.saving = false;
+                            $(".saveLink").text(data.message);
+                        });
                     }
                 }
             };

@@ -14,6 +14,10 @@
 	if(!isset($additionalButtons)) {
 		$additionalButtons = '';
 	}
+
+	if(!isset($headerClass)) {
+		$headerClass = '';
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en" @if($pageAngular) ng-app="com.programmar" @endif>

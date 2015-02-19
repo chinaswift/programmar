@@ -266,13 +266,13 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
             item = item.toLowerCase().replace(' ', '-');
             switch (item) {
                 case 'bold':
-                    return '<button title="Bold" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'bold\')" ng-class="{ active: isBold}">Bold</button>';
+                    return '<a href="#" title="Bold" tabindex="-1" ng-click="format(\'bold\')" ng-class="{ active: isBold}">Bold</a>';
                     break;
                 case 'heading':
-                    return '<button title="Heading" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'formatblock\', \'h2\')"  ng-class="{ active: isHeading}">Heading</button>';
+                    return '<a href="#" title="Heading" tabindex="-1" ng-click="format(\'formatblock\', \'h2\')"  ng-class="{ active: isHeading}">Heading</a>';
                     break;
                 case 'italic':
-                    return '<button title="Italic" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'italic\')" ng-class="{ active: isItalic}">Italic</button>';
+                    return '<a href="#" title="Italic" tabindex="-1" ng-click="format(\'italic\')" ng-class="{ active: isItalic}">Italic</a>';
                     break;
                 case 'underline':
                     return '<button title="Underline" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'underline\')" ng-class="{ active: isUnderlined}"><i class="fa fa-underline"></i></button>';
@@ -323,17 +323,17 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
                     return '<button title="Right Justify" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'justifyright\')" ng-class="{ active: isRightJustified}"><i class="fa fa-align-right"></i></button>';
                     break;
                 case 'code':
-                    return '<button title="Code" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'formatblock\', \'pre\')"  ng-class="{ active: isPre}">Code</button>';
+                    return '<a href="#" title="Code" tabindex="-1" ng-click="format(\'formatblock\', \'pre\')"  ng-class="{ active: isPre}">Code</a>';
                     break;
                 case 'quote':
-                    return '<button title="Quote" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'formatblock\', \'blockquote\')"  ng-class="{ active: isBlockquote}">Quote</button>';
+                    return '<a href="#" title="Quote" tabindex="-1" ng-click="format(\'formatblock\', \'blockquote\')"  ng-class="{ active: isBlockquote}">Quote</a>';
                     break;
                 case 'paragragh':
                     return '<button title="Paragragh" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'insertParagraph\')"  ng-class="{ active: isParagraph}">P</button>';
                     break;
                 case 'link':
-                    return '<button ng-show="!isLink" tabindex="-1" title="Link" type="button" unselectable="on" class="btn btn-default" ng-click="createLink()"><i class="fa fa-link" ></i> </button>' +
-                        '<button ng-show="isLink" tabindex="-1" title="Unlink" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'unlink\')"><i class="fa fa-unlink"></i> </button>';
+                    return '<a href="#" ng-show="!isLink" tabindex="-1" title="Link" ng-click="createLink()">Link</button>' +
+                        '<a href="#" ng-hide="!isLink" title="Unlink" ng-click="format(\'unlink\')">Unlink</button>';
                     break;
                 case 'image':
                     return '<button title="Image" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="insertImage()"><i class="fa fa-picture-o"></i> </button>';
@@ -354,8 +354,11 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
                 menu = defaultMenu;
 
             var menuHtml = '<div class="wysiwyg-menu">';
+            var sidebarHtml = '';
+
             menuHtml += getMenuStyles();
 
+            menuHtml += '<aside class="sidebar" set-class-when-at-top="fixed">';
             for (var i = 0; i < menu.length; i++) {
                 menuHtml += getMenuGroup();
                 for (var j = 0; j < menu[i].length; j++) {
@@ -363,10 +366,14 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
                 }
                 menuHtml += '</div>';
             }
+
+            menuHtml += '</aside>';
             menuHtml += getMenuTextArea();
             menuHtml += '</div>';
             return menuHtml;
         }
+
+
 
         var stringToArray = function(string) {
             var ret;

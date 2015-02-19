@@ -1,21 +1,25 @@
 .navbar.navbar-default {
-	margin: $navbar-margin 0px 150px 0px;
+	margin: $navbar-margin auto 50px auto;
 	border: none;
+
+	&.faded {
+		transition: opacity .3s ease-in-out;
+		opacity: 0.5;
+
+		&:hover {
+			opacity: 1;
+		}
+	}
 
 	.navbar-brand {
 		@extend .Mono-Medium;
 		@extend .inline-block;
 		color: $gray-light;
-		font-size: 15px;
-		letter-spacing: -0.1px;
-
-		.dropdown-menu {
-			margin-left: $navbar-margin;
-		}
+		font-size: 14px;
 	}
 
-	.navbar-toggle {
-		padding: 9px 6px;
+	.navbar-nav {
+		margin: 0px !important;
 	}
 
 	li {
@@ -28,6 +32,7 @@
 	li a {
 		@extend .Mono-Medium;
 		color: $gray-light;
+		font-size: 14px;
 		padding: 0px;
 		margin-bottom: 4px;
 
@@ -36,64 +41,5 @@
 			background-color: transparent;
 			border: none;
 		}
-
-		&:active {
-			background-color: transparent;
-			color: $gray-dark;
-		}
-
-		&.brand-primary {
-			color: $brand-primary;
-			&:hover {
-				color: darken($brand-primary, 10%);
-			}
-		}
-
-		&.brand-danger {
-			color: $brand-danger;
-			&:hover {
-				color: darken($brand-danger, 10%);
-			}
-		}
-
-		&.split {
-			margin-left: 60px;
-		}
-	}
-
-	.dropdown-menu {
-		top: 69%;
-		background-color: transparent;
-		border-radius: 0px;
-		box-shadow: none;
-		border: none;
-		padding: 0px;
-		left: 0px;
-		min-width: 0px;
-		padding-top: 20px;
-
-		li a {
-			margin-bottom: 10px;
-		}
-	}
-
-	.navbar-collapse {
-		padding: 0px;
-
-		&[aria-expanded=true] {
-			.navbar-nav {
-				margin: 0 0 0 0;
-				background: red;
-				padding: 50px 100px;
-			}
-		}
-	}
-
-	li.dropdown.on-hover:hover > ul.dropdown-menu {
-	    display: block;
-	}
-
-	ul.dropdown-menu:hover {
-		display: block;
 	}
 }

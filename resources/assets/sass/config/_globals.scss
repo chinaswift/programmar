@@ -38,14 +38,64 @@ html, body, input, select, textarea {
 	font-size: 0;
 }
 
-.container-fluid {
-	padding: 0px;
-	margin: 0px $navbar-padding-horizontal;
-	width: calc(100% - (#{$navbar-padding-horizontal} * 2));
-	box-sizing: border-box;
+.container {
+	width: 100%;
+	max-width: 700px;
+	margin: 0px auto;
+	position: relative;
+}
 
-	@media(max-width: $screen-xs-max) {
-		width: calc(100% - (40px * 2));
-		margin: 0px 40px;
+aside.sidebar {
+	width: 300px;
+	text-align: right;
+	top: 0px;
+	position: absolute;
+	left: auto;
+	transform: translateX(-375px);
+
+	&.fixed {
+		position: fixed;
+		top: 75px;
+	}
+
+	&.hack {
+		top: 200px;
+		&.fixed {
+			position: fixed;
+			top: 275px;
+		}
+	}
+
+	.options {
+		margin-top: 35px;
+	}
+
+	a {
+		display: block;
+		text-align: right;
+		line-height: 28px;
+		outline: none;
+		border: none;
+		color: $gray;
+
+		&:hover, &.active {
+			@extend .Mono-Medium;
+			color: $gray-dark;
+		}
+
+		&.brand-primary {
+			color: $brand-primary;
+			&:hover {
+				color: darken($brand-primary, 10%);
+			}
+		}
+
+		&.brand-danger {
+			margin-top: 20px;
+			color: lighten($brand-danger, 20%);
+			&:hover {
+				color: $brand-danger;
+			}
+		}
 	}
 }
