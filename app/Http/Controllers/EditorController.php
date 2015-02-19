@@ -36,7 +36,7 @@ class EditorController extends Controller {
 		}
 
 		if($user_id != Auth::user()->id) {
-			if(Auth::user()->account_type != 'admin' || Auth::user()->account_type != 'supervisor') {
+			if(Auth::user()->account_type != 'admin' && Auth::user()->account_type != 'supervisor') {
 				return response()->json(['type' => 'error', 'message' => 'Unauthorized'], 400);
 				exit();
 			}
@@ -87,7 +87,7 @@ class EditorController extends Controller {
 		}
 
 		if($user_id != Auth::user()->id) {
-			if(Auth::user()->account_type != 'admin' || Auth::user()->account_type != 'supervisor') {
+			if(Auth::user()->account_type != 'admin' && Auth::user()->account_type != 'supervisor') {
 				return response()->json(['type' => 'error', 'message' => 'Unauthorized'], 400);
 				exit();
 			}
@@ -128,7 +128,7 @@ class EditorController extends Controller {
 		}
 
 		if($user_id != Auth::user()->id) {
-			if(Auth::user()->account_type != 'admin' || Auth::user()->account_type != 'supervisor') {
+			if(Auth::user()->account_type != 'admin' && Auth::user()->account_type != 'supervisor') {
 				return response()->json(['type' => 'error', 'message' => 'Unauthorized'], 400);
 				exit();
 			}
