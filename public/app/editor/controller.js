@@ -28,7 +28,7 @@
             $scope.saveDelay = 10 * 1000;
 
             $scope.article.customMenu = [
-                ['bold', 'italic', 'heading','code', 'quote', 'link'],
+                ['bold', 'italic', 'heading','code', 'link'],
             ];
 
             ArticleApi.query().$promise.then(function(articleData) {
