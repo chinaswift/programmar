@@ -36,7 +36,7 @@
 							<a class="title" href="/article/{{$article->slug}}">{{ $article->title }}</a>
 							<div class="info">
 								<a href="/dev/{{ $article->username }}">{{ $article->userName }}</a>
-								<span>{{ date("dS F Y", strtotime('now', $article->last_updated)) }}</span>
+								<span>{{ $article->enjoys }} Enjoys</span>
 							</div>
 						</div>
 					</div>

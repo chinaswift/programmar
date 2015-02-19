@@ -4833,7 +4833,7 @@ button.close {
   font-weight: 400;
   font-style: normal; }
 
-.Mono-Medium, aside.sidebar a:hover, aside.sidebar a.active, .navbar.navbar-default .navbar-brand, .navbar.navbar-default li a, footer.main-footer .f-right a, #landing .type-section, #article .title, #article .info, #article .content h2, #home .item .title, #home .item .info, #profile .user, #profile .info-base, #profile .item .title, #profile .item .info {
+.Mono-Medium, aside.sidebar a:hover, aside.sidebar a.active, .navbar.navbar-default .navbar-brand, .navbar.navbar-default li a, footer.main-footer .f-right a, #landing .type-section, #article .title, #article .info, #article .enjoyed, #article .content h2, #home .item .title, #home .item .info, #profile .user, #profile .info-base, #profile .item .title, #profile .item .info {
   font-family: "source-code-pro", sans-serif;
   font-weight: 600;
   font-style: normal; }
@@ -8447,6 +8447,10 @@ footer.main-footer {
     margin-right: 35px; }
   #article .info a:hover {
     color: #909093; }
+#article .enjoyed {
+  display: block;
+  padding-top: 75px;
+  font-size: 15px; }
 #article .content {
   font-size: 15px;
   line-height: 28px;

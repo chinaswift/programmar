@@ -17,9 +17,11 @@
 		<div class="title" ng-model="article.title">{{$data->title}}</div>
 		<div class="info">
 			<a href="/dev/{{$data->userName}}"><% article.user %></a>
-			<span>{{ date("dS F Y", strtotime('now', $data->last_updated)) }}</span>
+			<span>{{ $data->enjoy_count }} Enjoys</span>
 		</div>
 		<div class="content wrtie-area" ng-model="article.content" contenteditable="false"></div>
-		<textarea class="hidden" ng-model="article.content"></textarea>
+
+		<a href="#" ng-click="enjoy('{{$data->slug}}')" class="enjoyed" ng-hide="article.enjoyed">Enjoy?</a>
+		<a href="void(0)" class="enjoyed" ng-show="article.enjoyed">Enjoyed</a>
 	</div>
 @endsection

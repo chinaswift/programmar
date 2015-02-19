@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Article;
 use App\User;
+use App\Enjoy;
 use Storage;
 use Auth;
 
@@ -51,6 +52,7 @@ class HomeController extends Controller {
 				$article->userName = $user->{'name'};
 				$article->username = $user->{'username'};
 				$article->avatar = $user->{'avatar'};
+				$article->enjoys = Enjoy::where('article_id', '=', $article->{'slug'})->count();
 			}
 			return view('home/user', ['articles' => $articles, 'followers' => $followerArray]);
 		}

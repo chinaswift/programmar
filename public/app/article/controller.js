@@ -4,6 +4,8 @@
 
     var app = angular.module(editorGlobals.app.name);
 
+    var apiEnjoyInteractBackendUri = '/api/internal/v1/article/enjoy';
+
     app.controller(editorGlobals.controller.name, [
         '$scope',
         '$http',
@@ -13,26 +15,30 @@
         function ($scope, $http, $location, $window, ArticleApi) {
 
             $scope.article = {};
+            $scope.article.enjoyed = false;
 
             //Collect article API stuff
             ArticleApi.query().$promise.then(function(articleData) {
                 var title = '',
                     content = '',
                     user = '',
-                    name = '';
+                    name = '',
+                    enjoyed = false;
 
                 if (articleData) {
                     title = articleData['title'] || '';
                     content = articleData['content'] || '';
                     user = articleData['userName'] || '';
                     name = articleData['last_updated'] || '';
+                    enjoyed = articleData['user_enjoyed'] || false;
                 }
 
                 $scope.article = {
                     'title': angular.copy(title),
                     'content': angular.copy(content),
                     'user': angular.copy(user),
-                    'name': angular.copy(name)
+                    'name': angular.copy(name),
+                    'enjoyed': angular.copy(enjoyed)
                 };
 
                 $scope.loading = false;
@@ -42,10 +48,18 @@
                 }, 300);
             });
 
+            $scope.enjoy = function(slug) {
+                $http.post(apiEnjoyInteractBackendUri, {'name': slug}).
+                success(function(data, status, headers, config) {
+                    $scope.article.enjoyed = true;
+                }).
+                error(function(data, status, headers, config) {
+                    $scope.article.enjoyed = false;
+                });
+            };
 
             //Default variables
             $scope.loading = true;
-
         }
     ]);
 

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default {{ $headerClass }}">
 	<div class="container">
 		<div class="navbar-header">
-			<li class="navbar-brand"><a href="/">Progamm^r</a></li>
+			<li class="navbar-brand"><a href="/">Programm^r</a></li>
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#siteNav">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>

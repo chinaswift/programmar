@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use GrahamCampbell\GitHub\GitHubManager;
 use App\Article;
 use App\User;
+use App\Enjoy;
 use Storage;
 use Auth;
 
@@ -101,6 +102,7 @@ class UserController extends Controller {
 			$article->userName = $user->{'name'};
 			$article->username = $user->{'username'};
 			$article->avatar = $user->{'avatar'};
+			$article->enjoys = Enjoy::where('article_id', '=', $article->{'slug'})->count();
 		}
 		return view('home/user', ['articles' => $articles, 'followers' => $followerArraySecond]);
 	}
@@ -124,6 +126,7 @@ class UserController extends Controller {
 		foreach ($articles as $article) {
 			$user = User::where('id', '=', $article->{'user_id'})->firstOrFail();
 			$article->userName = $user->{'name'};
+			$article->enjoys = Enjoy::where('article_id', '=', $article->{'slug'})->count();
 			if($article->title == '') {
 				$article->title = $article->slug;
 			}

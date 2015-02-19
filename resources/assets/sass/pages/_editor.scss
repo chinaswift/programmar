@@ -72,6 +72,13 @@
 		}
 	}
 
+	.enjoyed {
+		display: block;
+		@extend .Mono-Medium;
+		padding-top: 75px;
+		font-size: 15px;
+	}
+
 	.content {
 		@extend .Mono-Regular;
 		font-size: 15px;

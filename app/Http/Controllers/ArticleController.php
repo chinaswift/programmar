@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Article;
 use App\User;
+use App\Enjoy;
 use Storage;
 use Auth;
 
@@ -38,6 +39,12 @@ class ArticleController extends Controller {
 			$user = User::where('id', '=', $data->{'user_id'})->firstOrFail();
 			$data->{'content'} = Storage::get($data->{'user_id'} . '/' . $slug . '.programmar-article');
 			$data->{'userName'} = $user->{'name'};
+			$enjoy = Enjoy::where('user_id', '=', Auth::user()->id)->where('article_id', '=', $slug)->count();
+			if($enjoy > 0) {
+				$data->{'user_enjoyed'} = true;
+			}else{
+				$data->{'user_enjoyed'} = false;
+			}
 			return $data;
 		}
 	}
@@ -55,6 +62,17 @@ class ArticleController extends Controller {
 		}
 	}
 
+	public function enjoy(Request $request) {
+		$name = $request->input('name');
+		$user_id = Auth::user()->id;
+		$enjoyed = Enjoy::firstOrNew(array('article_id' => $name, 'user_id' => $user_id));
+		$enjoyed->user_id = $user_id;
+		$enjoyed->article_id = $name;
+		$enjoyed->save();
+
+		return response()->json(['type' => 'success', 'message' => 'Enjoyed'], 200);
+	}
+
 
 	/**
 	 * Function which shows the write controller
@@ -64,6 +82,7 @@ class ArticleController extends Controller {
 		$data = Article::where('slug', '=', $slug)->firstOrFail();
 		$user = User::where('id', '=', $data->{'user_id'})->firstOrFail();
 		$data->{'userName'} = $user->{'username'};
+		$data->{'enjoy_count'} = Enjoy::where('article_id', '=', $slug)->count();;
 		if($data->published != '0') {
 			return view('article/view', ['data' => $data, 'slug' => $slug]);
 		}else{

@@ -16,6 +16,8 @@ Route::post('/api/internal/v1/editor/publish', 'EditorController@publish');
 Route::post('/api/internal/v1/editor/delete', 'EditorController@delete');
 Route::get('/api/angular/article/{slug}', 'ArticleController@collect');
 
+Route::post('/api/internal/v1/article/enjoy', 'ArticleController@enjoy');
+
 Route::get('/api/angular/github/follow/{username}', 'UserController@followUser');
 Route::get('/api/angular/github/unfollow/{username}', 'UserController@unfollowUser');
 
