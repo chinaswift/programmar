@@ -48,6 +48,10 @@ html, body, input, select, textarea {
 	margin: 0px auto;
 	position: relative;
 	padding: 0px;
+
+	&.push {
+		margin-bottom: 50px;
+	}
 }
 
 .container-fluid {
