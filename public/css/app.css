@@ -8481,7 +8481,8 @@ footer.main-footer {
   margin-bottom: 20px;
   border-bottom: 1px solid #E7E9EC; }
   #home .item:last-child {
-    border-bottom: none; }
+    border-bottom: none;
+    margin-bottom: 0px; }
   #home .item .title {
     font-size: 15px;
     color: #373A40; }
