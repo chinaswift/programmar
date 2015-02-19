@@ -34,8 +34,7 @@ class HomeController extends Controller {
 			$followerArray = array();
 			$github_data = json_decode($this->curl_get_contents('https://api.github.com/user/followers?access_token=' . Auth::user()->token), true);
 			foreach ($github_data as $github_user) {
-				//$check = User::where('id', '=', $github_user['id'])->count();
-				$check = User::find($github_user['id']);
+				$check = User::where('id', '=', $github_user['id'])->count();
 				$array = array(
 					'id' => $github_user['id'],
 					'avatar' => $github_user['avatar_url'],
