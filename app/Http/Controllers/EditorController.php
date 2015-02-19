@@ -31,6 +31,8 @@ class EditorController extends Controller {
 		$content = $request->input('content');
 		$name = $request->input('name', '');
 
+		return response()->json(['type' => 'success', 'message' => $user_id, 'name' => $name], 200);
+
 		if($user_id == '') {
 			$user_id = Auth::user()->id;
 		}
