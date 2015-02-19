@@ -8460,15 +8460,16 @@ footer.main-footer {
 
 #home .profile-img-cont {
   text-align: right;
-  width: 105px;
+  width: 120px;
   float: right;
   margin-top: 10px; }
   #home .profile-img-cont a:nth-child(3n+3) .profile-image {
     margin-right: 0px; }
+  #home .profile-img-cont a {
+    display: inline; }
 #home .profile-image {
   width: 30px;
   height: 30px;
-  float: left;
   margin-right: 5px;
   margin-bottom: 5px; }
   #home .profile-image.faded {

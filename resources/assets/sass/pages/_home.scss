@@ -2,7 +2,7 @@
 
 	.profile-img-cont {
 		text-align: right;
-		width: 105px;
+		width: 120px;
 		float: right;
 		margin-top: 10px;
 
@@ -11,13 +11,16 @@
 				margin-right: 0px;
 			}
 		}
+
+		a {
+			display: inline;
+		}
 	}
 
 	.profile-image {
 		@extend .inline-block;
 		width: 30px;
 		height: 30px;
-		float: left;
 		margin-right: 5px;
 		margin-bottom: 5px;
 

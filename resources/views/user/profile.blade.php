@@ -15,11 +15,11 @@
 	<div class="user">
 		{{$user->name}}
 		@if($user->followingUser)
-			<a href="#" ng-init="following=true;" class="btn btn-danger" ng-show="following" ng-click="unfollowUser('{{$user->username}}');"><span class="octicon octicon-mark-github"></span>Un-Follow</a>
+			<a href="#" ng-init="following=true;" class="btn btn-danger" ng-show="following" ng-click="unfollowUser('{{$user->username}}');"><span class="octicon octicon-mark-github"></span>Unfollow</a>
 			<a href="#" class="btn btn-primary" ng-hide="following" ng-click="followUser('{{$user->username}}');"><span class="octicon octicon-mark-github"></span>Follow</a>
 		@else
 			@if($user->id != Auth::user()->id)
-				<a href="#" class="btn btn-danger" ng-show="following" ng-click="unfollowUser('{{$user->username}}');"><span class="octicon octicon-mark-github"></span>Un-Follow</a>
+				<a href="#" class="btn btn-danger" ng-show="following" ng-click="unfollowUser('{{$user->username}}');"><span class="octicon octicon-mark-github"></span>Unfollow</a>
 				<a href="#" class="btn btn-primary" ng-hide="following" ng-click="followUser('{{$user->username}}');"><span class="octicon octicon-mark-github"></span>Follow</a>
 			@endif
 		@endif
