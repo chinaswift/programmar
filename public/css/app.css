@@ -8297,12 +8297,12 @@ a {
 footer.main-footer {
   margin-top: 50px;
   border-top: 1px solid #E7E9EC;
-  padding: 25px 0px; }
+  padding: 25px 0px 100px 0px; }
   footer.main-footer .footer-item {
     text-indent: -9999em;
     width: 18px;
     height: 11px;
-    margin-right: 5px; }
+    margin-right: 15px; }
     footer.main-footer .footer-item.layerful {
       background: url(/img/partials/layerful.svg) no-repeat center;
       background-size: 18px 11px; }
