@@ -6,6 +6,10 @@
 		margin-bottom: 50px;
 		border-bottom: 1px solid $gray-lighter;
 
+		&:last-child {
+			border-bottom: none;
+		}
+
 		.base {
 			@extend .clearfix;
 		}

@@ -16,7 +16,7 @@
 			<a href="/drafts">Drafts</a>
 		</aside>
 
-
+		<div class="article-container">
 		@if(count($articles) > 0)
 			@foreach($articles as $article)
 				<div class="item">
@@ -34,5 +34,6 @@
 			There are no articles at this time. <a href="/write">Create one</a>.
 
 		@endif
+		</div>
 	</div>
 @endsection

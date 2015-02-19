@@ -8459,6 +8459,8 @@ footer.main-footer {
   padding-bottom: 15px;
   margin-bottom: 50px;
   border-bottom: 1px solid #E7E9EC; }
+  #home .item:last-child {
+    border-bottom: none; }
   #home .item .profile-image {
     width: 50px;
     height: 50px;
