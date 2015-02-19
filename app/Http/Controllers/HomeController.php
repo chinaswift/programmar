@@ -46,17 +46,13 @@ class HomeController extends Controller {
 
 			$articles = Article::where('published', '=', '1')->take(15)->get();
 
-			var_dump($followerArray);
-			exit();
-
-
 			foreach ($articles as $article) {
 				$user = User::where('id', '=', $article->{'user_id'})->firstOrFail();
 				$article->userName = $user->{'name'};
 				$article->username = $user->{'username'};
 				$article->avatar = $user->{'avatar'};
 			}
-			return view('home/user', ['articles' => $articles]);
+			return view('home/user', ['articles' => $articles, 'followers' => $followerArray]);
 		}
 		else
 		{

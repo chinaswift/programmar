@@ -5617,7 +5617,7 @@ html, body, input, select, textarea {
   float: right;
   display: block; }
 
-.inline-block, .navbar.navbar-default .navbar-brand, .btn .octicon, .write-area .code-block, footer.main-footer .footer-item {
+.inline-block, .navbar.navbar-default .navbar-brand, .btn .octicon, .write-area .code-block, footer.main-footer .footer-item, #home .profile-image {
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: middle;
@@ -8458,17 +8458,29 @@ footer.main-footer {
   #article .content h2 {
     font-size: 16px; }
 
+#home .profile-img-cont {
+  text-align: right;
+  width: 105px;
+  float: right;
+  margin-top: 10px; }
+  #home .profile-img-cont a:nth-child(3n+3) .profile-image {
+    margin-right: 0px; }
+#home .profile-image {
+  width: 30px;
+  height: 30px;
+  float: left;
+  margin-right: 5px;
+  margin-bottom: 5px; }
+  #home .profile-image.faded {
+    opacity: 0.4; }
+    #home .profile-image.faded:hover {
+      opacity: 1; }
 #home .item {
   padding-bottom: 25px;
   margin-bottom: 20px;
   border-bottom: 1px solid #E7E9EC; }
   #home .item:last-child {
     border-bottom: none; }
-  #home .item .profile-image {
-    width: 50px;
-    height: 50px;
-    float: left;
-    margin-right: 20px; }
   #home .item .title {
     font-size: 15px;
     color: #373A40; }

@@ -12,8 +12,20 @@
 	<div class="container">
 		<aside class="sidebar animated fadeInLeft" set-class-when-at-top="fixed">
 			<a href="/">Recent</a>
-			<a href="/followers">Followers</a>
 			<a href="/drafts">Drafts</a>
+
+			<div class="options">
+				<a href="/followers">Followers</a>
+				<div class="clearfix profile-img-cont">
+					@foreach($followers as $follower)
+						@if($follower['user'] > 0)
+							<a href="/dev/{{ $follower['username'] }}"><img src="{{$follower['avatar']}}" class="img-circle profile-image"></a>
+						@else
+							<!-- <a href="#"><img src="{{$follower['avatar']}}" class="img-circle profile-image faded"></a> -->
+						@endif
+					@endforeach
+				</div>
+			</div>
 		</aside>
 
 		<div class="article-container">

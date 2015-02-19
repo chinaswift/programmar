@@ -82,6 +82,19 @@ class UserController extends Controller {
 		foreach ($github_data as $github_user) {
 			array_push($followerArray, $github_user['id']);
 		}
+
+		$followerArraySecond = array();
+		foreach ($github_data as $github_user) {
+			$check = User::where('id', '=', $github_user['id'])->count();
+			$array = array(
+				'id' => $github_user['id'],
+				'avatar' => $github_user['avatar_url'],
+				'username' => $github_user['login'],
+				'user' => $check
+				);
+			array_push($followerArraySecond, $array);
+		}
+
 		$articles = Article::whereIn('user_id', $followerArray)->where('published', '=', '1')->take(15)->get();
 		foreach ($articles as $article) {
 			$user = User::where('id', '=', $article->{'user_id'})->firstOrFail();
@@ -89,11 +102,25 @@ class UserController extends Controller {
 			$article->username = $user->{'username'};
 			$article->avatar = $user->{'avatar'};
 		}
-		return view('home/user', ['articles' => $articles]);
+		return view('home/user', ['articles' => $articles, 'followers' => $followerArraySecond]);
 	}
 
 	public function drafts() {
+		$followerArray = array();
+		$github_data = json_decode($this->curl_get_contents('https://api.github.com/user/followers?access_token=' . Auth::user()->token), true);
+		foreach ($github_data as $github_user) {
+			$check = User::where('id', '=', $github_user['id'])->count();
+			$array = array(
+				'id' => $github_user['id'],
+				'avatar' => $github_user['avatar_url'],
+				'username' => $github_user['login'],
+				'user' => $check
+				);
+			array_push($followerArray, $array);
+		}
+
 		$articles = Article::where('user_id', '=', Auth::user()->id)->where('published', '=', '0')->take(15)->get();
+
 		foreach ($articles as $article) {
 			$user = User::where('id', '=', $article->{'user_id'})->firstOrFail();
 			$article->userName = $user->{'name'};
@@ -103,7 +130,7 @@ class UserController extends Controller {
 			$article->username = $user->{'username'};
 			$article->avatar = $user->{'avatar'};
 		}
-		return view('home/user', ['articles' => $articles]);
+		return view('home/user', ['articles' => $articles, 'followers' => $followerArray]);
 	}
 
 	/**
