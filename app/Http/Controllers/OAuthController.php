@@ -27,11 +27,8 @@ class OAuthController extends Controller {
 		}
 
 		$user = Socialize::with($account)->user();
-		if($user->getName()) {
-			$name = $user->getName();
-		}else{
-			$name = $user->getNickname();
-		}
+
+		$name = $user->getName();
 		$token = $user->token;
 		$email = $user->getEmail();
 		$account_id = $user->getId();
