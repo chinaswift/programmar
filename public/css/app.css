@@ -8470,7 +8470,7 @@ footer.main-footer {
 #home .profile-image {
   width: 30px;
   height: 30px;
-  margin-right: 5px;
+  margin-right: 0px;
   margin-bottom: 5px; }
   #home .profile-image.faded {
     opacity: 0.4; }
