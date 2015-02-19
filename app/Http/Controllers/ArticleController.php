@@ -62,6 +62,8 @@ class ArticleController extends Controller {
 	 */
 	public function view($slug) {
 		$data = Article::where('slug', '=', $slug)->firstOrFail();
+		$user = User::where('id', '=', $data->{'user_id'})->firstOrFail();
+		$data->{'userName'} = $user->{'username'};
 		if($data->published != '0') {
 			return view('article/view', ['data' => $data, 'slug' => $slug]);
 		}else{

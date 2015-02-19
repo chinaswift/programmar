@@ -4,6 +4,7 @@
 				Follow your favourite subjects or people and create a custom digest of the best and most
 				popular development articles.';
 	$pageId = 'landing';
+	$headerClass = 'full';
 ?>
 @extends('layouts/body')
 @section('content')

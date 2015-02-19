@@ -1,13 +1,11 @@
 #profile {
 	.user {
-		@extend .Text-Bold;
-		font-size: 42px;
+		@extend .Mono-Medium;
+		font-size: 15px;
 		color: $gray-darker;
-		margin-top: 0px;
+		margin: 0 0 0px 0;
 		outline: none;
 		border: none;
-		padding-bottom: 25px;
-		border-bottom: 1px solid $gray-lighter;
 
 		.btn {
 			float: right;
@@ -15,24 +13,34 @@
 	}
 
 	.article-listing {
-		margin-top: 100px;
+		margin-top: 44px;
+
+		.item:last-child {
+			border-bottom: none !important;
+		}
 	}
 
-	.info {
-		margin-top: 20px;
+	.info-base {
+		@extend .Mono-Bold;
+		margin-top: 10px;
+		color: $gray-light;
+		font-size: 14px;
+		padding-bottom: 44px;
+		border-bottom: 1px solid $gray-lighter;
 
-		a {
-			margin-right: 35px;
+		a, span {
 			color: $gray-light;
-			&:hover {
-				color: darken($gray-light, 10%);
-			}
+			margin-right: 35px;
+		}
+
+		a:hover {
+			color: darken($gray-light, 10%);
 		}
 	}
 
 	.item {
 		@extend .clearfix;
-		padding-bottom: 25px;
+		padding-bottom: 15px;
 		margin-bottom: 50px;
 		border-bottom: 1px solid $gray-lighter;
 
@@ -41,19 +49,25 @@
 		}
 
 		.title {
-			@extend .Text-Bold;
-			font-size: 32px;
+			@extend .Mono-Medium;
+			font-size: 15px;
 			color: $gray-darker;
-			float: left;
 		}
 
 		.info {
-			@extend .Mono-Regular;
-			float: right;
+			@extend .Mono-Medium;
+			display: block;
 			color: $gray-light;
+			font-size: 14px;
+			margin-top: 10px;
 
-			span {
+			a, span {
+				color: $gray-light;
 				margin-right: 35px;
+			}
+
+			a:hover {
+				color: darken($gray-light, 10%);
 			}
 		}
 	}

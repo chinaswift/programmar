@@ -13,10 +13,10 @@
 ?>
 @extends('layouts/body')
 @section('content')
-	<div class="container-fluid" ng-cloak ng-hide="loading">
+	<div class="container" ng-cloak ng-hide="loading">
 		<div class="title" ng-model="article.title">{{$data->title}}</div>
 		<div class="info">
-			<span><% article.user %></span>
+			<a href="/dev/{{$data->userName}}"><% article.user %></a>
 			<span>{{ date("dS F Y", strtotime('now', $data->last_updated)) }}</span>
 		</div>
 		<div class="content wrtie-area" ng-model="article.content" contenteditable="false"></div>

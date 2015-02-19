@@ -10,7 +10,7 @@
 @extends('layouts/body')
 @section('content')
 
-<div class="container-fluid">
+<div class="container">
 	<div class="user">
 		{{$user->name}}
 		@if($user->followingUser)
@@ -23,7 +23,7 @@
 			@endif
 		@endif
 	</div>
-	<div class="info">
+	<div class="info-base">
 		<a href="http://github.com/{{$user->username}}/followers" target="_blank">{{ count($user->followers) }} Followers</a>
 		<a href="http://github.com/{{$user->username}}/following" target="_blank">{{ count($user->following) }} Following</a>
 	</div>
@@ -35,7 +35,6 @@
 					<div class="base">
 						<a class="title" href="/article/{{$article->slug}}">{{ $article->title }}</a>
 						<div class="info">
-							<span>{{ $article->userName }}</span>
 							<span>{{ date("dS F Y", strtotime('now', $article->last_updated)) }}</span>
 						</div>
 					</div>

@@ -25,6 +25,7 @@ class HomeController extends Controller {
 				$user = User::where('id', '=', $article->{'user_id'})->firstOrFail();
 				$article->content = strip_tags(Storage::get($article->{'user_id'} . '/' . $article->slug . '.programmar-article'));
 				$article->userName = $user->{'name'};
+				$article->username = $user->{'username'};
 			}
 			return view('home/user', ['articles' => $articles]);
 		}

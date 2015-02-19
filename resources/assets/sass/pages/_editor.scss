@@ -49,17 +49,24 @@
 		@extend .Mono-Medium;
 		font-size: 15px;
 		color: $gray-darker;
-		margin: 0 0 50px 0;
+		margin: 0 0 0px 0;
 		outline: none;
 		border: none;
 	}
 
 	.info {
-		margin-top: 20px;
+		@extend .Mono-Bold;
+		margin-top: 10px;
 		color: $gray-light;
+		font-size: 14px;
 
-		span {
+		a, span {
+			color: $gray-light;
 			margin-right: 35px;
+		}
+
+		a:hover {
+			color: darken($gray-light, 10%);
 		}
 	}
 
@@ -69,7 +76,7 @@
 		line-height: 28px;
 		color: $gray-darker;
 		height: 100%;
-		margin: 0px 0px 0px 0px;
+		margin: 50px 0px 0px 0px;
 
 		img {
 			width: 100%;

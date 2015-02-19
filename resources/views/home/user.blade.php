@@ -9,14 +9,21 @@
 @extends('layouts/body')
 
 @section('content')
-	<div class="container-fluid">
+	<div class="container">
+		<aside class="sidebar" set-class-when-at-top="fixed">
+			<a href="/">Recent</a>
+			<a href="/followers">Followers</a>
+			<a href="/drafts">Drafts</a>
+		</aside>
+
+
 		@if(count($articles) > 0)
 			@foreach($articles as $article)
 				<div class="item">
 					<div class="base">
 						<a class="title" href="/article/{{$article->slug}}">{{ $article->title }}</a>
 						<div class="info">
-							<span>{{ $article->userName }}</span>
+							<a href="/dev/{{ $article->username }}">{{ $article->userName }}</a>
 							<span>{{ date("dS F Y", strtotime('now', $article->last_updated)) }}</span>
 						</div>
 					</div>

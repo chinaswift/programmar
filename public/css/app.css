@@ -1369,15 +1369,15 @@ pre {
     .container {
       width: 730px; } }
 
-.container-fluid {
+.container-fluid, .navbar.navbar-default.full .container {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px; }
-  .container-fluid:before, .container-fluid:after {
+  .container-fluid:before, .navbar.navbar-default.full .container:before, .container-fluid:after, .navbar.navbar-default.full .container:after {
     content: " ";
     display: table; }
-  .container-fluid:after {
+  .container-fluid:after, .navbar.navbar-default.full .container:after {
     clear: both; }
 
 .row {
@@ -3054,11 +3054,11 @@ tbody.collapse.in {
     .navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
       max-height: 200px; } }
 
-.container > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-header, .container-fluid > .navbar-collapse {
+.container > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-header, .navbar.navbar-default.full .container > .navbar-header, .container-fluid > .navbar-collapse, .navbar.navbar-default.full .container > .navbar-collapse {
   margin-right: -75px;
   margin-left: -75px; }
   @media (min-width: 768px) {
-    .container > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-header, .container-fluid > .navbar-collapse {
+    .container > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-header, .navbar.navbar-default.full .container > .navbar-header, .container-fluid > .navbar-collapse, .navbar.navbar-default.full .container > .navbar-collapse {
       margin-right: 0;
       margin-left: 0; } }
 
@@ -3098,7 +3098,7 @@ tbody.collapse.in {
   .navbar-brand > img {
     display: block; }
   @media (min-width: 768px) {
-    .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+    .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand, .navbar.navbar-default.full .navbar > .container .navbar-brand {
       margin-left: -75px; } }
 
 .navbar-toggle {
@@ -3573,14 +3573,14 @@ a.badge:hover, a.badge:focus {
     font-weight: 200; }
   .jumbotron > hr {
     border-top-color: #1f2125; }
-  .container .jumbotron, .container-fluid .jumbotron {
+  .container .jumbotron, .container-fluid .jumbotron, .navbar.navbar-default.full .container .jumbotron {
     border-radius: 6px; }
   .jumbotron .container {
     max-width: 100%; }
   @media screen and (min-width: 768px) {
     .jumbotron {
       padding: 48px 0; }
-      .container .jumbotron, .container-fluid .jumbotron {
+      .container .jumbotron, .container-fluid .jumbotron, .navbar.navbar-default.full .container .jumbotron {
         padding-left: 60px;
         padding-right: 60px; }
       .jumbotron h1, .jumbotron .h1 {
@@ -4823,22 +4823,22 @@ button.close {
 	Mixins
 	Contains all the mixins across the site.
 */
-.Mono-Bold, .btn {
+.Mono-Bold, .btn, #article .info, #profile .info-base {
   font-family: "source-code-pro", sans-serif;
   font-weight: 700;
   font-style: normal; }
 
-.Mono-Regular, #article pre, #article .content, #home .item .info, #profile .item .info {
+.Mono-Regular, #article pre, #article .content {
   font-family: "source-code-pro", sans-serif;
   font-weight: 400;
   font-style: normal; }
 
-.Mono-Medium, aside.sidebar a:hover, aside.sidebar a.active, .navbar.navbar-default .navbar-brand, .navbar.navbar-default li a, #landing .type-section, #article .title, #article .content h2 {
+.Mono-Medium, aside.sidebar a:hover, aside.sidebar a.active, .navbar.navbar-default .navbar-brand, .navbar.navbar-default li a, #landing .type-section, #article .title, #article .content h2, #home .item .title, #home .item .info, #profile .user, #profile .item .title, #profile .item .info {
   font-family: "source-code-pro", sans-serif;
   font-weight: 600;
   font-style: normal; }
 
-.Text-Bold, .write-area h1, #home .item .title, #profile .user, #profile .item .title {
+.Text-Bold, .write-area h1 {
   font-family: "freight-text-pro", sans-serif;
   font-weight: 700;
   font-style: normal; }
@@ -5628,6 +5628,13 @@ html, body, input, select, textarea {
   margin: 0px auto;
   position: relative; }
 
+.container-fluid, .navbar.navbar-default.full .container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0px 75px;
+  padding: 0px;
+  position: static; }
+
 aside.sidebar {
   width: 300px;
   text-align: right;
@@ -5674,11 +5681,15 @@ aside.sidebar {
     opacity: 0.5; }
     .navbar.navbar-default.faded:hover {
       opacity: 1; }
+  .navbar.navbar-default.full .container {
+    max-width: 100%; }
   .navbar.navbar-default .navbar-brand {
     color: #AAAAAC;
     font-size: 14px; }
   .navbar.navbar-default .navbar-nav {
     margin: 0px !important; }
+  .navbar.navbar-default .navbar-right {
+    padding: 0px; }
   .navbar.navbar-default li {
     margin-right: 46px; }
     .navbar.navbar-default li:last-child {
@@ -5707,11 +5718,12 @@ a {
 
 .btn {
   border-radius: 3px;
-  font-size: 15px;
-  padding: 16px 20px; }
+  font-size: 14px;
+  letter-spacing: -0.6px;
+  padding: 13px 15px; }
   .btn .octicon {
-    padding-right: 20px;
-    font-size: 22px; }
+    padding-right: 10px;
+    font-size: 17px; }
 
 .write-area {
   padding-bottom: 30px; }
@@ -8282,6 +8294,7 @@ a {
 #landing .navbar-default {
   margin-bottom: 65px; }
 #landing .btn-primary {
+  font-size: 14px;
   position: absolute;
   bottom: 75px;
   left: 75px; }
@@ -8321,20 +8334,24 @@ a {
 #article .title {
   font-size: 15px;
   color: #373A40;
-  margin: 0 0 50px 0;
+  margin: 0 0 0px 0;
   outline: none;
   border: none; }
 #article .info {
-  margin-top: 20px;
-  color: #AAAAAC; }
-  #article .info span {
+  margin-top: 10px;
+  color: #AAAAAC;
+  font-size: 14px; }
+  #article .info a, #article .info span {
+    color: #AAAAAC;
     margin-right: 35px; }
+  #article .info a:hover {
+    color: #909093; }
 #article .content {
   font-size: 15px;
   line-height: 28px;
   color: #373A40;
   height: 100%;
-  margin: 0px 0px 0px 0px; }
+  margin: 50px 0px 0px 0px; }
   #article .content img {
     width: 100%;
     height: auto; }
@@ -8342,48 +8359,60 @@ a {
     font-size: 16px; }
 
 #home .item {
-  padding-bottom: 25px;
+  padding-bottom: 15px;
   margin-bottom: 50px;
   border-bottom: 1px solid #E7E9EC; }
   #home .item .title {
-    font-size: 32px;
-    color: #373A40;
-    float: left; }
+    font-size: 15px;
+    color: #373A40; }
   #home .item .info {
-    float: right;
-    color: #AAAAAC; }
-    #home .item .info span {
+    display: block;
+    color: #AAAAAC;
+    font-size: 14px;
+    margin-top: 10px; }
+    #home .item .info a, #home .item .info span {
+      color: #AAAAAC;
       margin-right: 35px; }
+    #home .item .info a:hover {
+      color: #909093; }
 
 #profile .user {
-  font-size: 42px;
+  font-size: 15px;
   color: #373A40;
-  margin-top: 0px;
+  margin: 0 0 0px 0;
   outline: none;
-  border: none;
-  padding-bottom: 25px;
-  border-bottom: 1px solid #E7E9EC; }
+  border: none; }
   #profile .user .btn {
     float: right; }
 #profile .article-listing {
-  margin-top: 100px; }
-#profile .info {
-  margin-top: 20px; }
-  #profile .info a {
-    margin-right: 35px;
-    color: #AAAAAC; }
-    #profile .info a:hover {
-      color: #909093; }
+  margin-top: 44px; }
+  #profile .article-listing .item:last-child {
+    border-bottom: none !important; }
+#profile .info-base {
+  margin-top: 10px;
+  color: #AAAAAC;
+  font-size: 14px;
+  padding-bottom: 44px;
+  border-bottom: 1px solid #E7E9EC; }
+  #profile .info-base a, #profile .info-base span {
+    color: #AAAAAC;
+    margin-right: 35px; }
+  #profile .info-base a:hover {
+    color: #909093; }
 #profile .item {
-  padding-bottom: 25px;
+  padding-bottom: 15px;
   margin-bottom: 50px;
   border-bottom: 1px solid #E7E9EC; }
   #profile .item .title {
-    font-size: 32px;
-    color: #373A40;
-    float: left; }
+    font-size: 15px;
+    color: #373A40; }
   #profile .item .info {
-    float: right;
-    color: #AAAAAC; }
-    #profile .item .info span {
+    display: block;
+    color: #AAAAAC;
+    font-size: 14px;
+    margin-top: 10px; }
+    #profile .item .info a, #profile .item .info span {
+      color: #AAAAAC;
       margin-right: 35px; }
+    #profile .item .info a:hover {
+      color: #909093; }

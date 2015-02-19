@@ -11,6 +11,13 @@
 		}
 	}
 
+	&.full {
+		.container {
+			@extend .container-fluid;
+			max-width: 100%;
+		}
+	}
+
 	.navbar-brand {
 		@extend .Mono-Medium;
 		@extend .inline-block;
@@ -20,6 +27,10 @@
 
 	.navbar-nav {
 		margin: 0px !important;
+	}
+
+	.navbar-right {
+		padding: 0px;
 	}
 
 	li {

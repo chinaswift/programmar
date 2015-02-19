@@ -2,7 +2,7 @@
 
 	.item {
 		@extend .clearfix;
-		padding-bottom: 25px;
+		padding-bottom: 15px;
 		margin-bottom: 50px;
 		border-bottom: 1px solid $gray-lighter;
 
@@ -11,19 +11,25 @@
 		}
 
 		.title {
-			@extend .Text-Bold;
-			font-size: 32px;
+			@extend .Mono-Medium;
+			font-size: 15px;
 			color: $gray-darker;
-			float: left;
 		}
 
 		.info {
-			@extend .Mono-Regular;
-			float: right;
+			@extend .Mono-Medium;
+			display: block;
 			color: $gray-light;
+			font-size: 14px;
+			margin-top: 10px;
 
-			span {
+			a, span {
+				color: $gray-light;
 				margin-right: 35px;
+			}
+
+			a:hover {
+				color: darken($gray-light, 10%);
 			}
 		}
 	}
