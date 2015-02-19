@@ -29,23 +29,21 @@
 		</aside>
 
 		<div class="article-container">
-		@if(count($articles) > 0)
-			@foreach($articles as $article)
-				<div class="item">
-					<div class="base">
-						<a class="title" href="/article/{{$article->slug}}">{{ $article->title }}</a>
-						<div class="info">
-							<a href="/dev/{{ $article->username }}">{{ $article->userName }}</a>
-							<span>{{ date("dS F Y", strtotime('now', $article->last_updated)) }}</span>
+			@if(count($articles) > 0)
+				@foreach($articles as $article)
+					<div class="item">
+						<div class="base">
+							<a class="title" href="/article/{{$article->slug}}">{{ $article->title }}</a>
+							<div class="info">
+								<a href="/dev/{{ $article->username }}">{{ $article->userName }}</a>
+								<span>{{ date("dS F Y", strtotime('now', $article->last_updated)) }}</span>
+							</div>
 						</div>
 					</div>
-				</div>
-			@endforeach
-		@else
-
-			There are no articles at this time. <a href="/write">Create one</a>.
-
-		@endif
+				@endforeach
+			@else
+				There are no articles at this time. <a href="/write">Create one</a>.
+			@endif
 		</div>
 	</div>
 @endsection
