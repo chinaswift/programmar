@@ -8380,17 +8380,20 @@ footer.main-footer {
   100% {
     background-color: #fff; } }
 
-#landing .type-section {
-  color: #373A40;
-  font-size: 15px;
-  line-height: 39px; }
-#landing .navbar-default {
-  margin-bottom: 65px; }
-#landing .btn-primary {
-  font-size: 14px;
-  position: absolute;
-  bottom: 75px;
-  left: 75px; }
+#landing {
+  width: 100%;
+  overflow: hidden; }
+  #landing .type-section {
+    color: #373A40;
+    font-size: 15px;
+    line-height: 39px; }
+  #landing .navbar-default {
+    margin-bottom: 65px; }
+  #landing .btn-primary {
+    font-size: 14px;
+    position: absolute;
+    bottom: 75px;
+    left: 75px; }
 
 #article [contenteditable=true]:empty:before {
   content: attr(placeholder);
