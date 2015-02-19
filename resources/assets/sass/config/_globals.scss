@@ -11,6 +11,10 @@ html, body, input, select, textarea {
     display: table;
 }
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
 .clearfix:after {
     clear: both;
 }
@@ -54,12 +58,12 @@ html, body, input, select, textarea {
 }
 
 aside.sidebar {
-	width: 300px;
+	width: 200px;
 	text-align: right;
 	top: 0px;
 	position: absolute;
 	left: auto;
-	transform: translateX(-375px);
+	margin-left: -275px;
 
 	&.fixed {
 		position: fixed;

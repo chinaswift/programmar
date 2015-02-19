@@ -11,14 +11,14 @@
 @extends('layouts/body')
 @section('content')
 	<div class="container" ng-hide="loading">
-		<aside class="sidebar hack" set-class-when-at-top-hack="fixed">
+		<aside class="sidebar hack animated fadeInLeft" set-class-when-at-top-hack="fixed">
 			<a href="#" ng-show="canSave" class="saveLink" ng-click="saveDocument();" tabindex="-1">Save</a>
 	        <a href="#" class="publishLink brand-primary" ng-click="publishArticle();" tabindex="-1">Publish</a>
 	        <a href="#" class="deleteLink brand-danger" ng-click="deleteArticle();" tabindex="-1">Delete</a>
         </aside>
 
 
-		<input type="text" class="title" ng-model="article.title" ng-cloak ng-blur="saveDocument()" ng-change="canSaveChange();" placeholder="Title...">
+		<input type="text" class="title animated fadeIn" ng-model="article.title" ng-cloak ng-blur="saveDocument()" ng-change="canSaveChange();" placeholder="Title...">
 		<input type="hidden" ng-model="article.name" ng-cloak>
 		<wysiwyg ng-model="article.content" ng-keydown="checkCharacter();" ng-change="canSaveChange();" ng-cloak enable-bootstrap-title="false" textarea-menu="<% article.customMenu %>"></wysiwyg>
 	</div>

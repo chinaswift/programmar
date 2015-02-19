@@ -41,7 +41,11 @@
 	@if($headerInclude)
 		@include('common/header')
 	@endif
+
 	@yield('content')
+
+	@include('common/footer')
+
 	<!-- Scripts -->
 	<script src="/js/vendor/jquery.min.js"></script>
 	<script src="/js/vendor/bootstrap.min.js"></script>

@@ -11,6 +11,7 @@
 @section('content')
 
 <div class="container">
+	<img src="{{$user->avatar}}" class="img-circle profile-image">
 	<div class="user">
 		{{$user->name}}
 		@if($user->followingUser)

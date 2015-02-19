@@ -255,7 +255,7 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
         }
 
         var getMenuTextArea = function() {
-            return '<div ng-attr-style="resize:vertical;height:{{textareaHeight || \'80px\'}}; overflow:auto" contentEditable="true" class="content wysiwyg-textarea" placeholder="Start writing..." ng-model="value"></div>';
+            return '<div ng-attr-style="resize:vertical;height:{{textareaHeight || \'80px\'}}; overflow:auto" contentEditable="true" class="content wysiwyg-textarea animated fadeIn" placeholder="Start writing..." ng-model="value"></div>';
         }
 
         var getMenuGroup = function() {
@@ -358,7 +358,7 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
 
             menuHtml += getMenuStyles();
 
-            menuHtml += '<aside class="sidebar" set-class-when-at-top="fixed">';
+            menuHtml += '<aside class="sidebar  animated fadeInLeft" set-class-when-at-top="fixed">';
             for (var i = 0; i < menu.length; i++) {
                 menuHtml += getMenuGroup();
                 for (var j = 0; j < menu[i].length; j++) {

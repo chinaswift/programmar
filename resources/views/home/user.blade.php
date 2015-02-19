@@ -10,7 +10,7 @@
 
 @section('content')
 	<div class="container">
-		<aside class="sidebar" set-class-when-at-top="fixed">
+		<aside class="sidebar animated fadeInLeft" set-class-when-at-top="fixed">
 			<a href="/">Recent</a>
 			<a href="/followers">Followers</a>
 			<a href="/drafts">Drafts</a>

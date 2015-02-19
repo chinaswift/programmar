@@ -96,6 +96,9 @@ class UserController extends Controller {
 		foreach ($articles as $article) {
 			$user = User::where('id', '=', $article->{'user_id'})->firstOrFail();
 			$article->userName = $user->{'name'};
+			if($article->title == '') {
+				$article->title = $article->slug;
+			}
 			$article->username = $user->{'username'};
 		}
 		return view('home/user', ['articles' => $articles]);

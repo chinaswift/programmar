@@ -31,6 +31,7 @@
 
 	.navbar-right {
 		padding: 0px;
+		margin: 0px !important;
 	}
 
 	li {
@@ -51,6 +52,13 @@
 			color: $gray-dark;
 			background-color: transparent;
 			border: none;
+		}
+
+		&.brand-primary {
+			color: $brand-primary;
+			&:hover {
+				color: darken($brand-primary, 10%);
+			}
 		}
 	}
 }

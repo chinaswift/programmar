@@ -28,7 +28,7 @@
             $scope.saveDelay = 10 * 1000;
 
             $scope.article.customMenu = [
-                ['bold', 'italic', 'heading','code', 'quote', 'link'],
+                ['bold', 'italic', 'heading','code', 'quote', 'link','remove-format'],
             ];
 
             ArticleApi.query().$promise.then(function(articleData) {
@@ -96,7 +96,7 @@
                 success(function(data, status, headers, config) {
                     $(".deleteLink").text(data.message);
                     $scope.article.name = data.name;
-                    window.location.href = "/";
+                    window.location.href = "/drafts";
                 }).
                 error(function(data, status, headers, config) {
                     $scope.saving = false;

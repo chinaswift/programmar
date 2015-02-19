@@ -13,7 +13,7 @@
 		<div class="navbar-right collapse navbar-collapse" id="siteNav">
 			<ul class="nav navbar-nav">
 				@if(\Auth::check())
-					<li><a href="/dev/{{ Auth::user()->username }}">{{ Auth::user()->name }}</a></li>
+					<li><a href="/dev/{{ Auth::user()->username }}">Me</a></li>
 					<li><a href="/write">Write</a></li>
 					<li><a href="/auth/logout">Logout</a></li>
 				@endif
