@@ -5,6 +5,7 @@
 				popular development articles.';
 	$pageId = 'landing';
 	$headerClass = 'full';
+	$footerInclude = false;
 ?>
 @extends('layouts/body')
 @section('content')
