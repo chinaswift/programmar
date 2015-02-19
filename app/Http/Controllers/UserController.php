@@ -78,7 +78,7 @@ class UserController extends Controller {
 	 */
 	public function followers() {
 		$followerArray = array();
-		$github_data = json_decode($this->curl_get_contents('https://api.github.com/user/followers?access_token=' . Auth::user()->token), true);
+		$github_data = json_decode($this->curl_get_contents('https://api.github.com/user/following?access_token=' . Auth::user()->token), true);
 		foreach ($github_data as $github_user) {
 			array_push($followerArray, $github_user['id']);
 		}
@@ -107,7 +107,7 @@ class UserController extends Controller {
 
 	public function drafts() {
 		$followerArray = array();
-		$github_data = json_decode($this->curl_get_contents('https://api.github.com/user/followers?access_token=' . Auth::user()->token), true);
+		$github_data = json_decode($this->curl_get_contents('https://api.github.com/user/following?access_token=' . Auth::user()->token), true);
 		foreach ($github_data as $github_user) {
 			$check = User::where('id', '=', $github_user['id'])->count();
 			$array = array(
