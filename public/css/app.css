@@ -8412,13 +8412,13 @@ footer.main-footer {
   padding-left: 40px;
   font-size: 20px; }
 #article pre {
-  background-color: #373A40;
+  background-color: #F7F7F7;
   border-radius: 3px;
   padding: 15px;
-  margin: 50px 0px 50px 25px;
+  margin: 25px 0px 25px 25px;
   position: relative;
-  font-size: 15px;
-  color: #fff;
+  font-size: 14px;
+  color: #777;
   border: none;
   line-height: 25px; }
   #article pre .tab {
