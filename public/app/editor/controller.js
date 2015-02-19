@@ -65,7 +65,7 @@
             }, $scope.saveDelay);
 
             $scope.canSaveChange = function() {
-                if(!$scope.canSave) {
+                if(!$scope.canSave && $scope.article.content != '') {
                     $scope.canSave = true;
                 }
             };
