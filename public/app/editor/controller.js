@@ -26,6 +26,7 @@
             $scope.lastSaveTime = false;
             $scope.canSave = false;
             $scope.saveDelay = 10 * 1000;
+            $scope.article.userID = '';
 
             $scope.article.customMenu = [
                 ['bold', 'italic', 'heading','code', 'link'],
@@ -35,20 +36,23 @@
                 var title = '',
                     content = '',
                     name = '',
-                    user = '';
+                    user = '',
+                    userID = '';
 
                 if (articleData) {
                     title = articleData['title'] || '';
                     content = articleData['content'] || '';
                     name = articleData['slug'] || '';
                     user = articleData['userName'] || '';
+                    userID = articleData['user_id'] || '';
                 }
 
                 $scope.article = {
                     'title': angular.copy(title),
                     'content': angular.copy(content),
                     'name': angular.copy(name),
-                    'user': angular.copy(user)
+                    'user': angular.copy(user),
+                    'userID': angular.copy(userID),
                 };
 
                 $scope.loading = false;
@@ -92,7 +96,7 @@
                 var name = $scope.article.name;
                 $(".deleteLink").text('Deleting...');
 
-                $http.post(apiDeleteInteractBackendUri, {'name': name}).
+                $http.post(apiDeleteInteractBackendUri, {'name': name, 'userID': $scope.article.userID}).
                 success(function(data, status, headers, config) {
                     $(".deleteLink").text(data.message);
                     $scope.article.name = data.name;
@@ -118,7 +122,7 @@
                     $(".publishLink").text('Publishing...');
                     $scope.lastSaveTime = currentTime;
 
-                    $http.post(apiPublishInteractBackendUri, {'title': title, 'content': content, 'name': name}).
+                    $http.post(apiPublishInteractBackendUri, {'title': title, 'content': content, 'name': name, 'userID': $scope.article.userID}).
                     success(function(data, status, headers, config) {
                         $scope.callbackMsg = data.message;
                         $(".publishLink").text(data.message);
@@ -149,7 +153,7 @@
                         $(".saveLink").text('Saving...');
                         $scope.lastSaveTime = currentTime;
 
-                        $http.post(apiEditorInteractBackendUri, {'title': title, 'content': content, 'name': name}).
+                        $http.post(apiEditorInteractBackendUri, {'title': title, 'content': content, 'name': name, 'userID': $scope.article.userID}).
                         success(function(data, status, headers, config) {
                             $scope.saving = false;
                             $(".saveLink").text(data.message);

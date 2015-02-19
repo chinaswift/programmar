@@ -27,20 +27,33 @@ class EditorController extends Controller {
 	public function save(Request $request)
 	{
 		$title = $request->input('title');
+		$user_id = $request->input('userID');
 		$content = $request->input('content');
 		$name = $request->input('name', '');
 
+		if($user_id == '') {
+			$user_id = Auth::user()->id;
+		}
+
+		if($user_id != Auth::user()->id) {
+			if(Auth::user()->account_id != 'admin' || Auth::user()->account_id != 'supervisor') {
+				return 'Unauthorized';
+				exit();
+				die();
+			}
+		}
+
 		if(Auth::check()) {
-			$exists = Storage::exists(Auth::user()->id);
+			$exists = Storage::exists($user_id);
 			if(!$exists) {
-				Storage::makeDirectory(Auth::user()->id);
+				Storage::makeDirectory($user_id);
 			}
 
 			//Check file name
 			if($name == '') { $name = time(); }
 			//make file name
 			$file = $name . '.programmar-article';
-			$directory = Auth::user()->id;
+			$directory = $user_id;
 			$location = $directory . '/' . $file;
 
 			if($content != '') {
@@ -68,18 +81,31 @@ class EditorController extends Controller {
 	public function delete(Request $request)
 	{
 		$name = $request->input('name');
+		$user_id = $request->input('userID');
+
+		if($user_id == '') {
+			$user_id = Auth::user()->id;
+		}
+
+		if($user_id != Auth::user()->id) {
+			if(Auth::user()->account_id != 'admin' || Auth::user()->account_id != 'supervisor') {
+				return 'Unauthorized';
+				exit();
+				die();
+			}
+		}
 
 		if(Auth::check()) {
 			//make file name
 			$file = $name . '.programmar-article';
-			$directory = Auth::user()->id;
+			$directory = $user_id;
 			$location = $directory . '/' . $file;
 
 			if(Storage::exists($location)) {
 				Storage::delete($location);
 			}
 
-			$article = Article::where('slug', '=', $name)->firstOrFail();
+			$article = Article::where('slug', '=', $name)->where('user_id', '=', $user_id)->firstOrFail();
 			$article->delete();
 
 			//Send response back
@@ -97,18 +123,31 @@ class EditorController extends Controller {
 		$title = $request->input('title');
 		$content = $request->input('content');
 		$name = $request->input('name', '');
+		$user_id = $request->input('userID');
+
+		if($user_id == '') {
+			$user_id = Auth::user()->id;
+		}
+
+		if($user_id != Auth::user()->id) {
+			if(Auth::user()->account_id != 'admin' || Auth::user()->account_id != 'supervisor') {
+				return 'Unauthorized';
+				exit();
+				die();
+			}
+		}
 
 		if(Auth::check()) {
-			$exists = Storage::exists(Auth::user()->id);
+			$exists = Storage::exists($user_id);
 			if(!$exists) {
-				Storage::makeDirectory(Auth::user()->id);
+				Storage::makeDirectory($user_id);
 			}
 
 			//Check file name
 			if($name == '') { $name = time(); }
 			//make file name
 			$file = $name . '.programmar-article';
-			$directory = Auth::user()->id;
+			$directory = $user_id;
 			$location = $directory . '/' . $file;
 
 			if($content != '') {

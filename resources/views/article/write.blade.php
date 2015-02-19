@@ -18,6 +18,7 @@
 	        <a href="#" class="deleteLink brand-danger" ng-click="deleteArticle();" tabindex="-1">Delete</a>
         </aside>
 
+        <input type="hidden" ng-model="article.user" ng-cloak>
 
 		<input type="text" class="title animated fadeIn" ng-model="article.title" ng-cloak ng-blur="saveDocument()" ng-change="canSaveChange();" placeholder="Title...">
 		<input type="hidden" ng-model="article.name" ng-cloak>

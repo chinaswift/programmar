@@ -48,7 +48,7 @@ class ArticleController extends Controller {
 	 */
 	public function edit($slug) {
 		$data = Article::where('slug', '=', $slug)->firstOrFail();
-		if($data->user_id === Auth::user()->id) {
+		if($data->user_id === Auth::user()->id  || Auth::user()->account_type === 'admin' || Auth::user()->account_type === 'supervisor') {
 			return view('article/write', ['edit' => true, 'slug' => $slug]);
 		}else{
 			return redirect("/article/" . $slug);
