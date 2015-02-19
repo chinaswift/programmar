@@ -3,6 +3,10 @@
 		$headerInclude = true;
 	}
 
+	if(!isset($footerInclude)) {
+		$footerInclude = true;
+	}
+
 	if(!isset($pageId)) {
 		$pageId = '';
 	}
@@ -44,7 +48,9 @@
 
 	@yield('content')
 
-	@include('common/footer')
+	@if($footerInclude)
+		@include('common/footer')
+	@endif
 
 	<!-- Scripts -->
 	<script src="/js/vendor/jquery.min.js"></script>

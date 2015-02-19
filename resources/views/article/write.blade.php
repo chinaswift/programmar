@@ -7,6 +7,7 @@
 	$pageAngular = 'editor';
 	$pageController = 'EditorCtrl';
 	$headerClass = 'faded';
+	$footerInclude = false;
 ?>
 @extends('layouts/body')
 @section('content')

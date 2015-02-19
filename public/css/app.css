@@ -5629,7 +5629,8 @@ html, body, input, select, textarea {
   width: 100%;
   max-width: 700px;
   margin: 0px auto;
-  position: relative; }
+  position: relative;
+  padding: 0px; }
 
 .container-fluid, .navbar.navbar-default.full .container {
   width: 100%;
@@ -5679,7 +5680,7 @@ aside.sidebar {
   border: none; }
   .navbar.navbar-default.faded {
     transition: opacity .3s ease-in-out;
-    opacity: 0.5; }
+    opacity: 0.3; }
     .navbar.navbar-default.faded:hover {
       opacity: 1; }
   .navbar.navbar-default.full .container {
