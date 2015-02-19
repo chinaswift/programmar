@@ -83,11 +83,21 @@ class UserController extends Controller {
 			array_push($followerArray, $github_user['id']);
 		}
 		$articles = Article::whereIn('user_id', $followerArray)->where('published', '=', '1')->take(15)->get();
+		foreach ($articles as $article) {
+			$user = User::where('id', '=', $article->{'user_id'})->firstOrFail();
+			$article->userName = $user->{'name'};
+			$article->username = $user->{'username'};
+		}
 		return view('home/user', ['articles' => $articles]);
 	}
 
 	public function drafts() {
 		$articles = Article::where('user_id', '=', Auth::user()->id)->where('published', '=', '0')->take(15)->get();
+		foreach ($articles as $article) {
+			$user = User::where('id', '=', $article->{'user_id'})->firstOrFail();
+			$article->userName = $user->{'name'};
+			$article->username = $user->{'username'};
+		}
 		return view('home/user', ['articles' => $articles]);
 	}
 

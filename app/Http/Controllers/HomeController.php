@@ -23,7 +23,6 @@ class HomeController extends Controller {
 			$articles = Article::where('published', '=', '1')->take(15)->get();
 			foreach ($articles as $article) {
 				$user = User::where('id', '=', $article->{'user_id'})->firstOrFail();
-				$article->content = strip_tags(Storage::get($article->{'user_id'} . '/' . $article->slug . '.programmar-article'));
 				$article->userName = $user->{'name'};
 				$article->username = $user->{'username'};
 			}
