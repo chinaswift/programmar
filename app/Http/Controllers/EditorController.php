@@ -31,17 +31,14 @@ class EditorController extends Controller {
 		$content = $request->input('content');
 		$name = $request->input('name', '');
 
-		return response()->json(['type' => 'success', 'message' => $user_id, 'name' => $name], 200);
-
 		if($user_id == '') {
 			$user_id = Auth::user()->id;
 		}
 
 		if($user_id != Auth::user()->id) {
 			if(Auth::user()->account_id != 'admin' || Auth::user()->account_id != 'supervisor') {
-				return 'Unauthorized';
+				return response()->json(['type' => 'error', 'message' => 'Unauthorized'], 400);
 				exit();
-				die();
 			}
 		}
 
@@ -63,8 +60,8 @@ class EditorController extends Controller {
 			}
 
 			//save the information if we haven't already
-			$article = Article::firstOrNew(array('slug' => $name, 'user_id' => Auth::user()->id));
-			$article->user_id = Auth::user()->id;
+			$article = Article::firstOrNew(array('slug' => $name, 'user_id' => $user_id));
+			$article->user_id = $user_id;
 			$article->title = $title;
 			$article->slug = $name;
 			$article->published = '0';
@@ -91,9 +88,8 @@ class EditorController extends Controller {
 
 		if($user_id != Auth::user()->id) {
 			if(Auth::user()->account_id != 'admin' || Auth::user()->account_id != 'supervisor') {
-				return 'Unauthorized';
+				return response()->json(['type' => 'error', 'message' => 'Unauthorized'], 400);
 				exit();
-				die();
 			}
 		}
 
@@ -133,9 +129,8 @@ class EditorController extends Controller {
 
 		if($user_id != Auth::user()->id) {
 			if(Auth::user()->account_id != 'admin' || Auth::user()->account_id != 'supervisor') {
-				return 'Unauthorized';
+				return response()->json(['type' => 'error', 'message' => 'Unauthorized'], 400);
 				exit();
-				die();
 			}
 		}
 
@@ -157,8 +152,8 @@ class EditorController extends Controller {
 			}
 
 			//save the information if we haven't already
-			$article = Article::firstOrNew(array('slug' => $name, 'user_id' => Auth::user()->id));
-			$article->user_id = Auth::user()->id;
+			$article = Article::firstOrNew(array('slug' => $name, 'user_id' => $user_id));
+			$article->user_id = $user_id;
 			$article->title = $title;
 			$article->slug = $name;
 			$article->published = '1';
