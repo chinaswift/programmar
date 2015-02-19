@@ -2,7 +2,7 @@
 
 //Main application
 Route::get('/', 'HomeController@index');
-Route::get('followers', 'UserController@followers');
+Route::get('following', 'UserController@followers');
 Route::get('drafts', 'UserController@drafts');
 
 Route::get('dev/{username}', 'UserController@profile');

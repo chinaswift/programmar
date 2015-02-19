@@ -15,7 +15,7 @@
 			<a href="/drafts">Drafts</a>
 
 			<div class="options">
-				<a href="/followers">Followers</a>
+				<a href="/following">Following</a>
 				<div class="clearfix profile-img-cont">
 					@foreach($followers as $follower)
 						@if($follower['user'] > 0)
