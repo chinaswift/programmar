@@ -7,7 +7,7 @@
 	$pageAngular = 'article';
 	$pageController = 'ArticleCtrl';
 
-	if($data->user_id === Auth::user()->id) {
+	if($data->user_id === Auth::user()->id || Auth::user()->account_type === 'admin' || Auth::user()->account_type === 'supervisor') {
 		$additionalButtons = '<li><a href="/edit/'.$data->slug.'" class="brand-primary">Edit</a></li>';
 	}
 ?>
