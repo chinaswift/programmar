@@ -87,6 +87,7 @@ class UserController extends Controller {
 			$user = User::where('id', '=', $article->{'user_id'})->firstOrFail();
 			$article->userName = $user->{'name'};
 			$article->username = $user->{'username'};
+			$article->avatar = $user->{'avatar'};
 		}
 		return view('home/user', ['articles' => $articles]);
 	}
@@ -100,6 +101,7 @@ class UserController extends Controller {
 				$article->title = $article->slug;
 			}
 			$article->username = $user->{'username'};
+			$article->avatar = $user->{'avatar'};
 		}
 		return view('home/user', ['articles' => $articles]);
 	}

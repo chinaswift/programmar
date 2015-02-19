@@ -8455,6 +8455,11 @@ footer.main-footer {
   padding-bottom: 15px;
   margin-bottom: 50px;
   border-bottom: 1px solid #E7E9EC; }
+  #home .item .profile-image {
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin-right: 20px; }
   #home .item .title {
     font-size: 15px;
     color: #373A40; }

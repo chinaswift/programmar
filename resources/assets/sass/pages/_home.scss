@@ -10,6 +10,13 @@
 			@extend .clearfix;
 		}
 
+		.profile-image {
+			width: 50px;
+			height: 50px;
+			float: left;
+			margin-right: 20px;
+		}
+
 		.title {
 			@extend .Mono-Medium;
 			font-size: 15px;
