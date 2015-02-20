@@ -4833,7 +4833,7 @@ button.close {
   font-weight: 400;
   font-style: normal; }
 
-.Mono-Medium, .navbar.navbar-default .navbar-brand, .navbar.navbar-default li a, a, footer.main-footer .f-right a, aside.sidebar a, aside.sidebar a:hover, aside.sidebar a.active, #landing .type-section, #article .title, #article .info, #article .bottom-bar .enjoyed, #article .bottom-bar .more, #article .content h2, #home .item .title, #home .item .info, #profile .user, #profile .info-base, #profile .item .title, #profile .item .info {
+.Mono-Medium, .navbar.navbar-default .navbar-brand, .navbar.navbar-default .beta-box, .navbar.navbar-default li a, a, footer.main-footer .f-right a, aside.sidebar a, aside.sidebar a:hover, aside.sidebar a.active, #landing .type-section, #article .title, #article .info, #article .bottom-bar .enjoyed, #article .bottom-bar .more, #article .content h2, #home .item .title, #home .item .info, #profile .user, #profile .info-base, #profile .item .title, #profile .item .info {
   font-family: "source-code-pro", sans-serif;
   font-weight: 600;
   font-style: normal; }
@@ -5617,7 +5617,7 @@ html, body, input, select, textarea {
   float: right;
   display: block; }
 
-.inline-block, .navbar.navbar-default .navbar-brand, .btn .octicon, .write-area .code-block, footer.main-footer .footer-item, #article .bottom-bar .more, #article .bottom-bar .profile-image, #home .profile-image {
+.inline-block, .navbar.navbar-default .navbar-brand, .navbar.navbar-default .beta-box, .btn .octicon, .write-area .code-block, footer.main-footer .footer-item, #article .bottom-bar .more, #article .bottom-bar .profile-image, #home .profile-image {
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: middle;
@@ -5654,6 +5654,17 @@ html, body, input, select, textarea {
   .navbar.navbar-default .navbar-brand {
     color: #AAAAAC;
     font-size: 14px; }
+  .navbar.navbar-default .beta-box {
+    padding: 1px 9px;
+    background-color: #f7f7f7;
+    color: #acacac;
+    font-size: 9px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    margin-left: 5px; }
+    .navbar.navbar-default .beta-box:hover {
+      color: #acacac;
+      background-color: #f2f2f2; }
   .navbar.navbar-default .navbar-nav {
     margin: 0px !important; }
   .navbar.navbar-default .navbar-right {
@@ -5698,6 +5709,8 @@ a {
   .btn .octicon {
     padding-right: 10px;
     font-size: 17px; }
+  .btn.btn-primary:hover {
+    background-color: #26ab6b; }
 
 .write-area {
   padding-bottom: 30px; }

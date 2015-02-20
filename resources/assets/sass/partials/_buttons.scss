@@ -11,4 +11,10 @@
 		padding-right: 10px;
 		font-size: 17px;
 	}
+
+	&.btn-primary {
+		&:hover {
+			background-color: darken($brand-primary, 3%);
+		}
+	}
 }

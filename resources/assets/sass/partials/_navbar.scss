@@ -25,6 +25,23 @@
 		font-size: 14px;
 	}
 
+	.beta-box {
+		@extend .Mono-Medium;
+		@extend .inline-block;
+		padding: 1px 9px;
+		background-color: #f7f7f7;
+		color: #acacac;
+		font-size: 9px;
+		text-transform: uppercase;
+		border-radius: 2px;
+		margin-left: 5px;
+
+		&:hover {
+			color: #acacac;
+			background-color: darken(#f7f7f7, 2%);
+		}
+	}
+
 	.navbar-nav {
 		margin: 0px !important;
 	}
