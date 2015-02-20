@@ -107,7 +107,7 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
                     var text = (e.originalEvent || e).clipboardData.getData('text/html') || prompt('Paste something..');
                     var $result = $('<div></div>').append($(text));
 
-                    $(this).html($result.html());
+                    document.execCommand('insertHTML', false, $result.html());
 
                     // replace all styles except bold and italic
                     $.each($(this).find("*"), function(idx, val) {

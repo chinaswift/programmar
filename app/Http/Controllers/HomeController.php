@@ -67,13 +67,13 @@ class HomeController extends Controller {
 					}else{
 						$class = '';
 					}
-					$paginationCtrls .= '<a href="/'.$previous.'" class="f-left '.$class.'">Previous</a>';
+					$paginationCtrls .= '<a href="/recent/'.$previous.'" class="f-left '.$class.'">Previous</a>';
 				}
 			}
 
 			if ($page != $last) {
 		        $next = $page + 1;
-		        $paginationCtrls .= '<a href="/'.$next.'" class="f-right brand-primary">Next</a>';
+		        $paginationCtrls .= '<a href="/recent/'.$next.'" class="f-right brand-primary">Next</a>';
 		    }
 
 			$articles = Article::where('published', '=', '1')->orderBy('last_updated', 'asc')->skip($page - 1)->take($resultsPerPage)->get();
