@@ -51,10 +51,10 @@
             $scope.enjoy = function(slug) {
                 $http.post(apiEnjoyInteractBackendUri, {'name': slug}).
                 success(function(data, status, headers, config) {
-                    $scope.article.enjoyed = true;
+                    $scope.article.enjoyed = !$scope.article.enjoyed;
                 }).
                 error(function(data, status, headers, config) {
-                    $scope.article.enjoyed = false;
+                    $scope.article.enjoyed = $scope.article.enjoyed;
                 });
             };
 

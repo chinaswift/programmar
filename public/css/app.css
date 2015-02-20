@@ -5693,7 +5693,8 @@ a {
   border-radius: 3px;
   font-size: 14px;
   letter-spacing: -0.6px;
-  padding: 13px 15px; }
+  padding: 13px 15px;
+  border: none; }
   .btn .octicon {
     padding-right: 10px;
     font-size: 17px; }

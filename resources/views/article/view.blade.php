@@ -31,7 +31,7 @@
 		<div class="bottom-bar">
 			<div class="f-left">
 				<a href="#" ng-click="enjoy('{{$data->slug}}')" class="enjoyed" ng-hide="article.enjoyed">Enjoy?</a>
-				<span class="enjoyed" ng-show="article.enjoyed">Enjoyed</span>
+				<a href="#" ng-click="enjoy('{{$data->slug}}')" class="enjoyed" ng-show="article.enjoyed">Enjoyed</a>
 			</div>
 
 			<div class="f-right">

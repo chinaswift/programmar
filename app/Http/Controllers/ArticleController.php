@@ -65,10 +65,16 @@ class ArticleController extends Controller {
 	public function enjoy(Request $request) {
 		$name = $request->input('name');
 		$user_id = Auth::user()->id;
-		$enjoyed = Enjoy::firstOrNew(array('article_id' => $name, 'user_id' => $user_id));
-		$enjoyed->user_id = $user_id;
-		$enjoyed->article_id = $name;
-		$enjoyed->save();
+		$check = Enjoy::where('article_id', '=', $name)->where('user_id', '=', $user_id)->count();
+		if($check > 0) {
+			$enjoyed = Enjoy::firstOrNew(array('article_id' => $name, 'user_id' => $user_id));
+			$enjoyed->delete();
+		}else{
+			$enjoyed = Enjoy::firstOrNew(array('article_id' => $name, 'user_id' => $user_id));
+			$enjoyed->user_id = $user_id;
+			$enjoyed->article_id = $name;
+			$enjoyed->save();
+		}
 
 		return response()->json(['type' => 'success', 'message' => 'Enjoyed'], 200);
 	}
