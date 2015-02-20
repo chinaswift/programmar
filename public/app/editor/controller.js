@@ -109,31 +109,42 @@
                 });
             };
 
+            function countWords(s){
+                s = s.replace(/(^\s*)|(\s*$)/gi,"");
+                s = s.replace(/[ ]{2,}/gi," ");
+                s = s.replace(/\n /,"\n");
+                return s.split(' ').length;
+            }
+
             $scope.publishArticle = function() {
-                console.log('test');
                 var title = $scope.article.title,
                     content = $scope.article.content,
                     name = $scope.article.name,
                     currentTime = new Date();
 
                 if(title != '' && content != '') {
-                    $scope.publishing = true;
-                    $scope.saving = true;
-                    $(".publishLink").text('Publishing...');
-                    $scope.lastSaveTime = currentTime;
 
-                    $http.post(apiPublishInteractBackendUri, {'title': title, 'content': content, 'name': name, 'userID': $scope.article.userID}).
-                    success(function(data, status, headers, config) {
-                        $scope.callbackMsg = data.message;
-                        $(".publishLink").text(data.message);
-                        $scope.article.name = data.name;
-                        window.location.href = "/article/" + name;
-                    }).
-                    error(function(data, status, headers, config) {
-                        $scope.saving = false;
-                        $scope.publishing = false;
-                        $(".publishLink").text(data.message);
-                    });
+                    if(countWords(content) < 10) {
+                        alert('You need to wirte at least 10 words');
+                    }else{
+                        $scope.publishing = true;
+                        $scope.saving = true;
+                        $(".publishLink").text('Publishing...');
+                        $scope.lastSaveTime = currentTime;
+
+                        $http.post(apiPublishInteractBackendUri, {'title': title, 'content': content, 'name': name, 'userID': $scope.article.userID}).
+                        success(function(data, status, headers, config) {
+                            $scope.callbackMsg = data.message;
+                            $(".publishLink").text(data.message);
+                            $scope.article.name = data.name;
+                            window.location.href = "/article/" + name;
+                        }).
+                        error(function(data, status, headers, config) {
+                            $scope.saving = false;
+                            $scope.publishing = false;
+                            $(".publishLink").text(data.message);
+                        });
+                    }
                 }else{
                     alert('Please insert a title and content before publishing.');
                 }

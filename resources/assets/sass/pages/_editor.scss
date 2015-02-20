@@ -72,13 +72,39 @@
 		}
 	}
 
-	.enjoyed {
-		display: block;
-		color: $brand-primary;
-		@extend .Mono-Medium;
+	.bottom-bar {
+		@extend .clearfix;
 		padding-top: 75px;
-		font-size: 15px;
+
+		.enjoyed {
+			@extend .Mono-Medium;
+			display: block;
+			color: $brand-primary;
+			font-size: 15px;
+		}
+
+		.f-right {
+			text-align: right;
+		}
+
+		.more {
+			@extend .inline-block;
+			@extend .Mono-Medium;
+			width: 25px;
+			height: 25px;
+			line-height: 25px;
+			font-size: 12px;
+			text-align: center;
+			color: $gray-light;
+		}
+
+		.profile-image {
+			@extend .inline-block;
+			width: 25px;
+			height: 25px;
+		}
 	}
+
 
 	.content {
 		@extend .Mono-Regular;

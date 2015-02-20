@@ -28,7 +28,28 @@
 		</div>
 		<div class="content wrtie-area" ng-model="article.content" contenteditable="false"></div>
 
-		<a href="#" ng-click="enjoy('{{$data->slug}}')" class="enjoyed" ng-hide="article.enjoyed">Enjoy?</a>
-		<span class="enjoyed" ng-show="article.enjoyed">Enjoyed</span>
+		<div class="bottom-bar">
+			<div class="f-left">
+				<a href="#" ng-click="enjoy('{{$data->slug}}')" class="enjoyed" ng-hide="article.enjoyed">Enjoy?</a>
+				<span class="enjoyed" ng-show="article.enjoyed">Enjoyed</span>
+			</div>
+
+			<div class="f-right">
+				<?php
+					$enjoy_count = count($enjoys);
+					$more = '';
+					$limit = 5;
+					if($enjoy_count > $limit) {
+						$enjoys = array_slice($enjoys, 0, $limit);
+						$newCount = $enjoy_count - count($enjoys);
+						$more = '<span class="more">+'.$newCount.'</span>';
+					}
+				?>
+				@foreach($enjoys as $enjoy)
+					<a href="/dev/{{$enjoy['user_name']}}"><img src="{{$enjoy['user_avatar']}}" class="profile-image img-circle"></a>
+				@endforeach
+				{!! $more !!}
+			</div>
+		</div>
 	</div>
 @endsection

@@ -80,11 +80,24 @@ class ArticleController extends Controller {
 	 */
 	public function view($slug) {
 		$data = Article::where('slug', '=', $slug)->firstOrFail();
+		$enjoys = Enjoy::where('article_id', '=', $slug)->get();
+		$enjoyArray = array();
 		$user = User::where('id', '=', $data->{'user_id'})->firstOrFail();
 		$data->{'userName'} = $user->{'username'};
-		$data->{'enjoy_count'} = Enjoy::where('article_id', '=', $slug)->count();;
+		$data->{'enjoy_count'} = Enjoy::where('article_id', '=', $slug)->count();
+
+		foreach($enjoys as $enjoyedUser) {
+			$user = User::where('id', '=', $enjoyedUser->{'user_id'})->firstOrFail();
+			$array = array(
+				'user_id' => $user->{'id'},
+				'user_name' => $user->{'username'},
+				'user_avatar' => $user->{'avatar'}
+			);
+			array_push($enjoyArray, $array);
+		}
+
 		if($data->published != '0') {
-			return view('article/view', ['data' => $data, 'slug' => $slug]);
+			return view('article/view', ['data' => $data, 'slug' => $slug, 'enjoys' => $enjoyArray]);
 		}else{
 			if($data->user_id === Auth::user()->id) {
 				return redirect('/edit/' . $slug);
