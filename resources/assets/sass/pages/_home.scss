@@ -32,6 +32,22 @@
 		}
 	}
 
+	.pagination-container {
+		a {
+			color: $gray-light;
+			&:hover {
+				color: $gray-dark;
+			}
+
+			&.brand-primary {
+				color: $brand-primary;
+				&:hover {
+					color: darken($brand-primary, 5%);
+				}
+			}
+		}
+	}
+
 	.item {
 		@extend .clearfix;
 		padding-bottom: 25px;

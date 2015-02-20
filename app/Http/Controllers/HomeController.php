@@ -28,7 +28,7 @@ class HomeController extends Controller {
 	 * This decides what to show the user, depending if authed or not.
 	 * @return void
 	 */
-	public function index() {
+	public function index($page = 1) {
 		if (\Auth::check())
 		{
 
@@ -45,8 +45,38 @@ class HomeController extends Controller {
 				array_push($followerArray, $array);
 			}
 
-			$articles = Article::where('published', '=', '1')->orderBy('last_updated', 'asc')->take(15)->get();
+			$article_count = Article::where('published', '=', '1')->orderBy('last_updated', 'asc')->count();
+			$resultsPerPage = 10;
+			$paginationCtrls = '';
+			$last = ceil($article_count/$resultsPerPage);
+			if($last < 1){
+				$last = 1;
+			}
 
+			if ($page < 1) {
+			    $page = 1;
+			} else if ($page > $last) {
+			    $page = $last;
+			}
+
+			if($last != 1){
+				if($page > 1) {
+					$previous = $page - 1;
+					if($page == $last) {
+						$class = 'brand-primary';
+					}else{
+						$class = '';
+					}
+					$paginationCtrls .= '<a href="/'.$previous.'" class="f-left '.$class.'">Previous</a>';
+				}
+			}
+
+			if ($page != $last) {
+		        $next = $page + 1;
+		        $paginationCtrls .= '<a href="/'.$next.'" class="f-right brand-primary">Next</a>';
+		    }
+
+			$articles = Article::where('published', '=', '1')->orderBy('last_updated', 'asc')->skip($page - 1)->take($resultsPerPage)->get();
 			foreach ($articles as $article) {
 				$user = User::where('id', '=', $article->{'user_id'})->firstOrFail();
 				$article->userName = $user->{'name'};
@@ -54,7 +84,7 @@ class HomeController extends Controller {
 				$article->avatar = $user->{'avatar'};
 				$article->enjoys = Enjoy::where('article_id', '=', $article->{'slug'})->count();
 			}
-			return view('home/user', ['articles' => $articles, 'followers' => $followerArray]);
+			return view('home/user', ['articles' => $articles, 'followers' => $followerArray, 'pagination' => $paginationCtrls]);
 		}
 		else
 		{

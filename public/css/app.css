@@ -8513,6 +8513,14 @@ aside.sidebar {
     opacity: 0.4; }
     #home .profile-image.faded:hover {
       opacity: 1; }
+#home .pagination-container a {
+  color: #AAAAAC; }
+  #home .pagination-container a:hover {
+    color: #606063; }
+  #home .pagination-container a.brand-primary {
+    color: #29B873; }
+    #home .pagination-container a.brand-primary:hover {
+      color: #24a366; }
 #home .item {
   padding-bottom: 25px;
   margin-bottom: 20px;

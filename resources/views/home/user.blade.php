@@ -51,6 +51,11 @@
 			@else
 				There are no articles at this time. <a href="/write">Create one</a>.
 			@endif
+			@if($pagination != '')
+				<div class="pagination-container">
+			 		{!! $pagination !!}
+				</div>
+			@endif
 		</div>
 	</div>
 @endsection

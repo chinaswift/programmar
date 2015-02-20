@@ -1,6 +1,10 @@
 <?php
 
 //Main application
+Route::get('/{page}', 'HomeController@index')->where('slug', '[0-9]+');
+Route::get('following/{page}', 'UserController@followers')->where('slug', '[0-9]+');
+Route::get('drafts/{page}', 'UserController@drafts')->where('slug', '[0-9]+');
+
 Route::get('/', 'HomeController@index');
 Route::get('following', 'UserController@followers');
 Route::get('drafts', 'UserController@drafts');
