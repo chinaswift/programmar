@@ -5711,6 +5711,8 @@ a {
     font-size: 17px; }
   .btn.btn-primary:hover {
     background-color: #26ab6b; }
+  .btn.btn-primary:active {
+    background: #29B873; }
 
 .write-area {
   padding-bottom: 30px; }
