@@ -8,6 +8,7 @@ p {
 }
 
 a {
+	@extend .Mono-Medium;
 	color: $brand-primary;
 	text-decoration: none !important;
 
