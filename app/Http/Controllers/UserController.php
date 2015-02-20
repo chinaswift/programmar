@@ -96,7 +96,7 @@ class UserController extends Controller {
 			array_push($followerArraySecond, $array);
 		}
 
-		$articles = Article::whereIn('user_id', $followerArray)->where('published', '=', '1')->orderBy('id', 'desc')->take(15)->get();
+		$articles = Article::whereIn('user_id', $followerArray)->where('published', '=', '1')->orderBy('last_updated', 'asc')->take(15)->get();
 		foreach ($articles as $article) {
 			$user = User::where('id', '=', $article->{'user_id'})->firstOrFail();
 			$article->userName = $user->{'name'};
@@ -121,7 +121,7 @@ class UserController extends Controller {
 			array_push($followerArray, $array);
 		}
 
-		$articles = Article::where('user_id', '=', Auth::user()->id)->where('published', '=', '0')->orderBy('id', 'desc')->take(15)->get();
+		$articles = Article::where('user_id', '=', Auth::user()->id)->where('published', '=', '0')->orderBy('last_updated', 'asc')->take(15)->get();
 
 		foreach ($articles as $article) {
 			$user = User::where('id', '=', $article->{'user_id'})->firstOrFail();

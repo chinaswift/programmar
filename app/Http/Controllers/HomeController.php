@@ -45,7 +45,7 @@ class HomeController extends Controller {
 				array_push($followerArray, $array);
 			}
 
-			$articles = Article::where('published', '=', '1')->orderBy('id', 'desc')->take(15)->get();
+			$articles = Article::where('published', '=', '1')->orderBy('last_updated', 'asc')->take(15)->get();
 
 			foreach ($articles as $article) {
 				$user = User::where('id', '=', $article->{'user_id'})->firstOrFail();
