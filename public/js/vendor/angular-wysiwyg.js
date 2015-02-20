@@ -6,13 +6,13 @@ Usage: <wysiwyg textarea-id="question" textarea-class="form-control"  textarea-h
         textarea-id             The id to assign to the editable div
         textarea-class          The class(es) to assign to the the editable div
         textarea-height         If not specified in a text-area class then the hight of the editable div (default: 80px)
-        textarea-name           The name attribute of the editable div 
+        textarea-name           The name attribute of the editable div
         textarea-required       HTML/AngularJS required validation
         textarea-menu           Array of Arrays that contain the groups of buttons to show Defualt:Show all button groups
         ng-model                The angular data model
-        enable-bootstrap-title  True/False whether or not to show the button hover title styled with bootstrap  
+        enable-bootstrap-title  True/False whether or not to show the button hover title styled with bootstrap
 
-Requires: 
+Requires:
     Twitter-bootstrap, fontawesome, jquery, angularjs, bootstrap-color-picker (https://github.com/buberdds/angular-bootstrap-colorpicker)
 
 */
@@ -97,7 +97,39 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
                     if (html == '<br>') {
                         html = '';
                     }
+
                     ngModelController.$setViewValue(html);
+                });
+
+                textarea.on('paste', function(e) {
+                    e.preventDefault();
+
+                    var text = (e.originalEvent || e).clipboardData.getData('text/html') || prompt('Paste something..');
+                    var $result = $('<div></div>').append($(text));
+
+                    $(this).html($result.html());
+
+                    // replace all styles except bold and italic
+                    $.each($(this).find("*"), function(idx, val) {
+
+                        var $item = $(val);
+                        if ($item.length > 0){
+                           var saveStyle = {
+                                'font-weight': $item.css('font-weight'),
+                                'font-style': $item.css('font-style')
+                            };
+                            $item.removeAttr('style')
+                                 .removeClass()
+                                 .css(saveStyle);
+                        }
+                    });
+
+                    // remove unnecesary tags (if paste from word)
+                    $(this).children('style').remove();
+                    $(this).children('pre').remove();
+                    $(this).children('code').remove();
+                    $(this).children('meta').remove()
+                    $(this).children('link').remove();
                 });
 
 
@@ -140,40 +172,21 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
 
                 textarea.on('click keyup focus mouseup', function() {
                     $timeout(function() {
-                        scope.isBold = scope.cmdState('bold');
+                        scope.isBold = scope.cmdState('bold') && scope.cmdValue('formatblock') != "h2";
                         scope.isUnderlined = scope.cmdState('underline');
                         scope.isStrikethrough = scope.cmdState('strikethrough');
                         scope.isItalic = scope.cmdState('italic');
                         scope.isSuperscript = itemIs('SUP'); //scope.cmdState('superscript');
-                        scope.isSubscript = itemIs('SUB'); //scope.cmdState('subscript');    
+                        scope.isSubscript = itemIs('SUB'); //scope.cmdState('subscript');
                         scope.isRightJustified = scope.cmdState('justifyright');
                         scope.isLeftJustified = scope.cmdState('justifyleft');
                         scope.isCenterJustified = scope.cmdState('justifycenter');
+                        scope.isHeading = scope.cmdValue('formatblock') == "h2";
                         scope.isPre = scope.cmdValue('formatblock') == "pre";
                         scope.isBlockquote = scope.cmdValue('formatblock') == "blockquote";
 
                         scope.isOrderedList = scope.cmdState('insertorderedlist');
                         scope.isUnorderedList = scope.cmdState('insertunorderedlist');
-
-                        scope.fonts.forEach(function(v, k) { //works but kinda crappy.
-                            if (scope.cmdValue('fontname').indexOf(v) > -1) {
-                                scope.font = v;
-                                return false;
-                            }
-                        });
-
-                        scope.fontSizes.forEach(function(v, k) {
-                            if (scope.cmdValue('fontsize') === v.value) {
-                                scope.fontSize = v;
-                                return false;
-                            }
-                        })
-
-                        scope.hiliteColor = getHiliteColor();
-                        element.find('button.wysiwyg-hiliteColor').css("background-color", scope.hiliteColor);
-
-                        scope.fontColor = scope.cmdValue('forecolor');
-                        element.find('button.wysiwyg-fontcolor').css("color", scope.fontColor);
 
                         scope.isLink = itemIs('A');
                     }, 10);
@@ -254,7 +267,7 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
         }
 
         var getMenuTextArea = function() {
-            return '<div id="{{textareaId}}" ng-attr-style="resize:vertical;height:{{textareaHeight || \'80px\'}}; overflow:auto" contentEditable="true" class="{{textareaClass}} wysiwyg-textarea" rows="{{textareaRows}}" name="{{textareaName}}" required="{{textareaRequired}}" placeholder="{{textareaPlaceholder}}" ng-model="value"></div>';
+            return '<div ng-attr-style="resize:vertical;height:{{textareaHeight || \'80px\'}}; overflow:auto" contentEditable="true" class="content wysiwyg-textarea animated fadeIn" placeholder="Start writing..." ng-model="value"></div>';
         }
 
         var getMenuGroup = function() {
@@ -265,10 +278,13 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
             item = item.toLowerCase().replace(' ', '-');
             switch (item) {
                 case 'bold':
-                    return '<button title="Bold" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'bold\')" ng-class="{ active: isBold}"><i class="fa fa-bold"></i></button>';
+                    return '<a href="#" title="Bold" tabindex="-1" ng-click="format(\'bold\')" ng-class="{ active: isBold}">Bold</a>';
+                    break;
+                case 'heading':
+                    return '<a href="#" title="Heading" tabindex="-1" ng-click="format(\'formatblock\', \'h2\')"  ng-class="{ active: isHeading}">Heading</a>';
                     break;
                 case 'italic':
-                    return '<button title="Italic" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'italic\')" ng-class="{ active: isItalic}"><i class="fa fa-italic"></i></button>';
+                    return '<a href="#" title="Italic" tabindex="-1" ng-click="format(\'italic\')" ng-class="{ active: isItalic}">Italic</a>';
                     break;
                 case 'underline':
                     return '<button title="Underline" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'underline\')" ng-class="{ active: isUnderlined}"><i class="fa fa-underline"></i></button>';
@@ -319,17 +335,17 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
                     return '<button title="Right Justify" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'justifyright\')" ng-class="{ active: isRightJustified}"><i class="fa fa-align-right"></i></button>';
                     break;
                 case 'code':
-                    return '<button title="Code" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'formatblock\', \'pre\')"  ng-class="{ active: isPre}"><i class="fa fa-code"></i></button>';
+                    return '<a href="#" title="Code" tabindex="-1" ng-click="format(\'insertHTML\', \'<pre></pre><br>\')"  ng-class="{ active: isPre}">Code</a>';
                     break;
                 case 'quote':
-                    return '<button title="Quote" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'formatblock\', \'blockquote\')"  ng-class="{ active: isBlockquote}"><i class="fa fa-quote-right"></i></button>';
+                    return '<a href="#" title="Quote" tabindex="-1" ng-click="format(\'insertHTML\', \'<blockquote></blockquote><br>\')"  ng-class="{ active: isBlockquote}">Quote</a>';
                     break;
                 case 'paragragh':
                     return '<button title="Paragragh" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'insertParagraph\')"  ng-class="{ active: isParagraph}">P</button>';
                     break;
                 case 'link':
-                    return '<button ng-show="!isLink" tabindex="-1" title="Link" type="button" unselectable="on" class="btn btn-default" ng-click="createLink()"><i class="fa fa-link" ></i> </button>' +
-                        '<button ng-show="isLink" tabindex="-1" title="Unlink" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'unlink\')"><i class="fa fa-unlink"></i> </button>';
+                    return '<a href="#" ng-show="!isLink" tabindex="-1" title="Link" ng-click="createLink()">Link</button>' +
+                        '<a href="#" ng-hide="!isLink" title="Unlink" ng-click="format(\'unlink\')">Unlink</button>';
                     break;
                 case 'image':
                     return '<button title="Image" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="insertImage()"><i class="fa fa-picture-o"></i> </button>';
@@ -350,8 +366,11 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
                 menu = defaultMenu;
 
             var menuHtml = '<div class="wysiwyg-menu">';
+            var sidebarHtml = '';
+
             menuHtml += getMenuStyles();
 
+            menuHtml += '<aside class="sidebar  animated fadeInLeft" set-class-when-at-top="fixed">';
             for (var i = 0; i < menu.length; i++) {
                 menuHtml += getMenuGroup();
                 for (var j = 0; j < menu[i].length; j++) {
@@ -359,10 +378,14 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
                 }
                 menuHtml += '</div>';
             }
+
+            menuHtml += '</aside>';
             menuHtml += getMenuTextArea();
             menuHtml += '</div>';
             return menuHtml;
         }
+
+
 
         var stringToArray = function(string) {
             var ret;
