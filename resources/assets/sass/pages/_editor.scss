@@ -74,6 +74,7 @@
 
 	.enjoyed {
 		display: block;
+		color: $brand-primary;
 		@extend .Mono-Medium;
 		padding-top: 75px;
 		font-size: 15px;
