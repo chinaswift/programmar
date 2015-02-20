@@ -197,7 +197,7 @@ class UserController extends Controller {
 			$article->username = $user->{'username'};
 			$article->avatar = $user->{'avatar'};
 		}
-		return view('home/user', ['articles' => $articles, 'followers' => $followerArray], 'pagination' => $paginationCtrls);
+		return view('home/user', ['articles' => $articles, 'followers' => $followerArray, 'pagination' => $paginationCtrls]);
 	}
 
 	/**
