@@ -36,7 +36,14 @@
 							<a class="title" href="/article/{{$article->slug}}">{{ $article->title }}</a>
 							<div class="info">
 								<a href="/dev/{{ $article->username }}">{{ $article->userName }}</a>
-								<span>{{ $article->enjoys }} Enjoys</span>
+								<span>
+									{{ $article->enjoys }}
+									@if($article->enjoys > 1)
+										Enjoys
+									@else
+										Enjoy
+									@endif
+								</span>
 							</div>
 						</div>
 					</div>

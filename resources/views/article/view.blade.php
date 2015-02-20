@@ -17,7 +17,14 @@
 		<div class="title" ng-model="article.title">{{$data->title}}</div>
 		<div class="info">
 			<a href="/dev/{{$data->userName}}"><% article.user %></a>
-			<span>{{ $data->enjoy_count }} Enjoys</span>
+			<span>
+				{{ $data->enjoy_count }}
+				@if($data->enjoy_count > 1)
+					Enjoys
+				@else
+					Enjoy
+				@endif
+			</span>
 		</div>
 		<div class="content wrtie-area" ng-model="article.content" contenteditable="false"></div>
 
