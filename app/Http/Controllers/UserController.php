@@ -79,7 +79,7 @@ class UserController extends Controller {
 	 */
 	public function followers($page = 1) {
 		$followerArray = array();
-		$github_data = json_decode($this->curl_get_contents('https://api.github.com/user/following?access_token=' . Auth::user()->token), true);
+		$github_data = json_decode($this->curl_get_contents('https://api.github.com/user/following?per_page=100&access_token=' . Auth::user()->token), true);
 		foreach ($github_data as $github_user) {
 			array_push($followerArray, $github_user['id']);
 		}
@@ -141,7 +141,7 @@ class UserController extends Controller {
 
 	public function drafts($page = 1) {
 		$followerArray = array();
-		$github_data = json_decode($this->curl_get_contents('https://api.github.com/user/following?access_token=' . Auth::user()->token), true);
+		$github_data = json_decode($this->curl_get_contents('https://api.github.com/user/following?per_page=100&access_token=' . Auth::user()->token), true);
 		foreach ($github_data as $github_user) {
 			$check = User::where('id', '=', $github_user['id'])->count();
 			$array = array(
@@ -209,8 +209,8 @@ class UserController extends Controller {
 		$users = User::where('username', '=', $username)->count();
 		if($users > 0) {
 			$user = User::where('username', '=', $username)->firstOrFail();
-			$user->followers = json_decode($this->curl_get_contents('https://api.github.com/users/'.$user->username.'/followers?access_token=' . Auth::user()->token), true);
-			$user->following = json_decode($this->curl_get_contents('https://api.github.com/users/'.$user->username.'/following?access_token=' . Auth::user()->token), true);
+			$user->followers = json_decode($this->curl_get_contents('https://api.github.com/users/'.$user->username.'/followers?per_page=100&access_token=' . Auth::user()->token), true);
+			$user->following = json_decode($this->curl_get_contents('https://api.github.com/users/'.$user->username.'/following?per_page=100&access_token=' . Auth::user()->token), true);
 			$user->followingUser = json_decode($this->curl_get_contents('https://api.github.com/user/following/'.$user->username.'?access_token=' . Auth::user()->token), true);
 
 			if($user->followingUser['message'] == 'Not Found') {
