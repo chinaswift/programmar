@@ -192,21 +192,21 @@ class ApiController extends Controller {
 
 		$countFollow = Follower::where('followed_by', '=', Auth::user()->id)->where('followed', '=', $user_id)->count();
 		if($countFollow > 0) {
-			$user->your_following = true;
+			$user['your_following'] = true;
 		}else{
-			$user->your_following = false;
+			$user['your_following'] = false;
 		}
 
 		if($user_id === Auth::user()->id) {
-			$user->self = true;
+			$user['self'] = true;
 		}else{
-			$user->self = false;
+			$user['self'] = false;
 		}
 
-		$user->followers = $this->collectAPIData('get', '/api/v2/followers/' . $user_id);
-		$user->following = $this->collectAPIData('get', '/api/v2/following/' . $user_id);
+		$user['followers'] = $this->collectAPIData('get', '/api/v2/followers/' . $user_id);
+		$user['following'] = $this->collectAPIData('get', '/api/v2/following/' . $user_id);
 		//$user->articles = $this->collectAPIData('get', '/api/v2/articles/' . $user_id);
-		$user->enjoys = $this->collectAPIData('get', '/api/v2/enjoys/' . $user_id);
+		$user['enjoys'] = $this->collectAPIData('get', '/api/v2/enjoys/' . $user_id);
 		return json_encode($user);
 	}
 }
