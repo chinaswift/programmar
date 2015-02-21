@@ -14,9 +14,14 @@ use Auth;
 class ApiController extends Controller {
 
 	function collectAPIData($type, $url) {
-		$programmarApi = new \Guzzle\Service\Client(env('API_URL'));
-		$response = $programmarApi->$type($url,  ['auth' => ['username', 'password']])->send();
-		return $response->json();
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, env('API_URL') . $url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+		curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
+		$data = curl_exec($ch);
+		curl_close($ch);
+		return json_decode($data, true);
 	}
 
 	//Collect the users followers
@@ -47,7 +52,7 @@ class ApiController extends Controller {
 		}
 
 		$result = $resultArray;
-		return json_encode($result);
+		return $result;
 	}
 
 	//Collect the users following
@@ -78,7 +83,7 @@ class ApiController extends Controller {
 		}
 
 		$result = $resultArray;
-		return json_encode($result);
+		return $result;
 	}
 
 
