@@ -23,11 +23,7 @@ class ApiController extends Controller {
 	public function followers($user_id = 'session') {
 		//If session then make sure we select the session ID
 		if($user_id === 'session') {
-			if(!Auth::check()) {
-				return response()->json(['type' => 'error', 'message' => 'Unauthorized'], 400);
-			}else{
-				$user_id = Auth::user()->id;
-			}
+			$user_id = Auth::user()->id;
 		}
 
 		//Start the logic here
@@ -54,11 +50,7 @@ class ApiController extends Controller {
 	public function following($user_id = 'session') {
 		//If session then make sure we select the session ID
 		if($user_id === 'session') {
-			if(!Auth::check()) {
-				return response()->json(['type' => 'error', 'message' => 'Unauthorized'], 400);
-			}else{
-				$user_id = Auth::user()->id;
-			}
+			$user_id = Auth::user()->id;
 		}
 
 		//Start the logic here
