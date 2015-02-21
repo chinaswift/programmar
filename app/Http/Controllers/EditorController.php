@@ -107,8 +107,7 @@ class EditorController extends Controller {
 			$article = Article::where('slug', '=', $name)->where('user_id', '=', $user_id)->firstOrFail();
 			$article->delete();
 
-			$enjoys = Enjoy::where('article_id', '=', $name)->get();
-			$enjoys->delete();
+			$enjoys = Enjoy::where('article_id', '=', $name)->delete();
 
 			//Send response back
 			return response()->json(['type' => 'success', 'message' => 'Deleted', 'name' => $name], 200);
