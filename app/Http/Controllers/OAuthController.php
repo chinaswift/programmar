@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Socialize;
 use App\User;
+use App\Follower;
 use Auth;
 
 class OAuthController extends Controller {
@@ -61,7 +62,7 @@ class OAuthController extends Controller {
 		foreach ($github_data as $github_user) {
 			$check = User::where('id', '=', $github_user['id'])->count();
 			if($check > 0) {
-				$followUser = Follow::firstOrNew(array('followed_by' => Auth::user()->id, 'followed' => $github_user['id']));
+				$followUser = Follower::firstOrNew(array('followed_by' => Auth::user()->id, 'followed' => $github_user['id']));
 				$followUser->followed_by = Auth::user()->id;
 				$followUser->followed = $github_user['id'];
 				$followUser->save();
