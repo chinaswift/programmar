@@ -31,9 +31,7 @@ class HomeController extends Controller {
 	public function index($page = 1) {
 		if (\Auth::check())
 		{
-
 			$followerArray = array();
-
 			$article_count = Article::where('published', '=', '1')->orderBy('last_updated', 'asc')->count();
 			$resultsPerPage = 10;
 			$paginationCtrls = '';

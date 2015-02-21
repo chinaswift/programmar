@@ -7,6 +7,7 @@ use GrahamCampbell\GitHub\GitHubManager;
 use App\Article;
 use App\User;
 use App\Enjoy;
+use App\Follower;
 use Storage;
 use Auth;
 
@@ -35,24 +36,23 @@ class UserController extends Controller {
 		return view('user/write');
 	}
 
-	public function curl_get_contents($url) {
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-		curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
-		$data = curl_exec($ch);
-		curl_close($ch);
-		return $data;
-	}
-
 	/**
 	 * Followers
 	 * This is how you can view your followers posts.
 	 * @return void
 	 */
-	public function followers($page = 1) {
+	public function following($page = 1) {
 		$followerArray = array();
+		$followers = Follower::where('followed_by', '=', Auth::user()->id)->get();
+		foreach($followers as $follower) {
+			$following_user = User::find($follower->followed);
+			$array = array(
+				'user_id' => $following_user->user_id,
+				'user_avatar' => $following_user->avatar,
+				'user_slug' => $following_user->username
+			);
+			array_push($followerArray, $array);
+		}
 
 		$article_count = Article::whereIn('user_id', $followerArray)->where('published', '=', '1')->count();
 		$resultsPerPage = 10;
@@ -93,7 +93,7 @@ class UserController extends Controller {
 			$article->avatar = $user->{'avatar'};
 			$article->enjoys = Enjoy::where('article_id', '=', $article->{'slug'})->count();
 		}
-		return view('home/user', ['articles' => $articles, 'followers' => $followerArraySecond, 'pagination' => $paginationCtrls]);
+		return view('home/user', ['articles' => $articles, 'followers' => $followerArray, 'pagination' => $paginationCtrls]);
 	}
 
 	public function drafts($page = 1) {

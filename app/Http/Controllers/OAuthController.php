@@ -16,7 +16,7 @@ class OAuthController extends Controller {
 	 * @return void
 	 */
 	public function access($account) {
-		return \Socialize::with($account)->scopes(['user:email'])->redirect();
+		return \Socialize::with($account)->scopes(['user'])->redirect();
 	}
 
 	public function confirm($account) {

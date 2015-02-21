@@ -2,17 +2,13 @@
 
 //Main Routes
 Route::get('/', 'HomeController@index');
-Route::get('following', 'UserController@followers');
-Route::get('drafts', 'UserController@drafts');
 Route::get('dev/{username}', 'UserController@profile');
 Route::get('write', 'ArticleController@write');
 Route::get('edit/{slug}', 'ArticleController@edit')->where('slug', '[0-9]+');
 Route::get('article/{slug}', 'ArticleController@view')->where('slug', '[0-9]+');
-
-//Pagination
-Route::get('recent/{page}', 'HomeController@index')->where('slug', '[0-9]+');
-Route::get('following/{page}', 'UserController@followers')->where('slug', '[0-9]+');
-Route::get('drafts/{page}', 'UserController@drafts')->where('slug', '[0-9]+');
+Route::get('recent/{page?}', 'HomeController@index')->where('page', '[0-9]+');
+Route::get('drafts/{page?}', 'UserController@drafts')->where('page', '[0-9]+');
+Route::get('following/{page?}', 'UserController@following')->where('page', '[0-9]+');
 
 //Api
 Route::get('api/v2/followers/{user_id?}', 'ApiController@followers');

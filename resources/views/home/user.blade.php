@@ -20,11 +20,7 @@
 				<a href="/following">Following</a>
 				<div class="clearfix profile-img-cont">
 					@foreach($followers as $follower)
-						@if($follower['user'] > 0)
-							<a href="/dev/{{ $follower['username'] }}"><img src="{{$follower['avatar']}}" class="img-circle profile-image"></a>
-						@else
-							<!-- <a href="#"><img src="{{$follower['avatar']}}" class="img-circle profile-image faded"></a> -->
-						@endif
+						<a href="/dev/{{ $follower['user_slug'] }}"><img src="{{$follower['user_avatar']}}" class="img-circle profile-image"></a>
 					@endforeach
 				</div>
 			</div>
