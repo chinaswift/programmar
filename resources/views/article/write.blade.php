@@ -12,9 +12,11 @@
 @extends('layouts/body')
 @section('content')
 	<div class="container push" ng-hide="loading">
-		<aside class="sidebar hack animated fadeInLeft" set-class-when-at-top-hack="fixed">
-			<a href="#" ng-show="canSave" class="saveLink" ng-click="saveDocument();" tabindex="-1">Save</a>
-	        <a href="#" class="publishLink brand-primary" ng-click="publishArticle();" tabindex="-1">Publish</a>
+		<aside class="sidebar hack animated fadeInLeft">
+			<a href="#" class="saveLink" ng-click="saveDocument();" tabindex="-1">Save</a>
+	        <div class="btn-container push">
+	        	<a href="#" class="publishLink btn brand-primary" ng-click="publishArticle();" tabindex="-1">Publish</a>
+	        </div>
 	        <a href="#" class="deleteLink brand-danger" ng-click="deleteArticle();" tabindex="-1">Delete</a>
         </aside>
 

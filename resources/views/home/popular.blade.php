@@ -12,19 +12,7 @@
 
 @section('content')
 	<div class="container">
-		<aside class="sidebar animated fadeInLeft" set-class-when-at-top="fixed">
-			<a href="/">Recent</a>
-			<a href="/drafts">Drafts</a>
-
-			<div class="options">
-				<a href="/following">Following</a>
-				<div class="clearfix profile-img-cont">
-					@foreach($followers as $follower)
-						<a href="/dev/{{ $follower['user_slug'] }}"><img src="{{$follower['user_avatar']}}" class="img-circle profile-image"></a>
-					@endforeach
-				</div>
-			</div>
-		</aside>
+		@include('home/includes/sidebar')
 
 		<div class="article-container">
 			@if(count($articles) > 0)
@@ -45,7 +33,7 @@
 					</div>
 				@endforeach
 			@else
-				There are no articles at this time. <a href="/write">Create one</a>.
+				There is no new content in the last 24 hours. <a href="/write">Write</a> to become popular.
 			@endif
 			@if($pagination != '')
 				<div class="pagination-container">

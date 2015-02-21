@@ -5617,7 +5617,7 @@ html, body, input, select, textarea {
   float: right;
   display: block; }
 
-.inline-block, .navbar.navbar-default .navbar-brand, .navbar.navbar-default .navbar-brand .logo, .navbar.navbar-default .beta-box, .navbar.navbar-default li, .write-area .code-block, footer.main-footer .footer-item, #article .right-container .user .profile-image, #article .right-container .user .link, #article .bottom-bar .more, #article .bottom-bar .profile-image, #home .profile-image, #profile .right-container .user .profile-image, #profile .right-container .user .link {
+.inline-block, .navbar.navbar-default .navbar-brand, .navbar.navbar-default .navbar-brand .logo, .navbar.navbar-default .beta-box, .navbar.navbar-default li, .write-area .code-block, footer.main-footer .footer-item, aside.sidebar a.btn, #article .right-container .user .profile-image, #article .right-container .user .link, #article .bottom-bar .more, #article .bottom-bar .profile-image, #home .profile-image, #profile .right-container .user .profile-image, #profile .right-container .user .link {
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: middle;
@@ -8485,13 +8485,13 @@ aside.sidebar {
   left: auto;
   margin-left: -275px; }
   aside.sidebar.fixed {
-    position: fixed;
+    position: fixed !important;
     top: 75px; }
   aside.sidebar.hack {
-    top: 200px; }
+    top: 180px; }
     aside.sidebar.hack.fixed {
-      position: fixed;
-      top: 275px; }
+      position: fixed !important;
+      top: 255px; }
   aside.sidebar .options {
     margin-top: 35px; }
   aside.sidebar a {
@@ -8513,6 +8513,22 @@ aside.sidebar {
       color: #eba5a3; }
       aside.sidebar a.brand-danger:hover {
         color: #d9534f; }
+    aside.sidebar a.btn {
+      width: 100px;
+      color: #fff !important;
+      padding: 6px 0px;
+      font-size: 14px;
+      text-align: center;
+      box-sizing: border-box; }
+      aside.sidebar a.btn.brand-primary {
+        background: #29B873; }
+        aside.sidebar a.btn.brand-primary:hover {
+          background: #26ab6b; }
+  aside.sidebar .btn-container {
+    margin-bottom: 20px;
+    text-align: right; }
+    aside.sidebar .btn-container.push {
+      margin-top: 20px; }
 
 .top-loader {
   position: fixed;

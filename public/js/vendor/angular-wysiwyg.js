@@ -370,7 +370,7 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
 
             menuHtml += getMenuStyles();
 
-            menuHtml += '<aside class="sidebar  animated fadeInLeft" set-class-when-at-top="fixed">';
+            menuHtml += '<aside class="sidebar  animated fadeInLeft">';
             for (var i = 0; i < menu.length; i++) {
                 menuHtml += getMenuGroup();
                 for (var j = 0; j < menu[i].length; j++) {

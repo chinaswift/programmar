@@ -1,12 +1,13 @@
 <?php
 
 //Main Routes
-Route::get('/', 'HomeController@index');
+Route::get('/', 'UserController@all');
 Route::get('dev/{username}', 'UserController@profile');
 Route::get('write', 'ArticleController@write');
 Route::get('edit/{slug}', 'ArticleController@edit')->where('slug', '[0-9]+');
 Route::get('article/{slug}', 'ArticleController@view')->where('slug', '[0-9]+');
-Route::get('recent/{page?}', 'HomeController@index')->where('page', '[0-9]+');
+Route::get('popular/{page?}', 'HomeController@index')->where('page', '[0-9]+');
+Route::get('all/{page?}', 'UserController@all')->where('page', '[0-9]+');
 Route::get('drafts/{page?}', 'UserController@drafts')->where('page', '[0-9]+');
 Route::get('following/{page?}', 'UserController@following')->where('page', '[0-9]+');
 

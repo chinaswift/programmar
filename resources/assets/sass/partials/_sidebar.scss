@@ -7,15 +7,15 @@ aside.sidebar {
 	margin-left: -275px;
 
 	&.fixed {
-		position: fixed;
+		position: fixed !important;
 		top: 75px;
 	}
 
 	&.hack {
-		top: 200px;
+		top: 180px;
 		&.fixed {
-			position: fixed;
-			top: 275px;
+			position: fixed !important;
+			top: 255px;
 		}
 	}
 
@@ -50,6 +50,32 @@ aside.sidebar {
 			&:hover {
 				color: $brand-danger;
 			}
+		}
+
+		&.btn {
+			@extend .inline-block;
+			width: 100px;
+			color: #fff !important;
+			padding: 6px 0px;
+			font-size: 14px;
+			text-align: center;
+			box-sizing:border-box;
+
+			&.brand-primary {
+				background: $brand-primary;
+				&:hover {
+					background: darken($brand-primary, 3%);
+				}
+			}
+		}
+	}
+
+	.btn-container {
+		margin-bottom: 20px;
+		text-align: right;
+
+		&.push {
+			margin-top: 20px;
 		}
 	}
 }
