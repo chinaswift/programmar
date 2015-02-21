@@ -13,15 +13,17 @@ use Auth;
 
 class ApiController extends Controller {
 
+	public function __construct()
+	{
+		$this->afterFilter(function(){
+            header('Access-Control-Allow-Origin: *');
+        });
+	}
+
 	function collectAPIData($type, $url) {
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, env('API_URL') . $url);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-		curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
-		$data = curl_exec($ch);
-		curl_close($ch);
-		return json_decode($data, true);
+		$programmarApi = new \Guzzle\Service\Client(env('API_URL'));
+		$response = $programmarApi->$type($url)->send();
+		return $response->json();
 	}
 
 	//Collect the users followers
@@ -189,7 +191,7 @@ class ApiController extends Controller {
 
 		//Check if the user exists
 		$user = User::where('username', '=', $slug)->first();
-		$user_id = $user['id'];
+		$user_id = $user->id;
 
 		if(empty($user)) {
 			return response()->json(['type' => 'error', 'message' => 'User was not found'], 400);
@@ -197,21 +199,21 @@ class ApiController extends Controller {
 
 		$countFollow = Follower::where('followed_by', '=', Auth::user()->id)->where('followed', '=', $user_id)->count();
 		if($countFollow > 0) {
-			$user['your_following'] = true;
+			$user->your_following = true;
 		}else{
-			$user['your_following'] = false;
+			$user->your_following = false;
 		}
 
 		if($user_id === Auth::user()->id) {
-			$user['self'] = true;
+			$user->self = true;
 		}else{
-			$user['self'] = false;
+			$user->self = false;
 		}
 
-		$user['followers'] = $this->collectAPIData('get', '/api/v2/followers/' . $user_id);
-		$user['following'] = $this->collectAPIData('get', '/api/v2/following/' . $user_id);
+		$user->followers = $this->collectAPIData('get', '/api/v2/followers/' . $user_id);
+		$user->following = $this->collectAPIData('get', '/api/v2/following/' . $user_id);
 		//$user->articles = $this->collectAPIData('get', '/api/v2/articles/' . $user_id);
-		$user['enjoys'] = $this->collectAPIData('get', '/api/v2/enjoys/' . $user_id);
+		$user->enjoys = $this->collectAPIData('get', '/api/v2/enjoys/' . $user_id);
 		return json_encode($user);
 	}
 }
