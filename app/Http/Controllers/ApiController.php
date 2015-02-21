@@ -20,12 +20,7 @@ class ApiController extends Controller {
 	}
 
 	//Collect the users followers
-	public function followers($user_id = 'session') {
-		//If session then make sure we select the session ID
-		if($user_id === 'session') {
-			$user_id = Auth::user()->id;
-		}
-
+	public function followers($user_id) {
 		//Start the logic here
 		$result = Follower::where('followed', '=', $user_id)->get();
 		$resultArray = array();
@@ -47,12 +42,7 @@ class ApiController extends Controller {
 	}
 
 	//Collect the users following
-	public function following($user_id = 'session') {
-		//If session then make sure we select the session ID
-		if($user_id === 'session') {
-			$user_id = Auth::user()->id;
-		}
-
+	public function following($user_id) {
 		//Start the logic here
 		$result = Follower::where('followed_by', '=', $user_id)->get();
 		$resultArray = array();
@@ -195,7 +185,9 @@ class ApiController extends Controller {
 			$user->self = false;
 		}
 
-
+		$user->followers = $this->collectAPIData('get', '/api/v2/followers/' . $user_id);
+		$user->following = $this->collectAPIData('get', '/api/v2/following/' . $user_id);
+		$user->enjoys = $this->collectAPIData('get', '/api/v2/enjoys/' . $user_id);
 		return json_encode($user);
 	}
 }
