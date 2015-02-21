@@ -143,8 +143,10 @@ class ApiController extends Controller {
 	//Function for collecting articles
 	public function article($article_id) {
 		$article = Article::where('slug','=', $article_id)->first();
-		$user = User::where('id', '=', $article->user_id)->first();
-		$article->userName = $user->name;
+		if(!empty($article)) {
+			$user = User::where('id', '=', $article->user_id)->first();
+			$article->userName = $user->name;
+		}
 		return json_encode($article);
 	}
 
