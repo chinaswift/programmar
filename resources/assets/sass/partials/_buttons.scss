@@ -14,4 +14,17 @@
 			background: $brand-primary;
 		}
 	}
+
+	&.btn-gray {
+		background-color: #ccc;
+
+		&:hover {
+			background-color: darken(#ccc, 3%);
+		}
+
+		&:active {
+			background-color: #ccc;
+		}
+
+	}
 }

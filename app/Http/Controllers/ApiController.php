@@ -196,15 +196,16 @@ class ApiController extends Controller {
 		$enjoys = Enjoy::where('user_id','=', $user_id)->get();
 		foreach($enjoys as $article) {
 			$article_id = $article->article_id;
-
-			$enjoyArray = array();
-			$article_enjoys = Enjoy::where('article_id', '=', $article_id)->get();
-			foreach($article_enjoys as $enjoy) {
-				array_push($enjoyArray, $enjoy->user_id);
+			$check = Article::find($article_id);
+			if(!empty($check)) {
+				$enjoyArray = array();
+				$article_enjoys = Enjoy::where('article_id', '=', $article_id)->get();
+				foreach($article_enjoys as $enjoy) {
+					array_push($enjoyArray, $enjoy->user_id);
+				}
+				$article->enjoys = $enjoyArray;
+				$article->article_data = json_decode($this->article($article_id), true);
 			}
-
-			$article->enjoys = $enjoyArray;
-			$article->article_data = json_decode($this->article($article_id), true);
 		}
 		return json_encode($enjoys);
 	}
