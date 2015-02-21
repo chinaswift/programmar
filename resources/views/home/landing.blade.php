@@ -11,7 +11,7 @@
 @section('content')
 	<div class="container-fluid">
 		<div class="type-section"></div>
-		<a href="/oauth/github" class="btn btn-primary"><span class="octicon octicon-mark-github"></span>Access with Github</a>
+		<a href="/oauth/github" class="btn btn-primary">Access with Github</a>
 	</div>
 @endsection
 
