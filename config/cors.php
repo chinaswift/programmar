@@ -17,12 +17,12 @@ return array(
      */
     'defaults' => array(
         'supportsCredentials' => false,
-        'allowedOrigins' => array('*'),
-        'allowedHeaders' => array('*'),
-        'allowedMethods' => array('*'),
-        'exposedHeaders' => array('*'),
-        'maxAge' => 3600,
-        'hosts' => array('staging.*'),
+        'allowedOrigins' => array(),
+        'allowedHeaders' => array(),
+        'allowedMethods' => array(),
+        'exposedHeaders' => array(),
+        'maxAge' => 0,
+        'hosts' => array(),
     ),
 
     'paths' => array(
@@ -34,8 +34,8 @@ return array(
         ),
         '*' => array(
             'allowedOrigins' => array('*'),
-            'allowedHeaders' => array('Content-Type'),
-            'allowedMethods' => array('POST', 'PUT', 'GET', 'DELETE'),
+            'allowedHeaders' => array('*'),
+            'allowedMethods' => array('*'),
             'maxAge' => 3600,
             'hosts' => array('api.*', 'staging.*'),
         ),
