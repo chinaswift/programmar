@@ -2,15 +2,12 @@
 
     'use strict';
 
-    var apiEndPoint = appGlobals.api.rootRoute + '/article/:articleId';
+    var apiEndPoint = appGlobals.api.rootRoute + '/articles/:user_id';
 
-    com.programmar.core.factory('ArticleApi', ['$resource','$location', function ($resource, $location) {
+    com.programmar.core.factory('ArticleApi', ['$resource', function ($resource) {
 
-        var articleCode = $location.absUrl();
-        articleCode = articleCode.substr(articleCode.lastIndexOf('/') + 1);
+         var paramDefaults = {
 
-        var paramDefaults = {
-            articleId : articleCode
         };
 
         var actions = {

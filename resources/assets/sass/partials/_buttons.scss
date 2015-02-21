@@ -1,16 +1,9 @@
 .btn {
-	@extend .Mono-Bold;
+	@extend .Text-Bold;
 	border-radius: 3px;
 	font-size: 14px;
-	letter-spacing: -0.6px;
-	padding: 13px 15px;
+	padding: 11px 30px;
 	border: none;
-
-	.octicon {
-		@extend .inline-block;
-		padding-right: 10px;
-		font-size: 17px;
-	}
 
 	&.btn-primary {
 		&:hover {

@@ -1,6 +1,10 @@
 .navbar.navbar-default {
-	margin: $navbar-margin auto 50px auto;
+	margin: 75px auto 50px auto;
 	border: none;
+
+	@media (max-width: $screen-sm-min) {
+		margin: 30px auto 70px auto;
+	}
 
 	&.faded {
 		transition: opacity .3s ease-in-out;
@@ -9,6 +13,11 @@
 		&:hover {
 			opacity: 1;
 		}
+	}
+
+	.navbar-header {
+		margin-left: 0px !important;
+		margin-right: 0px !important;
 	}
 
 	&.full {
@@ -23,6 +32,17 @@
 		@extend .inline-block;
 		color: $gray-light;
 		font-size: 14px;
+		text-align: left !important;
+		padding: 0px;
+
+		.logo {
+			@extend .inline-block;
+			text-indent: -9999em;
+			width: 15px;
+			height: 12px;
+			@include background-img("/img/logo.svg", 15px 12px);
+		}
+
 	}
 
 	.beta-box {
@@ -34,7 +54,7 @@
 		font-size: 9px;
 		text-transform: uppercase;
 		border-radius: 2px;
-		margin-left: 5px;
+		margin-left: 0px;
 
 		&:hover {
 			color: #acacac;
@@ -49,18 +69,29 @@
 	.navbar-right {
 		padding: 0px;
 		margin: 0px !important;
+
+		@media (max-width: $screen-sm-min) {
+			float: right;
+			margin-top: -31px !important;
+		}
 	}
 
 	li {
 		margin-right: 46px;
+		margin-top: 4px;
 		&:last-child {
 			margin-right: 0px;
+			margin-left: 0px;
+		}
+
+		@media (max-width: $screen-sm-min) {
+			@extend .inline-block;
 		}
 	}
 
 	li a {
-		@extend .Mono-Medium;
-		color: $gray-light;
+		@extend .Text-Bold;
+		color: $gray;
 		font-size: 14px;
 		padding: 0px;
 		margin-bottom: 4px;

@@ -17,7 +17,6 @@ profileGlobals.controller = {
     angular.module(profileGlobals.app.name,
         [
             'com.programmar.core',
-            'Services'
         ]
     );
 

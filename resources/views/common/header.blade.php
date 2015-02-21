@@ -1,16 +1,10 @@
 <nav class="navbar navbar-default {{ $headerClass }}">
 	<div class="container">
 		<div class="navbar-header">
-			<li class="navbar-brand"><a href="/">Programm^r</a> <a href="https://github.com/Layerful/programmar" target="_blank" class="beta-box">Beta</a></li>
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#siteNav">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
+			<li class="navbar-brand"><a href="/" class="logo">Programm^r</a> <a href="https://github.com/Layerful/programmar" target="_blank" class="beta-box">v1.0</a></li>
 		</div>
 
-		<div class="navbar-right collapse navbar-collapse" id="siteNav">
+		<div class="navbar-right">
 			<ul class="nav navbar-nav">
 				@if(\Auth::check())
 					<li><a href="/dev/{{ Auth::user()->username }}">Me</a></li>

@@ -2,13 +2,14 @@
 
     'use strict';
 
-    var apiEndPoint = appGlobals.api.rootRoute + '/user/:userId.json';
+    var apiEndPoint = appGlobals.api.rootRoute + '/user/:slug';
 
-    hr.snap.core.factory('UserApi', ['$resource', function ($resource) {
+    com.programmar.core.factory('UserApi', ['$resource', function ($resource) {
 
         var paramDefaults = {
-            userId : 'me'
+
         };
+
         var actions = {
             query : {
                 method : 'GET',

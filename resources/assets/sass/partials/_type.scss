@@ -1,5 +1,5 @@
 h1 {
-	@extend .Text-Medium;
+	@extend .Text-Bold;
 	line-height: 34px;
 }
 
@@ -8,11 +8,75 @@ p {
 }
 
 a {
-	@extend .Mono-Medium;
+	@extend .Text-Regular;
 	color: $brand-primary;
 	text-decoration: none !important;
 
 	&:hover {
 		color: darken($brand-primary, 10%);
+	}
+}
+
+.common-container {
+
+	.profile-image {
+		width: 50px;
+		height: 50px;
+		float: left;
+		margin-right: 20px;
+
+		@media (max-width: $screen-sm-min) {
+			display: none;
+		}
+	}
+
+	.f-left {
+		@media (max-width: $screen-sm-min) {
+			float: none;
+		}
+	}
+
+	.f-right {
+		@media (max-width: $screen-sm-min) {
+			display: block;
+			float: none;
+			margin-top: 20px;
+		}
+	}
+
+	.title {
+		@extend .Text-Bold;
+		font-size: 15px;
+		color: $gray-darker;
+		margin: 0 0 0px 0;
+		outline: none;
+		border: none;
+	}
+
+	.info {
+		@extend .Text-Regular;
+		margin-top: 3px;
+		color: $gray;
+		font-size: 14px;
+
+		a, span {
+			color: $gray;
+			margin-right: 20px;
+		}
+
+		a:hover {
+			color: darken($gray, 10%);
+		}
+	}
+
+	&.list {
+		margin-top: 25px;
+		padding-bottom: 25px;
+		border-bottom: 1px solid $gray-lighter;
+
+		&:last-child {
+			padding-bottom: 0px;
+			border: none;
+		}
 	}
 }

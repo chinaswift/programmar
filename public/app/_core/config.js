@@ -8,7 +8,7 @@ appGlobals = {
         name : 'com.programmar.core'
     },
     api : {
-        rootRoute : '/api/angular'
+        rootRoute : '/api/v2'
     },
     controller: {
         name: 'ProgrammarCoreCtrl'

@@ -1,84 +1,47 @@
 #profile {
 
-	.profile-image {
-		width: 50px;
-		height: 50px;
-		float: left;
-		margin-right: 20px;
-	}
-
-	.user {
-		@extend .Mono-Medium;
-		font-size: 15px;
-		color: $gray-darker;
-		margin: 0 0 0px 0;
-		outline: none;
-		border: none;
-
-		.btn {
-			float: right;
+	.top-section {
+		padding-bottom: 44px;
+		@media (max-width: $screen-sm-min) {
+			padding-bottom: 60px;
 		}
 	}
 
 	.article-listing {
-		margin-top: 25px;
-
-		.item:last-child {
-			border-bottom: none !important;
-			padding-bottom: 0px;
-			margin-bottom: 0px;
-		}
+		border-top: 1px solid $gray-lighter;
 	}
 
-	.info-base {
-		@extend .Mono-Medium;
-		margin-top: 10px;
-		color: $gray-light;
-		font-size: 14px;
-		padding-bottom: 44px;
-		border-bottom: 1px solid $gray-lighter;
+	.right-container {
+		position: absolute;
+		left: -300px;
+		width: 250px;
+		top: 0px;
 
-		a, span {
-			color: $gray-light;
-			margin-right: 35px;
-		}
-
-		a:hover {
-			color: darken($gray-light, 10%);
-		}
-	}
-
-	.item {
-		@extend .clearfix;
-		padding-bottom: 25px;
-		margin-bottom: 25px;
-		border-bottom: 1px solid $gray-lighter;
-
-		.base {
-			@extend .clearfix;
-		}
-
-		.title {
-			@extend .Mono-Medium;
-			font-size: 15px;
-			color: $gray-darker;
-		}
-
-		.info {
-			@extend .Mono-Medium;
+		.user {
 			display: block;
-			color: $gray-light;
-			font-size: 14px;
-			margin-top: 10px;
+			height: 30px;
+			margin-bottom: 15px;
 
-			a, span {
-				color: $gray-light;
-				margin-right: 35px;
+			.profile-image {
+				@extend .inline-block;
+				vertical-align: middle;
+				width: 30px;
+				height: 30px;
 			}
 
-			a:hover {
-				color: darken($gray-light, 10%);
+			.link {
+				@extend .inline-block;
+				vertical-align: middle;
+				color: $gray-darker;
+				font-size: 15px;
+				height: 30px;
+				line-height: 30px;
+
+				&:hover {
+					color: #000;
+				}
 			}
 		}
 	}
+
 }
