@@ -30,15 +30,18 @@ class HomeController extends Controller {
 			$followerArray = array();
 			$followers = Follower::where('followed_by', '=', Auth::user()->id)->get();
 
-			foreach($followers as $follower) {
-				$following_user = User::find($follower->followed);
-				$array = array(
-					'user_id' => $following_user->user_id,
-					'user_avatar' => $following_user->avatar,
-					'user_slug' => $following_user->username
-				);
-				array_push($followerArray, $array);
+			if(!empty($followers)) {
+				foreach($followers as $follower) {
+					$following_user = User::find($follower->followed);
+					$array = array(
+						'user_id' => $following_user->user_id,
+						'user_avatar' => $following_user->avatar,
+						'user_slug' => $following_user->username
+					);
+					array_push($followerArray, $array);
+				}
 			}
+
 
 
 			$article_count = Article::where('published', '=', '1')->orderBy('last_updated', 'desc')->count();
