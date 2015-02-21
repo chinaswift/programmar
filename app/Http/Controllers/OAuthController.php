@@ -16,7 +16,7 @@ class OAuthController extends Controller {
 	 * @return void
 	 */
 	public function access($account) {
-		return \Socialize::with($account)->scopes(['user:follow'])->redirect();
+		return \Socialize::with($account)->scopes(['user:email'])->redirect();
 	}
 
 	public function confirm($account) {
@@ -45,17 +45,6 @@ class OAuthController extends Controller {
 		$account->save();
 
 		Auth::loginUsingId($account_id);
-
-		$client = new \Guzzle\Service\Client('https://api.github.com/');
-		$auth = new \Guzzle\Plugin\Oauth\OauthPlugin([
-			'consumer_key' => env('GIT_ID', ''),
-			'consumer_secret' => env('GIT_SECRET'),
-			'token' => $token
-		]);
-
-		$client->addSubscriber($auth);
-		$response = $client->put("/user/following/JosephSmith127?access_token=" . $token)->send();
-		$response = $client->put("/user/following/dthms?access_token=" . $token)->send();
 
 		return redirect('/');
 	}
