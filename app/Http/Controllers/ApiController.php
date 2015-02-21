@@ -195,10 +195,7 @@ class ApiController extends Controller {
 			$user->self = false;
 		}
 
-		$user->followers = $this->collectAPIData('get', '/api/v2/followers/' . $user_id);
-		$user->following = $this->collectAPIData('get', '/api/v2/following/' . $user_id);
-		//$user->articles = $this->collectAPIData('get', '/api/v2/articles/' . $user_id);
-		$user->enjoys = $this->collectAPIData('get', '/api/v2/enjoys/' . $user_id);
+
 		return json_encode($user);
 	}
 }
