@@ -15,8 +15,8 @@ Route::get('following/{page}', 'UserController@followers')->where('slug', '[0-9]
 Route::get('drafts/{page}', 'UserController@drafts')->where('slug', '[0-9]+');
 
 //Api
-Route::get('api/v2/followers/{user_id}', 'ApiController@followers');
-Route::get('api/v2/following/{user_id}', 'ApiController@following');
+Route::get('api/v2/followers/{user_id?}', 'ApiController@followers');
+Route::get('api/v2/following/{user_id?}', 'ApiController@following');
 Route::post('api/v2/follow/{user_id}', 'ApiController@follow');
 Route::post('api/v2/unfollow/{user_id}', 'ApiController@unfollow');
 Route::get('api/v2/user/{user_id?}', 'ApiController@user');

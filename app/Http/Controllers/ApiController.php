@@ -13,24 +13,23 @@ use Auth;
 
 class ApiController extends Controller {
 
-	public function curl_get_contents($url) {
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-		curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
-		$data = curl_exec($ch);
-		curl_close($ch);
-		return $data;
-	}
-
 	function collectAPIData($type, $url) {
-		$data = $this->curl_get_contents(env('API_URL') . $url);
-		return json_decode($data, true);
+		$programmarApi = new \Guzzle\Service\Client(env('API_URL'));
+		$response = $programmarApi->$type($url)->send();
+		return $response->json();
 	}
 
 	//Collect the users followers
-	public function followers($user_id) {
+	public function followers($user_id = 'session') {
+		//If session then make sure we select the session ID
+		if($user_id === 'session') {
+			if(!Auth::check()) {
+				return response()->json(['type' => 'error', 'message' => 'Unauthorized'], 400);
+			}else{
+				$user_id = Auth::user()->id;
+			}
+		}
+
 		//Start the logic here
 		$result = Follower::where('followed', '=', $user_id)->get();
 		$resultArray = array();
@@ -52,7 +51,16 @@ class ApiController extends Controller {
 	}
 
 	//Collect the users following
-	public function following($user_id) {
+	public function following($user_id = 'session') {
+		//If session then make sure we select the session ID
+		if($user_id === 'session') {
+			if(!Auth::check()) {
+				return response()->json(['type' => 'error', 'message' => 'Unauthorized'], 400);
+			}else{
+				$user_id = Auth::user()->id;
+			}
+		}
+
 		//Start the logic here
 		$result = Follower::where('followed_by', '=', $user_id)->get();
 		$resultArray = array();
@@ -197,6 +205,7 @@ class ApiController extends Controller {
 
 		$user->followers = $this->collectAPIData('get', '/api/v2/followers/' . $user_id);
 		$user->following = $this->collectAPIData('get', '/api/v2/following/' . $user_id);
+		//$user->articles = $this->collectAPIData('get', '/api/v2/articles/' . $user_id);
 		$user->enjoys = $this->collectAPIData('get', '/api/v2/enjoys/' . $user_id);
 		return json_encode($user);
 	}
