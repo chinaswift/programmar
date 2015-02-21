@@ -145,7 +145,7 @@ class ApiController extends Controller {
 		$article = Article::where('slug','=', $article_id)->first();
 		$user = User::where('id', '=', $article->user_id)->first();
 		$article->userName = $user->name;
-		$article->slug = $user->username;
+		$article->user_slug = $user->username;
 		return json_encode($article);
 	}
 

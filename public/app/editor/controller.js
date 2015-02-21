@@ -95,7 +95,12 @@
             };
 
             $scope.deleteArticle = function() {
-                var name = $scope.article.name;
+                if($scope.slug) {
+                    var name = $scope.slug;
+                }else{
+                    var name = $scope.article.name;
+                }
+
                 $(".deleteLink").text('Deleting...');
 
                 $http.post(apiDeleteInteractBackendUri, {'name': name, 'userID': $scope.article.userID}).

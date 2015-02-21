@@ -104,7 +104,7 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
                 textarea.on('paste', function(e) {
                     e.preventDefault();
 
-                    var text = (e.originalEvent || e).clipboardData.getData('text/html') || prompt('Paste something..');
+                    var text = (e.originalEvent || e).clipboardData.getData('text/html');
                     var $result = $('<div></div>').append($(text));
 
                     document.execCommand('insertHTML', false, $result.html());

@@ -83,7 +83,7 @@
 			<div class="common-container list clearfix" ng-repeat="(key, article) in userData.enjoys">
 				<a class="title" href="/article/<% article.article_data.slug %>"><% article.article_data.title %></a>
 				<div class="info">
-					<a href="/dev/<% article.article_data.slug %>"><% article.article_data.userName %></a>
+					<a href="/dev/<% article.article_data.user_slug %>"><% article.article_data.userName %></a>
 					<span><% article.enjoys.length %> Enjoy<span ng-show="article.enjoys.length > 1 || article.enjoys.length == 0">s</span></span>
 				</div>
 			</div>

@@ -71,7 +71,7 @@
             reloadArticleData();
 
             $scope.enjoy = function() {
-                $http.post(apiEnjoyInteractBackendUri, {'name': $scope.article.slug}).
+                $http.post(apiEnjoyInteractBackendUri, {'name': $scope.slug}).
                 success(function(data, status, headers, config) {
                     $scope.article.enjoyed = !$scope.article.enjoyed;
                     reloadArticleData();

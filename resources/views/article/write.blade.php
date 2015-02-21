@@ -17,7 +17,7 @@
 	        <div class="btn-container push">
 	        	<a href="#" class="publishLink btn brand-primary" ng-click="publishArticle();" tabindex="-1">Publish</a>
 	        </div>
-	        <a href="#" class="deleteLink brand-danger" ng-click="deleteArticle();" tabindex="-1">Delete</a>
+	        <a href="#" class="deleteLink brand-danger" ng-show="slug != 'write'" ng-click="deleteArticle();" tabindex="-1">Delete</a>
         </aside>
 
         <input type="hidden" ng-model="article.user" ng-cloak>
