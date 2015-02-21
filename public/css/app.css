@@ -8560,6 +8560,7 @@ aside.sidebar {
     margin-bottom: 65px; }
   #landing .btn-primary {
     font-size: 14px;
+    padding: 12px 30px;
     position: absolute;
     bottom: 75px;
     left: 75px; }
