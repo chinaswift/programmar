@@ -29,8 +29,9 @@ class HomeController extends Controller {
 		{
 			$followerArray = array();
 			$followers = Follower::where('followed_by', '=', Auth::user()->id)->get();
+			$followersCount = Follower::where('followed_by', '=', Auth::user()->id)->count();
 
-			if(!empty($followers)) {
+			if($followersCount > 0) {
 				foreach($followers as $follower) {
 					$following_user = User::find($follower->followed);
 					$array = array(
