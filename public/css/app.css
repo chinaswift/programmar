@@ -5831,9 +5831,11 @@ a {
     background-color: #ccc;
     color: #fff; }
     .btn.btn-gray:hover {
-      background-color: #c4c4c4; }
+      background-color: #c4c4c4;
+      color: #fff; }
     .btn.btn-gray:active {
-      background-color: #ccc; }
+      background-color: #ccc;
+      color: #fff; }
 
 .write-area {
   padding-bottom: 30px; }

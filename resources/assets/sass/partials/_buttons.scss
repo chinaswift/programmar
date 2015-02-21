@@ -21,10 +21,12 @@
 
 		&:hover {
 			background-color: darken(#ccc, 3%);
+			color: #fff;
 		}
 
 		&:active {
 			background-color: #ccc;
+			color: #fff;
 		}
 
 	}
