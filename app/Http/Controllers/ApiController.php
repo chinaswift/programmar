@@ -13,15 +13,6 @@ use Auth;
 
 class ApiController extends Controller {
 
-	public function __construct()
-	{
-		$this->afterFilter(function(){
-
-            header('Access-Control-Allow-Origin: *');
-
-        });
-	}
-
 	function collectAPIData($type, $url) {
 		$programmarApi = new \Guzzle\Service\Client(env('API_URL'));
 		$response = $programmarApi->$type($url)->send();

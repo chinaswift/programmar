@@ -8,4 +8,11 @@ abstract class Controller extends BaseController {
 
 	use DispatchesCommands, ValidatesRequests;
 
+	public function __construct()
+	{
+		$this->afterFilter(function(){
+            header('Access-Control-Allow-Origin: *');
+        });
+	}
+
 }
