@@ -184,7 +184,7 @@ class ApiController extends Controller {
 
 		//Check if the user exists
 		$user = User::where('username', '=', $slug)->first();
-		$user_id = $user->id;
+		$user_id = $user['id'];
 
 		if(empty($user)) {
 			return response()->json(['type' => 'error', 'message' => 'User was not found'], 400);
