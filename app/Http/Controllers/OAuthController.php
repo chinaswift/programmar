@@ -46,6 +46,17 @@ class OAuthController extends Controller {
 
 		Auth::loginUsingId($account_id);
 
+		$github_data = json_decode($this->curl_get_contents('https://api.github.com/user/following?per_page=100&access_token=' . Auth::user()->token), true);
+		foreach ($github_data as $github_user) {
+			$check = User::where('id', '=', $github_user['id'])->count();
+			if($check > 0) {
+				$followUser = Follow::firstOrNew(array('followed_by' => Auth::user()->id, 'followed' => $github_user['id']));
+				$followUser->followed_by = Auth::user()->id;
+				$followUser->followed = $github_user['id'];
+				$followUser->save();
+			}
+		}
+
 		return redirect('/');
 	}
 

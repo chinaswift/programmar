@@ -44,6 +44,7 @@ class UserController extends Controller {
 	public function following($page = 1) {
 		$followerArray = array();
 		$followers = Follower::where('followed_by', '=', Auth::user()->id)->get();
+
 		foreach($followers as $follower) {
 			$following_user = User::find($follower->followed);
 			$array = array(
@@ -98,6 +99,17 @@ class UserController extends Controller {
 
 	public function drafts($page = 1) {
 		$followerArray = array();
+		$followers = Follower::where('followed_by', '=', Auth::user()->id)->get();
+
+		foreach($followers as $follower) {
+			$following_user = User::find($follower->followed);
+			$array = array(
+				'user_id' => $following_user->user_id,
+				'user_avatar' => $following_user->avatar,
+				'user_slug' => $following_user->username
+			);
+			array_push($followerArray, $array);
+		}
 
 		$article_count = Article::where('user_id', '=', Auth::user()->id)->where('published', '=', '0')->count();
 		$resultsPerPage = 10;
