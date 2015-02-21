@@ -154,7 +154,6 @@
             $scope.showEnjoys = function() {
                 $scope.showEnjoyContent = true;
                 $scope.showArticleContent = false;
-                console.log($scope.userData.enjoys);
             };
 
             $scope.showArticles = function() {
