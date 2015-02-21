@@ -21,7 +21,7 @@
             $scope.articlesData = [];
             $scope.slug = href.substr(href.lastIndexOf('/') + 1);
             $scope.followTxt = 'Follow';
-            $scope.unfollowTxt = 'UnFollow';
+            $scope.unfollowTxt = 'Unfollow';
             $scope.pageLoaded = 30;
             $scope.loaderShow = true;
             $scope.moveLeft = false;

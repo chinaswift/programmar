@@ -13,14 +13,20 @@ use Auth;
 
 class ApiController extends Controller {
 
+	public function curl_get_contents($url) {
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+		curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
+		$data = curl_exec($ch);
+		curl_close($ch);
+		return $data;
+	}
+
 	function collectAPIData($type, $url) {
-		$username = 'username';
-		$password = 'password';
-		$auth = base64_encode($username . ":" . $password);
-		$programmarApi = new \Guzzle\Service\Client(env('API_URL'));
-		$programmarApi->setDefaultOption('auth', array($username, $password, 'Any'));
-		$response = $programmarApi->$type($url)->send();
-		return $response->json();
+		$data = $this->curl_get_contents(env('API_URL') . $url);
+		return json_decode($data, true);
 	}
 
 	//Collect the users followers

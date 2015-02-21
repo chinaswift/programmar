@@ -8676,7 +8676,8 @@ aside.sidebar {
     #profile .right-container .user .profile-image {
       vertical-align: middle;
       width: 30px;
-      height: 30px; }
+      height: 30px;
+      margin-right: 10px; }
     #profile .right-container .user .link {
       vertical-align: middle;
       color: #373A40;
