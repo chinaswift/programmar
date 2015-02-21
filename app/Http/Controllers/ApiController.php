@@ -13,6 +13,12 @@ use Auth;
 
 class ApiController extends Controller {
 
+	function collectAPIData($type, $url) {
+		$programmarApi = new \Guzzle\Service\Client(env('API_URL'));
+		$response = $programmarApi->$type($url)->send();
+		return $response->json();
+	}
+
 	//Collect the users followers
 	public function followers($user_id = 'session') {
 		//If session then make sure we select the session ID
@@ -179,7 +185,6 @@ class ApiController extends Controller {
 		//Check if the user exists
 		$user = User::where('username', '=', $slug)->first();
 		$user_id = $user->id;
-
 		if(empty($user)) {
 			return response()->json(['type' => 'error', 'message' => 'User was not found'], 400);
 		}
@@ -191,52 +196,17 @@ class ApiController extends Controller {
 		}else{
 			$user->your_following = false;
 		}
+
+		//Check if you own profile
 		if($user_id === Auth::user()->id) {
 			$user->self = true;
 		}else{
 			$user->self = false;
 		}
 
-		//Followers
-		$result = Follower::where('followed', '=', $user_id)->get();
-		$resultArray = array();
-		//Collect more data for each
-		foreach($result as $follower) {
-			$user = User::find($follower->followed_by);
-			$userArray = array(
-				'user_id' => $user->{'id'},
-				'user_name' => $user->{'name'},
-				'user_slug' => $user->{'username'},
-				'user_avatar' => $user->{'avatar'}
-			);
-			array_push($resultArray, $userArray);
-		}
-		$user->followers = $resultArray;
-
-		//Following
-		$result = Follower::where('followed_by', '=', $user_id)->get();
-		$resultArray = array();
-		//Collect more data for each
-		foreach($result as $follower) {
-			$user = User::find($follower->followed);
-			$userArray = array(
-				'user_id' => $user->{'id'},
-				'user_name' => $user->{'name'},
-				'user_slug' => $user->{'username'},
-				'user_avatar' => $user->{'avatar'}
-			);
-			array_push($resultArray, $userArray);
-		}
-		$user->following  = $resultArray;
-
-		//Enjoys
-		$enjoys = Enjoy::where('user_id','=', $user_id)->get();
-		foreach($enjoys as $article) {
-			$article_id = $article->article_id;
-			$article->article_data = $this->collectAPIData('get', '/api/v2/article/' . $article_id);
-		}
-
-		$user->enjoys = $enjoys;
+		$user->followers = json_decode($this->followers($user_id), true);
+		$user->following = json_decode($this->following($user_id), true);
+		$user->enjoys = json_decode($this->enjoys($user_id), true);
 		return json_encode($user);
 	}
 }
