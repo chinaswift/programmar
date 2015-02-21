@@ -7,6 +7,7 @@ use Illuminate\Filesystem\FilesystemServiceProvider;
 use Auth;
 use Storage;
 use App\Article;
+use App\Enjoy;
 
 class EditorController extends Controller {
 
@@ -105,6 +106,9 @@ class EditorController extends Controller {
 
 			$article = Article::where('slug', '=', $name)->where('user_id', '=', $user_id)->firstOrFail();
 			$article->delete();
+
+			$enjoys = Enjoy::where('article_id', '=', $name)->get();
+			$enjoys->delete();
 
 			//Send response back
 			return response()->json(['type' => 'success', 'message' => 'Deleted', 'name' => $name], 200);

@@ -143,11 +143,9 @@ class ApiController extends Controller {
 	//Function for collecting articles
 	public function article($article_id) {
 		$article = Article::where('slug','=', $article_id)->first();
-		if(!empty($article)) {
-			$user = User::where('id', '=', $article->user_id)->first();
-			$article->userName = $user->name;
-			$article->slug = $user->username;
-		}
+		$user = User::where('id', '=', $article->user_id)->first();
+		$article->userName = $user->name;
+		$article->slug = $user->username;
 		return json_encode($article);
 	}
 
@@ -197,8 +195,8 @@ class ApiController extends Controller {
 		$enjoys = Enjoy::where('user_id','=', $user_id)->get();
 		foreach($enjoys as $article) {
 			$article_id = $article->article_id;
-			$check = Article::find($article_id);
-			if(!empty($check)) {
+			$check = Article::where('slug', '=', $article_id)->count();
+			if($check > 0) {
 				$enjoyArray = array();
 				$article_enjoys = Enjoy::where('article_id', '=', $article_id)->get();
 				foreach($article_enjoys as $enjoy) {
