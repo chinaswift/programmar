@@ -157,7 +157,12 @@ class UserController extends Controller {
 		return view('home/drafts', ['articles' => $articles, 'followers' => $followerArray, 'pagination' => $paginationCtrls]);
 	}
 
-	public function all($page = 1) {
+	/**
+	 * Index
+	 * This decides what to show the user, depending if authed or not.
+	 * @return void
+	 */
+	public function popular($page = 1) {
 		if (\Auth::check())
 		{
 			$followerArray = array();
@@ -173,8 +178,10 @@ class UserController extends Controller {
 				array_push($followerArray, $array);
 			}
 
+			$lastDay = time() - (24*60*60);
+			$nextDay = time() + (24*60*60);
 
-			$article_count = Article::where('published', '=', '1')->orderBy('last_updated', 'desc')->count();
+			$article_count = Article::where('published', '=', '1')->where('slug', '>', $lastDay)->where('slug', '<', $nextDay)->count();
 			$resultsPerPage = 10;
 			$paginationCtrls = '';
 			$last = ceil($article_count/$resultsPerPage);
@@ -196,16 +203,16 @@ class UserController extends Controller {
 					}else{
 						$class = '';
 					}
-					$paginationCtrls .= '<a href="/all/'.$previous.'" class="f-left '.$class.'">Previous</a>';
+					$paginationCtrls .= '<a href="/popular/'.$previous.'" class="f-left '.$class.'">Previous</a>';
 				}
 			}
 
 			if ($page != $last) {
 		        $next = $page + 1;
-		        $paginationCtrls .= '<a href="/all/'.$next.'" class="f-right brand-primary">Next</a>';
+		        $paginationCtrls .= '<a href="/popular/'.$next.'" class="f-right brand-primary">Next</a>';
 		    }
 
-			$articles = Article::where('published', '=', '1')->orderBy('last_updated', 'desc')->take($resultsPerPage)->get();
+			$articles = Article::where('published', '=', '1')->where('slug', '>', $lastDay)->where('slug', '<', $nextDay)->skip($page - 1)->take($resultsPerPage)->get();
 			foreach ($articles as $article) {
 				$user = User::where('id', '=', $article->{'user_id'})->firstOrFail();
 				$article->userName = $user->{'name'};
@@ -214,7 +221,14 @@ class UserController extends Controller {
 				$article->enjoys = Enjoy::where('article_id', '=', $article->{'slug'})->count();
 			}
 
-			return view('home/all', ['articles' => $articles, 'followers' => $followerArray, 'pagination' => $paginationCtrls]);
+			$articles = array_values(array_sort($articles, function($value)
+			{
+			    return $value['enjoys'];
+			}));
+
+			$articles = array_reverse($articles);
+
+			return view('home/popular', ['articles' => $articles, 'followers' => $followerArray, 'pagination' => $paginationCtrls]);
 		}
 		else
 		{
