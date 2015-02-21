@@ -54,8 +54,8 @@
 						<div class="info">
 							<a href="#" ng-click="toggleFollowers();"><% userData.followers.length %> Followers</a>
 							<a href="#" ng-click="toggleFollowing();"><% userData.following.length %> Following</a>
-							<a href="#" ng-show="showArticleContent" ng-click="showEnjoys();"><% userData.enjoys.length %> Enjoys</a>
-							<a href="#" ng-show="showEnjoyContent" ng-click="showArticles();"><% articlesData.length %> Articles</a>
+							<a href="#" ng-show="showArticleContent" ng-click="showEnjoys();"><% userData.enjoys.length %> Enjoyed article<span ng-show="userData.enjoys.length > 1 || userData.enjoys.length == 0">s</span></a>
+							<a href="#" ng-show="showEnjoyContent" ng-click="showArticles();"><% articlesData.length %> Article<span ng-show="articlesData.length > 1 || articlesData.length == 0">s</span></a>
 						</div>
 					</div>
 					<div class="f-right" ng-hide="userData.self">
@@ -75,7 +75,7 @@
 			<div class="common-container list clearfix" ng-repeat="(key, article) in articlesData">
 				<a class="title" href="/article/<% article.slug %>"><% article.title %></a>
 				<div class="info">
-					<span><% article.enjoys.length %> Enjoys</span>
+					<span><% article.enjoys.length %> Enjoy<span ng-show="article.enjoys.length > 1 || article.enjoys.length == 0">s</span></span>
 				</div>
 			</div>
 		</div>
@@ -87,7 +87,7 @@
 			<div class="common-container list clearfix" ng-repeat="(key, article) in userData.enjoys">
 				<a class="title" href="/article/<% article.article_data[0].slug %>"><% article.article_data[0].title %></a>
 				<div class="info">
-					<span><% article.enjoys.length %> Enjoys</span>
+					<span><% article.enjoys.length %> Enjoy<span ng-show="article.enjoys.length > 1 || article.enjoys.length == 0">s</span></span>
 				</div>
 			</div>
 		</div>
