@@ -20,13 +20,11 @@
 	<div class="right-container animated fadeInLeft" ng-show="showEnjoys" ng-cloak>
 		<div class="common-container top-section">
 			<span class="title">People who enjoyed this</span>
-			<div class="info">
-				<span class="hide-on-mobile">Press 'esc' to exit</span>
-				<span class="show-on-mobile">Tab the right to exit</span>
+			<div class="info" ng-show="article.enjoys.length == 0">
+				<span class="hide-on-mobile">No one has enjoyed this article yet.</span>
 			</div>
 		</div>
 
-		<div class="missing-text" ng-show="article.enjoys.length == 0">No one has enjoyed this.</div>
 		<div class="user" ng-repeat="(key, user) in article.enjoys">
 			<img ng-src="<% user.user_avatar %>" class="profile-image img-circle">
 			<a class="link" href="/dev/<% user.user_slug %>"><% user.user_name %></a>

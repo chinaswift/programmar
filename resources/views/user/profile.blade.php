@@ -15,13 +15,11 @@
 	<div class="right-container animated fadeInLeft" ng-show="showFollowers" ng-cloak>
 		<div class="common-container top-section">
 			<span class="title">Followers</span>
-			<div class="info">
-				<span class="hide-on-mobile">Press 'esc' to exit</span>
-				<span class="show-on-mobile">Tab the right to exit</span>
+			<div class="info" ng-show="userData.followers.length == 0">
+				<span>Looks like this user has no followers.</span>
 			</div>
 		</div>
 
-		<div class="missing-text" ng-show="userData.followers.length == 0"><% userData.name %> has no followers.</div>
 		<div class="user" ng-repeat="(key, user) in userData.followers">
 			<img ng-src="<% user.user_avatar %>" class="profile-image img-circle">
 			<a class="link" href="/dev/<% user.user_slug %>"><% user.user_name %></a>
@@ -31,13 +29,11 @@
 	<div class="right-container animated fadeInLeft" ng-show="showFollowing" ng-cloak>
 		<div class="common-container top-section">
 			<span class="title">Following</span>
-			<div class="info">
-				<span class="hide-on-mobile">Press 'esc' to exit</span>
-				<span class="show-on-mobile">Tab the right to exit</span>
+			<div class="info" ng-show="userData.following.length == 0">
+				<span>Looks like this user is not following anyone.</span>
 			</div>
 		</div>
 
-		<div class="missing-text" ng-show="userData.following.length == 0"><% userData.name %> is not following anyone.</div>
 		<div class="user" ng-repeat="(key, user) in userData.following">
 			<img ng-src="<% user.user_avatar %>" class="profile-image img-circle">
 			<a class="link" href="/dev/<% user.user_slug %>"><% user.user_name %></a>
