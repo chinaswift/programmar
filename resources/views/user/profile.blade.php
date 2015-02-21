@@ -12,7 +12,7 @@
 
 <div class="top-loader" ng-show="loaderShow" style="width: <% pageLoaded %>%;"></div>
 <div class="container main-container" ng-class="{slideRight: moveLeft}">
-	<div class="right-container animated fadeInLeft" ng-show="showFollowers">
+	<div class="right-container animated fadeInLeft" ng-show="showFollowers" ng-cloak>
 		<div class="common-container top-section">
 			<span class="title">Followers</span>
 			<div class="info">
@@ -28,7 +28,7 @@
 		</div>
 	</div>
 
-	<div class="right-container animated fadeInLeft" ng-show="showFollowing">
+	<div class="right-container animated fadeInLeft" ng-show="showFollowing" ng-cloak>
 		<div class="common-container top-section">
 			<span class="title">Following</span>
 			<div class="info">
