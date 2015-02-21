@@ -190,8 +190,8 @@ class ApiController extends Controller {
 			return response()->json(['type' => 'error', 'message' => 'User was not found'], 400);
 		}
 
-		$countFollow = Follower::where('followed_by', '=', Auth::user()->id)->where('followed', '=', $user_id)->count();
-		if($countFollow > 0) {
+		$countFollow = Follower::where('followed_by', '=', Auth::user()->id)->where('followed', '=', $user_id)->get();
+		if(!empty($countFollow)) {
 			$user['your_following'] = true;
 		}else{
 			$user['your_following'] = false;
