@@ -14,7 +14,11 @@ use Auth;
 class ApiController extends Controller {
 
 	function collectAPIData($type, $url) {
+		$username = 'username';
+		$password = 'password';
+		$auth = base64_encode($username . ":" . $password);
 		$programmarApi = new \Guzzle\Service\Client(env('API_URL'));
+		$programmarApi->setDefaultOption('auth', array($username, $password, 'Any'));
 		$response = $programmarApi->$type($url)->send();
 		return $response->json();
 	}
