@@ -33,17 +33,6 @@ class HomeController extends Controller {
 		{
 
 			$followerArray = array();
-			$github_data = json_decode($this->curl_get_contents('https://api.github.com/user/following?access_token=' . Auth::user()->token), true);
-			foreach ($github_data as $github_user) {
-				$check = User::where('id', '=', $github_user['id'])->count();
-				$array = array(
-					'id' => $github_user['id'],
-					'avatar' => $github_user['avatar_url'],
-					'username' => $github_user['login'],
-					'user' => $check
- 				);
-				array_push($followerArray, $array);
-			}
 
 			$article_count = Article::where('published', '=', '1')->orderBy('last_updated', 'asc')->count();
 			$resultsPerPage = 10;
@@ -76,7 +65,7 @@ class HomeController extends Controller {
 		        $paginationCtrls .= '<a href="/recent/'.$next.'" class="f-right brand-primary">Next</a>';
 		    }
 
-			$articles = Article::where('published', '=', '1')->orderBy('last_updated', 'asc')->skip($page - 1)->take($resultsPerPage)->get();
+			$articles = Article::where('published', '=', '1')->orderBy('last_updated', 'desc')->skip($page - 1)->take($resultsPerPage)->get();
 			foreach ($articles as $article) {
 				$user = User::where('id', '=', $article->{'user_id'})->firstOrFail();
 				$article->userName = $user->{'name'};

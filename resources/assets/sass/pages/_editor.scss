@@ -1,4 +1,41 @@
 #article {
+	.right-container {
+		position: absolute;
+		left: -300px;
+		width: 250px;
+		top: 0px;
+		overflow: auto;
+		height: 100%;
+		padding-bottom: 150px;
+
+		.user {
+			display: block;
+			height: 30px;
+			margin-bottom: 15px;
+
+			.profile-image {
+				@extend .inline-block;
+				vertical-align: middle;
+				width: 30px;
+				height: 30px;
+				margin-right: 10px;
+			}
+
+			.link {
+				@extend .inline-block;
+				vertical-align: middle;
+				color: $gray-darker;
+				font-size: 15px;
+				height: 30px;
+				line-height: 30px;
+
+				&:hover {
+					color: #000;
+				}
+			}
+		}
+	}
+
 	[contenteditable=true]:empty:before{
 	  content: attr(placeholder);
 	  display: block;
@@ -16,7 +53,7 @@
 
 	.tab {
 		display: inline;
-		padding-left: 40px;
+		padding-left: 20px;
 		font-size: 20px;
 	}
 
@@ -37,6 +74,11 @@
 			@extend .tab;
 			font-size: 15px;
 		}
+
+		@media (max-width: $screen-sm-min) {
+			margin-left: 0px;
+			font-size: 12px;
+		}
 	}
 
 	blockquote {
@@ -48,8 +90,8 @@
 	}
 
 	.title {
-		@extend .Mono-Medium;
-		font-size: 15px;
+		@extend .Text-Bold;
+		font-size: 18px;
 		color: $gray-darker;
 		margin: 0 0 0px 0;
 		outline: none;
@@ -57,13 +99,13 @@
 	}
 
 	.info {
-		@extend .Mono-Medium;
-		margin-top: 10px;
-		color: $gray-light;
+		@extend .Text-Regular;
+		margin-top: 5px;
+		color: $gray;
 		font-size: 14px;
 
 		a, span {
-			color: $gray-light;
+			color: $gray;
 			margin-right: 35px;
 		}
 
@@ -77,7 +119,7 @@
 		padding-top: 75px;
 
 		.enjoyed {
-			@extend .Mono-Medium;
+			@extend .Text-Bold;
 			display: block;
 			color: $brand-primary;
 			font-size: 15px;
@@ -107,9 +149,9 @@
 
 
 	.content {
-		@extend .Mono-Regular;
-		font-size: 15px;
-		line-height: 28px;
+		@extend .Text-Regular;
+		font-size: 16px;
+		line-height: 31px;
 		color: $gray-darker;
 		word-wrap: break-word;
 		height: 100%;
@@ -121,7 +163,7 @@
 		}
 
 		h2 {
-			@extend .Mono-Medium;
+			@extend .Text-Bold;
 			font-size: 16px;
 		}
 

@@ -20,20 +20,18 @@ Route::get('api/v2/following/{user_id?}', 'ApiController@following');
 Route::post('api/v2/follow/{user_id}', 'ApiController@follow');
 Route::post('api/v2/unfollow/{user_id}', 'ApiController@unfollow');
 Route::get('api/v2/user/{user_id?}', 'ApiController@user');
+Route::get('api/v2/article/{article_id}', 'ApiController@collect');
 Route::get('api/v2/articles/{user_id?}', 'ApiController@articles');
-Route::get('api/v2/article/{article_id}', 'ApiController@article');
 Route::get('api/v2/content/{article_id}', 'ApiController@content');
 Route::get('api/v2/enjoys/{user_id?}', 'ApiController@enjoys');
+
 
 //Api Routing
 Route::post('/api/internal/v1/editor/save', 'EditorController@save');
 Route::post('/api/internal/v1/editor/publish', 'EditorController@publish');
 Route::post('/api/internal/v1/editor/delete', 'EditorController@delete');
-Route::get('/api/angular/article/{slug}', 'ArticleController@collect');
-Route::post('/api/internal/v1/article/enjoy', 'ArticleController@enjoy');
 
-Route::get('/api/angular/github/follow/{username}', 'UserController@followUser');
-Route::get('/api/angular/github/unfollow/{username}', 'UserController@unfollowUser');
+Route::post('/api/internal/v1/article/enjoy', 'ArticleController@enjoy');
 
 //Static Pages
 Route::get('about', 'StaticController@about');

@@ -24,17 +24,16 @@ aside.sidebar {
 	}
 
 	a {
-		@extend .Mono-Medium;
+		@extend .Text-Bold;
 		display: block;
 		text-align: right;
 		line-height: 28px;
 		outline: none;
 		border: none;
-		color: $gray-light;
+		color: $gray;
 		font-size: 14px;
 
 		&:hover, &.active {
-			@extend .Mono-Medium;
 			color: $gray-dark;
 		}
 

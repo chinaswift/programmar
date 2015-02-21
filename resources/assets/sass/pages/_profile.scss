@@ -1,12 +1,5 @@
 #profile {
 
-	.top-section {
-		padding-bottom: 44px;
-		@media (max-width: $screen-sm-min) {
-			padding-bottom: 60px;
-		}
-	}
-
 	.article-listing {
 		border-top: 1px solid $gray-lighter;
 	}
@@ -16,6 +9,9 @@
 		left: -300px;
 		width: 250px;
 		top: 0px;
+		overflow: auto;
+		height: hidden;
+		padding-bottom: 150px;
 
 		.user {
 			display: block;

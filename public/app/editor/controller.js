@@ -17,6 +17,7 @@
         function ($scope, $http, $location, $window, $compile, ArticleApi) {
 
             //Default variables
+            var href = $window.location.href;
             $scope.article = {};
             $scope.saving = false;
             $scope.publishing = false;
@@ -27,12 +28,13 @@
             $scope.canSave = false;
             $scope.saveDelay = 10 * 1000;
             $scope.article.userID = '';
+            $scope.slug = href.substr(href.lastIndexOf('/') + 1);
 
             $scope.article.customMenu = [
                 ['bold', 'italic', 'heading','code', 'link'],
             ];
 
-            ArticleApi.query().$promise.then(function(articleData) {
+            ArticleApi.get({article_id: $scope.slug}).$promise.then(function(articleData) {
                 var title = '',
                     content = '',
                     name = '',

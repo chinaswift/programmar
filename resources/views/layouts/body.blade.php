@@ -41,7 +41,7 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 </head>
-<body id="{{$pageId}}" @if($pageAngular) ng-controller="{{ $pageController }}" @endif>
+<body id="{{$pageId}}" @if($pageAngular) ng-controller="{{ $pageController }}" @endif  ng-class="{overflow: moveLeft}">
 	@if($headerInclude)
 		@include('common/header')
 	@endif

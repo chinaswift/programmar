@@ -142,8 +142,42 @@ class ApiController extends Controller {
 
 	//Function for collecting articles
 	public function article($article_id) {
-		$article = Article::where('slug','=', $article_id)->get();
+		$article = Article::where('slug','=', $article_id)->first();
+		$user = User::where('id', '=', $article->user_id)->first();
+		$article->userName = $user->name;
 		return json_encode($article);
+	}
+
+	public function collect($article_id) {
+		if($article_id != 'write') {
+			$article_data = json_decode($this->article($article_id), true);
+			$article_data['content'] = Storage::get($article_data['user_id'] . '/' . $article_id . '.programmar-article');
+
+			//Collect enjoys
+			$enjoyArray = array();
+			$article_enjoys = Enjoy::where('article_id', '=', $article_id)->get();
+			foreach($article_enjoys as $enjoy) {
+				$enjoyUser = User::where('id', '=', $enjoy->user_id)->first();
+				$array = array(
+					'user_id' => $enjoy->user_id,
+					'user_slug' => $enjoyUser->username,
+					'user_name' => $enjoyUser->name,
+					'user_avatar' => $enjoyUser->avatar
+				);
+				array_push($enjoyArray, $array);
+			}
+
+			$article_data['enjoys'] = $enjoyArray;
+
+			$enjoyCount = Enjoy::where('user_id', '=', Auth::user()->id)->where('article_id', '=', $article_id)->count();
+			if($enjoyCount > 0) {
+				$article_data['user_enjoyed'] = true;
+			}else{
+				$article_data['user_enjoyed'] = false;
+			}
+
+			return json_encode($article_data);
+		}
 	}
 
 	//Function for collecting enjoys

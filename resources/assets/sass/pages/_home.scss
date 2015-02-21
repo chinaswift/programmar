@@ -32,8 +32,14 @@
 		}
 	}
 
+	.common-container.list:first-child {
+		margin-top: 0px;
+	}
+
 	.pagination-container {
+		margin-top: 25px;
 		a {
+			@extend .Text-Bold;
 			color: $gray-light;
 			&:hover {
 				color: $gray-dark;
@@ -47,46 +53,4 @@
 			}
 		}
 	}
-
-	.item {
-		@extend .clearfix;
-		padding-bottom: 25px;
-		margin-bottom: 20px;
-		border-bottom: 1px solid $gray-lighter;
-
-		&:last-child {
-			border-bottom: none;
-			margin-bottom: 0px;
-			padding-bottom: 0px;
-		}
-
-		.base {
-			@extend .clearfix;
-		}
-
-		.title {
-			@extend .Mono-Medium;
-			font-size: 15px;
-			color: $gray-darker;
-		}
-
-		.info {
-			@extend .Mono-Medium;
-			display: block;
-			color: $gray-light;
-			font-size: 14px;
-			margin-top: 10px;
-
-			a, span {
-				color: $gray-light;
-				margin-right: 35px;
-			}
-
-			a:hover {
-				color: darken($gray-light, 10%);
-			}
-		}
-	}
-
-
 }

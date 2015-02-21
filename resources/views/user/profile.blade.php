@@ -85,7 +85,7 @@
 				<% userData.name %> currently hasn't enjoyed anything!
 			</div>
 			<div class="common-container list clearfix" ng-repeat="(key, article) in userData.enjoys">
-				<a class="title" href="/article/<% article.article_data[0].slug %>"><% article.article_data[0].title %></a>
+				<a class="title" href="/article/<% article.article_data.slug %>"><% article.article_data.title %></a>
 				<div class="info">
 					<span><% article.enjoys.length %> Enjoy<span ng-show="article.enjoys.length > 1 || article.enjoys.length == 0">s</span></span>
 				</div>
