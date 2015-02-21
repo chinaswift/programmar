@@ -15,7 +15,7 @@ class ApiController extends Controller {
 
 	function collectAPIData($type, $url) {
 		$programmarApi = new \Guzzle\Service\Client(env('API_URL'));
-		$response = $programmarApi->$type($url)->send();
+		$response = $programmarApi->$type($url,  ['auth' => ['username', 'password']])->send();
 		return $response->json();
 	}
 
@@ -190,8 +190,8 @@ class ApiController extends Controller {
 			return response()->json(['type' => 'error', 'message' => 'User was not found'], 400);
 		}
 
-		$countFollow = Follower::where('followed_by', '=', Auth::user()->id)->where('followed', '=', $user_id)->get();
-		if(!empty($countFollow)) {
+		$countFollow = Follower::where('followed_by', '=', Auth::user()->id)->where('followed', '=', $user_id)->count();
+		if($countFollow > 0) {
 			$user['your_following'] = true;
 		}else{
 			$user['your_following'] = false;
