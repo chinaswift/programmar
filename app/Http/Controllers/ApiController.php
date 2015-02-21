@@ -13,12 +13,6 @@ use Auth;
 
 class ApiController extends Controller {
 
-	function collectAPIData($type, $url) {
-		$programmarApi = new \Guzzle\Service\Client(env('API_URL'));
-		$response = $programmarApi->$type($url)->send();
-		return $response->json();
-	}
-
 	//Collect the users followers
 	public function followers($user_id = 'session') {
 		//If session then make sure we select the session ID
@@ -166,7 +160,7 @@ class ApiController extends Controller {
 		$enjoys = Enjoy::where('user_id','=', $user_id)->get();
 		foreach($enjoys as $article) {
 			$article_id = $article->article_id;
-			$article->article_data = $this->collectAPIData('get', '/api/v2/article/' . $article_id);
+			$article->article_data = $this->article($article_id);
 		}
 		return json_encode($enjoys);
 	}
