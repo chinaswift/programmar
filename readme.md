@@ -7,4 +7,3 @@ A place for developers to read and write
 - Follow system using Githubs API
 - Write articles
 - Read articles
--
