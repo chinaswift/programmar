@@ -5828,7 +5828,8 @@ a {
   .btn.btn-primary:active {
     background: #29B873; }
   .btn.btn-gray {
-    background-color: #ccc; }
+    background-color: #ccc;
+    color: #fff; }
     .btn.btn-gray:hover {
       background-color: #c4c4c4; }
     .btn.btn-gray:active {
