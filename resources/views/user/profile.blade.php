@@ -56,6 +56,7 @@
 					</div>
 					<div class="f-right" ng-hide="userData.self">
 						<div class="follow-buttons">
+							<a href="http://github.com/<% userData.user_slug %>" class="btn btn-gray"><i ng-class="octicons octicon-mark-github"></i></a>
 							<a href="#" class="btn btn-gray" ng-show="userData.your_following" ng-click="unfollow();"><% unfollowTxt %></a>
 							<a href="#" class="btn btn-primary" ng-hide="userData.your_following" ng-click="follow();"><% followTxt %></a>
 						</div>
