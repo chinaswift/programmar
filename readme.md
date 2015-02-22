@@ -1,7 +1,12 @@
 ## Programmar
 A place for developers to read and write
 
-#### Current version: v1.1
+#### Current version: v1.2
+
+Version 1.2
+---------------------
+- Improved design touch ups
+- Added github buttons to profiles
 
 Version 1.1
 ---------------------
@@ -15,7 +20,6 @@ Version 1.0
 - View enjoyed information
 - View followers
 - Responsive
-- Added footer links (Twitter, Support)
 - Enhanced Interactions
 - Design updates
 - Updated logo
