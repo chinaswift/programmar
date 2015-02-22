@@ -9,7 +9,7 @@
             confirmOptionOneSelector = confirmSelector + ' .option-one',
             confirmOptionTwoSelector = confirmSelector + ' .option-two';
 
-        var confirmDialog = function(message, optionOne, optionTwo, type) {
+        var confirmDialog = function(message, optionOne, optionTwo, type, callback) {
             var $confirmDialog = $(confirmSelector),
                 $confirmMessage = $(confirmMessageSelector),
                 $confirmOptionOne = $(confirmOptionOneSelector),
@@ -34,7 +34,7 @@
                 option = false;
             });
 
-            return option;
+            callback(option);
         };
 
 
