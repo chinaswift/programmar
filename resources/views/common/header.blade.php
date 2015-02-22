@@ -17,7 +17,7 @@
 	</div>
 </nav>
 
-<section class="confirm-message hidden">
+<section class="confirm-message animated pulse">
 	<span class="message"></span>
 	<div class="btn-container">
 		<a href="#" class="btn option-one"></a>

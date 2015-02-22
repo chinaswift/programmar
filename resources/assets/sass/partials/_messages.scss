@@ -1,0 +1,50 @@
+.confirm-dialog {
+	@extend .container;
+	@extend .clearfix;
+	display: none;
+	margin-bottom: 25px;
+	padding: 15px 20px;
+	border-radius: 3px;
+
+	&.danger {
+		color: $brand-danger;
+		background: rgba($brand-danger, 0.1);
+
+		.btn-container .option-two {
+			color: $brand-danger;
+			&:hover {
+				color: darken($brand-danger, 3%);
+			}
+		}
+
+		.btn-container .option-one {
+			color: rgba($brand-danger, 0.5);
+			&:hover {
+				color: $brand-danger;
+			}
+		}
+	}
+
+	.message {
+		@extend .Text-Regular;
+		font-size: 14px;
+		float: left;
+	}
+
+	.btn-container {
+		float: right;
+
+		a {
+			@extend .inline-block;
+			@extend .Text-bold;
+			font-size: 14px;
+			margin-right: 20px;
+
+			&:last-child {
+				margin-right: 0px;
+			}
+		}
+	}
+
+
+}
