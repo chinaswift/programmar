@@ -8565,6 +8565,17 @@ aside.sidebar {
       color: rgba(223, 73, 49, 0.5); }
       .confirm-message.danger .btn-container .option-one:hover {
         color: #DF4931; }
+  .confirm-message.alert {
+    color: #f0ad4e;
+    background: rgba(240, 173, 78, 0.1); }
+    .confirm-message.alert .btn-container .option-two {
+      color: #f0ad4e; }
+      .confirm-message.alert .btn-container .option-two:hover {
+        color: #efa640; }
+    .confirm-message.alert .btn-container .option-one {
+      color: rgba(240, 173, 78, 0.5); }
+      .confirm-message.alert .btn-container .option-one:hover {
+        color: #f0ad4e; }
   .confirm-message .message {
     font-size: 14px;
     float: left; }

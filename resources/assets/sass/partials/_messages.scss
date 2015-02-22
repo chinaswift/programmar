@@ -25,6 +25,25 @@
 		}
 	}
 
+	&.alert {
+		color: $brand-warning;
+		background: rgba($brand-warning, 0.1);
+
+		.btn-container .option-two {
+			color: $brand-warning;
+			&:hover {
+				color: darken($brand-warning, 3%);
+			}
+		}
+
+		.btn-container .option-one {
+			color: rgba($brand-warning, 0.5);
+			&:hover {
+				color: $brand-warning;
+			}
+		}
+	}
+
 	.message {
 		@extend .Text-Regular;
 		font-size: 14px;

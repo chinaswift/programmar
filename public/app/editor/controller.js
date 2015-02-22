@@ -131,7 +131,7 @@
                 if(title != '' && content != '') {
 
                     if(countWords(content) < 10) {
-                        ProgrammarMessages.confirm("You need 10 words to publish", "Ok", "Save as draft", "danger", function(result) {
+                        ProgrammarMessages.confirm("You need 10 words to publish", "Ok", "Save as draft", "alert", function(result) {
                             if(result == 'confirm') {
                                 $scope.saveDocument();
                             }
