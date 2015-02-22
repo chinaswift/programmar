@@ -29,7 +29,7 @@
 
             $confirmOptionTwo.on('click', function() {
                 $confirmDialog.removeClass(type).fadeOut();
-                console.log('message callback: button 1 clicked');
+                console.log('message callback: button 2 clicked');
                 return true;
             });
 
