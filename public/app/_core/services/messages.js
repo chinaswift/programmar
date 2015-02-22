@@ -22,12 +22,14 @@
             $confirmDialog.addClass(type).show();
 
             $confirmOptionOne.on('click', function() {
-                $confirmDialog.removeClass(type).hide();
+                $confirmDialog.removeClass(type).fadeOut();
+                console.log('message callback: button 1 clicked');
                 return false;
             });
 
             $confirmOptionTwo.on('click', function() {
-                $confirmDialog.removeClass(type).hide();
+                $confirmDialog.removeClass(type).fadeOut();
+                console.log('message callback: button 1 clicked');
                 return true;
             });
 
