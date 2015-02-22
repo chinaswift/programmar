@@ -13,7 +13,8 @@
             var $confirmDialog = $(confirmSelector),
                 $confirmMessage = $(confirmMessageSelector),
                 $confirmOptionOne = $(confirmOptionOneSelector),
-                $confirmOptionTwo = $(confirmOptionTwoSelector);
+                $confirmOptionTwo = $(confirmOptionTwoSelector),
+                option = '';
 
             $confirmMessage.text(message);
             $confirmOptionOne.text(optionOne);
@@ -24,15 +25,16 @@
             $confirmOptionOne.on('click', function() {
                 $confirmDialog.fadeOut();
                 console.log('message callback: button 1 clicked');
-                return 'cancel';
+                option = true;
             });
 
             $confirmOptionTwo.on('click', function() {
                 $confirmDialog.fadeOut();
                 console.log('message callback: button 2 clicked');
-                return 'confirm';
+                option = false;
             });
 
+            return option;
         };
 
 
