@@ -156,7 +156,11 @@
                         });
                     }
                 }else{
-                    alert('Please insert a title and content before publishing.');
+                    ProgrammarMessages.confirm("You need a title to publish", "Ok", "Save as draft", "warning", function(result) {
+                        if(result == 'confirm') {
+                            $scope.saveDocument();
+                        }
+                    });
                 }
             };
 
