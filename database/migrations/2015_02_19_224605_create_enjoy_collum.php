@@ -12,13 +12,13 @@ class CreateEnjoyCollum extends Migration {
 	 */
 	public function up()
 	{
-		/*Schema::create('enjoys', function(Blueprint $table)
+		Schema::create('enjoys', function(Blueprint $table)
 		{
 			$table->increments('id')->index();
 			$table->integer('user_id');
 			$table->integer('article_id');
 			$table->timestamps();
-		});*/
+		});
 	}
 
 	/**
@@ -28,7 +28,7 @@ class CreateEnjoyCollum extends Migration {
 	 */
 	public function down()
 	{
-		//Schema::drop('enjoys');
+		Schema::drop('enjoys');
 	}
 
 }
