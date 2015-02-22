@@ -131,7 +131,11 @@
                 if(title != '' && content != '') {
 
                     if(countWords(content) < 10) {
-                        alert('You need to wirte at least 10 words');
+                        ProgrammarMessages.confirm("You need 10 words to publish", "Ok", "Save as draft", "danger", function(result) {
+                            if(result == 'confirm') {
+                                $scope.saveDocument();
+                            }
+                        });
                     }else{
                         $scope.publishing = true;
                         $scope.saving = true;
