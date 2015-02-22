@@ -12,7 +12,7 @@
 @extends('layouts/body')
 @section('content')
 	<div class="container push" ng-hide="loading">
-		<aside class="sidebar hack animated fadeInLeft">
+		<aside class="sidebar hack animated fadeInLeft" ng-cloak ng-show="loading">
 			<a href="#" class="saveLink" ng-click="saveDocument();" tabindex="-1">Save</a>
 	        <div class="btn-container push">
 	        	<a href="#" class="publishLink btn brand-primary" ng-click="publishArticle();" tabindex="-1">Publish</a>
