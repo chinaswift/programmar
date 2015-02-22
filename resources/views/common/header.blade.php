@@ -16,3 +16,11 @@
 		</div>
 	</div>
 </nav>
+
+<section class="confirm-message hidden">
+	<span class="message"></span>
+	<div class="btn-container">
+		<a href="#" class="btn option-one"></a>
+		<a href="#" class="btn option-two"></a>
+	</div>
+</section>

@@ -14,7 +14,8 @@
         '$window',
         '$compile',
         'ArticleApi',
-        function ($scope, $http, $location, $window, $compile, ArticleApi) {
+        'ProgrammarMessages',
+        function ($scope, $http, $location, $window, $compile, ArticleApi, ProgrammarMessages) {
 
             //Default variables
             var href = $window.location.href;
@@ -95,24 +96,28 @@
             };
 
             $scope.deleteArticle = function() {
-                if($scope.slug) {
-                    var name = $scope.slug;
-                }else{
-                    var name = $scope.article.name;
-                }
+                ProgrammarMessages.confirm("Are you sure you want to delete?", "No", "Delete", function(result) {
+                    if(result) {
+                        if($scope.slug) {
+                            var name = $scope.slug;
+                        }else{
+                            var name = $scope.article.name;
+                        }
 
-                $(".deleteLink").text('Deleting...');
+                        $(".deleteLink").text('Deleting...');
 
-                $http.post(apiDeleteInteractBackendUri, {'name': name, 'userID': $scope.article.userID}).
-                success(function(data, status, headers, config) {
-                    $(".deleteLink").text(data.message);
-                    $scope.article.name = data.name;
-                    window.location.href = "/drafts";
-                }).
-                error(function(data, status, headers, config) {
-                    $scope.saving = false;
-                    $scope.publishing = false;
-                    $(".deleteLink").text(data.message);
+                        $http.post(apiDeleteInteractBackendUri, {'name': name, 'userID': $scope.article.userID}).
+                        success(function(data, status, headers, config) {
+                            $(".deleteLink").text(data.message);
+                            $scope.article.name = data.name;
+                            window.location.href = "/drafts";
+                        }).
+                        error(function(data, status, headers, config) {
+                            $scope.saving = false;
+                            $scope.publishing = false;
+                            $(".deleteLink").text(data.message);
+                        });
+                    }
                 });
             };
 
