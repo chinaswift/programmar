@@ -24,21 +24,17 @@
 
             $confirmOptionOne.on('click', function() {
                 $confirmDialog.fadeOut();
-                console.log('message callback: button 1 clicked');
                 option = true;
                 if (callback && typeof(callback) === "function") {
-                    console.log('callback sent');
-                    callback(option);
+                    callback('cancel');
                 }
             });
 
             $confirmOptionTwo.on('click', function() {
                 $confirmDialog.fadeOut();
-                console.log('message callback: button 2 clicked');
                 option = false;
                 if (callback && typeof(callback) === "function") {
-                    console.log('callback sent');
-                    callback(option);
+                    callback('confirm');
                 }
             });
         };

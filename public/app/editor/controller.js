@@ -97,7 +97,7 @@
 
             $scope.deleteArticle = function() {
                 ProgrammarMessages.confirm("Are you sure you want to delete?", "No", "Delete", "danger", function(result) {
-                    if(result) {
+                    if(result == 'confirm') {
                         var name = $scope.slug;
                         $(".deleteLink").text('Deleting...');
                         $http.post(apiDeleteInteractBackendUri, {'name': name, 'userID': $scope.article.userID}).
