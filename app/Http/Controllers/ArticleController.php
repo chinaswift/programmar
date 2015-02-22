@@ -103,15 +103,7 @@ class ArticleController extends Controller {
 			array_push($enjoyArray, $array);
 		}
 
-		if($data->published != '0') {
-			return view('article/view', ['data' => $data, 'slug' => $slug, 'enjoys' => $enjoyArray]);
-		}else{
-			if($data->user_id === Auth::user()->id) {
-				return redirect('/edit/' . $slug);
-			}else{
-				return redirect('/');
-			}
-		}
+		return view('article/view', ['data' => $data, 'slug' => $slug, 'enjoys' => $enjoyArray]);
 	}
 
 	/**
