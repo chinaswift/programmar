@@ -1,7 +1,12 @@
 ## Programmar
 A place for developers to read and write
 
-#### Current version: v1.2
+#### Current version: v1.3
+
+Version 1.3
+---------------------
+- Allowed public to view draft's if link is shared with them
+- Allowed public to view articles
 
 Version 1.2
 ---------------------
