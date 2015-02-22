@@ -5837,6 +5837,9 @@ a {
     .btn.btn-gray:active {
       background-color: #ccc;
       color: #fff; }
+  .btn.octicon {
+    font-size: 19px !important;
+    padding: 8px 10px; }
 
 .write-area {
   padding-bottom: 30px; }
@@ -8745,6 +8748,8 @@ aside.sidebar {
 
 #profile .article-listing {
   border-top: 1px solid #EFEFEF; }
+#profile .follow-buttons {
+  display: inline; }
 #profile .right-container {
   position: absolute;
   left: -300px;
