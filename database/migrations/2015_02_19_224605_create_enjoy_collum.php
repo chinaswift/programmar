@@ -28,7 +28,7 @@ class CreateEnjoyCollum extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('enjoys');
+		//Schema::drop('enjoys');
 	}
 
 }
