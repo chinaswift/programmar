@@ -21,7 +21,16 @@
 
             $confirmDialog.addClass(type).show();
 
-            return false;
+            $confirmOptionOne.on('click', function() {
+                $confirmDialog.removeClass(type).hide();
+                return false;
+            });
+
+            $confirmOptionTwo.on('click', function() {
+                $confirmDialog.removeClass(type).hide();
+                return true;
+            });
+
         };
 
 
