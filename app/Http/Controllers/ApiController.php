@@ -170,9 +170,13 @@ class ApiController extends Controller {
 
 			$article_data['enjoys'] = $enjoyArray;
 
-			$enjoyCount = Enjoy::where('user_id', '=', Auth::user()->id)->where('article_id', '=', $article_id)->count();
-			if($enjoyCount > 0) {
-				$article_data['user_enjoyed'] = true;
+			if(Auth::check()) {
+				$enjoyCount = Enjoy::where('user_id', '=', Auth::user()->id)->where('article_id', '=', $article_id)->count();
+				if($enjoyCount > 0) {
+					$article_data['user_enjoyed'] = true;
+				}else{
+					$article_data['user_enjoyed'] = false;
+				}
 			}else{
 				$article_data['user_enjoyed'] = false;
 			}
