@@ -1,7 +1,11 @@
 ## Programmar
 A place for developers to read and write
 
-#### Current version: v1.0
+#### Current version: v1.1
+
+Version 1.1
+---------------------
+- Improved message handeling
 
 Version 1.0
 ---------------------

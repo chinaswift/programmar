@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default {{ $headerClass }}">
 	<div class="container">
 		<div class="navbar-header">
-			<li class="navbar-brand"><a href="/" class="logo">Programm^r</a> <a href="https://github.com/Layerful/programmar" target="_blank" class="beta-box">v1.0</a></li>
+			<li class="navbar-brand"><a href="/" class="logo">Programm^r</a> <a href="https://github.com/Layerful/programmar" target="_blank" class="beta-box">v1.1</a></li>
 		</div>
 
 		<div class="navbar-right">
