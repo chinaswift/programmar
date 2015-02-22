@@ -33,7 +33,7 @@ class HomeController extends Controller {
 
 			if($followersCount > 0) {
 				foreach($followers as $follower) {
-					$following_user = User::find($follower->followed);
+					$following_user = User::find($follower->followed)->first();
 					dd($following_user);
 					$array = array(
 						'user_id' => $following_user->id,
