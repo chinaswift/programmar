@@ -22,15 +22,15 @@
             $confirmDialog.addClass(type).show();
 
             $confirmOptionOne.on('click', function() {
-                $confirmDialog.removeClass(type).fadeOut();
+                $confirmDialog.fadeOut();
                 console.log('message callback: button 1 clicked');
-                return false;
+                return 'cancel';
             });
 
             $confirmOptionTwo.on('click', function() {
-                $confirmDialog.removeClass(type).fadeOut();
+                $confirmDialog.fadeOut();
                 console.log('message callback: button 2 clicked');
-                return true;
+                return 'confirm';
             });
 
         };
