@@ -54,9 +54,9 @@
 							<a href="#" ng-show="showEnjoyContent" ng-click="showArticles();"><% articlesData.length %> Article<span ng-show="articlesData.length > 1 || articlesData.length == 0">s</span></a>
 						</div>
 					</div>
-					<div class="f-right" ng-hide="userData.self">
-						<div class="follow-buttons">
-							<a href="http://github.com/<% userData.user_slug %>" class="btn btn-gray"><i ng-class="octicons octicon-mark-github"></i></a>
+					<div class="f-right">
+						<a href="http://github.com/<% userData.user_slug %>" class="btn btn-gray"><i ng-class="octicons octicon-mark-github"></i></a>
+						<div class="follow-buttons" ng-hide="userData.self">
 							<a href="#" class="btn btn-gray" ng-show="userData.your_following" ng-click="unfollow();"><% unfollowTxt %></a>
 							<a href="#" class="btn btn-primary" ng-hide="userData.your_following" ng-click="follow();"><% followTxt %></a>
 						</div>
