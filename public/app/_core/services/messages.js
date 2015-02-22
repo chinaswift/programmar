@@ -9,7 +9,7 @@
             confirmOptionOneSelector = confirmSelector + ' .option-one',
             confirmOptionTwoSelector = confirmSelector + ' .option-two';
 
-        var confirmDialog = function(message, optionOne, optionTwo) {
+        var confirmDialog = function(message, optionOne, optionTwo, type) {
             var $confirmDialog = $(confirmSelector),
                 $confirmMessage = $(confirmMessageSelector),
                 $confirmOptionOne = $(confirmOptionOneSelector),
@@ -19,7 +19,7 @@
             $confirmOptionOne.text(optionOne);
             $confirmOptionTwo.text(optionTwo);
 
-            $confirmDialog.show();
+            $confirmDialog.addClass(type).show();
 
             return false;
         };

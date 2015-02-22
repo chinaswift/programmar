@@ -20,7 +20,7 @@
 <section class="confirm-message animated pulse">
 	<span class="message"></span>
 	<div class="btn-container">
-		<a href="#" class="btn option-one"></a>
-		<a href="#" class="btn option-two"></a>
+		<a href="#" class="option-one"></a>
+		<a href="#" class="option-two"></a>
 	</div>
 </section>

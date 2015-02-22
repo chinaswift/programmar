@@ -96,7 +96,7 @@
             };
 
             $scope.deleteArticle = function() {
-                ProgrammarMessages.confirm("Are you sure you want to delete?", "No", "Delete", function(result) {
+                ProgrammarMessages.confirm("Are you sure you want to delete?", "No", "Delete", "danger", function(result) {
                     if(result) {
                         if($scope.slug) {
                             var name = $scope.slug;
