@@ -20,7 +20,7 @@
             $confirmOptionOne.text(optionOne);
             $confirmOptionTwo.text(optionTwo);
 
-            $confirmDialog.addClass(type).show();
+            $confirmDialog.removeClass('danger').removeClass('warning').removeClass('success').addClass(type).show();
 
             $confirmOptionOne.on('click', function() {
                 $confirmDialog.fadeOut();
