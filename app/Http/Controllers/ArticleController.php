@@ -12,16 +12,6 @@ use Auth;
 class ArticleController extends Controller {
 
 	/**
-	 * Construct
-	 * This allows auth checks to be in place before any of the views are loaded.
-	 * @return void
-	 */
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
-
-	/**
 	 * Function which shows the write controller
 	 * @return void
 	 */
@@ -34,18 +24,22 @@ class ArticleController extends Controller {
 	 * @return void
 	 */
 	public function collect($slug) {
-		if($slug != 'write') {
-			$data = Article::where('slug', '=', $slug)->firstOrFail();
-			$user = User::where('id', '=', $data->{'user_id'})->firstOrFail();
-			$data->{'content'} = Storage::get($data->{'user_id'} . '/' . $slug . '.programmar-article');
-			$data->{'userName'} = $user->{'name'};
-			$enjoy = Enjoy::where('user_id', '=', Auth::user()->id)->where('article_id', '=', $slug)->count();
-			if($enjoy > 0) {
-				$data->{'user_enjoyed'} = true;
-			}else{
-				$data->{'user_enjoyed'} = false;
+		if(Auth::check()) {
+			if($slug != 'write') {
+				$data = Article::where('slug', '=', $slug)->firstOrFail();
+				$user = User::where('id', '=', $data->{'user_id'})->firstOrFail();
+				$data->{'content'} = Storage::get($data->{'user_id'} . '/' . $slug . '.programmar-article');
+				$data->{'userName'} = $user->{'name'};
+				$enjoy = Enjoy::where('user_id', '=', Auth::user()->id)->where('article_id', '=', $slug)->count();
+				if($enjoy > 0) {
+					$data->{'user_enjoyed'} = true;
+				}else{
+					$data->{'user_enjoyed'} = false;
+				}
+				return $data;
 			}
-			return $data;
+		}else{
+			return redirect('/');
 		}
 	}
 
@@ -54,29 +48,36 @@ class ArticleController extends Controller {
 	 * @return void
 	 */
 	public function edit($slug) {
-		$data = Article::where('slug', '=', $slug)->firstOrFail();
-		if($data->user_id === Auth::user()->id  || Auth::user()->account_type === 'admin' || Auth::user()->account_type === 'supervisor') {
-			return view('article/write', ['edit' => true, 'slug' => $slug]);
+		if(Auth::check()) {
+			$data = Article::where('slug', '=', $slug)->firstOrFail();
+			if($data->user_id === Auth::user()->id  || Auth::user()->account_type === 'admin' || Auth::user()->account_type === 'supervisor') {
+				return view('article/write', ['edit' => true, 'slug' => $slug]);
+			}else{
+				return redirect("/article/" . $slug);
+			}
 		}else{
-			return redirect("/article/" . $slug);
+			return redirect('/');
 		}
 	}
 
 	public function enjoy(Request $request) {
-		$name = $request->input('name');
-		$user_id = Auth::user()->id;
-		$check = Enjoy::where('article_id', '=', $name)->where('user_id', '=', $user_id)->count();
-		if($check > 0) {
-			$enjoyed = Enjoy::firstOrNew(array('article_id' => $name, 'user_id' => $user_id));
-			$enjoyed->delete();
+		if(Auth::check()) {
+			$name = $request->input('name');
+			$user_id = Auth::user()->id;
+			$check = Enjoy::where('article_id', '=', $name)->where('user_id', '=', $user_id)->count();
+			if($check > 0) {
+				$enjoyed = Enjoy::firstOrNew(array('article_id' => $name, 'user_id' => $user_id));
+				$enjoyed->delete();
+			}else{
+				$enjoyed = Enjoy::firstOrNew(array('article_id' => $name, 'user_id' => $user_id));
+				$enjoyed->user_id = $user_id;
+				$enjoyed->article_id = $name;
+				$enjoyed->save();
+			}
+			return response()->json(['type' => 'success', 'message' => 'Enjoyed'], 200);
 		}else{
-			$enjoyed = Enjoy::firstOrNew(array('article_id' => $name, 'user_id' => $user_id));
-			$enjoyed->user_id = $user_id;
-			$enjoyed->article_id = $name;
-			$enjoyed->save();
+			return response()->json(['type' => 'error', 'message' => 'You need to be logged in to enjoy posts.'], 200);
 		}
-
-		return response()->json(['type' => 'success', 'message' => 'Enjoyed'], 200);
 	}
 
 
@@ -119,7 +120,11 @@ class ArticleController extends Controller {
 	 * @return void
 	 */
 	public function followers() {
-		return view('home/followers');
+		if(Auth::check()) {
+			return view('home/followers');
+		}else{
+			return redirect('/');
+		}
 	}
 
 }

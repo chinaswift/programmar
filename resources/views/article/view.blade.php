@@ -40,10 +40,16 @@
 			</div>
 			<div class="content wrtie-area" ng-model="article.content" contenteditable="false"></div>
 			<div class="bottom-bar">
-				<div class="f-left">
-					<a href="#" ng-click="enjoy()" class="enjoyed" ng-hide="article.enjoyed">Enjoy?</a>
-					<a href="#" ng-click="enjoy()" class="enjoyed" ng-show="article.enjoyed">Enjoyed</a>
-				</div>
+				@if(Auth::check())
+					<div class="f-left">
+						<a href="#" ng-click="enjoy()" class="enjoyed" ng-hide="article.enjoyed">Enjoy?</a>
+						<a href="#" ng-click="enjoy()" class="enjoyed" ng-show="article.enjoyed">Enjoyed</a>
+					</div>
+				@else
+					<div class="f-left">
+						<a href="/oauth/github">Sign in with github</a> for more actions.
+					</div>
+				@endif
 
 				<div class="f-right">
 					<span class="user" ng-repeat="(key, user) in article.enjoys | limitTo:5">
