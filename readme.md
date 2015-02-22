@@ -2,8 +2,6 @@
 A place for developers to read and write
 
 #### Current version: v1.0
-##### *Releases*
-
 
 Version 1.0
 ---------------------
