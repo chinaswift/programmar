@@ -76,7 +76,7 @@ class HomeController extends Controller {
 
 			$articles = Article::where('published', '=', '1')->orderBy('last_updated', 'desc')->take($resultsPerPage)->get();
 			foreach ($articles as $article) {
-				$user = User::where('id', '=', $article->{'user_id'})->firstOrFail();
+				$user = User::where('id', '=', $article->{'user_id'})->first();
 				$article->userName = $user->{'name'};
 				$article->username = $user->{'username'};
 				$article->avatar = $user->{'avatar'};
