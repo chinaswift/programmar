@@ -1350,35 +1350,35 @@ pre {
   max-height: 340px;
   overflow-y: scroll; }
 
-.container, .confirm-dialog {
+.container, .confirm-message {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px; }
-  .container:before, .confirm-dialog:before, .container:after, .confirm-dialog:after {
+  .container:before, .confirm-message:before, .container:after, .confirm-message:after {
     content: " ";
     display: table; }
-  .container:after, .confirm-dialog:after {
+  .container:after, .confirm-message:after {
     clear: both; }
   @media (min-width: 768px) {
-    .container, .confirm-dialog {
+    .container, .confirm-message {
       width: 630px; } }
   @media (min-width: 992px) {
-    .container, .confirm-dialog {
+    .container, .confirm-message {
       width: 730px; } }
   @media (min-width: 1200px) {
-    .container, .confirm-dialog {
+    .container, .confirm-message {
       width: 730px; } }
 
-.container-fluid, .navbar.navbar-default.full .container, .navbar.navbar-default.full .confirm-dialog {
+.container-fluid, .navbar.navbar-default.full .container, .navbar.navbar-default.full .confirm-message {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px; }
-  .container-fluid:before, .navbar.navbar-default.full .container:before, .navbar.navbar-default.full .confirm-dialog:before, .container-fluid:after, .navbar.navbar-default.full .container:after, .navbar.navbar-default.full .confirm-dialog:after {
+  .container-fluid:before, .navbar.navbar-default.full .container:before, .navbar.navbar-default.full .confirm-message:before, .container-fluid:after, .navbar.navbar-default.full .container:after, .navbar.navbar-default.full .confirm-message:after {
     content: " ";
     display: table; }
-  .container-fluid:after, .navbar.navbar-default.full .container:after, .navbar.navbar-default.full .confirm-dialog:after {
+  .container-fluid:after, .navbar.navbar-default.full .container:after, .navbar.navbar-default.full .confirm-message:after {
     clear: both; }
 
 .row {
@@ -3055,11 +3055,11 @@ tbody.collapse.in {
     .navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
       max-height: 200px; } }
 
-.container > .navbar-header, .confirm-dialog > .navbar-header, .container > .navbar-collapse, .confirm-dialog > .navbar-collapse, .container-fluid > .navbar-header, .navbar.navbar-default.full .container > .navbar-header, .navbar.navbar-default.full .confirm-dialog > .navbar-header, .container-fluid > .navbar-collapse, .navbar.navbar-default.full .container > .navbar-collapse, .navbar.navbar-default.full .confirm-dialog > .navbar-collapse {
+.container > .navbar-header, .confirm-message > .navbar-header, .container > .navbar-collapse, .confirm-message > .navbar-collapse, .container-fluid > .navbar-header, .navbar.navbar-default.full .container > .navbar-header, .navbar.navbar-default.full .confirm-message > .navbar-header, .container-fluid > .navbar-collapse, .navbar.navbar-default.full .container > .navbar-collapse, .navbar.navbar-default.full .confirm-message > .navbar-collapse {
   margin-right: -75px;
   margin-left: -75px; }
   @media (min-width: 768px) {
-    .container > .navbar-header, .confirm-dialog > .navbar-header, .container > .navbar-collapse, .confirm-dialog > .navbar-collapse, .container-fluid > .navbar-header, .navbar.navbar-default.full .container > .navbar-header, .navbar.navbar-default.full .confirm-dialog > .navbar-header, .container-fluid > .navbar-collapse, .navbar.navbar-default.full .container > .navbar-collapse, .navbar.navbar-default.full .confirm-dialog > .navbar-collapse {
+    .container > .navbar-header, .confirm-message > .navbar-header, .container > .navbar-collapse, .confirm-message > .navbar-collapse, .container-fluid > .navbar-header, .navbar.navbar-default.full .container > .navbar-header, .navbar.navbar-default.full .confirm-message > .navbar-header, .container-fluid > .navbar-collapse, .navbar.navbar-default.full .container > .navbar-collapse, .navbar.navbar-default.full .confirm-message > .navbar-collapse {
       margin-right: 0;
       margin-left: 0; } }
 
@@ -3099,7 +3099,7 @@ tbody.collapse.in {
   .navbar-brand > img {
     display: block; }
   @media (min-width: 768px) {
-    .navbar > .container .navbar-brand, .navbar > .confirm-dialog .navbar-brand, .navbar > .container-fluid .navbar-brand, .navbar.navbar-default.full .navbar > .container .navbar-brand, .navbar.navbar-default.full .navbar > .confirm-dialog .navbar-brand {
+    .navbar > .container .navbar-brand, .navbar > .confirm-message .navbar-brand, .navbar > .container-fluid .navbar-brand, .navbar.navbar-default.full .navbar > .container .navbar-brand, .navbar.navbar-default.full .navbar > .confirm-message .navbar-brand {
       margin-left: -75px; } }
 
 .navbar-toggle {
@@ -3574,14 +3574,14 @@ a.badge:hover, a.badge:focus {
     font-weight: 200; }
   .jumbotron > hr {
     border-top-color: #1f2125; }
-  .container .jumbotron, .confirm-dialog .jumbotron, .container-fluid .jumbotron, .navbar.navbar-default.full .container .jumbotron, .navbar.navbar-default.full .confirm-dialog .jumbotron {
+  .container .jumbotron, .confirm-message .jumbotron, .container-fluid .jumbotron, .navbar.navbar-default.full .container .jumbotron, .navbar.navbar-default.full .confirm-message .jumbotron {
     border-radius: 6px; }
-  .jumbotron .container, .jumbotron .confirm-dialog {
+  .jumbotron .container, .jumbotron .confirm-message {
     max-width: 100%; }
   @media screen and (min-width: 768px) {
     .jumbotron {
       padding: 48px 0; }
-      .container .jumbotron, .confirm-dialog .jumbotron, .container-fluid .jumbotron, .navbar.navbar-default.full .container .jumbotron, .navbar.navbar-default.full .confirm-dialog .jumbotron {
+      .container .jumbotron, .confirm-message .jumbotron, .container-fluid .jumbotron, .navbar.navbar-default.full .container .jumbotron, .navbar.navbar-default.full .confirm-message .jumbotron {
         padding-left: 60px;
         padding-right: 60px; }
       .jumbotron h1, .jumbotron .h1 {
@@ -4623,10 +4623,10 @@ button.close {
   .carousel-indicators {
     bottom: 20px; } }
 
-.clearfix:before, footer.main-footer:before, .confirm-dialog:before, #article .bottom-bar:before, .clearfix:after, footer.main-footer:after, .confirm-dialog:after, #article .bottom-bar:after {
+.clearfix:before, footer.main-footer:before, .confirm-message:before, #article .bottom-bar:before, .clearfix:after, footer.main-footer:after, .confirm-message:after, #article .bottom-bar:after {
   content: " ";
   display: table; }
-.clearfix:after, footer.main-footer:after, .confirm-dialog:after, #article .bottom-bar:after {
+.clearfix:after, footer.main-footer:after, .confirm-message:after, #article .bottom-bar:after {
   clear: both; }
 
 .center-block {
@@ -4844,7 +4844,7 @@ button.close {
   font-weight: 700;
   font-style: normal; }
 
-.Text-Regular, a, .common-container .info, .confirm-dialog .message, #article .info, #article .content {
+.Text-Regular, a, .common-container .info, .confirm-message .message, #article .info, #article .content {
   font-family: 'Karla', sans-serif;
   font-weight: 400;
   font-style: normal; }
@@ -5596,17 +5596,17 @@ html, body, input, select, textarea {
     height: 100%;
     overflow: hidden; }
 
-.clearfix:before, footer.main-footer:before, .confirm-dialog:before, #article .bottom-bar:before, .clearfix:after, footer.main-footer:after, .confirm-dialog:after, #article .bottom-bar:after {
+.clearfix:before, footer.main-footer:before, .confirm-message:before, #article .bottom-bar:before, .clearfix:after, footer.main-footer:after, .confirm-message:after, #article .bottom-bar:after {
   content: " ";
   display: table; }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important; }
 
-.clearfix:after, footer.main-footer:after, .confirm-dialog:after, #article .bottom-bar:after {
+.clearfix:after, footer.main-footer:after, .confirm-message:after, #article .bottom-bar:after {
   clear: both; }
 
-.clearfix, footer.main-footer, .confirm-dialog, #article .bottom-bar {
+.clearfix, footer.main-footer, .confirm-message, #article .bottom-bar {
   *zoom: 1; }
 
 .f-left {
@@ -5617,7 +5617,7 @@ html, body, input, select, textarea {
   float: right;
   display: block; }
 
-.inline-block, .navbar.navbar-default .navbar-brand, .navbar.navbar-default .navbar-brand .logo, .navbar.navbar-default .beta-box, .navbar.navbar-default li, .write-area .code-block, footer.main-footer .footer-item, aside.sidebar a.btn, .confirm-dialog .btn-container a, #article .right-container .user .profile-image, #article .right-container .user .link, #article .bottom-bar .more, #article .bottom-bar .profile-image, #home .profile-image, #profile .right-container .user .profile-image, #profile .right-container .user .link {
+.inline-block, .navbar.navbar-default .navbar-brand, .navbar.navbar-default .navbar-brand .logo, .navbar.navbar-default .beta-box, .navbar.navbar-default li, .write-area .code-block, footer.main-footer .footer-item, aside.sidebar a.btn, .confirm-message .btn-container a, #article .right-container .user .profile-image, #article .right-container .user .link, #article .bottom-bar .more, #article .bottom-bar .profile-image, #home .profile-image, #profile .right-container .user .profile-image, #profile .right-container .user .link {
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: middle;
@@ -5640,7 +5640,7 @@ html, body, input, select, textarea {
 .missing-text {
   margin: 25px 0px; }
 
-.container, .confirm-dialog {
+.container, .confirm-message {
   width: 100%;
   max-width: 700px;
   margin: 0px auto;
@@ -5651,10 +5651,10 @@ html, body, input, select, textarea {
   transition: transform .3s ease-in-out, opacity .3s ease-in-out;
   -webkit-transform: translate3d(0px, 0, 0);
           transform: translate3d(0px, 0, 0); }
-  .container.push, .push.confirm-dialog {
+  .container.push, .push.confirm-message {
     margin-bottom: 50px; }
   @media (max-width: 768px) {
-    .container, .confirm-dialog {
+    .container, .confirm-message {
       margin: 0px 30px;
       padding: 0px;
       width: calc(100% - 60px); } }
@@ -5686,7 +5686,7 @@ html, body, input, select, textarea {
     height: 100%;
     z-index: 9; }
 
-.container-fluid, .navbar.navbar-default.full .container, .navbar.navbar-default.full .confirm-dialog {
+.container-fluid, .navbar.navbar-default.full .container, .navbar.navbar-default.full .confirm-message {
   width: 100%;
   max-width: 100%;
   margin: 0px 75px;
@@ -5707,7 +5707,7 @@ html, body, input, select, textarea {
   .navbar.navbar-default .navbar-header {
     margin-left: 0px !important;
     margin-right: 0px !important; }
-  .navbar.navbar-default.full .container, .navbar.navbar-default.full .confirm-dialog {
+  .navbar.navbar-default.full .container, .navbar.navbar-default.full .confirm-message {
     max-width: 100%; }
   .navbar.navbar-default .navbar-brand {
     color: #AAAAAC;
@@ -8549,31 +8549,31 @@ aside.sidebar {
   transition: width .6s ease-in-out;
   background: #e1e4e7; }
 
-.confirm-dialog {
+.confirm-message {
   display: none;
   margin-bottom: 25px;
   padding: 15px 20px;
   border-radius: 3px; }
-  .confirm-dialog.danger {
+  .confirm-message.danger {
     color: #DF4931;
     background: rgba(223, 73, 49, 0.1); }
-    .confirm-dialog.danger .btn-container .option-two {
+    .confirm-message.danger .btn-container .option-two {
       color: #DF4931; }
-      .confirm-dialog.danger .btn-container .option-two:hover {
+      .confirm-message.danger .btn-container .option-two:hover {
         color: #dd3d24; }
-    .confirm-dialog.danger .btn-container .option-one {
+    .confirm-message.danger .btn-container .option-one {
       color: rgba(223, 73, 49, 0.5); }
-      .confirm-dialog.danger .btn-container .option-one:hover {
+      .confirm-message.danger .btn-container .option-one:hover {
         color: #DF4931; }
-  .confirm-dialog .message {
+  .confirm-message .message {
     font-size: 14px;
     float: left; }
-  .confirm-dialog .btn-container {
+  .confirm-message .btn-container {
     float: right; }
-    .confirm-dialog .btn-container a {
+    .confirm-message .btn-container a {
       font-size: 14px;
       margin-right: 20px; }
-      .confirm-dialog .btn-container a:last-child {
+      .confirm-message .btn-container a:last-child {
         margin-right: 0px; }
 
 #landing {
