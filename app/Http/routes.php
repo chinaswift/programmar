@@ -1,4 +1,11 @@
 <?php
+//Refactored roots
+//OAuth
+Route::get('oauth/{account}', 'OAuthController@access');
+Route::get('logout', 'OAuthController@logout');
+Route::get('auth/{account}', 'OAuthController@create');
+
+
 
 //Main Routes
 Route::get('/', 'HomeController@all');
@@ -32,7 +39,3 @@ Route::post('/api/internal/v1/article/enjoy', 'ArticleController@enjoy');
 
 //Static Pages
 Route::get('about', 'StaticController@about');
-
-//OAuth
-Route::get('oauth/{account}', 'OAuthController@access');
-Route::get('auth/{account}', 'OAuthController@confirm');
