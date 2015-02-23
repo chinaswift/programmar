@@ -79,6 +79,10 @@
 		}
 	}
 
+	p {
+		margin-bottom: 40px;
+	}
+
 	.bottom-bar {
 		@extend .clearfix;
 		padding-top: 75px;
@@ -92,8 +96,25 @@
 			line-height: 25px;
 		}
 
+		.signin-link {
+			@media (max-width: $screen-sm-min) {
+				display: block;
+				float: left;
+				text-algin: left;
+			}
+		}
+
 		.f-right {
 			text-align: right;
+			@media (max-width: $screen-sm-min) {
+				width: 100%;
+			}
+		}
+
+		@media (max-width: $screen-sm-min) {
+			.users {
+				margin-top: -25px;
+			}
 		}
 
 		.f-left {

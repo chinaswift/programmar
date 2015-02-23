@@ -1,5 +1,5 @@
 <?php
-	$pageName = 'something';
+	$pageName = 'Programmar - About';
 	$pageDesc = 'something';
 ?>
 
@@ -7,8 +7,4 @@
 
 @section('content')
 	blah
-@endsection
-
-@section('scripts')
-	pow
 @endsection

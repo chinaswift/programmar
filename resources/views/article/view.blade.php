@@ -59,13 +59,13 @@
 						<a href="#" ng-click="enjoy()" class="enjoyed" ng-hide="article.enjoyed">Enjoy?</a>
 						<a href="#" ng-click="enjoy()" class="enjoyed" ng-show="article.enjoyed">Enjoyed</a>
 					@else
-						<a href="/oauth/github">Sign in with github</a> for more actions.
+						<span class="signin-link"><a href="/oauth/github">Sign in with github</a> for more actions.</span>
 					@endif
 					<div class="inline-block users">
-						<span class="user" ng-repeat="(key, user) in article.enjoys | limitTo:5">
+						<span class="user" ng-repeat="(key, user) in article.enjoys | limitTo:3">
 							<a href="/dev/<% user.user_slug %>"><img ng-src="<% user.user_avatar %>" class="profile-image img-circle"></a>
 						</span>
-						<a class="more" ng-click="showEnjoySection();" ng-show="article.enjoys.length >= 5">+<% article.enjoys.length - 5 %></a>
+						<a class="more" ng-click="showEnjoySection();" ng-show="article.enjoys.length >= 3">+<% article.enjoys.length - 3 %></a>
 					</div>
 				</div>
 			</div>

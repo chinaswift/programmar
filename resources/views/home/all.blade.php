@@ -1,7 +1,7 @@
 <?php
 	$pageName = 'Programmar - All';
 	$pageDesc = 'Programmar allows you to always keep up to day with the latest news, tips and how-to\'s.
-				Follow your favourite subjects or people and create a custom digest of the best and most
+				Follow your favourite developers and create a custom digest of the best and most
 				popular development articles.';
 	$pageId = "home";
 	$pageAngular = 'home';

@@ -1,11 +1,15 @@
 <?php
 //Refactored roots
+
 //OAuth
 Route::get('oauth/{account}', 'OAuthController@access');
 Route::get('logout', 'OAuthController@logout');
 Route::get('auth/{account}', 'OAuthController@create');
 
-
+//About
+Route::get('about', 'StaticController@about');
+Route::get('team', 'StaticController@team');
+Route::get('terms', 'StaticController@terms');
 
 //Main Routes
 Route::get('/', 'HomeController@all');
@@ -36,6 +40,3 @@ Route::post('/api/internal/v1/editor/publish', 'EditorController@publish');
 Route::post('/api/internal/v1/editor/delete', 'EditorController@delete');
 
 Route::post('/api/internal/v1/article/enjoy', 'ArticleController@enjoy');
-
-//Static Pages
-Route::get('about', 'StaticController@about');

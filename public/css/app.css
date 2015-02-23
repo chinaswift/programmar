@@ -5792,7 +5792,7 @@ a {
     color: #999; }
     a.gray:hover {
       color: #333; }
-  a:active {
+  a:focus {
     outline: none;
     border: none; }
 
@@ -8708,6 +8708,8 @@ aside.sidebar {
     margin-right: 35px; }
   #article .info a:hover {
     color: #dedede; }
+#article p {
+  margin-bottom: 40px; }
 #article .bottom-bar {
   padding-top: 75px; }
   #article .bottom-bar .enjoyed {
@@ -8715,8 +8717,19 @@ aside.sidebar {
     font-size: 15px;
     height: 25px;
     line-height: 25px; }
+  @media (max-width: 768px) {
+    #article .bottom-bar .signin-link {
+      display: block;
+      float: left;
+      text-algin: left; } }
   #article .bottom-bar .f-right {
     text-align: right; }
+    @media (max-width: 768px) {
+      #article .bottom-bar .f-right {
+        width: 100%; } }
+  @media (max-width: 768px) {
+    #article .bottom-bar .users {
+      margin-top: -25px; } }
   #article .bottom-bar .f-left {
     height: 25px;
     line-height: 25px; }

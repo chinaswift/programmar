@@ -8,7 +8,15 @@ use Illuminate\Http\Request;
 class StaticController extends Controller {
 
 	public function about() {
-		return view('static/about');
+		return view('external/about');
+	}
+
+	public function team() {
+		return view('external/team');
+	}
+
+	public function terms() {
+		return view('external/terms');
 	}
 
 }
