@@ -21,7 +21,7 @@
 				</div>
 
 				<div class="info" ng-show="userData.followers.length > 0">
-					<span>userData.followers.length Followers.</span>
+					<span><% userData.followers.length %> Followers.</span>
 				</div>
 			</div>
 
