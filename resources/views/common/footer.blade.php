@@ -5,6 +5,9 @@
 	</div>
 
 	<div class="f-right" ng-class="{faded: moveLeft}">
-		<a href="#">About</a>
+		<a href="http://twitter.com/_programmar" target="_blank">Twitter</a>
+		<a href="/about">About</a>
+		<a href="/terms">Terms</a>
+		<a href="/team">Team</a>
 	</div>
 </footer>

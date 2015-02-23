@@ -25,6 +25,15 @@
             $scope.moveLeft = false;
             $scope.slug = href.substr(href.lastIndexOf('/') + 1);
 
+            //Setting up clip
+            $(".copy-link").zclip({
+                path: "/js/ZeroClipboard.swf",
+                copy: $('.copy-link').text(),
+                afterCopy: function(){
+                    $(".copy-link").text('Copied!');
+                }
+            });
+
             //Collect article API stuff
             var reloadArticleData = function() {
                 ArticleApi.get({article_id: $scope.slug}).$promise.then(function(articleData) {

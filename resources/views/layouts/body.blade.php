@@ -31,8 +31,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="{{ $pageDesc }}">
 	<title>{{ $pageName }}</title>
-	<script src="//use.typekit.net/xrt0ihn.js"></script>
-	<script>try{Typekit.load();}catch(e){}</script>
 	<link href="/css/app.css" rel="stylesheet">
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

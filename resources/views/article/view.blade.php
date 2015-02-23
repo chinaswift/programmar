@@ -51,7 +51,7 @@
 			<div class="content wrtie-area" ng-model="article.content" contenteditable="false"></div>
 			<div class="bottom-bar">
 				<div class="f-left">
-					<a href="http://pgmr.co/{{$data->slug}}" class="gray">pgmr.co/{{$data->slug}}</a>
+					<a href="http://pgmr.co/{{$data->slug}}" class="gray copy-link">pgmr.co/{{$data->slug}}</a>
 				</div>
 
 				<div class="f-right">
@@ -72,4 +72,8 @@
 		</article>
 		</div>
 </div>
+@endsection
+
+@section('scripts')
+	<script src="/js/vendor/z-clip.min.js"></script>
 @endsection

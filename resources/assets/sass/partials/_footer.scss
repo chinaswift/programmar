@@ -18,14 +18,18 @@ footer.main-footer {
 	}
 
 	.f-right {
-		display: none;
 		a {
-			@extend .Mono-Medium;
+			@extend .Text-Regular;
 			font-size: 12px;
-			color: $gray-light;
+			margin-right: 20px;
+			color: $gray;
+
+			&:last-child {
+				margin-right: 0px;
+			}
 
 			&:hover {
-				color: darken($gray-light, 10%);
+				color: $gray-darker;
 			}
 		}
 	}
