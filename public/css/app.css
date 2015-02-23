@@ -8570,6 +8570,12 @@ aside.sidebar {
   .right-container .overflow-container {
     height: 300px;
     overflow: auto; }
+    .right-container .overflow-container::-webkit-scrollbar {
+      width: 3px; }
+    .right-container .overflow-container::-webkit-scrollbar-track {
+      background: #EFEFEF; }
+    .right-container .overflow-container::-webkit-scrollbar-thumb {
+      background: #DFDFDF; }
   .right-container .user {
     display: block;
     height: 30px;
