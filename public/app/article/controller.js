@@ -25,15 +25,6 @@
             $scope.moveLeft = false;
             $scope.slug = href.substr(href.lastIndexOf('/') + 1);
 
-            //Setting up clip
-            $(".copy-link").zclip({
-                path: "/js/ZeroClipboard.swf",
-                copy: $('.copy-link').text(),
-                afterCopy: function(){
-                    $(".copy-link").text('Copied!');
-                }
-            });
-
             //Collect article API stuff
             var reloadArticleData = function() {
                 ArticleApi.get({article_id: $scope.slug}).$promise.then(function(articleData) {
@@ -67,7 +58,20 @@
 
                     setTimeout(function() {
                         $scope.articleLoading = false;
-                        $scope.pageLoaded = 60;
+                        $scope.pageLoaded = 100;
+
+                        //Setting up clip
+                        var client = new ZeroClipboard( document.getElementById("copyLink"), {
+                          moviePath: "/js/ZeroClipboard.swf"
+                        });
+
+                        client.on("load", function(client) {
+                          client.on("complete", function(client, args) {
+                            // `this` is the element that was clicked
+                            this.innerHTML = "Copied!";
+                          });
+                        });
+
                         setTimeout(function() {
                             $scope.loaderShow = false;
                             $scope.$apply();

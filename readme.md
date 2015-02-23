@@ -1,7 +1,13 @@
 ## Programmar
 A place for developers to read and write
 
-#### Current version: v1.3
+#### Current version: v1.4
+
+Version 1.4
+---------------------
+- Opened up the site for public users
+- Allowed shortened link copy to share
+- Improved sidebars around the site
 
 Version 1.3
 ---------------------
