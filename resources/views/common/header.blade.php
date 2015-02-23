@@ -10,6 +10,8 @@
 					<li><a href="/dev/{{ Auth::user()->username }}">Me</a></li>
 					<li><a href="/write">Write</a></li>
 					<li><a href="/logout">Logout</a></li>
+				@else
+					<li><a href="/oauth/github">Log in</a></li>
 				@endif
 				{!! $additionalButtons !!}
 			</ul>
