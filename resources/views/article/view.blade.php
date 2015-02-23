@@ -59,7 +59,7 @@
 						<a href="#" ng-click="enjoy()" class="enjoyed" ng-hide="article.enjoyed">Enjoy?</a>
 						<a href="#" ng-click="enjoy()" class="enjoyed" ng-show="article.enjoyed">Enjoyed</a>
 					@else
-						<span class="signin-link"><a href="/oauth/github">Sign in with github</a> for more actions.</span>
+						<a href="/oauth/github" class="enjoyed">Enjoy?</a>
 					@endif
 					<div class="inline-block users">
 						<span class="user" ng-repeat="(key, user) in article.enjoys | limitTo:3">

@@ -8790,7 +8790,7 @@ aside.sidebar {
 #home .profile-image {
   width: 25px;
   height: 25px;
-  margin-right: 0px;
+  margin-left: 5px;
   margin-bottom: 5px; }
   #home .profile-image.faded {
     opacity: 0.4; }
