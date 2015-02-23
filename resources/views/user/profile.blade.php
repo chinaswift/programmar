@@ -25,9 +25,11 @@
 				</div>
 			</div>
 
-			<div class="user" ng-repeat="(key, user) in userData.followers">
-				<img ng-src="<% user.user_avatar %>" class="profile-image img-circle">
-				<a class="link" href="/dev/<% user.user_slug %>"><% user.user_name %></a>
+			<div class="overflow-container">
+				<div class="user" ng-repeat="(key, user) in userData.followers">
+					<img ng-src="<% user.user_avatar %>" class="profile-image img-circle">
+					<a class="link" href="/dev/<% user.user_slug %>"><% user.user_name %></a>
+				</div>
 			</div>
 		</div>
 	</div>
