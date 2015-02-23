@@ -3,6 +3,8 @@ html, body, input, select, textarea {
 	font-weight: normal;
 	width: 100%;
 	min-height: 100%;
+	overflow-y: scroll;
+	overflow-x: hidden;
 	@include font-smoothing();
 
 	&.overflow {
@@ -88,7 +90,7 @@ html, body, input, select, textarea {
 
 	&.absolute {
 		position: absolute;
-		top: 135px;
+		top: 185px;
 		left: 50%;
 		height: calc(100% - 135px);
 		transform: translateX(-50%);

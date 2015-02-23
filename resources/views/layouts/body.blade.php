@@ -42,11 +42,7 @@
 	<![endif]-->
 </head>
 <body id="{{$pageId}}" @if($pageAngular) ng-controller="{{ $pageController }}" @endif>
-	<div class="container absolute" ng-show="showEnjoys" ng-cloak set-class-when-at-top="fixed">
-		<div class="right-container animated fadeInLeft">
-			@yield('leftSlideOut')
-		</div>
-	</div>
+	@yield('leftSlideOut')
 
 	@if($headerInclude)
 		@include('common/header')

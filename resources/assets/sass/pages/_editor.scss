@@ -1,42 +1,5 @@
 #article {
 
-	.right-container {
-		padding-top: 50px;
-		width: 250px;
-
-		.overflow-container {
-			height: 300px;
-			overflow: auto;
-		}
-
-		.user {
-			display: block;
-			height: 30px;
-			margin-bottom: 15px;
-
-			.profile-image {
-				@extend .inline-block;
-				vertical-align: middle;
-				width: 30px;
-				height: 30px;
-				margin-right: 10px;
-			}
-
-			.link {
-				@extend .inline-block;
-				vertical-align: middle;
-				color: $gray-darker;
-				font-size: 15px;
-				height: 30px;
-				line-height: 30px;
-
-				&:hover {
-					color: #000;
-				}
-			}
-		}
-	}
-
 	[contenteditable=true]:empty:before{
 	  content: attr(placeholder);
 	  display: block;
@@ -147,6 +110,7 @@
 			font-size: 12px;
 			text-align: center;
 			color: $gray;
+			cursor: pointer;
 		}
 
 		.user {

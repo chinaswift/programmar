@@ -5589,6 +5589,8 @@ html, body, input, select, textarea {
   font-weight: normal;
   width: 100%;
   min-height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
   html.overflow, body.overflow, input.overflow, select.overflow, textarea.overflow {
@@ -5617,7 +5619,7 @@ html, body, input, select, textarea {
   float: right;
   display: block; }
 
-.inline-block, .navbar.navbar-default .navbar-brand, .navbar.navbar-default .navbar-brand .logo, .navbar.navbar-default .beta-box, .navbar.navbar-default li, .write-area .code-block, footer.main-footer .footer-item, aside.sidebar a.btn, .confirm-message .btn-container a, #article .right-container .user .profile-image, #article .right-container .user .link, #article .bottom-bar .enjoyed, #article .bottom-bar .more, #article .bottom-bar .user .profile-image, #home .profile-image, #profile .right-container .user .profile-image, #profile .right-container .user .link {
+.inline-block, .navbar.navbar-default .navbar-brand, .navbar.navbar-default .navbar-brand .logo, .navbar.navbar-default .beta-box, .navbar.navbar-default li, .write-area .code-block, footer.main-footer .footer-item, aside.sidebar a.btn, .right-container .user .profile-image, .right-container .user .link, .confirm-message .btn-container a, #article .bottom-bar .enjoyed, #article .bottom-bar .more, #article .bottom-bar .user .profile-image, #home .profile-image {
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: middle;
@@ -5660,7 +5662,7 @@ html, body, input, select, textarea {
       width: calc(100% - 60px); } }
   .container.absolute, .absolute.confirm-message {
     position: absolute;
-    top: 135px;
+    top: 185px;
     left: 50%;
     height: calc(100% - 135px);
     -webkit-transform: translateX(-50%);
@@ -8560,6 +8562,29 @@ aside.sidebar {
     aside.sidebar .btn-container.push {
       margin-top: 20px; }
 
+.right-container {
+  width: 250px; }
+  .right-container .overflow-container {
+    height: 300px;
+    overflow: auto; }
+  .right-container .user {
+    display: block;
+    height: 30px;
+    margin-bottom: 15px; }
+    .right-container .user .profile-image {
+      vertical-align: middle;
+      width: 30px;
+      height: 30px;
+      margin-right: 10px; }
+    .right-container .user .link {
+      vertical-align: middle;
+      color: #333;
+      font-size: 15px;
+      height: 30px;
+      line-height: 30px; }
+      .right-container .user .link:hover {
+        color: #000; }
+
 .top-loader {
   position: fixed;
   top: 0px;
@@ -8623,29 +8648,6 @@ aside.sidebar {
     bottom: 75px;
     left: 75px; }
 
-#article .right-container {
-  padding-top: 50px;
-  width: 250px; }
-  #article .right-container .overflow-container {
-    height: 300px;
-    overflow: auto; }
-  #article .right-container .user {
-    display: block;
-    height: 30px;
-    margin-bottom: 15px; }
-    #article .right-container .user .profile-image {
-      vertical-align: middle;
-      width: 30px;
-      height: 30px;
-      margin-right: 10px; }
-    #article .right-container .user .link {
-      vertical-align: middle;
-      color: #333;
-      font-size: 15px;
-      height: 30px;
-      line-height: 30px; }
-      #article .right-container .user .link:hover {
-        color: #000; }
 #article [contenteditable=true]:empty:before {
   content: attr(placeholder);
   display: block;
@@ -8718,7 +8720,8 @@ aside.sidebar {
     line-height: 28px;
     font-size: 12px;
     text-align: center;
-    color: #999; }
+    color: #999;
+    cursor: pointer; }
   #article .bottom-bar .user .profile-image {
     width: 25px;
     height: 25px;
@@ -8775,28 +8778,3 @@ aside.sidebar {
   border-top: 1px solid #EFEFEF; }
 #profile .follow-buttons {
   display: inline; }
-#profile .right-container {
-  position: absolute;
-  left: -300px;
-  width: 250px;
-  top: 0px;
-  overflow: auto;
-  height: hidden;
-  padding-bottom: 150px; }
-  #profile .right-container .user {
-    display: block;
-    height: 30px;
-    margin-bottom: 15px; }
-    #profile .right-container .user .profile-image {
-      vertical-align: middle;
-      width: 30px;
-      height: 30px;
-      margin-right: 10px; }
-    #profile .right-container .user .link {
-      vertical-align: middle;
-      color: #333;
-      font-size: 15px;
-      height: 30px;
-      line-height: 30px; }
-      #profile .right-container .user .link:hover {
-        color: #000; }

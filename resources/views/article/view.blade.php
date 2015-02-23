@@ -19,20 +19,24 @@
 <div class="top-loader" ng-show="loaderShow" style="width: <% pageLoaded %>%;"></div>
 
 @section('leftSlideOut')
-	<div class="common-container top-section">
-		<span class="title">Enjoys</span>
-		<div class="info" ng-show="article.enjoys.length == 0">
-			<span class="hide-on-mobile">No one has enjoyed this article yet.</span>
-		</div>
+	<div class="container absolute" ng-show="showEnjoys" ng-cloak set-class-when-at-top="fixed">
+		<div class="right-container animated fadeInLeft">
+			<div class="common-container top-section">
+				<span class="title">Enjoys</span>
+				<div class="info" ng-show="article.enjoys.length == 0">
+					<span class="hide-on-mobile">No one has enjoyed this article yet.</span>
+				</div>
 
-		<div class="info" ng-show="article.enjoys.length > 0">
-			<span class="hide-on-mobile"><% article.enjoys.length %> Enjoys</span>
-		</div>
-	</div>
-	<div class="overflow-container">
-		<div class="user" ng-repeat="(key, user) in article.enjoys">
-			<img ng-src="<% user.user_avatar %>" class="profile-image img-circle">
-			<a class="link" href="/dev/<% user.user_slug %>"><% user.user_name %></a>
+				<div class="info" ng-show="article.enjoys.length > 0">
+					<span class="hide-on-mobile"><% article.enjoys.length %> Enjoys</span>
+				</div>
+			</div>
+			<div class="overflow-container">
+				<div class="user" ng-repeat="(key, user) in article.enjoys">
+					<img ng-src="<% user.user_avatar %>" class="profile-image img-circle">
+					<a class="link" href="/dev/<% user.user_slug %>"><% user.user_name %></a>
+				</div>
+			</div>
 		</div>
 	</div>
 @endsection
@@ -47,7 +51,7 @@
 			<div class="content wrtie-area" ng-model="article.content" contenteditable="false"></div>
 			<div class="bottom-bar">
 				<div class="f-left">
-					<a href="#" class="gray">pgmr.co/2esd</a>
+					<a href="http://pgmr.co/{{$data->slug}}" class="gray">pgmr.co/{{$data->slug}}</a>
 				</div>
 
 				<div class="f-right">
