@@ -1,12 +1,16 @@
 #article {
+
 	.right-container {
-		position: absolute;
-		left: -300px;
-		width: 250px;
+		position: sticky;
 		top: 0px;
-		overflow: auto;
-		height: 100%;
-		padding-bottom: 150px;
+		padding-top: 50px;
+		left: 0px;
+		width: 250px;
+
+		.overflow-container {
+			height: 300px;
+			overflow: auto;
+		}
 
 		.user {
 			display: block;
@@ -94,6 +98,7 @@
 		font-size: 18px;
 		color: $gray-darker;
 		margin: 0 0 0px 0;
+		letter-spacing: 0.1px;
 		outline: none;
 		border: none;
 	}
@@ -119,32 +124,55 @@
 		padding-top: 75px;
 
 		.enjoyed {
+			@extend .inline-block;
 			@extend .Text-Bold;
-			display: block;
 			color: $brand-primary;
 			font-size: 15px;
+			height: 25px;
+			line-height: 25px;
 		}
 
 		.f-right {
 			text-align: right;
 		}
 
-		.more {
-			@extend .inline-block;
-			@extend .Mono-Medium;
-			width: 25px;
+		.f-left {
 			height: 25px;
 			line-height: 25px;
-			font-size: 12px;
-			text-align: center;
-			color: $gray-light;
 		}
 
-		.profile-image {
+		.more {
 			@extend .inline-block;
+			@extend .Text-Bold;
 			width: 25px;
 			height: 25px;
+			line-height: 28px;
+			font-size: 12px;
+			text-align: center;
+			color: $gray;
 		}
+
+		.user {
+			.profile-image {
+				@extend .inline-block;
+				width: 25px;
+				height: 25px;
+				margin-right: 5px;
+			}
+
+			&:first-child {
+				.profile-image {
+					margin-left: 20px;
+				}
+			}
+
+			&:last-child {
+				.profile-image {
+					margin-right: 0px;
+				}
+			}
+		}
+
 	}
 
 

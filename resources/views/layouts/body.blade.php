@@ -41,7 +41,13 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 </head>
-<body id="{{$pageId}}" @if($pageAngular) ng-controller="{{ $pageController }}" @endif  ng-class="{overflow: moveLeft}">
+<body id="{{$pageId}}" @if($pageAngular) ng-controller="{{ $pageController }}" @endif>
+	<div class="container absolute" ng-show="showEnjoys" ng-cloak>
+		<div class="right-container animated fadeInLeft">
+			@yield('leftSlideOut')
+		</div>
+	</div>
+
 	@if($headerInclude)
 		@include('common/header')
 	@endif

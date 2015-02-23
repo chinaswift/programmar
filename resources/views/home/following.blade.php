@@ -6,6 +6,7 @@
 	$pageId = "home";
 	$pageAngular = 'home';
 	$pageController = 'HomeCtrl';
+	$following = 'active';
 ?>
 
 @extends('layouts/body')

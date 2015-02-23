@@ -24,17 +24,21 @@ aside.sidebar {
 	}
 
 	a {
-		@extend .Text-Bold;
+		@extend .Text-Regular;
 		display: block;
 		text-align: right;
 		line-height: 28px;
 		outline: none;
 		border: none;
 		color: $gray;
-		font-size: 14px;
+		font-size: 15px;
 
 		&:hover, &.active {
 			color: $gray-dark;
+		}
+
+		&.active {
+			@extend .Text-Bold;
 		}
 
 		&.brand-primary {

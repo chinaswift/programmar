@@ -17,47 +17,52 @@
 @section('content')
 
 <div class="top-loader" ng-show="loaderShow" style="width: <% pageLoaded %>%;"></div>
-<div class="container main-container" ng-class="{slideRight: moveLeft}">
 
-	<div class="right-container animated fadeInLeft" ng-show="showEnjoys" ng-cloak>
-		<div class="common-container top-section">
-			<span class="title">People who enjoyed this</span>
-			<div class="info" ng-show="article.enjoys.length == 0">
-				<span class="hide-on-mobile">No one has enjoyed this article yet.</span>
-			</div>
+@section('leftSlideOut')
+	<div class="common-container top-section">
+		<span class="title">Enjoys</span>
+		<div class="info" ng-show="article.enjoys.length == 0">
+			<span class="hide-on-mobile">No one has enjoyed this article yet.</span>
 		</div>
 
+		<div class="info" ng-show="article.enjoys.length > 0">
+			<span class="hide-on-mobile"><% article.enjoys.length %> Enjoys</span>
+		</div>
+	</div>
+	<div class="overflow-container">
 		<div class="user" ng-repeat="(key, user) in article.enjoys">
 			<img ng-src="<% user.user_avatar %>" class="profile-image img-circle">
 			<a class="link" href="/dev/<% user.user_slug %>"><% user.user_name %></a>
 		</div>
 	</div>
+@endsection
 
+<div class="container main-container" ng-class="{slideRight: moveLeft}">
 	<div ng-class="{faded: moveLeft}" ng-click="closeRightSection();">
 		<article class="animated fadeInUp" ng-hide="articleLoading" ng-cloak>
 			<div class="title">{{$data->title}}</div>
 			<div class="info">
 					<a href="/dev/{{$data->userName}}"><% article.user %></a>
-					<a href="#" ng-click="showEnjoySection();"><% article.enjoys.length %> Enjoy<span ng-show="article.enjoys.length > 1 || article.enjoys.length == 0">s</span></a>
 			</div>
 			<div class="content wrtie-area" ng-model="article.content" contenteditable="false"></div>
 			<div class="bottom-bar">
-				@if(Auth::check())
-					<div class="f-left">
-						<a href="#" ng-click="enjoy()" class="enjoyed" ng-hide="article.enjoyed">Enjoy?</a>
-						<a href="#" ng-click="enjoy()" class="enjoyed" ng-show="article.enjoyed">Enjoyed</a>
-					</div>
-				@else
-					<div class="f-left">
-						<a href="/oauth/github">Sign in with github</a> for more actions.
-					</div>
-				@endif
+				<div class="f-left">
+					<a href="#" class="gray">pgmr.co/2esd</a>
+				</div>
 
 				<div class="f-right">
-					<span class="user" ng-repeat="(key, user) in article.enjoys | limitTo:5">
-						<a href="/dev/<% user.user_slug %>"><img ng-src="<% user.user_avatar %>" class="profile-image img-circle"></a>
-					</span>
-					<a class="more" ng-click="showEnjoySection();" ng-show="article.enjoys.length >= 5">+<% article.enjoys.length - 5 %></a>
+					@if(Auth::check())
+						<a href="#" ng-click="enjoy()" class="enjoyed" ng-hide="article.enjoyed">Enjoy?</a>
+						<a href="#" ng-click="enjoy()" class="enjoyed" ng-show="article.enjoyed">Enjoyed</a>
+					@else
+						<a href="/oauth/github">Sign in with github</a> for more actions.
+					@endif
+					<div class="inline-block users">
+						<span class="user" ng-repeat="(key, user) in article.enjoys | limitTo:5">
+							<a href="/dev/<% user.user_slug %>"><img ng-src="<% user.user_avatar %>" class="profile-image img-circle"></a>
+						</span>
+						<a class="more" ng-click="showEnjoySection();" ng-show="article.enjoys.length >= 5">+<% article.enjoys.length - 5 %></a>
+					</div>
 				</div>
 			</div>
 		</article>

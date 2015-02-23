@@ -85,6 +85,14 @@ html, body, input, select, textarea {
 		padding: 0px;
 		width: calc(100% - 60px);
 	}
+
+	&.absolute {
+		position: absolute;
+		top: 135px;
+		left: 50%;
+		height: calc(100% - 135px);
+		transform: translateX(-50%);
+	}
 }
 
 .slideRight {
