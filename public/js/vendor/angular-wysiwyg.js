@@ -1,26 +1,9 @@
 'use strict';
 
-/*
-Usage: <wysiwyg textarea-id="question" textarea-class="form-control"  textarea-height="80px" textarea-name="textareaQuestion" textarea-required ng-model="question.question" enable-bootstrap-title="true"></wysiwyg>
-    options
-        textarea-id             The id to assign to the editable div
-        textarea-class          The class(es) to assign to the the editable div
-        textarea-height         If not specified in a text-area class then the hight of the editable div (default: 80px)
-        textarea-name           The name attribute of the editable div
-        textarea-required       HTML/AngularJS required validation
-        textarea-menu           Array of Arrays that contain the groups of buttons to show Defualt:Show all button groups
-        ng-model                The angular data model
-        enable-bootstrap-title  True/False whether or not to show the button hover title styled with bootstrap
-
-Requires:
-    Twitter-bootstrap, fontawesome, jquery, angularjs, bootstrap-color-picker (https://github.com/buberdds/angular-bootstrap-colorpicker)
-
-*/
-
 angular.module('wysiwyg.module', ['colorpicker.module'])
     .directive('wysiwyg', function($timeout, wysiwgGui, $compile) {
         return {
-            template: '<div></div>',
+            template: '<p></p>',
             restrict: 'E',
             scope: {
                 value: '=ngModel',
@@ -40,6 +23,7 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
                 $compile(element.contents())(scope);
 
                 var textarea = element.find('div.wysiwyg-textarea');
+                var pre = element.find('div.wysiwyg-textarea pre');
 
                 scope.fonts = [
                     'Georgia',
@@ -141,14 +125,19 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
                     }
                 }
 
-                textarea.on('click keyup keydown focus mouseup', function() {
-                   if(event.keyCode == 13) {
-                        event.preventDefault();
+                pre.on('keyup', function(e) {
+                    if(e.keyCode == 13) {
+                        e.preventDefault();
                         if (window.getSelection) {
-                          document.execCommand('insertHTML', false, '<br><br>')
-                          return false;
-                      }
-                   }
+                            document.execCommand('insertHTML', false, '<br><br>')
+                            return false;
+                        }
+                    }
+                });
+
+                textarea.on('click keyup keydown focus mouseup', function() {
+                   /*
+                   }*/
                     $timeout(function() {
                         scope.isBold = scope.cmdState('bold') && scope.cmdValue('formatblock') != "h2";
                         scope.isUnderlined = scope.cmdState('underline');

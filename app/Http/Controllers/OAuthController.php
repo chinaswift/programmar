@@ -14,7 +14,7 @@ class OAuthController extends Controller {
 	//Access the site using socialize
 	public function access($account)
 	{
-		return \Socialize::with($account)->redirect();
+		return Socialize::with($account)->redirect();
 	}
 
 	//Logging out the user
