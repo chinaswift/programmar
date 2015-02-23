@@ -5784,7 +5784,8 @@ p {
 
 a {
   color: #55c38e;
-  text-decoration: none !important; }
+  text-decoration: none !important;
+  outline: none; }
   a:hover {
     color: #3ca974; }
   a.gray {

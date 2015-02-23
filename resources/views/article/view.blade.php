@@ -51,7 +51,7 @@
 			<div class="content wrtie-area" ng-model="article.content" contenteditable="false"></div>
 			<div class="bottom-bar">
 				<div class="f-left">
-					<a href="http://pgmr.co/{{$data->slug}}" class="gray" id="copyLink">pgmr.co/{{$data->slug}}</a>
+					<a href="http://pgmr.co/{{$data->slug}}" class="gray" id="copyLink" data-clipboard-text="http://pgmr.co/{{$data->slug}}">pgmr.co/{{$data->slug}}</a>
 				</div>
 
 				<div class="f-right">
