@@ -126,36 +126,36 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
                 }
 
                 textarea.on('click keyup keydown focus mouseup', function(e) {
+                    if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+                        if(e.keyCode == 13) {
+                            var docFragment = document.createDocumentFragment();
 
-                    if(e.keyCode == 13) {
-                        var docFragment = document.createDocumentFragment();
+                            //add a new line
+                            var newEle = document.createTextNode('\n');
+                            docFragment.appendChild(newEle);
 
-                        //add a new line
-                        var newEle = document.createTextNode('\n');
-                        docFragment.appendChild(newEle);
+                            //add the br, or p, or something else
+                            newEle = document.createElement('br');
+                            docFragment.appendChild(newEle);
 
-                        //add the br, or p, or something else
-                        newEle = document.createElement('br');
-                        docFragment.appendChild(newEle);
+                            //make the br replace selection
+                            var range = window.getSelection().getRangeAt(0);
+                            range.deleteContents();
+                            range.insertNode(docFragment);
 
-                        //make the br replace selection
-                        var range = window.getSelection().getRangeAt(0);
-                        range.deleteContents();
-                        range.insertNode(docFragment);
+                            //create a new range
+                            range = document.createRange();
+                            range.setStartAfter(newEle);
+                            range.collapse(true);
 
-                        //create a new range
-                        range = document.createRange();
-                        range.setStartAfter(newEle);
-                        range.collapse(true);
+                            //make the cursor there
+                            var sel = window.getSelection();
+                            sel.removeAllRanges();
+                            sel.addRange(range);
 
-                        //make the cursor there
-                        var sel = window.getSelection();
-                        sel.removeAllRanges();
-                        sel.addRange(range);
-
-                        return false;
+                            return false;
+                        }
                     }
-
 
                     $timeout(function() {
                         scope.isBold = scope.cmdState('bold') && scope.cmdValue('formatblock') != "h2";
