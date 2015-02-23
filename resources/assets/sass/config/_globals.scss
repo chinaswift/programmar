@@ -3,14 +3,11 @@ html, body, input, select, textarea {
 	font-weight: normal;
 	width: 100%;
 	min-height: 100%;
-	overflow-y: scroll;
-	overflow-x: hidden;
 	@include font-smoothing();
 
 	&.overflow {
-		width: 100%;
-		height: 100%;
-		overflow: hidden;
+		overflow-y: scroll;
+		overflow-x: hidden;
 	}
 }
 
