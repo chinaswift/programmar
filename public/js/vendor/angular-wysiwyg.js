@@ -98,38 +98,9 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
                         html = '';
                     }
 
+                    html.replace("\n", "<br />", "g")
+
                     ngModelController.$setViewValue(html);
-                });
-
-                textarea.on('paste', function(e) {
-                    e.preventDefault();
-
-                    var text = (e.originalEvent || e).clipboardData.getData('text/html');
-                    var $result = $('<div></div>').append($(text));
-
-                    document.execCommand('insertHTML', false, $result.html());
-
-                    // replace all styles except bold and italic
-                    $.each($(this).find("*"), function(idx, val) {
-
-                        var $item = $(val);
-                        if ($item.length > 0){
-                           var saveStyle = {
-                                'font-weight': $item.css('font-weight'),
-                                'font-style': $item.css('font-style')
-                            };
-                            $item.removeAttr('style')
-                                 .removeClass()
-                                 .css(saveStyle);
-                        }
-                    });
-
-                    // remove unnecesary tags (if paste from word)
-                    $(this).children('style').remove();
-                    $(this).children('pre').remove();
-                    $(this).children('code').remove();
-                    $(this).children('meta').remove()
-                    $(this).children('link').remove();
                 });
 
 
@@ -170,7 +141,14 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
                     }
                 }
 
-                textarea.on('click keyup focus mouseup', function() {
+                textarea.on('click keyup keydown focus mouseup', function() {
+                   if(event.keyCode == 13) {
+                        event.preventDefault();
+                        if (window.getSelection) {
+                          document.execCommand('insertHTML', false, '<br><br>')
+                          return false;
+                      }
+                   }
                     $timeout(function() {
                         scope.isBold = scope.cmdState('bold') && scope.cmdValue('formatblock') != "h2";
                         scope.isUnderlined = scope.cmdState('underline');

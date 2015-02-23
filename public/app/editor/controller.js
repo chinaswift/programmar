@@ -181,12 +181,12 @@
                         $http.post(apiEditorInteractBackendUri, {'title': title, 'content': content, 'name': name, 'userID': $scope.article.userID}).
                         success(function(data, status, headers, config) {
                             $scope.saving = false;
-                            $(".saveLink").text(data.message);
+                            $(".saveLink").text('Saved');
                             $scope.article.name = data.name;
                         }).
                         error(function(data, status, headers, config) {
                             $scope.saving = false;
-                            $(".saveLink").text(data.message);
+                            $(".saveLink").text('Not Saved');
                         });
                     }
                 }
