@@ -67,7 +67,7 @@ class OAuthController extends Controller {
 					'followed' => $github_user['id']
 				));
 				$followUser->followed_by = $account_id;
-				$followUser->followed = $github_user->id;
+				$followUser->followed = $github_user['id'];
 				$followUser->save();
 			}
 		}
