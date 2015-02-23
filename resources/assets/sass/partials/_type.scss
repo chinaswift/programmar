@@ -23,6 +23,11 @@ a {
 			color: $gray-darker;
 		}
 	}
+
+	&:active {
+		outline: none;
+		border: none;
+	}
 }
 
 .common-container {

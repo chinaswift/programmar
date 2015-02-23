@@ -5792,6 +5792,9 @@ a {
     color: #999; }
     a.gray:hover {
       color: #333; }
+  a:active {
+    outline: none;
+    border: none; }
 
 .common-container.top-section {
   padding-bottom: 44px; }
