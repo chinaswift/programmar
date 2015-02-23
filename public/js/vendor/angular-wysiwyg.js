@@ -23,7 +23,7 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
                 $compile(element.contents())(scope);
 
                 var textarea = element.find('div.wysiwyg-textarea');
-                var pre = element.find('div.wysiwyg-textarea pre');
+                var pre = element.find('pre');
 
                 scope.fonts = [
                     'Georgia',
@@ -125,19 +125,38 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
                     }
                 }
 
-                pre.on('keyup', function(e) {
-                    if(e.keyCode == 13) {
-                        e.preventDefault();
-                        if (window.getSelection) {
-                            document.execCommand('insertHTML', false, '<br><br>')
-                            return false;
-                        }
-                    }
-                });
+                textarea.on('click keyup keydown focus mouseup', function(e) {
 
-                textarea.on('click keyup keydown focus mouseup', function() {
-                   /*
-                   }*/
+                    if(e.keyCode == 13) {
+                        var docFragment = document.createDocumentFragment();
+
+                        //add a new line
+                        var newEle = document.createTextNode('\n');
+                        docFragment.appendChild(newEle);
+
+                        //add the br, or p, or something else
+                        newEle = document.createElement('br');
+                        docFragment.appendChild(newEle);
+
+                        //make the br replace selection
+                        var range = window.getSelection().getRangeAt(0);
+                        range.deleteContents();
+                        range.insertNode(docFragment);
+
+                        //create a new range
+                        range = document.createRange();
+                        range.setStartAfter(newEle);
+                        range.collapse(true);
+
+                        //make the cursor there
+                        var sel = window.getSelection();
+                        sel.removeAllRanges();
+                        sel.addRange(range);
+
+                        return false;
+                    }
+
+
                     $timeout(function() {
                         scope.isBold = scope.cmdState('bold') && scope.cmdValue('formatblock') != "h2";
                         scope.isUnderlined = scope.cmdState('underline');
@@ -302,7 +321,7 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
                     return '<button title="Right Justify" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'justifyright\')" ng-class="{ active: isRightJustified}"><i class="fa fa-align-right"></i></button>';
                     break;
                 case 'code':
-                    return '<a href="#" title="Code" tabindex="-1" ng-click="format(\'insertHTML\', \'<pre></pre><br>\')"  ng-class="{ active: isPre}">Code</a>';
+                    return '<a href="#" title="Code" tabindex="-1" ng-click="format(\'insertHTML\', \'<pre contenteditable></pre><br>\')"  ng-class="{ active: isPre}">Code</a>';
                     break;
                 case 'quote':
                     return '<a href="#" title="Quote" tabindex="-1" ng-click="format(\'insertHTML\', \'<blockquote></blockquote><br>\')"  ng-class="{ active: isBlockquote}">Quote</a>';
