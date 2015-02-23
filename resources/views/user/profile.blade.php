@@ -31,26 +31,6 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="container absolute" ng-show="showFollowing" ng-cloak set-class-when-at-top="fixed">
-		<div class="right-container animated fadeInLeft">
-			<div class="common-container top-section">
-				<span class="title">Following</span>
-				<div class="info" ng-show="userData.following.length == 0">
-					<span>Looks like this user is not following anyone.</span>
-				</div>
-
-				<div class="info" ng-show="userData.following.length > 0">
-					<span>userData.following.length Following.</span>
-				</div>
-			</div>
-
-			<div class="user" ng-repeat="(key, user) in userData.following">
-				<img ng-src="<% user.user_avatar %>" class="profile-image img-circle">
-				<a class="link" href="/dev/<% user.user_slug %>"><% user.user_name %></a>
-			</div>
-		</div>
-	</div>
 @endsection
 
 <div class="container main-container" ng-class="{slideRight: moveLeft}">
@@ -63,7 +43,6 @@
 						<span class="title"><% userData.name %></span>
 						<div class="info">
 							<a href="#" ng-click="toggleFollowers();"><% userData.followers.length %> Followers</a>
-							<a href="#" ng-click="toggleFollowing();"><% userData.following.length %> Following</a>
 							<a href="#" ng-show="showArticleContent" ng-click="showEnjoys();"><% userData.enjoys.length %> Enjoyed</a>
 							<a href="#" ng-show="showEnjoyContent" ng-click="showArticles();"><% articlesData.length %> Article<span ng-show="articlesData.length > 1 || articlesData.length == 0">s</span></a>
 						</div>
@@ -83,7 +62,7 @@
 			<div class="missing-text animated fadeInUp" ng-show="articlesData.length == 0">
 				<% userData.name %> currently has no articles
 			</div>
-			<div class="common-container list clearfix" ng-repeat="(key, article) in articlesData">
+			<div class="common-container list clearfix" ng-repeat="(key, article) in articlesData | orderBy:'last_updated':true">
 				<a class="title" href="/article/<% article.slug %>"><% article.title %></a>
 				<div class="info">
 					<span><% article.enjoys.length %> Enjoy<span ng-show="article.enjoys.length > 1 || article.enjoys.length == 0">s</span></span>
@@ -95,7 +74,7 @@
 			<div class="missing-text animated fadeInUp" ng-show="userData.enjoys.length == 0">
 				<% userData.name %> currently hasn't enjoyed anything!
 			</div>
-			<div class="common-container list clearfix" ng-repeat="(key, article) in userData.enjoys">
+			<div class="common-container list clearfix" ng-repeat="(key, article) in userData.enjoys | orderBy:'last_updated':true">
 				<a class="title" href="/article/<% article.article_data.slug %>"><% article.article_data.title %></a>
 				<div class="info">
 					<a href="/dev/<% article.article_data.user_slug %>"><% article.article_data.userName %></a>
