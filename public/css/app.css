@@ -4840,7 +4840,7 @@ button.close {
   font-weight: 600;
   font-style: normal; }
 
-.Text-Bold, h1, .common-container .title, .btn, .write-area h1, aside.sidebar a.active, #article .title, #article .bottom-bar .enjoyed, #article .bottom-bar .more, #article .content h2, #home .pagination-container a {
+.Text-Bold, h1, .common-container .title, .btn, .write-area h1, aside.sidebar a.active, #article .title, #article .bottom-bar .enjoyed, #article .bottom-bar .more, #article .content h2, #home .pagination-container a, #error .infomation h2 {
   font-family: 'Karla', sans-serif;
   font-weight: 700;
   font-style: normal; }
@@ -8794,3 +8794,24 @@ aside.sidebar {
   border-top: 1px solid #EFEFEF; }
 #profile .follow-buttons {
   display: inline; }
+
+#error .infomation {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  text-align: center;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%); }
+  #error .infomation h2 {
+    margin: 75px 0 5px 0;
+    font-size: 18px;
+    color: #333; }
+  #error .infomation .ghost {
+    margin: 0px auto;
+    width: 100px;
+    height: 120px;
+    background-image: url(/img/illustrations/ghost.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: "100px 120px"; }
