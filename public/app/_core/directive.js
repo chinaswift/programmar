@@ -14,7 +14,7 @@
 	          offsetTop = element.offset().top; // get element's offset top relative to document
 
 	      $win.on('scroll', function (e) {
-	        if (($win.scrollTop() + 75) >= offsetTop) {
+	        if (($win.scrollTop() + 80) >= offsetTop) {
 	          element.addClass(topClass);
 	        } else {
 	          element.removeClass(topClass);

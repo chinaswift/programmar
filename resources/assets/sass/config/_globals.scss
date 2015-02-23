@@ -92,6 +92,11 @@ html, body, input, select, textarea {
 		left: 50%;
 		height: calc(100% - 135px);
 		transform: translateX(-50%);
+
+		&.fixed {
+			position: fixed;
+			top: 50px;
+		}
 	}
 }
 
