@@ -17,11 +17,7 @@ class ApiController extends Controller {
 	public function followers($user_id = 'session') {
 		//If session then make sure we select the session ID
 		if($user_id === 'session') {
-			if(!Auth::check()) {
-				return response()->json(['type' => 'error', 'message' => 'Unauthorized'], 400);
-			}else{
-				$user_id = Auth::user()->id;
-			}
+			$user_id = Auth::user()->id;
 		}
 
 		//Start the logic here
@@ -48,11 +44,7 @@ class ApiController extends Controller {
 	public function following($user_id = 'session') {
 		//If session then make sure we select the session ID
 		if($user_id === 'session') {
-			if(!Auth::check()) {
-				return response()->json(['type' => 'error', 'message' => 'Unauthorized'], 400);
-			}else{
-				$user_id = Auth::user()->id;
-			}
+			$user_id = Auth::user()->id;
 		}
 
 		//Start the logic here
@@ -119,11 +111,7 @@ class ApiController extends Controller {
 	public function articles($user_id = 'session') {
 		//If session then make sure we select the session ID
 		if($user_id === 'session') {
-			if(!Auth::check()) {
-				return response()->json(['type' => 'error', 'message' => 'Unauthorized'], 400);
-			}else{
-				$user_id = Auth::user()->id;
-			}
+			$user_id = Auth::user()->id;
 		}
 
 		$articles = Article::where('user_id','=', $user_id)->where('published', '=', 1)->get();
@@ -189,11 +177,7 @@ class ApiController extends Controller {
 	public function enjoys($user_id = 'session') {
 		//If session then make sure we select the session ID
 		if($user_id === 'session') {
-			if(!Auth::check()) {
-				return response()->json(['type' => 'error', 'message' => 'Unauthorized'], 400);
-			}else{
-				$user_id = Auth::user()->id;
-			}
+			$user_id = Auth::user()->id;
 		}
 
 		$enjoys = Enjoy::where('user_id','=', $user_id)->get();
@@ -217,11 +201,7 @@ class ApiController extends Controller {
 	public function user($slug = 'session') {
 		//If session then make sure we select the session ID
 		if($slug === 'session') {
-			if(!Auth::check()) {
-				return response()->json(['type' => 'error', 'message' => 'Unauthorized'], 400);
-			}else{
-				$slug = Auth::user()->username;
-			}
+			$slug = Auth::user()->username;
 		}
 
 		//Check if the user exists
@@ -232,16 +212,25 @@ class ApiController extends Controller {
 		}
 
 		//Follower count
-		$countFollow = Follower::where('followed_by', '=', Auth::user()->id)->where('followed', '=', $user_id)->count();
-		if($countFollow > 0) {
-			$user->your_following = true;
+		if(Auth::check()) {
+			$countFollow = Follower::where('followed_by', '=', Auth::user()->id)->where('followed', '=', $user_id)->count();
+			if($countFollow > 0) {
+				$user->your_following = true;
+			}else{
+				$user->your_following = false;
+			}
 		}else{
 			$user->your_following = false;
 		}
 
+
 		//Check if you own profile
-		if($user_id === Auth::user()->id) {
-			$user->self = true;
+		if(Auth::check()) {
+			if($user_id === Auth::user()->id) {
+				$user->self = true;
+			}else{
+				$user->self = false;
+			}
 		}else{
 			$user->self = false;
 		}

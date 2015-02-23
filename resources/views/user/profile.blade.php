@@ -49,10 +49,12 @@
 					</div>
 					<div class="f-right">
 						<a href="http://github.com/<% userData.username %>" target="_blank" class="btn btn-gray octicon octicon-mark-github"></a>
-						<div class="follow-buttons" ng-hide="userData.self">
-							<a href="#" class="btn btn-gray" ng-show="userData.your_following" ng-click="unfollow();"><% unfollowTxt %></a>
-							<a href="#" class="btn btn-primary" ng-hide="userData.your_following" ng-click="follow();"><% followTxt %></a>
-						</div>
+						@if(Auth::check())
+							<div class="follow-buttons" ng-hide="userData.self">
+								<a href="#" class="btn btn-gray" ng-show="userData.your_following" ng-click="unfollow();"><% unfollowTxt %></a>
+								<a href="#" class="btn btn-primary" ng-hide="userData.your_following" ng-click="follow();"><% followTxt %></a>
+							</div>
+						@endif
 					</div>
 				</div>
 			</div>

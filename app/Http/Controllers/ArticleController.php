@@ -16,7 +16,11 @@ class ArticleController extends Controller {
 	 * @return void
 	 */
 	public function write() {
-		return view('article/write');
+		if(Auth::check()) {
+			return view('article/write');
+		}else{
+			return redirect('/');
+		}
 	}
 
 	/**

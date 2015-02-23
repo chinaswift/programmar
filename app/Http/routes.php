@@ -6,14 +6,6 @@ Route::get('oauth/{account}', 'OAuthController@access');
 Route::get('logout', 'OAuthController@logout');
 Route::get('auth/{account}', 'OAuthController@create');
 
-//Admin
-Route::get('admin/error', 'AdminController@error');
-
-abort(404);
-abort(502);
-abort(500);
-abort(503);
-
 //About
 Route::get('about', 'StaticController@about');
 Route::get('team', 'StaticController@team');
