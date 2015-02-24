@@ -22,19 +22,22 @@ class UserController extends Controller {
 	public function following($page = 1) {
 		if(Auth::check()) {
 			$followerArray = array();
+			$checkArray = array();
 			$followers = Follower::where('followed_by', '=', Auth::user()->id)->get();
 
 			foreach($followers as $follower) {
 				$following_user = User::find($follower->followed);
 				$array = array(
-					'user_id' => $following_user->user_id,
+					'user_id' => $following_user->id,
 					'user_avatar' => $following_user->avatar,
 					'user_slug' => $following_user->username
 				);
+
+				array_push($checkArray, $following_user->id);
 				array_push($followerArray, $array);
 			}
 
-			$article_count = Article::whereIn('user_id', $followerArray)->where('published', '=', '1')->count();
+			$article_count = Article::whereIn('user_id', $checkArray)->where('published', '=', '1')->count();
 			$resultsPerPage = 10;
 			$paginationCtrls = '';
 			$last = ceil($article_count/$resultsPerPage);
@@ -65,7 +68,7 @@ class UserController extends Controller {
 		        $paginationCtrls .= '<a href="/following/'.$next.'" class="f-right brand-primary">Next</a>';
 		    }
 
-			$articles = Article::whereIn('user_id', $followerArray)->where('published', '=', '1')->orderBy('last_updated', 'desc')->skip(($page - 1) * $resultsPerPage)->take($resultsPerPage)->get();
+			$articles = Article::whereIn('user_id', $checkArray)->where('published', '=', '1')->orderBy('last_updated', 'desc')->skip(($page - 1) * $resultsPerPage)->take($resultsPerPage)->get();
 			foreach ($articles as $article) {
 				$user = User::where('id', '=', $article->{'user_id'})->firstOrFail();
 				$article->userName = $user->{'name'};
