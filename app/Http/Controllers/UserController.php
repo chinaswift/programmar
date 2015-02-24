@@ -65,7 +65,7 @@ class UserController extends Controller {
 		        $paginationCtrls .= '<a href="/following/'.$next.'" class="f-right brand-primary">Next</a>';
 		    }
 
-			$articles = Article::whereIn('user_id', $followerArray)->where('published', '=', '1')->orderBy('last_updated', 'desc')->skip($page - 1)->take($resultsPerPage)->get();
+			$articles = Article::whereIn('user_id', $followerArray)->where('published', '=', '1')->orderBy('last_updated', 'desc')->skip(($page - 1) * $resultsPerPage)->take($resultsPerPage)->get();
 			foreach ($articles as $article) {
 				$user = User::where('id', '=', $article->{'user_id'})->firstOrFail();
 				$article->userName = $user->{'name'};
@@ -125,7 +125,7 @@ class UserController extends Controller {
 		        $paginationCtrls .= '<a href="/drafts/'.$next.'" class="f-right brand-primary">Next</a>';
 		    }
 
-			$articles = Article::where('user_id', '=', Auth::user()->id)->where('published', '=', '0')->orderBy('last_updated', 'desc')->skip($page - 1)->take($resultsPerPage)->get();
+			$articles = Article::where('user_id', '=', Auth::user()->id)->where('published', '=', '0')->orderBy('last_updated', 'desc')->skip(($page - 1) * $resultsPerPage)->take($resultsPerPage)->get();
 
 			foreach ($articles as $article) {
 				$user = User::where('id', '=', $article->{'user_id'})->firstOrFail();
