@@ -65,7 +65,7 @@
 						<span class="user" ng-repeat="(key, user) in article.enjoys | limitTo:3">
 							<a href="/dev/<% user.user_slug %>"><img ng-src="<% user.user_avatar %>" class="profile-image img-circle"></a>
 						</span>
-						<a class="more" ng-click="showEnjoySection();" ng-show="article.enjoys.length >= 3">+<% article.enjoys.length - 3 %></a>
+						<a class="more" ng-click="showEnjoySection();" ng-show="article.enjoys.length > 3">+<% article.enjoys.length - 3 %></a>
 					</div>
 				</div>
 			</div>
