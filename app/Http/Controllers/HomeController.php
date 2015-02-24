@@ -57,7 +57,7 @@ class HomeController extends Controller {
 	    }
 
 	    //Collect the articles
-		$articles = Article::where('published', '=', '1')->orderBy('last_updated', 'desc')->take($resultsPerPage)->get();
+		$articles = Article::where('published', '=', '1')->orderBy('last_updated', 'desc')->skip($page - 1)->take($resultsPerPage)->get();
 		foreach ($articles as $article) {
 			$user = User::where('id', '=', $article->{'user_id'})->first();
 			$article->userName = $user->{'name'};
