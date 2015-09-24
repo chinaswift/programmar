@@ -103,7 +103,7 @@
 	      	$scope.searchedUsers = data.users;
 	      	console.log(data);
 	      	$timeout(function() {
-	      		$scope.apply();
+	      		$scope.$apply();
 	      	}, 300);
 	      });
 	    };
