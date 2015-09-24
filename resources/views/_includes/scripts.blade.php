@@ -18,8 +18,6 @@
 	<script src="/app/_core/filter.js"></script>
 
 	<script src="/app/_core/services/user_data.js"></script>
-	<script src="/app/_core/services/articles.js"></script>
-	<script src="/app/_core/services/users.js"></script>
 
 	@if($pageAngular)
 		@foreach(['service', 'config', 'controller', 'directive', 'filter'] as $fileName)

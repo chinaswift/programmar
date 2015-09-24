@@ -35,6 +35,13 @@ Route::group(['prefix' => 'feed'], function() {
 });
 
 /**
+ * Search Routes
+ */
+Route::group(['prefix' => 'search'], function() {
+	Route::get('/', ['uses' => 'SearchController@search']);
+});
+
+/**
  * Write Routes
  */
 Route::group(['prefix' => 'write'], function() {

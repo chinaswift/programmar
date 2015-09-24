@@ -10,9 +10,7 @@
 	  '$window',
 	  '$timeout',
 	  'UserData',
-	  'Articles',
-	  'Users',
-	  function ($scope, $window, $timeout, UserData, Articles, Users) {
+	  function ($scope, $window, $timeout, UserData) {
 	  	//Variables
 	  	var messagesSelector = '.messages';
 	  	var upvoteSelector = "#upvote";
@@ -44,28 +42,12 @@
 	  	$scope.searchQuery = function() {
 	  		var query = angular.element('.modal-input').val();
 
-	      Articles.search(query, {}, function(err, content) {
-	        if (err || query != content.query) {
-	          return err;
-	        }
-	        $scope.articleSearchResults = content.hits;
-
-	        if ($scope.initRun){
-	          $scope.$apply();
-	          $scope.initRun = false;
-	        }
-	      });
-
-	      Users.search(query, {}, function(err, content) {
-	        if (err || query != content.query) {
-	          return err;
-	        }
-	        $scope.userSearchResults = content.hits;
-
-	        if ($scope.initRun){
-	          $scope.$apply();
-	          $scope.initRun = false;
-	        }
+	      $.get('/search?limit=2&query=' + query, function(data) {
+	      	$scope.articleSearchResults = data.articles;
+	      	$scope.userSearchResults = data.users;
+	      	$timeout(function() {
+	      		$scope.$apply();
+	      	}, 300);
 	      });
 	    };
 
@@ -117,17 +99,12 @@
 
 	    //function to search users
 	  	$scope.searchUsers = function() {
-	      Users.search($scope.query, {}, function(err, content) {
-	        if (err || $scope.query != content.query) {
-	          return err;
-	        }
-
-	        $scope.searchedUsers = content.hits;
-
-	        if ($scope.initRun){
-	          $scope.$apply();
-	          $scope.initRun = false;
-	        }
+	      $.get('/search?article=no', function(data) {
+	      	$scope.searchedUsers = data.users;
+	      	console.log(data);
+	      	$timeout(function() {
+	      		$scope.apply();
+	      	}, 300);
 	      });
 	    };
 
