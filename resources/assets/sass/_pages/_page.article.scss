@@ -1,0 +1,68 @@
+#article {
+	h1 {
+		font-size: 16px;
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 0 0 10px;
+	}
+
+	.title {
+		margin-bottom: 40px;
+	}
+
+	.time {
+		font-size: 14px;
+		color: $gray-light;
+	}
+
+	.social-bar {
+		border-top: 1px solid $gray-lightest;
+		border-bottom: 1px solid $gray-lightest;
+		margin-top: 40px;
+		padding: 10px 0px;
+	}
+
+	.btn-container {
+		margin-bottom: 10px;
+	}
+
+	.comments {
+		margin-top: 20px;
+
+		.comment-text {
+			width: 100%;
+			margin-bottom: 10px;
+		}
+
+		.time-ago {
+			color: $gray;
+			font-size: 14px;
+		}
+
+		.user {
+			color: $gray-dark;
+			float: left;
+			width: 100%;
+		}
+
+		.comment {
+			margin-bottom: 20px;
+
+			.profile--image {
+				margin-right: 10px;
+				margin-top: 15px;
+				float: left;
+			}
+
+			.comment-content {
+				margin-top: 0px;
+				color: $gray;
+				float: left;
+			}
+		}
+
+		.comment-area {
+
+		}
+	}
+}

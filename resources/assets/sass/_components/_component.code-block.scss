@@ -1,0 +1,23 @@
+$code-bg: #FAFAFA;
+
+pre {
+  display: block;
+  background: $code-bg;
+  padding: 15px;
+  font-size: 14px;
+}
+
+code {
+  display: block;
+  background: $code-bg;
+  color: $gray-dark;
+  font-size: 14px;
+  line-height: 20px;
+  border-radius: $border-radius;
+}
+
+p {
+  code {
+    padding: 5px 14px 7px 0;
+  }
+}

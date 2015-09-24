@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'calibre';
+    src: url('../fonts/Calibre/calibreweb-light-webfont.eot');
+    src: url('../fonts/Calibre/calibreweb-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Calibre/calibreweb-light-webfont.woff2') format('woff2'),
+         url('../fonts/Calibre/calibreweb-light-webfont.woff') format('woff'),
+         url('../fonts/Calibre/calibreweb-light-webfont.ttf') format('truetype'),
+         url('../fonts/Calibre/calibreweb-light-webfont.svg#webfontregular') format('svg');
+    font-weight: 300;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'calibre';
+    src: url('../fonts/Calibre/calibreweb-regular-webfont.eot');
+    src: url('../fonts/Calibre/calibreweb-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Calibre/calibreweb-regular-webfont.woff2') format('woff2'),
+         url('../fonts/Calibre/calibreweb-regular-webfont.woff') format('woff'),
+         url('../fonts/Calibre/calibreweb-regular-webfont.ttf') format('truetype'),
+         url('../fonts/Calibre/calibreweb-regular-webfont.svg#webfontregular') format('svg');
+    font-weight: 400;
+    font-style: normal;
+}

@@ -1,0 +1,49 @@
+#profile {
+
+	.profile-top {
+		h1 {
+			font-size: 20px;
+			margin: 0 0 20px 0px;
+
+			.small {
+				font-size: 14px;
+				color: $gray;
+			}
+		}
+
+		.profile--image {
+			margin-top: 6px;
+		}
+
+		p {
+			color: $gray;
+		}
+
+		.btn-area {
+			padding-top: 20px;
+		}
+
+		.stats {
+			list-style: none;
+			padding: 0px;
+			margin: 0px;
+
+			li {
+				display: inline-block;
+				vertical-align: middle;
+				margin-right: 10px;
+				padding-right: 10px;
+				border-right: 1px solid $gray-lightest;
+				color: $gray;
+
+				&:last-child {
+					margin-right: 0px;
+					padding-right: 0px;
+					border-right: none;
+				}
+			}
+		}
+	}
+
+
+}

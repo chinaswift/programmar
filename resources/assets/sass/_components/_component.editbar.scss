@@ -1,0 +1,13 @@
+.editbar {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	display: block;
+	width: 100%;
+	padding: 10px 0px;
+	background-color: rgba($gray-dark, 1);
+
+	.container {
+		margin: 0px auto;
+	}
+}

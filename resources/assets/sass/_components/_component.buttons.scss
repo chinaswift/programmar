@@ -1,0 +1,95 @@
+.btn {
+	border: none;
+
+	&.btn-light {
+		background: #fff;
+		color: $gray-dark;
+		&:hover {
+			background: darken(#fff, 5%);
+		}
+	}
+
+	&.btn-dark {
+		background: lighten($gray-dark, 5%);
+		color: lighten($gray-dark, 40%);
+		&:hover {
+			background: lighten($gray-dark, 3%);
+		}
+	}
+
+	&.btn-facebook {
+		color: #fff;
+		background-color: #3b5998;
+		&:hover {
+			background-color: darken(#3b5998, 5%);
+		}
+
+		&.square {
+			width: 36px;
+			text-indent: -9999em;
+			background-image: url(/img/icons/facebook.svg);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: 7px;
+		}
+	}
+
+	&.btn-twitter {
+		color: #fff;
+		background-color: #4099FF;
+		&:hover {
+			background-color: darken(#4099FF, 5%);
+		}
+
+		&.square {
+			width: 36px;
+			text-indent: -9999em;
+			background-image: url(/img/icons/twitter.svg);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: 15px;
+		}
+	}
+
+	&.btn-github {
+		background: $gray-dark;
+		color: #fff;
+		&:hover {
+			background: darken($gray-dark, 5%);
+		}
+	}
+
+	&.btn-circle {
+		margin: 0px;
+		padding: 0px;
+		text-align: center;
+		width: 30px;
+		height: 30px;
+		border: 1px solid lighten($gray-lighter, 10%);
+		color: $gray;
+		border-radius: 50%;
+		transition: all .1s ease-in-out;
+
+		&.btn-search {
+			color: $brand-primary;
+			border-color: $brand-primary;
+			background-image: url('/img/icons/search.svg');
+			background-repeat: no-repeat;
+			background-size: 12px;
+			background-position: center;
+		}
+
+		&.btn-plus {
+			font-size: 30px;
+			line-height: 25px;
+			color: $brand-primary;
+			border-color: $brand-primary;
+			font-weight: 300;
+
+			&:hover {
+				background: $brand-primary;
+				color: #fff;
+			}
+		}
+	}
+}

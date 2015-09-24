@@ -1,0 +1,15 @@
+blockquote {
+		display: block;
+		border-left: 3px solid $gray-lightest;
+		padding-left: 20px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+
+		p {
+			margin: 0px;
+		}
+	}
+
+	strong, b {
+		font-weight: 600 !important;
+	}

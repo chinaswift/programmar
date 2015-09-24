@@ -1,0 +1,14 @@
+/**
+ * All the styles for the styleguide page.
+ */
+#styleguide {
+	$sg-spacer: 30px;
+
+	.sg--section {
+		padding-bottom: $sg-spacer;
+		margin-bottom: $sg-spacer;
+		border-bottom: 1px solid $gray-lighter;
+	}
+
+
+}

@@ -1,0 +1,101 @@
+.profile-hover-area {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+
+	.profile-hover {
+		visibility: hidden !important;
+		position: absolute;
+		opacity: 0;
+		padding: 10px 15px;
+		background: #fff;
+		min-width: 265px;
+		z-index: 99;
+		border: 1px solid $gray-lightest;
+		border-radius: $border-radius;
+		transform: translate3d(-50%,-90%,0);
+		transition: all .1s ease-in-out .4s;
+
+		&:before {
+			content: '';
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			background: #fff;
+			border: 1px solid $gray-lightest;
+			bottom: -2px;
+			left: 50%;
+			margin-right: -10px;
+			transform: rotate(45deg);
+			border-radius: $border-radius;
+		}
+
+		&:after {
+			content: '';
+			position: absolute;
+			width: 30px;
+			height: 20px;
+			background: #fff;
+			bottom: 0px;
+			left: 49%;
+			margin-right: -15px;
+		}
+
+		img {
+			margin-top: 8px;
+		}
+
+		.row {
+			position: relative;
+			z-index: 2;
+		}
+
+		.btn {
+			width: 100%;
+			padding-left: 0px;
+			padding-right: 0px;
+			text-align: center;
+			margin-top: 10px;
+		}
+
+		.user {
+			position: relative;
+			z-index: 2;
+			font-size: 16px;
+			color: $gray-dark;
+			margin: 0px 0 0 0;
+			text-decoration: none;
+		}
+
+		.stats {
+			position: relative;
+			z-index: 2;
+			list-style: none;
+			margin: -5px 0 0 0;
+			padding: 0px;
+
+			li {
+				display: inline-block;
+				vertical-align: middle;
+				font-size: 14px;
+				line-height: 14px;
+				height: 14px;
+				color: $gray;
+
+				&:first-child {
+					padding-right: 8px;
+					border-right: 1px solid $gray;
+					margin-right: 5px;
+				}
+			}
+		}
+	}
+
+	&:hover {
+		.profile-hover {
+			visibility: visible !important;
+			opacity: 1;
+			transform: translate3d(-50%,-110%,0);
+		}
+	}
+}

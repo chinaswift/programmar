@@ -1,0 +1,85 @@
+article.article--part {
+	margin-bottom: 40px;
+	display: block;
+
+	.upvote-cont {
+		.uv--button {
+			margin-top: 5px;
+		}
+	}
+
+	.article--part_title {
+		h3 {
+			display: inline-block;
+			font-weight: 400;
+			vertical-align: middle;
+			margin: 0px 0 0 8px;
+			font-size: 18px;
+			color: $gray-dark;
+			transform: translateY(0px);
+		}
+
+		a:hover {
+			color: $brand-primary;
+		}
+	}
+
+	.article--part_content {
+		p {
+			margin: 10px 0 0 0;
+			font-size: 16px;
+			padding: 0px;
+			color: $gray;
+		}
+	}
+
+	.article--part_time {
+		font-weight: 400;
+		font-size: 14px;
+		color: $gray;
+	}
+
+	.article--part_tags {
+		display: inline-block;
+		vertical-align: middle;
+
+		.tag {
+			display: inline-block;
+			vertical-align: middle;
+			font-size: 12px;
+			letter-spacing: 1px;
+			cursor: pointer;
+			font-weight: 600;
+			text-transform: uppercase;
+			margin-right: 5px;
+			&:last-child {
+				margin-right: 0px;
+			}
+
+			&:hover {
+				text-decoration: none;
+			}
+
+			@each $language, $color in $base-languages {
+				&.tag--#{$language} {
+					color: $color !important;
+
+					&:hover {
+						color: lighten($color, 15%) !important;
+					}
+				}
+			}
+		}
+
+		&:before {
+			display: inline-block;
+			vertical-align: middle;
+			content: '';
+			width: 4px;
+			height: 4px;
+			border-radius: 50%;
+			background: darken($gray-lightest, 10%);
+			margin: 0px 10px;
+		}
+	}
+}

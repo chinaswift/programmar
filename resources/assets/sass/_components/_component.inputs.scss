@@ -1,0 +1,25 @@
+.input--primary {
+	display: block;
+	outline: none;
+	line-height: normal;
+	padding: 0px 10px;
+	border: none;
+	resize: none;
+	border: 1px solid $gray-lightest;
+	height: 40px;
+
+	&.title--input {
+		font-size: 18px;
+		border: none;
+		padding: 0px;
+		font-weight: 500;
+		margin-bottom: 30px;
+	}
+}
+
+textarea.input--primary {
+	height: 70px;
+	resize: none;
+	padding: 10px;
+	width: 100%;
+}

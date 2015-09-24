@@ -1,0 +1,26 @@
+.animate {
+	-webkit-animation-fill-mode: both;
+  	animation-fill-mode: both;
+}
+
+//Click in animation
+@keyframes(clickIn) {
+	0% {
+		transform: scale(1);
+		opacity: 1;
+	}
+
+	50% {
+		transform: scale(0.8);
+		opacity: 0.7;
+	}
+
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+.clickIn {
+	animation: clickIn .2s ease-in-out;
+}

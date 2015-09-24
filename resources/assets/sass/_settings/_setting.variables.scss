@@ -1,0 +1,77 @@
+/**
+ * Colors
+ */
+$gray-dark:                 #202020;
+$gray:                      #808080;
+$gray-light:                #B3B3B3;
+$gray-lighter:              #BBBBBB;
+$gray-lightest:             #EFEFEF;
+
+$brand-primary:             #FF5C13;
+$brand-success:             #5cb85c !default;
+$brand-info:                #5bc0de !default;
+$brand-warning:             #f0ad4e !default;
+$brand-danger:              #d9534f !default;
+
+/**
+ * language colors
+ */
+$base-languages: (
+    html: #e6203a,
+    css: #e3b535,
+    js: #4c9d38,
+    php: #c3192d
+);
+
+/**
+ * Options
+ */
+$enable-flex:               false;
+$enable-hover-media-query:  true;
+
+/**
+ * Components
+ */
+$border-radius:          2px;
+
+/**
+ * Responsive Settings
+ */
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 460px,
+  // Medium screen / tablet
+  md: 650px,
+  // Large screen / desktop
+  lg: 850px,
+  // Extra large screen / wide desktop
+  xl: 960px
+);
+
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 360px,
+  // Medium screen / tablet
+  md: 650px,
+  // Large screen / desktop
+  lg: 850px,
+  // Extra large screen / wide desktop
+  xl: 960px
+);
+
+/**
+ * Fonts
+ */
+$font-family-sans-serif:     'calibre', 'Calibre', Helvetica Neue, Helvetica, sans-serif;
+$font-family-serif:          Georgia, "Times New Roman", Times, serif !default;
+$font-family-monospace:      Menlo, Monaco, Consolas, "Courier New", monospace !default;
+$font-family-base:           $font-family-sans-serif !default;

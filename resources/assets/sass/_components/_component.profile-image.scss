@@ -1,0 +1,22 @@
+$profile-image-medium: 30px;
+$profile-image-small: 20px;
+$profile-image-large: 50px;
+
+.profile--image {
+	display: inline-block;
+	vertical-align: middle;
+	width: $profile-image-medium;
+	height: $profile-image-medium;
+	border-radius: 50%;
+	background-color: $gray-lightest;
+
+	&.image--small {
+		width: $profile-image-small;
+		height: $profile-image-small;
+	}
+
+	&.image--large {
+		width: $profile-image-large;
+		height: $profile-image-large;
+	}
+}

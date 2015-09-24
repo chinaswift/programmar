@@ -1,0 +1,123 @@
+.dropdown-cont {
+	display: inline-block;
+	vertical-align: middle;
+	width: $profile-image-medium;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	position: relative;
+
+	.profile--dropdown {
+		display: inline-block;
+		vertical-align: middle;
+		width: $profile-image-medium;
+		list-style: none;
+		margin: 0px;
+		padding: 0px;
+		position: relative;
+	}
+
+	.dropdown {
+		display: none;
+		position: absolute;
+		list-style: none;
+		margin: 0px;
+		width: 200px;
+		background: #fff;
+		right: 0px;
+		padding: 0px;
+		top: 41px;
+		z-index: 99;
+		border: 1px solid $gray-lightest;
+		border-radius: $border-radius;
+
+		&:before {
+			content: '';
+			position: absolute;
+			width: 10px;
+			height: 10px;
+			top: -4px;
+			right: 10px;
+			background: lighten($gray-lightest, 5%);
+			z-index: 98;
+			border: 1px solid $gray-lightest;
+			transform: rotate(45deg);
+			border-radius: $border-radius;
+		}
+
+		&:after {
+			content: '';
+			position: absolute;
+			width: 15px;
+			height: 10px;
+			top: 0px;
+			right: 8px;
+			background: #fff;
+			z-index: 99;
+		}
+
+		li {
+			position: relative;
+			display: block;
+			min-width: 100px;
+			width: 100%;
+			color: #fff;
+			margin: 0px;
+			z-index: 100;
+
+			&.msg {
+				color: $gray-light;
+				font-size: 14px;
+				line-height: 20px;
+				text-align: center;
+				padding: 15px;
+			}
+
+			a {
+				display: block;
+				padding: 10px 20px;
+				color: $gray-dark;
+				transition: all .1s ease-in-out;
+				white-space: nowrap;
+			  overflow: hidden;
+			  text-overflow: ellipsis;
+
+				&.profile {
+					padding: 10px 20px;
+					background: lighten($gray-lightest, 5%);
+					border-bottom: 1px solid $gray-lightest;
+				}
+
+				.sub {
+					font-size: 12px;
+					display: block;
+					margin-top: -5px;
+					color: $gray;
+				}
+
+				&:hover, &.is-current {
+					text-decoration: none;
+					color: $gray-dark;
+					background: lighten($gray-lightest, 3%);
+				}
+
+				&.link {
+					display: inline;
+					padding: 0px;
+					line-height: normal;
+					margin: 0px;
+					vertical-align: middle;
+					text-decoration: underline;
+					background: none;
+					&:hover {
+						background: none;
+					}
+				}
+			}
+
+			&:last-child {
+				margin-bottom: 0px;
+			}
+		}
+	}
+}
