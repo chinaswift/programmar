@@ -13,6 +13,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function redirect(Request $request)
+    {
+    	if ($request->session()->get('x-auth-token')) {
+    		return redirect('/feed/following');
+    	}else{
+    		return redirect('/feed/recent');
+    	}
+    }
+
     public function feed($feed_type)
     {
         return view('home.feed')->with('type', $feed_type);

@@ -23,7 +23,7 @@ Route::group(['prefix' => ''], function() {
 	Route::get('following', ['middleware' => 'auth', 'uses' => 'HomeController@following']);
 	Route::get('popular', ['uses' => 'HomeController@popular']);
 	Route::get('recent', ['uses' => 'HomeController@recent']);
-	Route::get('/', ['middleware' => 'guest', 'uses' => 'HomeController@index']);
+	Route::get('/', ['middleware' => 'guest', 'uses' => 'HomeController@redirect']);
 });
 
 
