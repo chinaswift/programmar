@@ -5409,7 +5409,8 @@ article.article--part {
     font-size: 14px;
     color: #808080; }
     article.article--part .article--part_time.hidden-md-up {
-      padding-left: 10px; }
+      display: block;
+      padding-left: 0px; }
   article.article--part .article--part_tags {
     display: inline-block;
     vertical-align: middle; }

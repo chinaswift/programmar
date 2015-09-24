@@ -44,7 +44,8 @@ article.article--part {
 		color: $gray;
 
 		&.hidden-md-up {
-			padding-left: 10px;
+			display: block;
+			padding-left: 0px;
 		}
 	}
 
