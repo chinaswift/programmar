@@ -27,7 +27,7 @@
 					<div class="col-xs-3 text-right">
 						<a href="/articles/@{{note.unique_identifier}}" class="btn btn-primary" ng-show="note.type == 'mention'">View</a>
 						<a href="/articles/@{{note.unique_identifier}}" class="btn btn-primary" ng-show="note.type == 'comment'">View</a>
-						<a href="/articles/@{{note.unique_identifier}}" class="btn btn-primary" ng-show="note.type == 'upvoted'">View</a>
+						<a href="/articles/@{{note.unique_identifier}}" class="btn btn-primary" ng-show="note.type == 'upvote'">View</a>
 						<a href="/user/@{{note.from_user}}" class="btn btn-primary" ng-show="note.type == 'follow'">View</a>
 					</div>
 				</div>
