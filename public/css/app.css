@@ -5222,7 +5222,8 @@ p code {
     color: #ff7f46; }
 
 .article--content #preview {
-  display: none; }
+  display: none;
+  word-wrap: break-word; }
 
 .article--content #editor {
   width: calc(100% - 40px);
@@ -5396,6 +5397,7 @@ article.article--part {
   article.article--part .article--part_title a:hover {
     color: #FF5C13; }
   article.article--part .article--part_content p {
+    word-wrap: break-word;
     margin: 10px 0 0 0;
     font-size: 16px;
     padding: 0px;
@@ -8048,6 +8050,9 @@ strong, b {
   display: inline-block;
   vertical-align: middle;
   margin: 0 0 0 10px; }
+
+#article p {
+  word-wrap: break-word; }
 
 #article img {
   max-width: 100%; }
