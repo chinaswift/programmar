@@ -57,8 +57,8 @@
 					<li><a href="/feed/recent">Recent</a></li>
 					@if(Request::session()->get('x-auth-token'))
 						<li><span class="splitter"></span></li>
-						<li><a href="#">Profile</a></li>
-						<li><a href="#">Settings</a></li>
+						<li><a href="/user/@{{userData.username}}">Profile</a></li>
+						<!--<li><a href="#">Settings</a></li>-->
 						<li><a href="/logout">Logout</a></li>
 					@endif
 				</ul>
