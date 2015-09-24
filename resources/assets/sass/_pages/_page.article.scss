@@ -40,6 +40,7 @@
 		.comment-text {
 			width: 100%;
 			margin-bottom: 10px;
+			word-wrap:break-word;
 		}
 
 		.time-ago {
@@ -65,7 +66,13 @@
 			.comment-content {
 				margin-top: 0px;
 				color: $gray;
+				max-width: 100%;
 				float: left;
+				word-wrap:break-word;
+
+				div {
+					word-wrap:break-word;
+				}
 			}
 		}
 

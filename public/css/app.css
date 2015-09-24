@@ -8082,7 +8082,8 @@ strong, b {
   margin-top: 20px; }
   #article .comments .comment-text {
     width: 100%;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    word-wrap: break-word; }
   #article .comments .time-ago {
     color: #808080;
     font-size: 14px; }
@@ -8099,7 +8100,11 @@ strong, b {
     #article .comments .comment .comment-content {
       margin-top: 0px;
       color: #808080;
-      float: left; }
+      max-width: 100%;
+      float: left;
+      word-wrap: break-word; }
+      #article .comments .comment .comment-content div {
+        word-wrap: break-word; }
 
 #notifications .notifications {
   list-style: none;
