@@ -5190,16 +5190,16 @@ a.bg-danger:focus {
 
 pre {
   display: block;
-  background: #FAFAFA;
+  background: whitesmoke;
   padding: 15px;
-  font-size: 14px; }
+  font-size: 13px; }
 
 code {
   display: block;
-  background: #FAFAFA;
+  background: whitesmoke;
   color: #202020;
   font-size: 14px;
-  line-height: 20px;
+  font-size: 13px;
   border-radius: 2px; }
 
 p code {
