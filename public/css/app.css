@@ -5210,6 +5210,7 @@ p code {
 
 .article--content .article--title {
   font-weight: 500;
+  width: 100%;
   color: #202020; }
   .article--content .article--title[disabled] {
     color: #202020;
@@ -5460,6 +5461,11 @@ article.article--part {
     color: #202020; }
     .btn.btn-light:hover {
       background: #f2f2f2; }
+  .btn.btn-gray {
+    background: #EFEFEF;
+    color: #202020; }
+    .btn.btn-gray:hover {
+      background: #a6a6a6; }
   .btn.btn-dark {
     background: #2d2d2d;
     color: #868686; }
@@ -5528,7 +5534,8 @@ article.article--part {
   display: block;
   width: 100%;
   padding: 10px 0px;
-  background-color: #202020; }
+  background: #fff;
+  border-top: 1px solid #EFEFEF; }
   .editbar .container {
     margin: 0px auto; }
 

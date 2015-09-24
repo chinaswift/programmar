@@ -9,6 +9,14 @@
 		}
 	}
 
+	&.btn-gray {
+		background: $gray-lightest;
+		color: $gray-dark;
+		&:hover {
+			background: darken($gray-light, 5%);
+		}
+	}
+
 	&.btn-dark {
 		background: lighten($gray-dark, 5%);
 		color: lighten($gray-dark, 40%);

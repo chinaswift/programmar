@@ -6,6 +6,7 @@
 
 	.article--title {
 		font-weight: 500;
+		width: 100%;
 		color: $gray-dark;
 		&[disabled] {
 			color: $gray-dark;

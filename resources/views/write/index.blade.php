@@ -28,7 +28,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-6">
-						<a href="#" class="btn btn-dark preview-toggle" ng-click="toggleView();">Toggle Preview</a>
+						<a href="#" class="btn btn-gray preview-toggle" ng-click="toggleView();">Toggle Preview</a>
 					</div>
 
 					<div class="col-xs-6 text-right">

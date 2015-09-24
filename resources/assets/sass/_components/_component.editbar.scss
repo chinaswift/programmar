@@ -5,7 +5,8 @@
 	display: block;
 	width: 100%;
 	padding: 10px 0px;
-	background-color: rgba($gray-dark, 1);
+	background: #fff;
+	border-top: 1px solid $gray-lightest;
 
 	.container {
 		margin: 0px auto;
