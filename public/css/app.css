@@ -4831,8 +4831,8 @@ a.bg-danger:focus {
   text-align: center;
   border-radius: 2px;
   border: 1px solid #EFEFEF;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(1, 0.005, 0, 1); }
   .uv--button:before {
@@ -4842,12 +4842,12 @@ a.bg-danger:focus {
     content: '';
     width: 0;
     height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-bottom: 6px solid #EFEFEF;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #EFEFEF;
     border-radius: 2px;
-    -webkit-transform: translate3d(-50%, 7px, 0);
-    transform: translate3d(-50%, 7px, 0);
+    -webkit-transform: translate3d(-50%, 5px, 0);
+    transform: translate3d(-50%, 5px, 0);
     transition: all 0.3s cubic-bezier(1, 0.005, 0, 1); }
   .uv--button:after {
     position: absolute;
@@ -4870,8 +4870,8 @@ a.bg-danger:focus {
     text-align: center;
     color: #202020;
     font-size: 14px;
-    -webkit-transform: translate3d(0, 13px, 0);
-    transform: translate3d(0, 13px, 0);
+    -webkit-transform: translate3d(0, 10px, 0);
+    transform: translate3d(0, 10px, 0);
     transition: all 0.3s cubic-bezier(1, 0.005, 0, 1); }
   .uv--button .uv--next-iteration {
     display: block;
@@ -4881,8 +4881,8 @@ a.bg-danger:focus {
     text-align: center;
     color: #fff;
     font-size: 14px;
-    -webkit-transform: translate3d(0, 40%, 0);
-    transform: translate3d(0, 40%, 0);
+    -webkit-transform: translate3d(0, 6px, 0);
+    transform: translate3d(0, 6px, 0);
     opacity: 0;
     transition: all 0.3s cubic-bezier(1, 0.005, 0, 1); }
   .uv--button:hover {
@@ -4900,8 +4900,8 @@ a.bg-danger:focus {
       transform: scale(1);
       opacity: 1; }
     .uv--button.voted .uv--iteration {
-      -webkit-transform: translate3d(0, 40%, 0);
-      transform: translate3d(0, 40%, 0);
+      -webkit-transform: translate3d(0, 6px, 0);
+      transform: translate3d(0, 6px, 0);
       opacity: 0;
       color: #FF5C13; }
     .uv--button.voted .uv--next-iteration {
@@ -5466,7 +5466,7 @@ article.article--part {
     background: #EFEFEF;
     color: #202020; }
     .btn.btn-gray:hover {
-      background: #a6a6a6; }
+      background: #e2e2e2; }
   .btn.btn-dark {
     background: #2d2d2d;
     color: #868686; }

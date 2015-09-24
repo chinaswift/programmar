@@ -36,6 +36,7 @@
 				<div class="row">
 					<div class="col-xs-6">
 						@include('_partials.article-upvote')
+						<a href="/write/@{{article.id}}" class="btn btn-gray" ng-cloak ng-show="userData.id == article.owner_id">Edit</a>
 					</div>
 					<div class="col-xs-6 text-right">
 						<button type="button" class="btn btn-facebook square" ng-click="facebookShare();">Share on Facebook</button>

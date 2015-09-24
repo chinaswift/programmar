@@ -13,7 +13,7 @@
 		background: $gray-lightest;
 		color: $gray-dark;
 		&:hover {
-			background: darken($gray-light, 5%);
+			background: darken($gray-lightest, 5%);
 		}
 	}
 
