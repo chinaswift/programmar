@@ -19,11 +19,11 @@
 	<div class="container" ng-init="profileUser = '{{$user['id']}}'">
 		<div class="profile-top">
 			<div class="row">
-				<div class="col-xs-1">
+				<div class="col-xs-1 hidden-sm-down">
 					<img class="profile--image image--large" src="{{$user['avatar_url']}}">
 				</div>
-				<div class="col-xs-9">
-					<h1>{{$user['username']}} <span class="small">Commonly writes in PHP</span></h1>
+				<div class="col-xs-8 col-sm-7">
+					<h1>{{$user['username']}}</h1>
 					<ul class="stats">
 						<?php
 							$followerCount = 0;
@@ -43,7 +43,7 @@
 						<li>{{ $followingCount }} Following</li>
 					</ul>
 				</div>
-				<div class="col-xs-2 text-right btn-area">
+				<div class="col-xs-4 text-right btn-area">
 					<a href="#" class="btn btn-primary follow-btn" @if($user['yourFollowing']) style="display: none;" @endif ng-click="followUser({{$user['id']}});">Follow</a>
 					<a href="#" class="btn btn-danger unfollow-btn" @if(!$user['yourFollowing']) style="display: none;" @endif ng-click="unfollowUser({{$user['id']}});">Unfollow</a>
 				</div>
