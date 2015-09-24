@@ -22,6 +22,7 @@
 	  		$.get('/articles/collect/' + $scope.article.id, function(data) {
 	  			var $content = angular.element('.content');
 	  			$scope.article = data.feed[0];
+	  			data.feed[0].upvotesNext = parseInt(data.feed[0].upvotes + 1);
 	  			$scope.articleLoading = false;
 	  			$(commentArea).mention({
 					    delimiter: '@',
