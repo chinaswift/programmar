@@ -1,5 +1,9 @@
 .article--content {
 
+	img {
+		max-width: 100%;
+	}
+
 	.article--title {
 		font-weight: 500;
 		color: $gray-dark;

@@ -5205,6 +5205,9 @@ code {
 p code {
   padding: 5px 14px 7px 0; }
 
+.article--content img {
+  max-width: 100%; }
+
 .article--content .article--title {
   font-weight: 500;
   color: #202020; }
@@ -8045,6 +8048,9 @@ strong, b {
   display: inline-block;
   vertical-align: middle;
   margin: 0 0 0 10px; }
+
+#article img {
+  max-width: 100%; }
 
 #article .title {
   margin-bottom: 40px; }
