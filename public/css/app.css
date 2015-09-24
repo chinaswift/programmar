@@ -5385,11 +5385,13 @@ article.article--part {
   display: block; }
   article.article--part .upvote-cont .uv--button {
     margin-top: 5px; }
+  article.article--part .article--part_title .profile--image {
+    margin-right: 8px; }
   article.article--part .article--part_title h3 {
     display: inline-block;
     font-weight: 400;
     vertical-align: middle;
-    margin: 0px 0 0 8px;
+    margin: 0px 0 0 0px;
     font-size: 18px;
     color: #202020;
     -webkit-transform: translateY(0px);
@@ -5406,6 +5408,8 @@ article.article--part {
     font-weight: 400;
     font-size: 14px;
     color: #808080; }
+    article.article--part .article--part_time.hidden-md-up {
+      padding-left: 10px; }
   article.article--part .article--part_tags {
     display: inline-block;
     vertical-align: middle; }

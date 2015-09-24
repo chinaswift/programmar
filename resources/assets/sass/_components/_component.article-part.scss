@@ -9,11 +9,15 @@ article.article--part {
 	}
 
 	.article--part_title {
+		.profile--image {
+			margin-right: 8px;
+		}
+
 		h3 {
 			display: inline-block;
 			font-weight: 400;
 			vertical-align: middle;
-			margin: 0px 0 0 8px;
+			margin: 0px 0 0 0px;
 			font-size: 18px;
 			color: $gray-dark;
 			transform: translateY(0px);
@@ -38,6 +42,10 @@ article.article--part {
 		font-weight: 400;
 		font-size: 14px;
 		color: $gray;
+
+		&.hidden-md-up {
+			padding-left: 10px;
+		}
 	}
 
 	.article--part_tags {
