@@ -5208,12 +5208,13 @@ p code {
 .article--content img {
   max-width: 100%; }
 
-.article--content .article--title {
+.article--content .title--input {
   font-weight: 500;
   width: 100%;
   color: #202020; }
-  .article--content .article--title[disabled] {
+  .article--content .title--input[disabled] {
     color: #202020;
+    background: transparent;
     opacity: 1; }
 
 .article--content a {

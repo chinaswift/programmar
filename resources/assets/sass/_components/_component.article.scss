@@ -4,12 +4,14 @@
 		max-width: 100%;
 	}
 
-	.article--title {
+	.title--input {
 		font-weight: 500;
 		width: 100%;
 		color: $gray-dark;
+
 		&[disabled] {
 			color: $gray-dark;
+			background: transparent;
 			opacity: 1;
 		}
 	}
