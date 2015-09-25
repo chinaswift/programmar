@@ -34,6 +34,15 @@ Route::group(['prefix' => 'feed'], function() {
 	Route::get('{feed_type}', ['uses' => 'HomeController@feed']);
 });
 
+
+/**
+ * Connect Routes
+ */
+Route::group(['prefix' => 'connect'], function() {
+	Route::get('stripe', ['uses' => 'ConnectController@stripe']);
+	Route::get('confirm', ['uses' => 'ConnectController@confirm']);
+});
+
 /**
  * Search Routes
  */
