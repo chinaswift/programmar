@@ -36,11 +36,21 @@ Route::group(['prefix' => 'feed'], function() {
 
 
 /**
+ * Settings Routes
+ */
+Route::group(['prefix' => 'settings'], function() {
+	Route::get('/', ['uses' => 'SettingsController@index']);
+});
+
+
+/**
  * Connect Routes
  */
 Route::group(['prefix' => 'connect'], function() {
 	Route::get('stripe', ['middleware' => 'auth', 'uses' => 'ConnectController@stripe']);
 	Route::get('confirm', ['middleware' => 'auth', 'uses' => 'ConnectController@confirm']);
+	Route::get('check', ['middleware' => 'auth', 'uses' => 'ConnectController@check']);
+	Route::post('bill', ['middleware' => 'auth', 'uses' => 'ConnectController@bill']);
 });
 
 /**
@@ -79,7 +89,7 @@ Route::group(['prefix' => 'articles'], function() {
 	Route::get('recent', ['uses' => 'ArticleController@collectRecent']);
 	Route::get('drafts', ['middleware' => 'auth', 'uses' => 'ArticleController@collectDrafts']);
 	Route::post('comment', ['middleware' => 'auth', 'uses' => 'ArticleController@postComment']);
-	Route::post('collectComments', ['middleware' => 'auth', 'uses' => 'ArticleController@collectComments']);
+	Route::post('collectComments', ['uses' => 'ArticleController@collectComments']);
 	Route::post('upvote', ['middleware' => 'auth', 'uses' => 'ArticleController@upvoteArticle']);
 	Route::get('edit/collect', ['middleware' => 'auth', 'uses' => 'ArticleController@collectEdit']);
 });

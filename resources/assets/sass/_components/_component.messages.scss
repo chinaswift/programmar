@@ -18,6 +18,10 @@
 		background-color: $brand-danger;
 	}
 
+	&.messages-success {
+		background-color: $brand-success;
+	}
+
 	&.show {
 		height: 50px;
 	}

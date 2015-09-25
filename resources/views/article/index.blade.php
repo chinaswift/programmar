@@ -15,7 +15,12 @@
 <!-- page content -->
 @section('content')
 	@include('_partials.header')
-	@include('_modals.published')
+	@include('_modals.activateArticleDrink')
+	@include('_modals.notActiveDrink')
+	@include('_modals.ownArticleDrink')
+	@include('_modals.paymentModal')
+
+	@if($article['allow_drink'] > 0)<meta name="stripe_publishable" content="{{$article['publishable']}}">@endif
 
 	<div ng-show="articlesLoading" ng-init="article.id = {{$article['id']}}"><div id="loader"></div></div>
 	<di ng-hide="articlesLoading" ngcloak>
@@ -39,6 +44,7 @@
 						<a href="/write/@{{article.id}}" class="btn btn-gray" ng-cloak ng-show="userData.id == article.owner_id">Edit</a>
 					</div>
 					<div class="col-xs-6 text-right">
+						<a href="#" class="btn btn-primary square" ng-click="sendADrink();">Send a drink</a>
 						<button type="button" class="btn btn-facebook square" ng-click="facebookShare();">Share on Facebook</button>
         		<a type="button" class="btn btn-twitter square popup" ng-click="twitterShare();">Share on Twitter</a>
 					</div>
@@ -83,6 +89,6 @@
 
 <!-- page scripts -->
 @section('scripts')
-
+	<script src="https://js.stripe.com/v2/"></script>
 @endsection
 <!-- end page scripts -->

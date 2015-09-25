@@ -16,6 +16,27 @@
 	  	$scope.article = {};
 	  	$scope.currentPage = 1;
 
+	  	$scope.sendADrink = function()
+	  	{
+	  		if($scope.userData.username != '') {
+		  		if($scope.userData.id == $scope.article.owner_id) {
+		  			if($scope.article.allow_drink > 0) {
+		  				angular.element('#paymentModal').modal('show');
+		  			}else{
+		  				angular.element('#activateArticleDrink').modal('show');
+		  			}
+		  		}else{
+		  			if($scope.article.allow_drink > 0) {
+			  			angular.element('#paymentModal').modal('show');
+			  		}else{
+			  			angular.element('#notActiveDrink').modal('show');
+			  		}
+		  		}
+		  	}else{
+		  		angular.element('#loginModal').modal('show');
+		  	}
+	  	}
+
 	  	//Function to load the article data
 	  	$scope.collectArticle = function()
 	  	{
@@ -23,6 +44,12 @@
 	  			var $content = angular.element('.content');
 	  			$scope.article = data.feed[0];
 	  			data.feed[0].upvotesNext = parseInt(data.feed[0].upvotes + 1);
+
+	  			//if you can pay the developer
+	  			if($scope.article.allow_drink > 0) {
+	  				$scope.setupStripe();
+	  			}
+
 	  			$scope.articlesLoading = false;
 	  			$(commentArea).mention({
 					    delimiter: '@',
