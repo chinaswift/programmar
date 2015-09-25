@@ -39,8 +39,8 @@ Route::group(['prefix' => 'feed'], function() {
  * Connect Routes
  */
 Route::group(['prefix' => 'connect'], function() {
-	Route::get('stripe', ['uses' => 'ConnectController@stripe']);
-	Route::get('confirm', ['uses' => 'ConnectController@confirm']);
+	Route::get('stripe', ['middleware' => 'auth', 'uses' => 'ConnectController@stripe']);
+	Route::get('confirm', ['middleware' => 'auth', 'uses' => 'ConnectController@confirm']);
 });
 
 /**

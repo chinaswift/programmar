@@ -5,10 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Socialite;
+use Laravel\Socialite\Contracts\Factory as Socialite;
 
 class ConnectController extends Controller
 {
+    private $socialite;
+    private $auth;
+    private $users;
+
+    public function __construct(Socialite $socialite) {
+        $this->socialite = $socialite;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +24,7 @@ class ConnectController extends Controller
      */
     public function stripe()
     {
-        return Socialite::with('stripe')->scopes(['read_write'])->redirect();
+        return $this->socialite->driver('stripe')->scopes(['read_write'])->redirect();
     }
 
     /**
@@ -26,7 +34,22 @@ class ConnectController extends Controller
      */
     public function confirm()
     {
-        //
+        $user = $this->socialite->driver('stripe')->user();
+        $token = $user->token;
+
+        $token = $request->session()->get('x-auth-token');
+        $api = new \GuzzleHttp\Client([
+            'base_uri' => env('API_URL'),
+            'verify' => false,
+            'headers' => ['X-Auth-Token' => $token]
+        ]);
+
+        $api->post('connect', [
+            'form_params' => [
+                'service' => 'stripe',
+                'token_1' => $token,
+            ]
+        ])->getBody();
     }
 
     /**

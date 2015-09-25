@@ -20,15 +20,13 @@ class ArticleController extends Controller
             try {
                 $token = $request->session()->get('x-auth-token');
                 $api = new \GuzzleHttp\Client([
-                    'base_url' => env('API_URL'),
-                    'defaults' => [
-                        'verify' => false,
-                        'headers' => ['X-Auth-Token' => $token]
-                    ]
+                    'base_uri' => env('API_URL'),
+                    'verify' => false,
+                    'headers' => ['X-Auth-Token' => $token]
                 ]);
 
                 $articles = $api->get('articles/following?limit=10&page=' . $page);
-                return $articles->json();
+                return json_decode($articles->getBody(), true);
             } catch (RequestException $e) {
                 return $e->getRequest();
                 if ($e->hasResponse()) {
@@ -44,13 +42,11 @@ class ArticleController extends Controller
     public function displayArticle(Request $request, $article_id)
     {
         $api = new \GuzzleHttp\Client([
-            'base_url' => env('API_URL'),
-            'defaults' => [
-                'verify' => false
-            ]
+            'base_uri' => env('API_URL'),
+            'verify' => false
         ]);
 
-        $article = (array) $api->get('articles/' . $article_id)->json();
+        $article = (array) json_decode($api->get('articles/' . $article_id)->getBody(), true);
         if(count($article['feed']) > 0) {
             return view('article.index')->with('article', $article['feed'][0]);
         }else{
@@ -63,23 +59,19 @@ class ArticleController extends Controller
     {
         if($request->session()->get('x-auth-token')) {
             $token = $request->session()->get('x-auth-token');
-            $options = [
+            $api = new \GuzzleHttp\Client([
+                'base_uri' => env('API_URL'),
                 'verify' => false,
                 'headers' => ['X-Auth-Token' => $token]
-            ];
+            ]);
         }else{
-            $options = [
+            $api = new \GuzzleHttp\Client([
+                'base_uri' => env('API_URL'),
                 'verify' => false,
-            ];
+            ]);
         }
-
-        $api = new \GuzzleHttp\Client([
-            'base_url' => env('API_URL'),
-            'defaults' => $options
-        ]);
-
         $article = $api->get('articles/' . $article_id);
-        return $article->json();
+        return json_decode($article->getBody(), true);
     }
 
     public function collectPopular(Request $request)
@@ -87,23 +79,20 @@ class ArticleController extends Controller
         $page = $request->input('page');
         if($request->session()->get('x-auth-token')) {
             $token = $request->session()->get('x-auth-token');
-            $options = [
+            $api = new \GuzzleHttp\Client([
+                'base_uri' => env('API_URL'),
                 'verify' => false,
                 'headers' => ['X-Auth-Token' => $token]
-            ];
+            ]);
         }else{
-            $options = [
+            $api = new \GuzzleHttp\Client([
+                'base_uri' => env('API_URL'),
                 'verify' => false,
-            ];
+            ]);
         }
 
-        $api = new \GuzzleHttp\Client([
-            'base_url' => env('API_URL'),
-            'defaults' => $options
-        ]);
-
         $articles = $api->get('articles/popular?limit=10&page=' . $page);
-        return $articles->json();
+        return json_decode($articles->getBody(), true);
     }
 
     public function collectRecent(Request $request)
@@ -111,23 +100,21 @@ class ArticleController extends Controller
         $page = $request->input('page');
         if($request->session()->get('x-auth-token')) {
             $token = $request->session()->get('x-auth-token');
-            $options = [
+            $api = new \GuzzleHttp\Client([
+                'base_uri' => env('API_URL'),
                 'verify' => false,
                 'headers' => ['X-Auth-Token' => $token]
-            ];
+            ]);
         }else{
-            $options = [
+            $api = new \GuzzleHttp\Client([
+                'base_uri' => env('API_URL'),
                 'verify' => false,
-            ];
+            ]);
         }
 
-        $api = new \GuzzleHttp\Client([
-            'base_url' => env('API_URL'),
-            'defaults' => $options
-        ]);
-
         $articles = $api->get('articles?limit=10&page=' . $page);
-        return $articles->json();
+
+        return json_decode($articles->getBody(), true);
     }
 
     public function collectDrafts(Request $request)
@@ -136,15 +123,13 @@ class ArticleController extends Controller
         if($request->session()->get('x-auth-token')) {
             $token = $request->session()->get('x-auth-token');
             $api = new \GuzzleHttp\Client([
-                'base_url' => env('API_URL'),
-                'defaults' => [
-                    'verify' => false,
-                    'headers' => ['X-Auth-Token' => $token]
-                ]
+                'base_uri' => env('API_URL'),
+                'verify' => false,
+                'headers' => ['X-Auth-Token' => $token]
             ]);
 
             $articles = $api->get('articles/drafts?limit=' . $limit);
-            return $articles->json();
+            return json_decode($articles->getBody(), true);
         }else{
             return "error:Seems you've been logged out!";
         }
@@ -157,20 +142,18 @@ class ArticleController extends Controller
 
         $token = $request->session()->get('x-auth-token');
         $api = new \GuzzleHttp\Client([
-            'base_url' => env('API_URL'),
-            'defaults' => [
-                'verify' => false,
-                'headers' => ['X-Auth-Token' => $token]
-            ]
+            'base_uri' => env('API_URL'),
+            'verify' => false,
+            'headers' => ['X-Auth-Token' => $token]
         ]);
 
         $comment = $api->post('comments', [
-            'body' => [
+            'form_params' => [
                 'article' => $article_id,
                 'content' => $comment
             ]
         ]);
-        return $comment->json();
+        return json_decode($comment->getBody(), true);
     }
 
     public function collectComments(Request $request)
@@ -180,15 +163,13 @@ class ArticleController extends Controller
 
         $token = $request->session()->get('x-auth-token');
         $api = new \GuzzleHttp\Client([
-            'base_url' => env('API_URL'),
-            'defaults' => [
-                'verify' => false,
-                'headers' => ['X-Auth-Token' => $token]
-            ]
+            'base_uri' => env('API_URL'),
+            'verify' => false,
+            'headers' => ['X-Auth-Token' => $token]
         ]);
 
         $comments = $api->get('comments/' . $article_id.'?limit=5&page=' . $page);
-        $comments = $comments->json();
+        $comments = json_decode($comments->getBody(), true);
         return $comments;
     }
 
@@ -199,15 +180,13 @@ class ArticleController extends Controller
         if($request->session()->get('x-auth-token')) {
             $token = $request->session()->get('x-auth-token');
             $api = new \GuzzleHttp\Client([
-                'base_url' => env('API_URL'),
-                'defaults' => [
-                    'verify' => false,
-                    'headers' => ['X-Auth-Token' => $token]
-                ]
+                'base_uri' => env('API_URL'),
+                'verify' => false,
+                'headers' => ['X-Auth-Token' => $token]
             ]);
 
             $article = $api->get('articles/' . $article_id);
-            $article = $article->json();
+            $article = json_decode($article->getBody(), true);
             return $article;
         }else{
             return "error:Seems you've been logged out!";
@@ -223,15 +202,13 @@ class ArticleController extends Controller
         if($request->session()->get('x-auth-token')) {
             $token = $request->session()->get('x-auth-token');
             $api = new \GuzzleHttp\Client([
-                'base_url' => env('API_URL'),
-                'defaults' => [
-                    'verify' => false,
-                    'headers' => ['X-Auth-Token' => $token]
-                ]
+                'base_uri' => env('API_URL'),
+                'verify' => false,
+                'headers' => ['X-Auth-Token' => $token]
             ]);
 
             $upvote = $api->post('upvotes/' . $article);
-            return $upvote->json();
+            return json_decode($upvote->getBody(), true);
         }else{
             return "error:Seems you've been logged out!";
         }

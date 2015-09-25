@@ -18,15 +18,13 @@ class UserController extends Controller
         if ($request->session()->get('x-auth-token')) {
             $token = $request->session()->get('x-auth-token');
             $api = new \GuzzleHttp\Client([
-                'base_url' => env('API_URL'),
-                'defaults' => [
-                    'verify' => false,
-                    'headers' => ['X-Auth-Token' => $token]
-                ]
+                'base_uri' => env('API_URL'),
+                'verify' => false,
+                'headers' => ['X-Auth-Token' => $token]
             ]);
 
             $user = $api->get($user);
-            return $user->json();
+            return json_decode($user->getBody(), true);
         } else {
             return ['username' => ''];
         }
@@ -35,25 +33,21 @@ class UserController extends Controller
     public function profile(Request $request, $username)
     {
         $api = new \GuzzleHttp\Client([
-            'base_url' => env('API_URL'),
-            'defaults' => [
-                'verify' => false,
-            ]
+            'base_uri' => env('API_URL'),
+            'verify' => false,
         ]);
 
-        $user = $api->get('users/' . $username)->json();
+        $user = json_decode($api->get('users/' . $username)->getBody(), true);
         $user = $user[0];
 
         if ($request->session()->get('x-auth-token')) {
             $token = $request->session()->get('x-auth-token');
             $api = new \GuzzleHttp\Client([
-                'base_url' => env('API_URL'),
-                'defaults' => [
-                    'verify' => false,
-                    'headers' => ['X-Auth-Token' => $token]
-                ]
+                'base_uri' => env('API_URL'),
+                'verify' => false,
+                'headers' => ['X-Auth-Token' => $token]
             ]);
-            $me = $api->get('me')->json();
+            $me = json_decode($api->get('me')->getBody(), true);
 
             if(in_array($me['id'], $user['followers'])) {
                 $user['yourFollowing'] = true;
@@ -75,20 +69,18 @@ class UserController extends Controller
         $id = $request->input('id');
 
         $api = new \GuzzleHttp\Client([
-            'base_url' => env('API_URL'),
-            'defaults' => [
-                'verify' => false,
-                'headers' => ['X-Auth-Token' => $token]
-            ]
+            'base_uri' => env('API_URL'),
+            'verify' => false,
+            'headers' => ['X-Auth-Token' => $token]
         ]);
 
         $follow = $api->post('followers/follow', [
-            'body' => [
+            'form_params' => [
                 'user' => $id
             ]
         ]);
 
-        $status = $follow->json();
+        $status = json_decode($follow->getBody(), true);
         return $status;
     }
 
@@ -99,20 +91,18 @@ class UserController extends Controller
         $id = $request->input('id');
 
         $api = new \GuzzleHttp\Client([
-            'base_url' => env('API_URL'),
-            'defaults' => [
-                'verify' => false,
-                'headers' => ['X-Auth-Token' => $token]
-            ]
+            'base_uri' => env('API_URL'),
+            'verify' => false,
+            'headers' => ['X-Auth-Token' => $token]
         ]);
 
-        $follow = $api->post('followers/unfollow', [
-            'body' => [
+        $unfollow = $api->post('followers/unfollow', [
+            'form_params' => [
                 'user' => $id
             ]
         ]);
 
-        $status = $follow->json();
+        $status = json_decode($unfollow->getBody(), true);
         return $status;
     }
 
@@ -126,15 +116,13 @@ class UserController extends Controller
         if ($request->session()->get('x-auth-token')) {
             $token = $request->session()->get('x-auth-token');
             $api = new \GuzzleHttp\Client([
-                'base_url' => env('API_URL'),
-                'defaults' => [
-                    'verify' => false,
-                    'headers' => ['X-Auth-Token' => $token]
-                ]
+                'base_uri' => env('API_URL'),
+                'verify' => false,
+                'headers' => ['X-Auth-Token' => $token]
             ]);
 
             $notifications = $api->get('me/notifications?read=0');
-            return $notifications->json();
+            return json_decode($notifications->getBody(), true);
         } else {
             return [];
         }
@@ -147,15 +135,13 @@ class UserController extends Controller
         try {
             $token = $request->session()->get('x-auth-token');
             $api = new \GuzzleHttp\Client([
-                'base_url' => env('API_URL'),
-                'defaults' => [
-                    'verify' => false,
-                    'headers' => ['X-Auth-Token' => $token]
-                ]
+                'base_uri' => env('API_URL'),
+                'verify' => false,
+                'headers' => ['X-Auth-Token' => $token]
             ]);
 
             $articles = $api->get('users/'.$user.'/articles?limit=10&page=' . $page);
-            return $articles->json();
+            return json_decode($articles->getBody(), true);
         } catch (RequestException $e) {
             return $e->getRequest();
             if ($e->hasResponse()) {
@@ -169,15 +155,13 @@ class UserController extends Controller
         if ($request->session()->get('x-auth-token')) {
             $token = $request->session()->get('x-auth-token');
             $api = new \GuzzleHttp\Client([
-                'base_url' => env('API_URL'),
-                'defaults' => [
-                    'verify' => false,
-                    'headers' => ['X-Auth-Token' => $token]
-                ]
+                'base_uri' => env('API_URL'),
+                'verify' => false,
+                'headers' => ['X-Auth-Token' => $token]
             ]);
 
             $notifications = $api->get('me/notifications');
-            return $notifications->json();
+            return json_decode($notifications->getBody(), true);
         } else {
             return [];
         }
@@ -193,15 +177,13 @@ class UserController extends Controller
     {
         $token = $request->session()->get('x-auth-token');
         $api = new \GuzzleHttp\Client([
-            'base_url' => env('API_URL'),
-            'defaults' => [
-                'verify' => false,
-                'headers' => ['X-Auth-Token' => $token]
-            ]
+            'base_uri' => env('API_URL'),
+            'verify' => false,
+            'headers' => ['X-Auth-Token' => $token]
         ]);
 
         $notifications = $api->get('me/notifications/read');
-        return $notifications->json();
+        return json_decode($notifications->getBody(), true);
     }
 
     /**

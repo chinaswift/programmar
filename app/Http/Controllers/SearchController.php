@@ -21,13 +21,13 @@ class SearchController extends Controller
         $query = $request->input('query');
 
         $api = new \GuzzleHttp\Client(array(
-            'base_url' => env('API_URL'),
-            'defaults' => array('verify' => false)
+            'base_uri' => env('API_URL'),
+            'verify' => false
         ));
 
-        $search = $api->get('search?article=' . $article .'&user='. $user .'&limit='.$limit.'&query='.$query)->json();
+        $search = $api->get('search?article=' . $article .'&user='. $user .'&limit='.$limit.'&query='.$query);
 
-        return $search;
+        return json_decode($search->getBody(), true);
     }
 
     /**
