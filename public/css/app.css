@@ -5298,6 +5298,7 @@ textarea.input--primary {
   line-height: 50px;
   height: 0px;
   color: #fff;
+  z-index: 99999;
   transition: 0.4s all cubic-bezier(0.86, 0, 0.07, 1); }
   .messages.messages-error {
     background-color: #d9534f; }
