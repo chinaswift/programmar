@@ -17,8 +17,8 @@
 	@include('_partials.header')
 	@include('_modals.published')
 
-	<div ng-show="articleLoading" ng-init="article.id = {{$article['id']}}"><div id="loader"></div></div>
-	<di ng-hide="articleLoading" ngcloak>
+	<div ng-show="articlesLoading" ng-init="article.id = {{$article['id']}}"><div id="loader"></div></div>
+	<di ng-hide="articlesLoading" ngcloak>
 		<div class="container">
 			<div class="title">
 				<div class="row">
@@ -75,7 +75,9 @@
 				</div>
 			</div>
 		</div>
-	</di>
+	</div>
+
+	@include('_partials.footer')
 @endsection
 <!-- end page content -->
 

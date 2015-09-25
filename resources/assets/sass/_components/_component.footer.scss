@@ -1,0 +1,21 @@
+.main-footer {
+	border-top: 1px solid $gray-lightest;
+	padding-top: 20px;
+
+	.container {
+		margin-bottom: 20px;
+	}
+
+	a {
+		margin-right: 10px;
+		color: $gray-dark;
+
+		&.twitter {
+			color: #4099FF;
+		}
+
+		&:last-child {
+			margin-right: 0px;
+		}
+	}
+}

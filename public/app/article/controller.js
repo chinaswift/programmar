@@ -12,7 +12,7 @@
 	  	//Variables
 	  	var mdconverter = new Showdown.converter();
 	  	var commentArea = '.comment-text';
-	  	$scope.articleLoading = true;
+	  	$scope.articlesLoading = true;
 	  	$scope.article = {};
 	  	$scope.currentPage = 1;
 
@@ -23,7 +23,7 @@
 	  			var $content = angular.element('.content');
 	  			$scope.article = data.feed[0];
 	  			data.feed[0].upvotesNext = parseInt(data.feed[0].upvotes + 1);
-	  			$scope.articleLoading = false;
+	  			$scope.articlesLoading = false;
 	  			$(commentArea).mention({
 					    delimiter: '@',
 					    users: $scope.searchedUsers,

@@ -8042,6 +8042,19 @@ strong, b {
       margin-right: 10px;
       border-radius: 50%; }
 
+.main-footer {
+  border-top: 1px solid #EFEFEF;
+  padding-top: 20px; }
+  .main-footer .container {
+    margin-bottom: 20px; }
+  .main-footer a {
+    margin-right: 10px;
+    color: #202020; }
+    .main-footer a.twitter {
+      color: #4099FF; }
+    .main-footer a:last-child {
+      margin-right: 0px; }
+
 /**
  * All the styles for the styleguide page.
  */

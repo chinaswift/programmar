@@ -43,6 +43,8 @@
 			</div>
 		</div>
 	</div>
+
+	@include('_partials.footer')
 @endsection
 <!-- end page content -->
 
