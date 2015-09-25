@@ -27,7 +27,7 @@
 		@endif
 
 		<div class="articles-container" ng-cloak>
-			<div  ng-hide="articles.length > 0 || articlesLoading" ng-cloak>There are no more articles from {{$type}}</div>
+			<div  ng-hide="articles.length > 0 || articlesLoading" ng-cloak>There doesn't seem to be any articles from {{$type}} today. Quick <a href="/write">make one!</a></div>
 			<div id="loader" ng-show="articlesLoading"></div>
 			@include('_partials.article-part')
 		</div>
