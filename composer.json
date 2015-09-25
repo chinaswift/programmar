@@ -13,7 +13,8 @@
         "guzzlehttp/guzzle": "^6.0",
         "symfony/psr-http-message-bridge": "0.2",
         "laravel/socialite": "^2.0",
-        "webutilz/showdown": "^1.2"
+        "webutilz/showdown": "^1.2",
+        "socialiteproviders/stripe": "~1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
