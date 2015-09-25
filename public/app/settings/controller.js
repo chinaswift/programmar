@@ -19,6 +19,8 @@
 	  		$.get('/connect/check', function(data) {
 	  			$scope.stripeConnect = data.success;
 	  			$scope.settingsLoading = false;
+	  			$scope.settings.drinkprice = $scope.userData.drink_price;
+	  			$scope.settings.drinkcurrency = $scope.userData.currency;
 	  			$timeout(function() {
 	  				$scope.$apply();
 	  			}, 300);
@@ -27,8 +29,12 @@
 
 	  	$scope.updateDrinkSettings = function()
 	  	{
+	  		angular.element('.update-btn').text('Updating...');
 	  		$.post('/user/update', $scope.settings, function(data) {
-	  			console.log(data);
+	  			angular.element('.update-btn').text('Updated!');
+	  			$timeout(function() {
+	  				angular.element('.update-btn').text('Update');
+	  			}, 3000);
 	  		});
 	  	}
 

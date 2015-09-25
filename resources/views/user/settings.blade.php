@@ -17,10 +17,14 @@
 	@include('_partials.header')
 	<div id="loader" ng-show="settingsLoading"></div>
 	<div class="container" ng-hide="settingsLoading" ng-cloak>
-		<div ng-show="stripeConnect">
-			<a href="#" ng-click="disconnectStripe()">disconnect stripe</a>
-			<p>You have now connected with stripe. Although your account will still not beable to process until you fill out the fields below.</p>
-			<form ng-submit="updateDrinkSettings()" novalidate name="drinkSettingForm">
+		<div>
+			<h2>Send a developer a drink!</h2>
+			<p>You want to recieve possible income from your articles? Connect your stripe account and allow people viewing your articles to send you a drink if they appreciate what your write.</p>
+			<a href="/connect/stripe" class="btn btn-twitter" ng-hide="stripeConnect">Connect with Stripe</a>
+			<a href="#" class="btn btn-dark" ng-click="disconnectStripe()" ng-show="stripeConnect">Disconnect Stripe</a>
+			<hr>
+		</div>
+		<form ng-submit="updateDrinkSettings()" novalidate name="drinkSettingForm">
 				<label>Your currency</label>
 				<select class="input--primary" ng-model="settings.drinkcurrency">
 					<option value="">Select Currency</option>
@@ -52,15 +56,8 @@
 				</select>
 				<label>Drink price</label>
 				<input type="text" class="input--primary" placeholder="3.50" ng-model="settings.drinkprice">
-				<button type="submit" class="btn btn-primary">Update</button>
+				<button type="submit" class="btn btn-primary update-btn">Update</button>
 			</form>
-		</div>
-
-		<div ng-hide="stripeConnect">
-			<h2>Send a developer a drink!</h2>
-			<p>You want to recieve possible income from your articles? Connect your stripe account and allow people viewing your articles to send you a drink if they appreciate what your write.</p>
-			<a href="/connect/stripe" class="btn btn-twitter">Connect with stripe</a>
-		</div>
 	</div>
 @endsection
 <!-- end page content -->
