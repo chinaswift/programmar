@@ -48,6 +48,7 @@ Route::group(['prefix' => 'settings'], function() {
  */
 Route::group(['prefix' => 'connect'], function() {
 	Route::get('stripe', ['middleware' => 'auth', 'uses' => 'ConnectController@stripe']);
+	Route::get('disconnect', ['middleware' => 'auth', 'uses' => 'ConnectController@disconnect']);
 	Route::get('confirm', ['middleware' => 'auth', 'uses' => 'ConnectController@confirm']);
 	Route::get('check', ['middleware' => 'auth', 'uses' => 'ConnectController@check']);
 	Route::post('bill', ['middleware' => 'auth', 'uses' => 'ConnectController@bill']);
@@ -112,6 +113,7 @@ Route::group(['prefix' => 'user'], function() {
 	Route::post('follow', ['middleware' => 'auth', 'uses' => 'UserController@follow']);
 	Route::post('unfollow', ['middleware' => 'auth', 'uses' => 'UserController@unfollow']);
 	Route::get('articles', ['uses' => 'UserController@articles']);
+	Route::post('update', ['middleware' => 'auth', 'uses' => 'UserController@update']);
 	Route::get('{username}', ['uses' => 'UserController@profile']);
 });
 

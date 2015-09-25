@@ -30,6 +30,27 @@ class UserController extends Controller
         }
     }
 
+    public function update(Request $request)
+    {
+        $drink_price = $request->input('drinkprice');
+        $drink_currency = $request->input('drinkcurrency');
+        $token = $request->session()->get('x-auth-token');
+        $api = new \GuzzleHttp\Client([
+            'base_uri' => env('API_URL'),
+            'verify' => false,
+            'headers' => ['X-Auth-Token' => $token]
+        ]);
+
+        $post = $api->post('me/update', [
+            'form_params' => [
+                'drinkprice' => $drink_price,
+                'drinkcurrency' => $drink_currency
+            ]
+        ])->getBody();
+
+        return json_decode($post, true);
+    }
+
     public function profile(Request $request, $username)
     {
         $api = new \GuzzleHttp\Client([
@@ -204,18 +225,6 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
     {
         //
     }

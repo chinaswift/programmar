@@ -92,6 +92,20 @@ class ConnectController extends Controller
         return json_decode($checkaccounts, true);
     }
 
+
+    public function disconnect(Request $request)
+    {
+        $token = $request->session()->get('x-auth-token');
+        $api = new \GuzzleHttp\Client([
+            'base_uri' => env('API_URL'),
+            'verify' => false,
+            'headers' => ['X-Auth-Token' => $token]
+        ]);
+
+        $checkaccounts = $api->get('connect/disconnect')->getBody();
+        return json_decode($checkaccounts, true);
+    }
+
     /**
      * Display the specified resource.
      *
