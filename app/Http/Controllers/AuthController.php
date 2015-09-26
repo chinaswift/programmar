@@ -30,18 +30,18 @@ class AuthController extends Controller
         $githubToken = $user->token;
 
         $api = new \GuzzleHttp\Client(array(
-            'base_url' => env('API_URL'),
-            'defaults' => array('verify' => false)
+            'base_uri' => env('API_URL'),
+            'verify' => false
         ));
 
         $user = $api->post('auth/login', [
-            'body' => [
+            'form_params' => [
                 'service' => 'github',
                 'guid' => $githubToken
             ]
         ]);
 
-        $jsonData = $user->json();
+        $jsonData = json_decode($user->getBody(), true);
         $request->session()->put('x-auth-token', $jsonData['token']);
         return redirect('/feed/following');
     }

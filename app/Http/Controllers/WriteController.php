@@ -19,15 +19,13 @@ class WriteController extends Controller
         if($article_id > 0) {
            $token = $request->session()->get('x-auth-token');
            $api = new \GuzzleHttp\Client([
-                'base_url' => env('API_URL'),
-                'defaults' => [
-                    'verify' => false,
-                    'headers' => ['X-Auth-Token' => $token]
-                ]
+                'base_uri' => env('API_URL'),
+                'verify' => false,
+                'headers' => ['X-Auth-Token' => $token]
             ]);
 
-            $user = $api->get('me')->json();
-            $article_data = $api->get('articles/' . $article_id)->json();
+            $user = json_decode($api->get('me')->getBody(), true);
+            $article_data = json_decode($api->get('articles/' . $article_id)->getBody(), true);
             if($article_data['feed'][0]['owner_id'] != $user['id']) {
                 return view('_errors.404');
             }
@@ -57,16 +55,14 @@ class WriteController extends Controller
         if($request->session()->get('x-auth-token')) {
             $token = $request->session()->get('x-auth-token');
             $api = new \GuzzleHttp\Client([
-                'base_url' => env('API_URL'),
-                'defaults' => [
-                    'verify' => false,
-                    'headers' => ['X-Auth-Token' => $token]
-                ]
+                'base_uri' => env('API_URL'),
+                'verify' => false,
+                'headers' => ['X-Auth-Token' => $token]
             ]);
 
             if($article_id == '') {
                 $article = $api->post('articles/publish', [
-                    'body' => [
+                    'form_params' => [
                         'name' => $articleTitle,
                         'content' => $articleContent,
                         'kickback_id' => $kickback,
@@ -75,7 +71,7 @@ class WriteController extends Controller
                 ]);
             }else{
                 $article = $api->post('articles/publish/' . $article_id, [
-                    'body' => [
+                    'form_params' => [
                         'name' => $articleTitle,
                         'content' => $articleContent,
                         'kickback_id' => $kickback,
@@ -84,7 +80,7 @@ class WriteController extends Controller
                 ]);
             }
 
-            return $article->json();
+            return json_decode($article->getBody(), true);
         }else{
             return "error:Seems you've been logged out!";
         }
@@ -105,22 +101,20 @@ class WriteController extends Controller
         if($request->session()->get('x-auth-token')) {
             $token = $request->session()->get('x-auth-token');
             $api = new \GuzzleHttp\Client([
-                'base_url' => env('API_URL'),
-                'defaults' => [
-                    'verify' => false,
-                    'headers' => ['X-Auth-Token' => $token]
-                ]
+                'base_uri' => env('API_URL'),
+                'verify' => false,
+                'headers' => ['X-Auth-Token' => $token]
             ]);
 
             $article = $api->post('articles', [
-                'body' => [
+                'form_params' => [
                     'name' => $articleTitle,
                     'content' => $articleContent,
                     'tags' => $tags,
                 ]
             ]);
 
-            return $article->json();
+            return json_decode($article->getBody(), true);
         }else{
             return "error:Seems you've been logged out!";
         }
@@ -154,15 +148,13 @@ class WriteController extends Controller
         if($request->session()->get('x-auth-token')) {
             $token = $request->session()->get('x-auth-token');
             $api = new \GuzzleHttp\Client([
-                'base_url' => env('API_URL'),
-                'defaults' => [
-                    'verify' => false,
-                    'headers' => ['X-Auth-Token' => $token]
-                ]
+                'base_uri' => env('API_URL'),
+                'verify' => false,
+                'headers' => ['X-Auth-Token' => $token]
             ]);
 
             $article = $api->post('articles/' . $article_id, [
-                'body' => [
+                'form_params' => [
                     'name' => $articleTitle,
                     'content' => $articleContent,
                     'kickback_id' => $kickback,
@@ -170,7 +162,7 @@ class WriteController extends Controller
                 ]
             ]);
 
-            return $article->json();
+            return json_decode($article->getBody(), true);
         }else{
             return "error:Seems you've been logged out!";
         }

@@ -24,13 +24,11 @@ class Authenticate
         }else{
             $token = $request->session()->get('x-auth-token');
             $api = new \GuzzleHttp\Client([
-                'base_url' => env('API_URL'),
-                'defaults' => [
-                    'verify' => false,
-                    'headers' => ['X-Auth-Token' => $token]
-                ]
+                'base_uri' => env('API_URL'),
+                'verify' => false,
+                'headers' => ['X-Auth-Token' => $token]
             ]);
-            $authed = $api->get('auth/check')->json();
+            $authed = json_decode($api->get('auth/check')->getBody(), true);
             if(!$authed['authorized']) {
                 if ($request->ajax()) {
                     return response('Unauthorized.', 401);

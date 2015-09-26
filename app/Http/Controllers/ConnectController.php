@@ -5,29 +5,26 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Laravel\Socialite\Contracts\Factory as Socialite;
 
-class SearchController extends Controller
+class ConnectController extends Controller
 {
+    private $socialite;
+    private $auth;
+    private $users;
+
+    public function __construct(Socialite $socialite) {
+        $this->socialite = $socialite;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function search(Request $request)
+    public function stripe()
     {
-        $article = $request->input('article');
-        $user = $request->input('user');
-        $limit = $request->input('limit');
-        $query = $request->input('query');
-
-        $api = new \GuzzleHttp\Client(array(
-            'base_uri' => env('API_URL'),
-            'verify' => false
-        ));
-
-        $search = $api->get('search?article=' . $article .'&user='. $user .'&limit='.$limit.'&query='.$query);
-
-        return json_decode($search->getBody(), true);
+        return $this->socialite->driver('stripe')->scopes(['read_write'])->redirect();
     }
 
     /**
@@ -35,9 +32,24 @@ class SearchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function confirm()
     {
-        //
+        $user = $this->socialite->driver('stripe')->user();
+        $token = $user->token;
+
+        $token = $request->session()->get('x-auth-token');
+        $api = new \GuzzleHttp\Client([
+            'base_uri' => env('API_URL'),
+            'verify' => false,
+            'headers' => ['X-Auth-Token' => $token]
+        ]);
+
+        $api->post('connect', [
+            'form_params' => [
+                'service' => 'stripe',
+                'token_1' => $token,
+            ]
+        ])->getBody();
     }
 
     /**
