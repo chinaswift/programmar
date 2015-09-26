@@ -5195,15 +5195,11 @@ pre {
   font-size: 13px; }
 
 code {
-  display: block;
   background: whitesmoke;
   color: #202020;
   font-size: 14px;
   font-size: 13px;
   border-radius: 2px; }
-
-p code {
-  padding: 5px 14px 7px 0; }
 
 .article--content img {
   max-width: 100%; }

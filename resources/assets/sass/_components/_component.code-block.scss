@@ -8,16 +8,9 @@ pre {
 }
 
 code {
-  display: block;
   background: darken($code-bg, 2%);
   color: $gray-dark;
   font-size: 14px;
   font-size: 13px;
   border-radius: $border-radius;
-}
-
-p {
-  code {
-    padding: 5px 14px 7px 0;
-  }
 }
