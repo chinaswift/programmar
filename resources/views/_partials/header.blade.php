@@ -31,7 +31,7 @@
 					</ul>
 				</li>
 				@if(Request::session()->get('x-auth-token'))
-					<li><a href="/notifications" class="notification-btn" ng-class="{'highlight': notifications.length > 0}">@{{ notifications.length }}</a></li>
+					<li ng-cloak><a href="/notifications" class="notification-btn" ng-class="{'highlight': notifications.length > 0}">@{{ notifications.length }}</a></li>
 				@endif
 				<li class="hidden-lg-up menu-btn"><a href="#">Menu</a></li>
 				@if(Request::session()->get('x-auth-token'))
