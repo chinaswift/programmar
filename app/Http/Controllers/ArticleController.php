@@ -168,7 +168,7 @@ class ArticleController extends Controller
             'headers' => ['X-Auth-Token' => $token]
         ]);
 
-        $comments = $api->get('comments/' . $article_id.'?limit=5&page=' . $page);
+        $comments = $api->get('comments/' . $article_id.'?limit=8&page=' . $page);
         $comments = json_decode($comments->getBody(), true);
         return $comments;
     }
