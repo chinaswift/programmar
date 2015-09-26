@@ -51,8 +51,8 @@
 						<img ng-src="@{{comment.from_avatar}}" class="profile--image image--small">
 					</a>
 					<div class="comment-content">
+						<a class="dark-link" href="/user/@{{comment.from_username}}">@{{ comment.from_username }}</a> &bull; <span class="time-ago">@{{comment.time_ago}}</span>
 						<div ng-bind-html="comment.content | sanitize"></div>
-						<span class="time-ago">@{{comment.time_ago}}</span>
 					</div>
 				</div>
 				<div class="btn-container">
