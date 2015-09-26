@@ -78,7 +78,7 @@ Route::group(['prefix' => 'articles'], function() {
 	Route::get('popular', ['uses' => 'ArticleController@collectPopular']);
 	Route::get('recent', ['uses' => 'ArticleController@collectRecent']);
 	Route::get('drafts', ['middleware' => 'auth', 'uses' => 'ArticleController@collectDrafts']);
-	Route::post('comment', ['middleware' => 'auth', 'uses' => 'ArticleController@postComment']);
+	Route::post('comment', ['uses' => 'ArticleController@postComment']);
 	Route::post('collectComments', ['middleware' => 'auth', 'uses' => 'ArticleController@collectComments']);
 	Route::post('upvote', ['middleware' => 'auth', 'uses' => 'ArticleController@upvoteArticle']);
 	Route::get('edit/collect', ['middleware' => 'auth', 'uses' => 'ArticleController@collectEdit']);
