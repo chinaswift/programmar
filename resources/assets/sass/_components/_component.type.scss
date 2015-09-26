@@ -13,3 +13,13 @@ blockquote {
 	strong, b {
 		font-weight: 600 !important;
 	}
+
+	a {
+		&.dark-link {
+			color: $gray-dark;
+			font-weight: 600;
+			&:hover {
+				color: #000;
+			}
+		}
+	}
