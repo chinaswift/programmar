@@ -64,17 +64,21 @@
 	  	$scope.commentPost = function()
 	  	{
 	  		$('.comment-text').attr('disabled', 'disabled');
-	  		$('.comment-text').val('Posting...');
-	  		$.post('/articles/comment', {'article_id':$scope.article.id, 'comment':$scope.comment}, function(data) {
-	  			$('.comment-btn').html('Comment');
-	  			$scope.commentCollect();
-	  			$('.comment-text').removeAttr('disabled');
-	  			$scope.comment = '';
-	  			$('.comment-text').val('');
-	  			$timeout(function() {
-	  				$scope.$apply();
-	  			}, 300);
-	  		});
+	  		if($scope.userData.username == '') {
+	  			angular.element('#loginModal').modal('show');
+	  		}else{
+	  			$('.comment-text').val('Posting...');
+		  		$.post('/articles/comment', {'article_id':$scope.article.id, 'comment':$scope.comment}, function(data) {
+		  			$('.comment-btn').html('Comment');
+		  			$scope.commentCollect();
+		  			$('.comment-text').removeAttr('disabled');
+		  			$scope.comment = '';
+		  			$('.comment-text').val('');
+		  			$timeout(function() {
+		  				$scope.$apply();
+		  			}, 300);
+		  		});
+	  		}
 	  	}
 
 	  	$scope.commentCollect = function(nextPage)
