@@ -44,7 +44,7 @@
 						<a href="/write/@{{article.id}}" class="btn btn-gray" ng-cloak ng-show="userData.id == article.owner_id">Edit</a>
 					</div>
 					<div class="col-xs-6 text-right">
-						<a href="#" class="btn btn-primary square" ng-click="sendADrink();">Send a drink</a>
+						<a href="javascript:void(0);" class="btn btn-primary square" ng-click="sendADrink();">Send a drink</a>
 						<button type="button" class="btn btn-facebook square" ng-click="facebookShare();">Share on Facebook</button>
         		<a type="button" class="btn btn-twitter square popup" ng-click="twitterShare();">Share on Twitter</a>
 					</div>
