@@ -56,6 +56,7 @@
 				</select>
 				<label>Drink price</label>
 				<input type="text" class="input--primary" placeholder="3.50" ng-model="settings.drinkprice">
+				<span style="font-size: 12px; margin-top: -10px; display: block; margin-bottom: 20px;">*Take in mind: We take 10% from this for our fees, so it doesn't cost you a dime!</span>
 				<button type="submit" class="btn btn-primary update-btn">Update</button>
 			</form>
 	</div>

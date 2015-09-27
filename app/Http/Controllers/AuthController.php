@@ -26,24 +26,28 @@ class AuthController extends Controller
      */
     public function accept(Request $request)
     {
-        $user = Socialite::driver('github')->user();
-        $githubToken = $user->token;
+        if ($request->input('code'))     {
+            $user = Socialite::driver('github')->user();
+            $githubToken = $user->token;
 
-        $api = new \GuzzleHttp\Client(array(
-            'base_uri' => env('API_URL'),
-            'verify' => false
-        ));
+            $api = new \GuzzleHttp\Client(array(
+                'base_uri' => env('API_URL'),
+                'verify' => false
+            ));
 
-        $user = $api->post('auth/login', [
-            'form_params' => [
-                'service' => 'github',
-                'guid' => $githubToken
-            ]
-        ]);
+            $user = $api->post('auth/login', [
+                'form_params' => [
+                    'service' => 'github',
+                    'guid' => $githubToken
+                ]
+            ]);
 
-        $jsonData = json_decode($user->getBody(), true);
-        $request->session()->put('x-auth-token', $jsonData['token']);
-        return redirect('/feed/following');
+            $jsonData = json_decode($user->getBody(), true);
+            $request->session()->put('x-auth-token', $jsonData['token']);
+            return redirect('/feed/following');
+        }else{
+            return "There was an error on GitHubs behalf, this is due to high demands.";
+        }
     }
 
     /**
