@@ -14,7 +14,7 @@
 	  	//Variables
 	  	var messagesSelector = '.messages';
 	  	var upvoteSelector = "#upvote";
-	  	var form = $('[name="cardForm"');
+	  	var form = $('[name="cardForm"]');
 
 	  	$scope.writeDropdownLoading = true;
 	  	$scope.writeDropdownDrafts = [];
