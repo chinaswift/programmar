@@ -21,7 +21,7 @@
 	  		if($scope.userData.username != '') {
 		  		if($scope.userData.id == $scope.article.owner_id) {
 		  			if($scope.article.allow_drink > 0) {
-		  				angular.element('#ownArticleDrink').modal('show');
+		  				angular.element('#paymentModal').modal('show');
 		  			}else{
 		  				angular.element('#activateArticleDrink').modal('show');
 		  			}

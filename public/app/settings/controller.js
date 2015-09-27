@@ -31,10 +31,16 @@
 	  	{
 	  		angular.element('.update-btn').text('Updating...');
 	  		$.post('/user/update', $scope.settings, function(data) {
-	  			angular.element('.update-btn').text('Updated!');
-	  			$timeout(function() {
+	  			if(data.error) {
 	  				angular.element('.update-btn').text('Update');
-	  			}, 3000);
+	  				$scope.showMessage('error', data.error);
+	  			}else{
+	  				angular.element('.update-btn').text('Updated!');
+		  			$timeout(function() {
+		  				angular.element('.update-btn').text('Update');
+		  			}, 3000);
+	  			}
+
 	  		});
 	  	}
 

@@ -18,7 +18,7 @@
 	<div id="loader" ng-show="settingsLoading"></div>
 	<div class="container" ng-hide="settingsLoading" ng-cloak>
 		<div>
-			<h2>Send a developer a drink!</h2>
+			<h2>Send a developer a drink! (beta)</h2>
 			<p>You want to recieve possible income from your articles? Connect your stripe account and allow people viewing your articles to send you a drink if they appreciate what your write.</p>
 			<a href="/connect/stripe" class="btn btn-twitter" ng-hide="stripeConnect">Connect with Stripe</a>
 			<a href="#" class="btn btn-dark" ng-click="disconnectStripe()" ng-show="stripeConnect">Disconnect Stripe</a>

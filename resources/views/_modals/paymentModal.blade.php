@@ -7,6 +7,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">You can send this developer a drink!</h4>
+        <p>@{{article.drink_price}} @{{article.currency}}</p>
       </div>
       <form name="cardForm" ng-show="article.allow_drink > 0" novalidate ng-cloak ng-submit="handlePayment(article.owner_id);">
         <div class="modal-body">
