@@ -7,6 +7,8 @@
 	resize: none;
 	border: 1px solid $gray-lightest;
 	height: 40px;
+	width: 100%;
+	margin-bottom: 10px;
 
 	&.title--input {
 		font-size: 18px;

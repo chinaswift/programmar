@@ -14,6 +14,7 @@
 	  	//Variables
 	  	var messagesSelector = '.messages';
 	  	var upvoteSelector = "#upvote";
+	  	var form = $('[name="cardForm"');
 
 	  	$scope.writeDropdownLoading = true;
 	  	$scope.writeDropdownDrafts = [];
@@ -23,7 +24,55 @@
 	  	$scope.notifications = {};
 	  	$scope.hits = [];
 	    $scope.query = '';
+	    $scope.drinkPayment = {};
 	    $scope.initRun = true;
+	    $scope.stripeSending = false;
+
+	    //function to handel stripe errors
+	    $scope.stripeResponse = function(status, response)
+	    {
+	    		if(response.error) {
+	    			$scope.stripeSending = false;
+	    			$scope.showMessage('error', response.error.message);
+	    		}else{
+	    			$scope.drinkPayment.token = response.id;
+	    			//send the form data to the api
+	    			$.post('/connect/bill', $scope.drinkPayment, function(data) {
+	    				$scope.stripeSending = false;
+	    				var info = data.split(':');
+	    				var messageType = info[0];
+	    				var message = info[1];
+	    				if(messageType == 'error') {
+	    					$scope.showMessage('error', message);
+	    				}else{
+	    					$scope.showMessage('success', "You've sent this person a drink!");
+	    					angular.element("#paymentModal").modal('hide');
+	    				}
+	    			});
+	    		}
+
+	    		$timeout(function() {
+		  			$scope.$apply();
+		  		}, 300);
+	    }
+
+	    //function to handel stripe payment
+	  	$scope.handlePayment = function(sendToId)
+	  	{
+	  		$scope.drinkPayment.to_id = sendToId;
+	  		$scope.stripeSending = true;
+	  		Stripe.createToken(form, $.proxy($scope.stripeResponse, this));
+	  		$timeout(function() {
+	  			$scope.$apply();
+	  		}, 300);
+	  	}
+
+	  	//Function to setup stripe
+	  	$scope.setupStripe = function()
+	  	{
+	  		var stripeKey = $('meta[name="stripe_publishable"]').attr('content');
+				Stripe.setPublishableKey(stripeKey);
+	  	}
 
 	  	//function for displaying messages
 	  	$scope.showMessage = function(messageType, messageText)
@@ -101,7 +150,6 @@
 	  	$scope.searchUsers = function() {
 	      $.get('/search?article=no', function(data) {
 	      	$scope.searchedUsers = data.users;
-	      	console.log(data);
 	      	$timeout(function() {
 	      		$scope.$apply();
 	      	}, 300);

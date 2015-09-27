@@ -31,7 +31,7 @@
 					</ul>
 				</li>
 				@if(Request::session()->get('x-auth-token'))
-					<li><a href="/notifications" class="notification-btn" ng-class="{'highlight': notifications.length > 0}">@{{ notifications.length }}</a></li>
+					<li ng-cloak><a href="/notifications" class="notification-btn" ng-class="{'highlight': notifications.length > 0}">@{{ notifications.length }}</a></li>
 				@endif
 				<li class="hidden-lg-up menu-btn"><a href="#">Menu</a></li>
 				@if(Request::session()->get('x-auth-token'))
@@ -39,7 +39,7 @@
 					<a href="#" class="profile--dropdown"><img ng-src="@{{ userData.avatar_url }}" class="profile--image"></a>
 					<ul class="dropdown text-left">
 						<li><a href="/user/@{{userData.username}}" class="profile" ng-show="userData.loaded">@{{ userData.username }}<span class="sub">View your profile</span></a></li>
-						<!-- <li><a href="#">Settings</a></li> -->
+						<li><a href="/settings">Settings</a></li>
 						<li><a href="/logout">Logout</a></li>
 					</ul>
 				</li>
@@ -58,7 +58,7 @@
 					@if(Request::session()->get('x-auth-token'))
 						<li><span class="splitter"></span></li>
 						<li><a href="/user/@{{userData.username}}">Profile</a></li>
-						<!--<li><a href="#">Settings</a></li>-->
+						<li><a href="/settings">Settings</a></li>
 						<li><a href="/logout">Logout</a></li>
 					@endif
 				</ul>

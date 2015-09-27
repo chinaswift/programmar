@@ -12,10 +12,15 @@
 	line-height: 50px;
 	height: 0px;
 	color: #fff;
+	z-index: 99999;
 	transition: .4s all $message-timing-function;
 
 	&.messages-error {
 		background-color: $brand-danger;
+	}
+
+	&.messages-success {
+		background-color: $brand-success;
 	}
 
 	&.show {

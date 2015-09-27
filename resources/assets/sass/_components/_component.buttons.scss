@@ -25,6 +25,17 @@
 		}
 	}
 
+	&.btn-primary {
+		&.square {
+			width: 36px;
+			text-indent: -9999em;
+			background-image: url(/img/icons/drink.svg);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: 18px;
+		}
+	}
+
 	&.btn-facebook {
 		color: #fff;
 		background-color: #3b5998;
