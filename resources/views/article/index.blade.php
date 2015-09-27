@@ -27,7 +27,7 @@
 		<div class="container">
 			<div class="title">
 				<div class="row">
-					<div class="col-xs-12 col-sm-6">
+					<div class="col-xs-12 col-sm-6" ngcloak>
 						<a href="/user/@{{article.owner_user}}"><img ng-src="@{{ article.owner_img }}" class="profile--image"></a>
 						<h1>@{{ article.name }}</h1>
 					</div>
