@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1667b7d38921cb712716acc1796f3cf1",
-    "content-hash": "1bb532767faaed2ba46f9d6bfe37f8ce",
+    "hash": "b06485c8c2ad668e668d5dc8a0f0124b",
+    "content-hash": "500cb33d2d6939729cb430ebd9b96873",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1675,8 +1675,6 @@
             "time": "2015-07-16 15:26:57"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "socialiteproviders/manager",
             "version": "1.0.1",
             "source": {
@@ -1757,7 +1755,6 @@
             "time": "2015-07-20 19:21:11"
         },
         {
->>>>>>> stripe
             "name": "swiftmailer/swiftmailer",
             "version": "v5.4.1",
             "source": {
