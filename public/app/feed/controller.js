@@ -47,6 +47,10 @@
 	  				//filter the content
 	  				for(var i = 0; i < data.feed.length; i++) {
 		  				var text = mdconverter.makeHtml(data.feed[i].content);
+		  				var $content = $(text);
+		  				$content.find('code').remove();
+		  				$content.find('pre').remove();
+		  				text = $content.html();
 		  				text = htmlToPlaintext(text);
 		  				text = text.replace(/[^a-z0-9\s]/gi, '');
 		  				data.feed[i].contentHTML = text;
