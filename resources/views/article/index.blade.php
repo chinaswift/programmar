@@ -27,11 +27,11 @@
 		<div class="container">
 			<div class="title">
 				<div class="row">
-					<div class="col-sm-12 col-md-6" ngcloak>
+					<div class="col-sm-12 col-md-8" ngcloak>
 						<a href="/user/@{{article.owner_user}}"><img ng-src="@{{ article.owner_img }}" class="profile--image"></a>
 						<h1 class="title-text">@{{ article.name }}</h1>
 					</div>
-					<div class="col-xs-6 text-right hidden-sm-down">
+					<div class="col-xs-4 text-right hidden-sm-down">
 						<span class="time">Posted @{{article.time_ago}}</span>
 					</div>
 				</div>
