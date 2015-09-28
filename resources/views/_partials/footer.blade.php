@@ -12,7 +12,7 @@
 
 			<div class="col-md-4 col-xs-6 text-right">
 				<a href="http://twitter.com/_programmar" class="twitter" target="_blank">@_programmar</a>
-				<a href="https://layerful.com/" target="_blank">Layerful</a>
+				<a href="http://layerful.com/" target="_blank">Layerful</a>
 			</div>
 		</div>
 	</div>
