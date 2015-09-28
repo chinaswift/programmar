@@ -5192,7 +5192,7 @@ pre {
   display: block;
   background: whitesmoke;
   padding: 15px;
-  font-size: 15px; }
+  font-size: 14px; }
 
 code {
   background: whitesmoke;
@@ -8094,7 +8094,8 @@ a.dark-link {
   font-size: 20px;
   display: inline-block;
   vertical-align: middle;
-  margin: 0 0 0 10px; }
+  margin: 0 0 0 10px;
+  max-width: 84%; }
 
 #article h2, #article h1, #article h3 {
   font-size: 20px;
