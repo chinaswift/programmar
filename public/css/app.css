@@ -5205,7 +5205,6 @@ code {
   max-width: 100%; }
 
 .article--content .title--input {
-  font-weight: 500;
   width: 100%;
   color: #202020;
   margin-bottom: 9px !important; }
@@ -5223,6 +5222,10 @@ code {
 .article--content #preview {
   display: none;
   word-wrap: break-word; }
+  .article--content #preview h2, .article--content #preview h1, .article--content #preview h3 {
+    font-size: 20px;
+    margin-top: 30px;
+    font-weight: 600; }
   .article--content #preview p {
     font-size: 18px;
     line-height: 30px; }
@@ -5260,9 +5263,6 @@ code {
   line-height: 20px;
   font-size: 16px; }
 
-.article--content h1, .article--content h2, .article--content h3, .article--content h4 {
-  font-size: 18px; }
-
 .input--primary {
   display: block;
   outline: none;
@@ -5275,10 +5275,10 @@ code {
   width: 100%;
   margin-bottom: 10px; }
   .input--primary.title--input {
-    font-size: 18px;
+    font-weight: 600;
+    font-size: 20px;
     border: none;
     padding: 0px;
-    font-weight: 500;
     margin-bottom: 30px; }
 
 textarea.input--primary {
@@ -8090,11 +8090,16 @@ a.dark-link {
 #home .auth-section p {
   color: #808080; }
 
-#article h1 {
-  font-size: 16px;
+#article h1.title-text {
+  font-size: 20px;
   display: inline-block;
   vertical-align: middle;
   margin: 0 0 0 10px; }
+
+#article h2, #article h1, #article h3 {
+  font-size: 20px;
+  margin-top: 30px;
+  font-weight: 600; }
 
 #article p {
   word-wrap: break-word; }
