@@ -5192,13 +5192,13 @@ pre {
   display: block;
   background: whitesmoke;
   padding: 15px;
-  font-size: 13px; }
+  font-size: 15px; }
 
 code {
   background: whitesmoke;
   color: #202020;
   font-size: 14px;
-  font-size: 13px;
+  font-size: 14px;
   border-radius: 2px; }
 
 .article--content img {
@@ -5207,7 +5207,8 @@ code {
 .article--content .title--input {
   font-weight: 500;
   width: 100%;
-  color: #202020; }
+  color: #202020;
+  margin-bottom: 9px !important; }
   .article--content .title--input[disabled] {
     color: #202020;
     background: transparent;
@@ -5222,6 +5223,9 @@ code {
 .article--content #preview {
   display: none;
   word-wrap: break-word; }
+  .article--content #preview p {
+    font-size: 18px;
+    line-height: 30px; }
 
 .article--content #editor {
   width: calc(100% - 40px);
@@ -5230,7 +5234,8 @@ code {
   resize: none;
   margin-bottom: 50px;
   line-height: 20px;
-  font-size: 16px;
+  font-size: 18px;
+  line-height: 30px;
   outline: none;
   position: absolute;
   top: 140px;
@@ -8093,6 +8098,10 @@ a.dark-link {
 
 #article p {
   word-wrap: break-word; }
+
+#article .content {
+  font-size: 18px;
+  line-height: 30px; }
 
 #article img {
   max-width: 100%; }
