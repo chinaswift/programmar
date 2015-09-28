@@ -76,12 +76,17 @@
 		        height = 400,
 		        left   = ($(window).width()  - width)  / 2,
 		        top    = ($(window).height() - height) / 2,
-		        url    = 'http://twitter.com/share?text=I just read an article on @_programmar&url=https://programmar.io/articles/' + $scope.article.id,
 		        opts   = 'status=1' +
 		                 ',width='  + width  +
 		                 ',height=' + height +
 		                 ',top='    + top    +
 		                 ',left='   + left;
+
+		    if($scope.userData.username != '' && $scope.userData.username == $scope.article.owner_user) {
+		    	var  url    = 'http://twitter.com/share?text=I just wrote an article on @_programmar&url=https://programmar.io/articles/' + $scope.article.id
+		    }else{
+		    	var url    = 'http://twitter.com/share?text=I just read an article on @_programmar&url=https://programmar.io/articles/' + $scope.article.id
+		    }
 
 		    window.open(url, 'twitter', opts);
 		    return false;
