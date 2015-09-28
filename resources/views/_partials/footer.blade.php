@@ -6,7 +6,7 @@
 			</div>
 
 			<div class="col-md-4 text-center hidden-sm-down">
-				<a href="http://api.programmar.io" target="_blank">Documentation</a>
+				<a href="http://api.programmar.io" target="_blank">API Documentation</a>
 				<a href="https://github.com/Layerful/programmar" target="_blank">GitHub</a>
 			</div>
 
