@@ -53,6 +53,11 @@
 		  				text = $content.html();
 		  				text = htmlToPlaintext(text);
 		  				text = text.replace(/[^a-z0-9\s]/gi, '');
+
+		  				if(text == '') {
+		  					text = data.feed[i].tags;
+		  				}
+
 		  				data.feed[i].contentHTML = text;
 		  				data.feed[i].upvotesNext = parseInt(data.feed[i].upvotes) + 1;
 		  			}
