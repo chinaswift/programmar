@@ -133,7 +133,7 @@
 	  				var comment = data.feed[i];
 	  				var mentionArray = comment.mentions.split(',');
 	  				for (var o = 0; o < mentionArray.length; o++) {
-	  					comment.content = comment.content.replace('@' + mentionArray[o], '<a href="/users/' + mentionArray[o] + '">@' + mentionArray[o] + '</a>')
+	  					comment.content = comment.content.replace('@' + mentionArray[o], '<a href="/user/' + mentionArray[o] + '">@' + mentionArray[o] + '</a>')
 	  				}
 	  			}
 
