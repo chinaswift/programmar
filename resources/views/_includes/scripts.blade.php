@@ -1,13 +1,5 @@
-<script src="/js/vendor/jquery.min.js"></script>
-<script src="/js/vendor/bootstrap.min.js"></script>
-<script src="/js/vendor/showdown.js"></script>
-<script src="/js/components.min.js"></script>
-
-@if($angular)
-	<script src="/js/vendor/angular.min.js"></script>
-	<script src="/js/vendor/algoliasearch.angular.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.5/angular-resource.js"></script>
-@endif
+<script src="/js/vendor.js"></script>
+<script src="/js/components.js"></script>
 
 @yield('scripts')
 
